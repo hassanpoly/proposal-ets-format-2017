@@ -1,0 +1,204 @@
+
+
+This chapter is dedicated to the methodology that we propose to exert to achieve the objectives of this research project, i.e. Methodology and Algorithms for High-level Modelling of Cosmic Radiations Impacts on Electrical Systems. First of all, we will identify four main research axes: (1)  Fault emulation platform for sequential circuits to generate signatures; (2) radiation-based experiments; (3) high-level modeling to study radiation impacts on electrical systems; and (4) Simulator- isoneo.
+
+In addition to the development of our research along these axes, we also have a plan to implement a technology demonstrator on FPGA and, fly in an aircraft, e.g., \textbf{CMC BEE platform}.
+
+\section{Sequential Circuit Emulation}
+
+%\subsection{Emulation Environment and Framework}
+%\subsection{Sequential Circuit Fault Injection Mechanism}
+%\subsection{Sequential Circuit Test Generation}
+
+
+\section{Modeling Faults in Sequential Circuit}
+\subsection{Soft-Error Modeling and Analysis in Sequential Circuit}
+
+
+To analyze the faulty behavior of the sequential circuit by using Markov Chain theory is quite obvious choice. Markov chain analysis provide the steady state behavior of the sequential circuit. By using MC analysis we will able to find the number of clock cycles the sequential circuit produce the faulty output.
+
+As mentioned in the section related work, single error rate can be categorized into three different categories a)  circuit level b) gate level and c) architectural level.  Our work is focused on the architectural level by emulating the fault at circuit level. 
+
+
+
+
+Most of the real-time application of the electronic systems are sequential in nature, e.g., random access memories. A typical sequential circuit comprises of combinational logic and flip-flop as shown in Figure.   Inputs of the combinational logic, output of the combinational logic, and inputs and outputs of the flip-flop. There is a temporal correlations between the input signal and the state signal. The state signals are uniquely identified as the function of the input signal and the previous state signal. Due to this; sequential circuit error propagation from the error site, e.g., a bit flip in a flip-flop to the output can observe after several clock cycles. This temporal relationship force to use the more dynamic models than the models availble for the combinational circuits. The sequential circuits models can evolve with the time instances.
+
+We will make our faulty model from the real-time radiation experiment. We will start our analysis by analysing the faulty values. Let us consider the example of the counter as shown in Figure 1 fault free and Figure 2 faulty where output is stuck at 1 .  
+
+
+We will start our analysis by error probability matrix associated with the circuit and the probability that the erros comes in any part of the circuit (Combinational or flip-flop) produce an error at the output. 
+
+
+
+
+
+\section{Markov Chain Analysis for Faulty Behaviour Model}
+
+   
+We used the MC for modeling and analysis of sequential circuits susceptible to soft-errors. We prefer to use Markov chain analysis over the other techniques like BDD/ADD or SAT, As these techniques requires to transform the circuit into their respective tool or mathmatical notation. While, in MC we can directly make the model just looking into the signature values. 
+
+
+The faulty behaviour of a sequential circuit can be analyzed using MC theory. We need to calculate the steady state behaviour of a sequential circuit via MC analysis. 
+
+Inorder to do the MC analysis. We need to have a two copies of the original circuit --- named Fault-Free circuit, and Faulty circuit (\textit{hit circuit}). The Fault free circuit is used to collect the correct behaviour of the circuit (fault-free outputs and fault free state vectors) and faulty is used to collect the faulty response of the circuit (faulty output and faulty states). From Markov theory, we can define the next state vectors of the fault-free and faulty circuit as:
+
+
+
+
+$NS^{original}$ $=$  $\delta^{o}$ $=$ $(\delta^{o}_{1},\delta^{o}_{2},\delta^{o}_{3},...,\delta^{o}_{m})$
+
+
+$NS^{faulty}$ $=$  $\delta^{f}$ $=$ $(\delta^{f}_{1},\delta^{f}_{2},\delta^{f}_{3},...,\delta^{f}_{m})$
+
+
+$\delta^{o}$ $=$ Fault-Free circuit output values
+
+$\delta^{f}$ $=$ Faulty circuit output values
+
+$m$ $=$ Number of output variables
+
+From there I can construct my signature vector:
+
+
+$\epsilon_{signature}$ $=$ $\delta^{o}$  $-$ $\delta^{f}$
+
+
+Now, the main goal for the soft error analysis for sequential circuits is to find the transistion probabilities between the signatures from the signature vector $\epsilon_{signature}$ and from there to determine the faulty behaviour of the sequential circuits when soft-error occurs. 
+
+\subsection{SER Measurement in Sequential Circuits}
+
+\subsection{Modeling with Probabilistic Calculation Methods}
+
+%\subsection{Modeling of Sequential Circuit with Markovian-Chain Analysis}
+
+
+
+%The fault injection platform proposes for this project emulates SEUs, more specifically single-bit upsets (SBUs) within the configuration memory of SRAM-based FPGAs. We will study the effects of SEU on sequential circuits, and introduce a  framework for analyzing and detecting them. We will do the modeling and analysis of sequential circuits susceptibility to soft errors. Accurate sequential SEU estimation requires capturing the mechanism of error propagation and masking at both combinational and sequential levels. The challenging task for the sequential circuits under SEUs: the difference between sequential and combinational circuits from the context of ATPG and single stuck-at fault model. In this project, we will concentrate on sequential synchronous circuits. The problem we will face and encounter that the controllability of auxiliary inputs and observability of secondary outputs for the sequential circuits.  We will study and implement a technique which eases sequential circuits testing and ATPG by making controllability and observability much simple.
+%
+%\subsection{Fault Injection}
+%
+%We need to examine the behavior of a design under faults. For fault injection there are two strategies: (a) \textit{Software based fault injection}, and (b) \textit{FPGA based fault injection}. 
+%
+%\begin{itemize}
+%
+%\item Two methods will develop for software based fault injection. First, the source HDL code is modified to allow fault injection. Second, the simulation tool is used to force the error injection during simulation. 
+%\item For FPGA-based simulation, we will use single error mitigation core from Xilinx~\cite{xilinx}. The idea is to integrate this core with our system to generate a modified bitstreams to emulate the occurrence of errors. We will use this strategy.
+%\end{itemize}
+
+
+
+
+
+%\section{Research Axis 3: Radiation Bombardment}
+This part of the project is a neutron-induced Single Event Effect test in a commercial FPGA from Xilinx. The primary objective is to investigate the radiation effects reliability for the critical application. We will implement the sequential circuit and data acquisition system. The results we want to achieve to drive signatures for the sequential circuits. Our focus is on the analyzing the impact of multiple errors in state flip-flops, during the cycles following the cycle when faults occur. The following milestones we want to achieve from radiation bombardment experiment.
+
+\begin{itemize}
+\item Modeling of SEU, MBU and analyzing their effect on logic circuits.
+\item Evaluation of changes in error rates due to SEUs in sequential circuits.
+\item Compute the error probability, and signatures from bit-upsets can vary for different outputs and different circuits. 
+\item Evaluation of the impact of multiple flip-flop upsets in sequential circuits.
+\item Determining the outputs that are most susceptible to errors due to faults in logic.
+\item Determining the parts of the circuit (gates or gate clusters) that have the largest impact on circuit error probability.
+\item Estimation of lower and upper bounds of circuit susceptibility to transient.
+\end{itemize} 
+%
+%\section{Research Axis 3: High-level Modelling}
+%
+%To model and analyze the sequential circuit susceptibility to soft errors, we need to used the approximate methods, e.g.,
+%\begin{itemize}
+%
+%\item Binary Decision Diagram and Algebraic decision diagram.
+%\item Markov-chain analysis based error rate estimation, which can provide steady-state Single-Error rate estimates following a hit. 
+%\item A  Monte Carlo for SEU Analysis of Sequential Circuits based on the probability of the bit-flips and estimates the states outputs and signatures.
+%
+%\end{itemize}
+%\subsection{Simulator}
+%
+%We also have a plan to develop a simulator with the help of \textit{isoneo}. The simulator is based on the Matlab / Simulink models. The simulator takes the input a parameterization file corresponding to the operational architecture of the system. This file is generated from the configurator; it is in XML format.
+%From this configuration, the simulator initially initializes a model of the system failure tree.
+%This model is then exploited dynamically during the simulation phase to evaluate the level of reliability of the system and its components. The simulator executes the simulation model with the constraints and concludes a level of safety for each equipment and the global system.
+
+\section{Optional: Fault Mitigation}
+Fault-mitigation can be achieved in two ways: preventing faults from happening and
+recovering after their occurrence. Fault preventing is achieved by using hardened components and/or shielding. But fault preventative is not a viable solution in terms of a project cost. More complex fault-mitigation methodologies can be implemented at the architectural level. We need to develop some fault-mitigation strategies like triple module redundancy with  dynamic reconfiguration of the hardware~\cite{jacobs2012reconfigurable} and/or something like the work presented in 
+%Jacobs \emph{et al.}~\cite{jacobs2012reconfigurable} and Alderighi \emph{et al.}~\cite{violante} promote the use of SRAM-FPGAs for reconfigurable fault-tolerant space applications.
+~\cite{jacobs2012reconfigurable} used fault tolerance framework (RFT) that enables system designers to dynamically adjust a system's level of redundancy and fault mitigation based on the varying radiation incurred at different orbital positions. Notably, the reconfigurable fault tolerance framework in~\cite{jacobs2012reconfigurable} is based on an upset rate modeling tool that used to capture time-varying radiation effects in a given orbit.
+
+
+\section{Project Plan}
+
+
+\textbf{Summary}
+
+\textbf{Phase  01:} The emulation platform will be the starting point of research. We will use the SEUs for the configuration memory upsets. Selection of a suitable benchmark, which is probably ITC'99~\cite{ITC}used for the testing purpose. We will evaluate the bits sensitivity as well. We will implement the prototype. 
+
+\textbf{Phase  02:} Evaluate the experimental setup under the neutron radiation at Triumf.
+
+
+\textbf{Phase 03:} Develop an efficient methodology and high-level model for soft-error of sequential circuits, i.e., Monte-Carlo sampling, approximate approaches, symbolic methods for efficient estimation. The simulator development will keep with all these three phases.
+
+
+
+%\section{Timetable}
+%The development of the tasks identified in Chapter~\ref{sec:approach}, and the most important milestones of this project are presented in Figure~\ref{timetable}.
+%In our intentions, the design of a time predictable computer architecture, the development of novel timing analysis techniques, and the FPGA prototypes implementation will unfold as a series of sequential tasks with relatively small interleaving. Dependability and real-time requirements, on the other hand, should be kept in mind throughout the whole advancement of the project.
+%
+%\begin{figure}[h]
+%\centering
+%\begin{tikzpicture}
+%\begin{ganttchart}[
+%x unit=0.36cm,
+%y unit title=1.0cm,
+%y unit chart=1.5cm,
+%%vgrid,
+%hgrid,
+%inline,
+%]{1}{48}
+%\gantttitle{Research Project}{48} \\
+%\gantttitle{2016}{12} \gantttitle{2017}{12} \gantttitle{2018}{12} \gantttitle{2019}{12}\\
+%
+%
+%
+%\ganttbar[bar height=.4]{Literature Review and Comp .Exam}{6}{24}\\
+%%\ganttmilestone[]{Comp. Exam}{20}\\
+%%\ganttmilestone[]{AHS}{6}
+%%\ganttmilestone[]{TODAES}{12}\\
+%\ganttbar[bar height=.4]{Emulation Platform for Seq. ckt}{6}{35} \\
+%\ganttbar[bar height=.4]{Radiation Experiment}{13}{24} \\
+%\ganttbar[bar height=.4]{Modelling and Simulator}{25}{42} \\
+%%\ganttmilestone[]{TAAS}{30}\\
+%%\ganttbar[bar height=.4]{Novel Timing analysis techniques}{22}{38} \\
+%%\ganttmilestone[]{DAC}{36}\\
+%%\ganttbar[bar height=.4]{FPGA Implementation}{27}{38} \\
+%%\ganttmilestone[]{TRETS}{40}\\
+%\ganttbar[bar height=.4]{Tech. Demo.}{35}{42} \\
+%%\ganttmilestone[]{IAC}{44}\\
+%\ganttbar[bar height=.4]{Thesis Writing}{35}{46}
+%%\ganttmilestone[]{Thesis}{44}\\
+%%\ganttbar[bar height=.4]{The \emph{PolyOrbite} Project}{1}{44} 
+%
+%%\ganttlink{elem0}{elem1}
+%%\ganttlink{elem0}{elem2}
+%%\ganttlink{elem0}{elem3}
+%
+%%\ganttlink{elem3}{elem4}
+%
+%%\ganttlink{elem5}{elem6}
+%%\ganttlink{elem5}{elem7}
+%
+%%\ganttlink{elem7}{elem8}
+%\end{ganttchart}
+%\end{tikzpicture}
+%\caption{Timetable.}
+%\label{timetable}
+%\end{figure}
+
+
+
+
+
+
+
+
+

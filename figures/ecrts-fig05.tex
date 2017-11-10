@@ -1,0 +1,116 @@
+\begin{tikzpicture}
+
+\begin{groupplot}[
+		group style={group size=3 by 1, horizontal sep=0.8cm, vertical sep=2cm, xlabels at=edge bottom, ylabels at=edge left},
+		grid=none, %both,
+		width = 6.0cm,
+		height = 6.5cm,	
+		xtick=data,
+		ybar,
+   		 enlargelimits=0.2,
+		ymin = 0.0,
+		ymax = 1.0,
+		ytick={0,0.5,...,1.0},
+    		legend style={at={(1.67,-0.20)},anchor=north,legend columns=-1},
+   		ylabel={\% of Schedulable Tasks},
+   		symbolic x coords={RN,FF,BF,GA,Opt},	
+   		%y tick label style={/pgf/number format/precision={1},/pgf/number format/zerofill={true}},	
+   		cycle list = {black,black!30},
+		]
+
+\nextgroupplot[title = {$\bar{U}$ = 0.6 }]
+\addplot+[bar width=2.5mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {
+	(RN,0.450000)   +- (0,0.201289)
+	(FF,0.416667)   +- (0,0.261242)
+	(BF,0.858333)   +- (0,0.142080)
+	(GA,0.987500) +- (0,0.038141)
+	(Opt,0.995833)   +- (0,0.022822)
+	
+};
+\addplot+[draw=black,fill,text=black,bar width=2.5mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {
+	(RN,0.570833)   +- (0,0.226678)
+	(FF,0.587500)   +- (0,0.290195)
+	(BF,0.9000)   +- (0,0.128821)
+	(GA,0.991667) +- (0,0.031714)
+	(Opt,0.995833)   +- (0,0.022822)
+	
+};
+\legend{Rate Monotonic,Earliest Deadline First}
+
+\nextgroupplot[title = {$\bar{U}$ = 0.8}]
+\addplot+[bar width=2.5mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {
+	(RN,0.345833)   +- (0,0.196091)
+	(FF,0.295833)   +- (0,0.237814)
+	(BF,0.633333)   +- (0,0.188384)
+	(GA,0.841667) +- (0,0.118054)
+	(Opt,0.983333)   +- (0,0.054272)
+	
+};
+\addplot+[draw=black,fill,text=black,bar width=2.5mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {
+	(RN,0.495833)   +- (0,0.200976)
+	(FF,0.466667)   +- (0,0.256244)
+	(BF,0.762500)   +- (0,0.165278)
+	(GA,0.950000) +- (0,0.084333)
+	(Opt,0.991667)   +- (0,0.031714)
+	
+};
+
+\nextgroupplot[title = {$\bar{U}$ = 1.0}]
+\addplot+[bar width=2.5mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {
+	(RN,0.300000)   +- (0,0.195862)
+	(FF,0.270833)   +- (0,0.150729)
+	(BF,0.245833)   +- (0,0.152152)
+	(GA,0.695833) +- (0,0.063001)
+	(Opt,0.737500)   +- (0,0.038141)
+	
+};
+\addplot+[draw=black,fill,text=black,bar width=2.5mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {
+	(RN,0.304167)   +- (0,0.166361)
+	(FF,0.375000)   +- (0,0.234429)
+	(BF,0.450000)   +- (0,0.181588)
+	(GA,0.775000) +- (0,0.068858)
+	(Opt,0.925000)   +- (0,0.106876)
+	
+};
+\end{groupplot}
+
+\end{tikzpicture}
+
+%\begin{tikzpicture}
+%\begin{axis}[
+%    ybar,
+%    enlargelimits=0.2,
+%    legend style={at={(0.5,-0.15)},anchor=north,legend columns=-1},
+%    ylabel={\% of Schedulable Tasks},
+%    symbolic x coords={Random,FF,BF,GA,Exhaustive},
+%    xtick=data,
+%    %nodes near coords,
+%    %nodes near coords align={vertical},
+%    ]
+%\addplot+[mark=none,error bars/.cd,y dir=both,y explicit] 
+%coordinates {
+%	(Random,0.18)   +- (0,0.13)
+%	(FF,0.58)   +- (0,0.22)
+%	(BF,0.58)   +- (0,0.22)
+%	(GA,0.81) +- (0,0.17)
+%	(Exhaustive,0.91)   +- (0,0.13)
+%	
+%};
+%\addplot+[mark=none,error bars/.cd,y dir=both,y explicit] 
+%coordinates {
+%	(Random,0.23)   +- (0,0.13)
+%	(FF,0.62)   +- (0,0.25)
+%	(BF,0.62)   +- (0,0.25)
+%	(GA,0.90) +- (0,0.13)
+%	(Exhaustive,0.99)   +- (0,0.05)
+%	
+%};
+%\legend{Rate Monotonic,Earliest Deadline First}
+%\end{axis}
+%\end{tikzpicture}

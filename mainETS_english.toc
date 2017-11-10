@@ -1,0 +1,39 @@
+\select@language {english}
+\contentsline {chapter}{{\hbox to\@tempdima {\uppercase {Chapter\ 1}\hfil }\uppercase {Introduction }}}{1}{chapter.5}
+\contentsline {section}{\numberline {1.1}Context and Motivation}{1}{section.6}
+\contentsline {section}{\numberline {1.2}Problem Statement}{3}{section.7}
+\contentsline {section}{\numberline {1.3}Research Objectives}{3}{section.8}
+\contentsline {section}{\numberline {1.4}Contribution}{5}{section.9}
+\contentsline {chapter}{{\hbox to\@tempdima {\uppercase {Chapter\ 2}\hfil }\uppercase {Related Work and Prior Work }}}{7}{chapter.10}
+\contentsline {section}{\numberline {2.1}Radiation Environment}{7}{section.11}
+\contentsline {subsection}{\numberline {2.1.1}Faults Caused by Cosmic Rays in Digital Circuits}{8}{subsection.12}
+\contentsline {subsection}{\numberline {2.1.2}Single Event Effects Mechanism}{8}{subsection.13}
+\contentsline {subsection}{\numberline {2.1.3}Neutrons Effects on FPGA}{8}{subsection.14}
+\contentsline {subsection}{\numberline {2.1.4}Shielding Effect}{8}{subsection.16}
+\contentsline {section}{\numberline {2.2}Design Verification by Fault Injection}{9}{section.18}
+\contentsline {subsection}{\numberline {2.2.1}Simulation}{11}{subsection.19}
+\contentsline {subsection}{\numberline {2.2.2}Emulation}{11}{subsection.20}
+\contentsline {subsection}{\numberline {2.2.3}Radiation testing}{14}{subsection.21}
+\contentsline {section}{\numberline {2.3}Fault Models}{14}{section.22}
+\contentsline {subsection}{\numberline {2.3.1}Stuck-at Fault Model}{14}{subsection.23}
+\contentsline {subsection}{\numberline {2.3.2}Functional Fault Model}{14}{subsection.24}
+\contentsline {section}{\numberline {2.4}Faults Behavioural Modeling}{19}{section.25}
+\contentsline {section}{\numberline {2.5}Conclusion}{19}{section.26}
+\contentsline {chapter}{{\hbox to\@tempdima {\uppercase {Chapter\ 3}\hfil }\uppercase {Proposed Approach }}}{21}{chapter.27}
+\contentsline {section}{\numberline {3.1}Sequential Circuit Emulation}{21}{section.28}
+\contentsline {section}{\numberline {3.2}Modeling Faults in Sequential Circuit}{21}{section.29}
+\contentsline {subsection}{\numberline {3.2.1}Soft-Error Modeling and Analysis in Sequential Circuit}{21}{subsection.30}
+\contentsline {section}{\numberline {3.3}Markov Chain Analysis for Faulty Behaviour Model}{22}{section.31}
+\contentsline {subsection}{\numberline {3.3.1}SER Measurement in Sequential Circuits}{23}{subsection.32}
+\contentsline {subsection}{\numberline {3.3.2}Modeling with Probabilistic Calculation Methods}{23}{subsection.33}
+\contentsline {section}{\numberline {3.4}Optional: Fault Mitigation}{24}{section.34}
+\contentsline {section}{\numberline {3.5}Project Plan}{24}{section.35}
+\contentsline {chapter}{{\hbox to\@tempdima {\uppercase {Chapter\ 4}\hfil }\uppercase {Preliminary Results }}}{27}{chapter.36}
+\contentsline {section}{\numberline {4.1}Relative Sensitivity Based Emulation}{27}{section.37}
+\contentsline {section}{\numberline {4.2}High-Level Fault Model}{27}{section.42}
+\contentsline {section}{\numberline {4.3}Sequential Circuits Fault model}{27}{section.43}
+\contentsline {section}{\numberline {4.4}Conclusion}{31}{section.55}
+\contentsline {chapter}{{\hbox to\@tempdima {\uppercase {Chapter\ 5}\hfil }\uppercase {Appendix example }}}{33}{chapter.56}
+\contentsline {section}{\numberline {5.1}First section of the appendix}{33}{section.57}
+\contentsline {subsection}{\numberline {5.1.1}Figures in annexes}{33}{subsection.58}
+\contentsline {chapter}{BIBLIOGRAPHY}{34}{subsection.58}

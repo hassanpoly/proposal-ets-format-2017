@@ -1,0 +1,159 @@
+\begin{tikzpicture}
+\begin{axis}[   
+		view={26.7}{30},
+		grid=both,
+		width = 14cm,
+		%height = 12cm,
+		nodes near coords,
+		%enlargelimits=0.05,
+		xmax = 0.35e+2, xmin = 0.0, 
+		zmax = 1.1, zmin = 0.428593, 
+		ymin = 0.3, ymax = 3.5,
+		clip = false,
+		xlabel = {explored design space (\%)},
+		zlabel = {ratio to avg. Pareto points},
+		ylabel = {ADRS (\%)},
+		scatter/classes={a={mark=square*,black}, b={mark=square*,blue}, c={mark=square*,red}, d={mark=none,draw=black}}
+	    ]
+%horiz,depth,height
+
+
+
+
+
+
+
+\addplot3[scatter src=explicit symbolic]
+coordinates {
+(34.722222,1.270000,0.975701) [a]
+(34.722222,1.270000,0.428593) [d]
+};
+\draw (axis cs:34.722222,1.270000,0.975701) |-  (axis cs:34.722222,1.270000,0.975701)
+node[near start,right]
+{{\footnotesize APRS (1)}};
+
+\addplot3[scatter src=explicit symbolic]
+coordinates {
+(10.671296,0.820000,0.996257) [a]
+(10.671296,0.820000,0.428593) [d]
+};
+\draw (axis cs:10.671296,0.820000,0.996257) |-  (axis cs:10.671296,0.820000,0.996257)
+node[near start,left]
+{{\footnotesize IMMOGLS (2)}};
+
+\addplot3[scatter src=explicit symbolic]
+coordinates {
+(0.497685,3.100000,0.909134) [a]
+(0.497685,3.100000,0.428593) [d]
+};
+\draw (axis cs:0.497685,3.100000,0.909134) |-  (axis cs:0.497685,3.100000,0.909134)
+node[near start,right]
+{{\footnotesize MDP (4)}};
+
+\addplot3[scatter src=explicit symbolic]
+coordinates {
+(11.354167,0.680000,1.118850) [a]
+(11.354167,0.680000,0.428593) [d]
+};
+\draw (axis cs:11.354167,0.680000,1.118850) |-  (axis cs:11.354167,0.680000,1.118850)
+node[near start,right]
+{{\footnotesize MOGLS (2)}};
+
+\addplot3[scatter src=explicit symbolic]
+coordinates {
+(1.458333,0.570000,1.069784) [a]
+(1.458333,0.570000,0.428593) [d]
+};
+\draw (axis cs:1.458333,0.570000,1.069784) |-  (axis cs:1.458333,0.570000,1.069784)
+node[near start,right]
+{{\footnotesize MOMDP (4)}};
+
+\addplot3[scatter src=explicit symbolic]
+coordinates {
+(7.592593,3.320000,0.890053) [a]
+(7.592593,3.320000,0.428593) [d]
+};
+\draw (axis cs:7.592593,3.320000,0.890053) |-  (axis cs:7.592593,3.320000,0.890053)
+node[near start,right]
+{{\footnotesize MOMSLS (1)}};
+
+\addplot3[scatter src=explicit symbolic]
+coordinates {
+(29.571759,1.600000,1.034154) [a]
+(29.571759,1.600000,0.428593) [d]
+};
+\draw (axis cs:29.571759,1.600000,1.034154) |-  (axis cs:29.571759,1.600000,1.034154)
+node[near start,right]
+{{\footnotesize MOPSO (1)}};
+
+\addplot3[scatter src=explicit symbolic]
+coordinates {
+(22.442130,0.950000,1.073008) [a]
+(22.442130,0.950000,0.428593) [d]
+};
+\draw (axis cs:22.442130,0.950000,1.073008) |-  (axis cs:22.442130,0.950000,1.073008)
+node[near start,right]
+{{\footnotesize MOSA (1)}};
+
+\addplot3[scatter src=explicit symbolic]
+coordinates {
+(16.574074,0.830000,0.930898) [a]
+(16.574074,0.830000,0.428593) [d]
+};
+\draw (axis cs:16.574074,0.830000,0.930898) |-  (axis cs:16.574074,0.830000,0.930898)
+node[near start,right]
+{{\footnotesize NSGAII (2)}};
+
+\addplot3[scatter src=explicit symbolic]
+coordinates {
+(11.597222,0.690000,1.078907) [a]
+(11.597222,0.690000,0.428593) [d]
+};
+\draw (axis cs:11.597222,0.690000,1.078907) |-  (axis cs:11.597222,0.690000,1.078907)
+node[near start,left]
+{{\footnotesize PMA (2)}};
+
+\addplot3[scatter src=explicit symbolic]
+coordinates {
+(2.511574,0.710000,1.308402) [a]
+(2.511574,0.710000,0.428593) [d]
+};
+\draw (axis cs:2.511574,0.710000,1.308402) |-  (axis cs:2.511574,0.710000,1.308402)
+node[near start,right]
+{{\footnotesize RESPIR (3)}};
+
+\addplot3[scatter src=explicit symbolic]
+coordinates {
+(11.608796,0.940000,1.022750) [a]
+(11.608796,0.940000,0.428593) [d]
+};
+\draw (axis cs:11.608796,0.940000,1.022750) |-  (axis cs:11.608796,0.940000,1.022750)
+node[near start,right]
+{{\footnotesize SPEA (2)}};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{axis}
+\end{tikzpicture}

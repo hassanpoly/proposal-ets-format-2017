@@ -1,0 +1,152 @@
+ 
+
+In this proposal, we have demonstrated our research will be focused on investigation of a design, methodologies, and implementation of a time predictable fault tolerant computing system evaluated by the probabilistic timing analysis (PTA). As our target domain is a real-time industry. We will stress the importance of a worst case execution time (WCET) estimation.
+Nowadays, the investigations of new timing analysis techniques are an unavoidable need because of the growing complexity of a modern embedded computers and the aerospace industry will especially a benefit from the introduction of a such technologies in terms of  reliability and design costs. Our approach will leverage probabilistic approach to enable the timing analysis in computing systems.
+As a consequence, this research has a potential to make computing systems smarter, more reliable, and easier to design and to program. At the same time, we think that our results will make decisive steps ahead in a fairly unexplored research area - integration of fault-tolerance techniques in time predictable computer architecture.
+
+
+In our preliminary results, we showed that how probabilistically analysable cache can be integrated in a MIPS processor to make the foundation for a probabilistically analysable computing systems. The research published in~\cite{NEWCAS} proved the effectiveness of a measurement based probabilistic timing analysis (MBPTA). Furthermore, our most recent results demonstrated that probabilistic timing technique is a promising approach for the future timing analysis of a real-time aerospace embedded system.
+
+Through this research, we hope to be able to have an impact on how computer engineers and system designers will think of probabilistic computing in near future, and contribute to create the next generation of a real-time embedded systems for aerospace industry.
+We will target field-specific international  journals such as the ``ACM Transactions on Real-time  Systems'' and the ``ACM Transactions on Reconfigurable Technology and Systems'', or conferences including tracks dedicated to the automated design of embedded systems, such as the ``Design Automation Conference'' and the ``Design, Automation \& Test in Europe'' conference.
+
+\section{Work Breakdown Structure}
+Figure~\ref{wbs} presents the work breakdown structure (WBS) of our research project. At level 2 of this tree chart, we identify four groups of tasks: the ones related to the acquisition of knowledge; those related to the development of new knowledge; an experimental phase; and, finally, project management tasks.
+
+Knowledge acquisition includes the class work done towards the credit requirements of the PhD program and the review of the scientific literature. 
+
+The knowledge extension task can be split along the four research axes defined in Chapter~\ref{sec:approach}. The experimental phase goes from the definition of a test plan to the experimental evaluation of our prototype on a CubeSat  platform.
+
+Project management tasks involve the writing of conference and journal articles, as well as the preparation of a thesis and its defense.
+
+\begin{figure}[h]
+\vspace{2cm}
+\centering
+\begin{tikzpicture}[
+  level 1/.style={sibling distance=40mm},
+  edge from parent/.style={->,draw},
+  >=latex]
+
+% root of the the initial tree, level 1
+\node[root, fill = black!30] {Research Project}
+% The first level, as children of the initial tree
+  child {node[level 2,fill = black!10] (c1) {Knowledge Acquisition}}
+  child {node[level 2,fill = black!10] (c2) {Knowledge Extension}}
+  child {node[ level 2,fill = black!10] (c3) {Experimental Phase}}
+  child {node[level 2,fill = black!10] (c4) {Project\\ Management}};
+
+% The second level, relatively positioned nodes
+\begin{scope}[every node/.style={level 3}]
+\node [rounded corners,fill = white, below of = c1, xshift=15pt] (c11) {\footnotesize Classes};
+\node [rounded corners,fill = white, below of = c11] (c12) {\footnotesize Literature\\ Review};
+
+\node [rounded corners,fill = white, below of = c2, xshift=15pt] (c21) {\footnotesize PTA};
+\node [rounded corners,fill = white, below of = c21] (c22) {{\footnotesize Predictable computing}};
+\node [rounded corners,fill = white, below of = c22] (c23) {\footnotesize Fault tolerance};
+\node [rounded corners,fill = white, below of = c23] (c24) {\footnotesize Reconfiguration.};
+\node [rounded corners,fill = white, below of = c24] (c25) {\footnotesize Multicore Architecture.};
+
+\node [rounded corners,fill = white, below of = c3, xshift=15pt] (c31) {\footnotesize Design};
+\node [rounded corners,fill = white, below of = c31] (c32) {\footnotesize Algorithm Eval.};
+\node [rounded corners,fill = white, below of = c32] (c33) {\footnotesize FPGA Implementation.};
+\node [rounded corners,fill = white, below of = c33] (c34) {\footnotesize Tech. Demo.};
+
+\node [rounded corners,fill = white, below of = c4, xshift=15pt] (c41) {\footnotesize Conferences};
+\node [rounded corners,fill = white, below of = c41] (c42) {\footnotesize Journals};
+\node [rounded corners,fill = white, below of = c42] (c43) { \footnotesize Thesis and\\ Graduation};
+%\node [fill = black!30, below of = c43] (c44) {Thesis and\\ Graduation};
+
+\end{scope}
+
+% lines from each level 1 node to every one of its "children"
+\foreach \value in {1,2}
+  \draw[->] (c1.195) |- (c1\value.west);
+
+\foreach \value in {1,...,5}
+  \draw[->] (c2.195) |- (c2\value.west);
+
+\foreach \value in {1,...,4}
+  \draw[->] (c3.195) |- (c3\value.west);
+
+\foreach \value in {1,...,3}
+  \draw[->] (c4.195) |- (c4\value.west);
+\end{tikzpicture}
+\caption{Work breakdown structure.}
+\label{wbs}
+\end{figure}
+
+\newpage
+\section{Timetable}
+The development of the tasks identified in Chapter~\ref{sec:approach}, and the most important milestones of this project are presented in Figure~\ref{timetable}.
+In our intentions, the design of a time predictable computer architecture, the development of novel timing analysis techniques, and the FPGA prototypes implementation will unfold as a series of sequential tasks with relatively small interleaving. Dependability and real-time requirements, on the other hand, should be kept in mind throughout the whole advancement of the project.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\begin{ganttchart}[
+x unit=0.36cm,
+y unit title=1.0cm,
+y unit chart=1.5cm,
+%vgrid,
+hgrid,
+inline,
+]{1}{48}
+\gantttitle{Research Project}{48} \\
+\gantttitle{2015}{12} \gantttitle{2015}{12} \gantttitle{2016}{12} \gantttitle{2017}{12}\\
+
+
+
+\ganttbar[bar height=.4]{Literature Review}{1}{16}\\
+%\ganttmilestone[]{Comp. Exam}{20}\\
+%\ganttmilestone[]{AHS}{6}
+%\ganttmilestone[]{TODAES}{12}\\
+\ganttbar[bar height=.4]{Leon 3 processor analysis}{13}{32} \\
+\ganttbar[bar height=.4]{Architectural Modifications}{17}{32} \\
+\ganttbar[bar height=.4]{Probabilistic component design}{18}{38} \\
+%\ganttmilestone[]{TAAS}{30}\\
+\ganttbar[bar height=.4]{Novel Timing analysis techniques}{22}{38} \\
+%\ganttmilestone[]{DAC}{36}\\
+\ganttbar[bar height=.4]{FPGA Implementation}{27}{38} \\
+%\ganttmilestone[]{TRETS}{40}\\
+\ganttbar[bar height=.4]{Tech. Demo.}{35}{42} \\
+%\ganttmilestone[]{IAC}{44}\\
+\ganttbar[bar height=.4]{Thesis Writing}{35}{46}
+%\ganttmilestone[]{Thesis}{44}\\
+%\ganttbar[bar height=.4]{The \emph{PolyOrbite} Project}{1}{44} 
+
+%\ganttlink{elem0}{elem1}
+%\ganttlink{elem0}{elem2}
+%\ganttlink{elem0}{elem3}
+
+%\ganttlink{elem3}{elem4}
+
+%\ganttlink{elem5}{elem6}
+%\ganttlink{elem5}{elem7}
+
+%\ganttlink{elem7}{elem8}
+\end{ganttchart}
+\end{tikzpicture}
+\caption{Timetable.}
+\label{timetable}
+\end{figure}
+
+
+
+
+
+%%%
+%%%  SYNTHESE DES TRAVAUX
+%%%
+%\section{Synthèse des travaux}
+%Texte.
+%
+%%%
+%%%  LIMITATIONS
+%%%
+%\section{Limitations de la solution proposée}\label{sec:Limitations}
+%
+%%%
+%%%  AMELIORATIONS FUTURES
+%%%
+%\section{Améliorations futures}
+%Texte.

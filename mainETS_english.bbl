@@ -1,0 +1,695 @@
+\begin{thebibliography}{86}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abella\emph{ et~al.}(2014)Abella, J., Hardy, D., Puaut, I., Quinones,
+  E.~\&~Cazorla, F.~J.]{abella2014comparison}
+Abella, J., Hardy, D., Puaut, I., Quinones, E.~\&~Cazorla, F.~J.
+\newblock (2014).
+\newblock On the comparison of deterministic and probabilistic WCET estimation
+  techniques.
+\newblock \emph{Real-Time Systems (ECRTS), 2014 26th Euromicro Conference on},
+  pp.~266--275.
+
+\bibitem[Alderighi\emph{ et~al.}(2008)Alderighi, M., Casini, F., D'Angelo, S.,
+  Mancini, M., Codinachs, D., Pastore, S., Sorrenti, G., Sterpone, L., Weigand,
+  R.~\&~Violante, M.]{violante}
+Alderighi, M., Casini, F., D'Angelo, S., Mancini, M., Codinachs, D., Pastore,
+  S., Sorrenti, G., Sterpone, L., Weigand, R.~\&~Violante, M.
+\newblock (2008,~Sept).
+\newblock Robustness analysis of soft error accumulation in SRAM-FPGAs using
+  FLIPPER and STAR/RoRA.
+\newblock \emph{Radiation and Its Effects on Components and Systems (RADECS),
+  2008 European Conference on}, pp.~157-161.
+\newblock doi:~\detokenize{10.1109/RADECS.2008.5782703}.
+
+\bibitem[Altmeyer\emph{ et~al.}(2014)Altmeyer, S., Davis, R.
+  et~al.]{altmeyer2014correctness}
+Altmeyer, S., Davis, R. et~al.
+\newblock (2014).
+\newblock On the correctness, optimality and precision of static probabilistic
+  timing analysis.
+\newblock \emph{Design, Automation and Test in Europe Conference and Exhibition
+  (DATE), 2014}, pp.~1--6.
+
+\bibitem[Altmeyer\emph{ et~al.}(2015)Altmeyer, S., Cucu-Grosjean, L.~\&~Davis,
+  R.~I.]{Altmeyer:2015:SPT:2726097.2726149}
+Altmeyer, S., Cucu-Grosjean, L.~\&~Davis, R.~I.
+\newblock (2015).
+\newblock Static Probabilistic Timing Analysis for Real-time Systems Using
+  Random Replacement Caches.
+\newblock \emph{Real-Time Syst.}, 51(1), 77--123.
+\newblock doi:~\detokenize{10.1007/s11241-014-9218-4}.
+
+\bibitem[Amoset\emph{ et~al.}(1991)Amoset, F. et~al.]{Competitive}
+Amoset, F. et~al.
+\newblock (1991).
+\newblock Worst-case Execution Time Analysis for a Java Processor.
+\newblock \emph{Journal of Algorithms}, 12(4), 685-6-99.
+
+\bibitem[Anantaraman\emph{ et~al.}(2003)Anantaraman, A., Seth, K., Patil, K.,
+  Rotenberg, E.~\&~Mueller, F.]{anantaraman2003virtual}
+Anantaraman, A., Seth, K., Patil, K., Rotenberg, E.~\&~Mueller, F.
+\newblock (2003).
+\newblock Virtual simple architecture (VISA): exceeding the complexity limit in
+  safe real-time systems.
+\newblock \emph{ACM SIGARCH Computer Architecture News}, 31(2), 350--361.
+
+\bibitem[Angermeier\emph{ et~al.}(2011)Angermeier, J., Ziener, D., Glas,
+  M.~\&~Teich, J.]{angermeier2011runtime}
+Angermeier, J., Ziener, D., Glas, M.~\&~Teich, J.
+\newblock (2011).
+\newblock Runtime stress-aware replica placement on reconfigurable devices
+  under safety constraints.
+\newblock \emph{Field-Programmable Technology (FPT), 2011 International
+  Conference on}, pp.~1--6.
+
+\bibitem[Anwar\emph{ et~al.}(2015)Anwar, h., Chen, C.~\&~Beltrame, G.]{NEWCAS}
+Anwar, h., Chen, C.~\&~Beltrame, G.
+\newblock (2015).
+\newblock A Probabilistically Analysable Cache Implementation on FPGA.
+\newblock \emph{New Circuit and System (NEWCAS), 2015 15th International
+  Conference on}.
+
+\bibitem[ARM-Research(accessed 2015)]{ARM}
+ARM-Research.
+\newblock (accessed 2015).
+\newblock Available: http://www.arm.com/products/processors/cortex-m.
+
+\bibitem[Bandyopadhyay~\&~Bhattacharya(2015)Bandyopadhyay, S.~\&~Bhattacharya,
+  R.]{bandyopadhyay2015discrete}
+Bandyopadhyay, S.~\&~Bhattacharya, R.
+\newblock (2015).
+\newblock \emph{Discrete and Continuous Simulation: Theory and Practice}.
+\newblock  CRC Press.
+
+\bibitem[Bate\emph{ et~al.}(2001)Bate, I., Conmy, P., Kelly, T.~\&~McDermid,
+  J.]{bate2001use}
+Bate, I., Conmy, P., Kelly, T.~\&~McDermid, J.
+\newblock (2001).
+\newblock Use of modern processors in safety-critical applications.
+\newblock \emph{The Computer Journal}, 44(6), 531--543.
+
+\bibitem[Bellato\emph{ et~al.}(2004)Bellato, M., Bernardi, P., Bortolato, D.,
+  Candelori, A., Ceschia, M., Paccagnella, A., Rebaudengo, M., Sonza~Reorda,
+  M., Violante, M.~\&~Zambolin, P.]{bellato2004evaluating}
+Bellato, M., Bernardi, P., Bortolato, D., Candelori, A., Ceschia, M.,
+  Paccagnella, A., Rebaudengo, M., Sonza~Reorda, M., Violante, M.~\&~Zambolin,
+  P.
+\newblock (2004).
+\newblock Evaluating the effects of SEUs affecting the configuration memory of
+  an SRAM-based FPGA.
+\newblock \emph{Proceedings of the conference on Design, automation and test in
+  Europe-Volume 1}, pp.~10584.
+
+\bibitem[Berg\emph{ et~al.}(2004)Berg, C., Engblom, J.~\&~Wilhelm,
+  R.]{berg2004requirements}
+Berg, C., Engblom, J.~\&~Wilhelm, R.
+\newblock (2004).
+\newblock Requirements for and design of a processor with predictable timing.
+\newblock \emph{Design of Systems with Predictable Behaviour}.
+
+\bibitem[Berg\emph{ et~al.}(2008)Berg, M., Poivey, C., Petrick, D., Espinosa,
+  D., Lesea, A., LaBel, K., Friendlich, M., Kim, H.~\&~Phan,
+  A.]{berg2008effectiveness}
+Berg, M., Poivey, C., Petrick, D., Espinosa, D., Lesea, A., LaBel, K.,
+  Friendlich, M., Kim, H.~\&~Phan, A.
+\newblock (2008).
+\newblock Effectiveness of internal versus external SEU scrubbing mitigation
+  strategies in a Xilinx FPGA: Design, test, and analysis.
+\newblock \emph{IEEE Transactions on Nuclear Science}, 4(55), 2259--2266.
+
+\bibitem[Bernat\emph{ et~al.}(2002)Bernat, G., Colin, A.~\&~Petters,
+  S.~M.]{bernat2002wcet}
+Bernat, G., Colin, A.~\&~Petters, S.~M.
+\newblock (2002).
+\newblock WCET analysis of probabilistic hard real-time systems.
+\newblock \emph{Real-Time Systems Symposium, 2002. RTSS 2002. 23rd IEEE},
+  pp.~279--288.
+
+\bibitem[Bolchini\emph{ et~al.}(2007)Bolchini, C., Miele, A.~\&~Santambrogio,
+  M.~D.]{bolchini2007tmr}
+Bolchini, C., Miele, A.~\&~Santambrogio, M.~D.
+\newblock (2007).
+\newblock TMR and Partial Dynamic Reconfiguration to mitigate SEU faults in
+  FPGAs.
+\newblock \emph{Defect and Fault-Tolerance in VLSI Systems, 2007. DFT'07. 22nd
+  IEEE International Symposium on}, pp.~87--95.
+
+\bibitem[Boslaugh~\&~Watters(2008)Boslaugh, S.~\&~Watters,
+  P.~A.]{books/daglib/0020904}
+Boslaugh, S.~\&~Watters, P.~A.
+\newblock (2008).
+\newblock \emph{Statistics in a nutshell - a desktop quick reference.}
+\newblock  O'Reilly.
+
+\bibitem[Cazorla\emph{ et~al.}(2013)Cazorla, F.~J.
+  et~al.]{Cazorla:2013:PPA:2465787.2465796}
+Cazorla, F.~J. et~al.
+\newblock (2013).
+\newblock PROARTIS: Probabilistically Analyzable Real-Time Systems.
+\newblock \emph{ACM Trans. Embed. Comput. Syst.}, 12(2s), 94:1--94:26.
+
+\bibitem[Conti\emph{ et~al.}(2004)Conti, M., Caldari, M., Vece, G.~B., Orcioni,
+  S.~\&~Turchetti, C.]{conti2004performance}
+Conti, M., Caldari, M., Vece, G.~B., Orcioni, S.~\&~Turchetti, C.
+\newblock (2004).
+\newblock Performance analysis of different arbitration algorithms of the AMBA
+  AHB bus.
+\newblock \emph{Proceedings of the 41st annual Design Automation Conference},
+  pp.~618--621.
+
+\bibitem[Cucu\emph{ et~al.}(2012)Cucu, G. et~al.]{cucu2012measurement}
+Cucu, G. et~al.
+\newblock (2012).
+\newblock Measurement-based probabilistic timing analysis for multi-path
+  programs.
+\newblock \emph{Real-Time Systems (ECRTS), 2012 24th Euromicro Conference on},
+  pp.~91--101.
+
+\bibitem[David~\&~Puaut(2004)David, L.~\&~Puaut,
+  I.]{David:2004:SDP:1009383.1009841}
+David, L.~\&~Puaut, I.
+\newblock (2004).
+\newblock Static Determination of Probabilistic Execution Times.
+\newblock \emph{Proceedings of the 16th Euromicro Conference on Real-Time
+  Systems}, (ECRTS '04), 223--230.
+
+\bibitem[Davis\emph{ et~al.}(2013)Davis, R., Santinelli, L., Altmeyer, S.,
+  Maiza, C., Cucu-Grosjean, L. et~al.]{davis2013analysis}
+Davis, R., Santinelli, L., Altmeyer, S., Maiza, C., Cucu-Grosjean, L. et~al.
+\newblock (2013).
+\newblock Analysis of probabilistic cache related pre-emption delays.
+\newblock \emph{Real-Time Systems (ECRTS), 2013 25th Euromicro Conference on},
+  pp.~168--179.
+
+\bibitem[Delvai\emph{ et~al.}(2003)Delvai, M., Huber, W., Puschner,
+  P.~\&~Steininger, A.]{delvai2003processor}
+Delvai, M., Huber, W., Puschner, P.~\&~Steininger, A.
+\newblock (2003).
+\newblock Processor support for temporal predictability-the SPEAR design
+  example.
+\newblock \emph{Real-Time Systems, 2003. Proceedings. 15th Euromicro Conference
+  on}, pp.~169--176.
+
+\bibitem[Edwards~\&~Lee(2007)Edwards, S.~A.~\&~Lee, E.~A.]{edwards2007case}
+Edwards, S.~A.~\&~Lee, E.~A.
+\newblock (2007).
+\newblock The case for the precision timed (PRET) machine.
+\newblock \emph{Proceedings of the 44th annual Design Automation Conference},
+  pp.~264--265.
+
+\bibitem[Francisco(accessed 2015)Francisco, C.~J.]{Cazorla}
+Francisco, C.~J.
+\newblock (accessed 2015).
+\newblock Available: http://people.ac.upc.edu/fcazorla/.
+
+\bibitem[Glein\emph{ et~al.}(2014)Glein, R., Schmidt, B., Rittner, F., Teich,
+  J.~\&~Ziener, D.]{glein2014self}
+Glein, R., Schmidt, B., Rittner, F., Teich, J.~\&~Ziener, D.
+\newblock (2014).
+\newblock A Self-Adaptive SEU Mitigation System for FPGAs with an Internal
+  Block RAM Radiation Particle Sensor.
+\newblock \emph{Field-Programmable Custom Computing Machines (FCCM), 2014 IEEE
+  22nd Annual International Symposium on}, pp.~251--258.
+
+\bibitem[Gonz\'{a}lez\emph{ et~al.}(1997)Gonz\'{a}lez, A., Valero, M., Topham,
+  N.~\&~Parcerisa, J.~M.]{Gonzalez:1997:ECC:263580.263599}
+Gonz\'{a}lez, A., Valero, M., Topham, N.~\&~Parcerisa, J.~M.
+\newblock (1997).
+\newblock Eliminating Cache Conflict Misses Through XOR-based Placement
+  Functions.
+\newblock \emph{Proceedings of the 11th International Conference on
+  Supercomputing}, (ICS '97), 76--83.
+
+\bibitem[Goresky~\&~Klapper(2003)Goresky, M.~\&~Klapper,
+  A.]{Goresky:2003:EMR:945511.945514}
+Goresky, M.~\&~Klapper, A.
+\newblock (2003).
+\newblock Efficient Multiply-with-carry Random Number Generators with Maximal
+  Period.
+\newblock \emph{ACM Trans. Model. Comput. Simul.}, 13(4), 310--321.
+
+\bibitem[Griffin\emph{ et~al.}(2014)Griffin, D., Lesage, B., Burns,
+  A.~\&~Davis, R.~I.]{Griffin:2014:SPT:2659787.2659809}
+Griffin, D., Lesage, B., Burns, A.~\&~Davis, R.~I.
+\newblock (2014).
+\newblock Static Probabilistic Timing Analysis of Random Replacement Caches
+  Using Lossy Compression.
+\newblock \emph{Proceedings of the 22Nd International Conference on Real-Time
+  Networks and Systems}, (RTNS '14), 289:289--289:298.
+\newblock doi:~\detokenize{10.1145/2659787.2659809}.
+
+\bibitem[Gumbel~\&~Lieblein(1954)Gumbel, E.~J.~\&~Lieblein,
+  J.]{gumbel1954statistical}
+Gumbel, E.~J.~\&~Lieblein, J.
+\newblock (1954).
+\newblock \emph{Statistical theory of extreme values and some practical
+  applications: a series of lectures}.
+\newblock  US Government Printing Office Washington.
+
+\bibitem[Gupta\emph{ et~al.}(2009)Gupta, S., Ansari, A., Feng, S.~\&~Mahlke,
+  S.]{Gupta2009a}
+Gupta, S., Ansari, A., Feng, S.~\&~Mahlke, S.
+\newblock (2009).
+\newblock {Adaptive online testing for efficient hard fault detection}.
+\newblock \emph{2009 IEEE Int. Conf. Comput. Des.}, pp.~343--349.
+\newblock doi:~\detokenize{10.1109/ICCD.2009.5413132}.
+
+\bibitem[Gustafsson\emph{ et~al.}(2010)Gustafsson, J., Betts, A., Ermedahl,
+  A.~\&~Lisper, B.]{mrtc:bench}
+Gustafsson, J., Betts, A., Ermedahl, A.~\&~Lisper, B.
+\newblock (2010).
+\newblock The {M{\"a}lardalen} {WCET} Benchmarks -- Past, Present and Future.
+\newblock \emph{WCET2010}, pp.~137--147.
+
+\bibitem[Hansen\emph{ et~al.}(2009)Hansen, J., Hissam, S.~A.~\&~Moreno,
+  G.~A.]{hansen2009statistical}
+Hansen, J., Hissam, S.~A.~\&~Moreno, G.~A.
+\newblock (2009).
+\newblock Statistical-based wcet estimation and validation.
+\newblock \emph{Proceedings of the 9th Intl. Workshop on Worst-Case Execution
+  Time (WCET) Analysis}.
+
+\bibitem[Hauck~\&~DeHon(2010)Hauck, S.~\&~DeHon, A.]{hauck2010reconfigurable}
+Hauck, S.~\&~DeHon, A.
+\newblock (2010).
+\newblock \emph{Reconfigurable computing: the theory and practice of FPGA-based
+  computation}.
+\newblock  Morgan Kaufmann.
+
+\bibitem[Heckmann\emph{ et~al.}(2003)Heckmann, R., Langenbach, M., Thesing,
+  S.~\&~Wilhelm, R.]{heckmann2003influence}
+Heckmann, R., Langenbach, M., Thesing, S.~\&~Wilhelm, R.
+\newblock (2003).
+\newblock The influence of processor architecture on the design and the results
+  of WCET tools.
+\newblock \emph{Proceedings of the IEEE}, 91(7), 1038--1054.
+
+\bibitem[Heiner\emph{ et~al.}(2009)Heiner, J., Sellers, B., Wirthlin,
+  M.~\&~Kalb, J.]{heiner2009fpga}
+Heiner, J., Sellers, B., Wirthlin, M.~\&~Kalb, J.
+\newblock (2009).
+\newblock FPGA partial reconfiguration via configuration scrubbing.
+\newblock \emph{Field Programmable Logic and Applications, 2009. FPL 2009.
+  International Conference on}, pp.~99--104.
+
+\bibitem[Herrera-Alzu~\&~Lopez-Vallejo(2013)Herrera-Alzu, I.~\&~Lopez-Vallejo,
+  M.]{herrera2013design}
+Herrera-Alzu, I.~\&~Lopez-Vallejo, M.
+\newblock (2013).
+\newblock Design techniques for Xilinx Virtex FPGA configuration memory
+  scrubbers.
+\newblock \emph{Nuclear Science, IEEE Transactions on}, 60(1), 376--385.
+
+\bibitem[Hobeika\emph{ et~al.}(2013)Hobeika, C., Pichette, S., Ghodbane, A.,
+  Thibeault, C., Audet, Y., Boland, J.-F.~\&~Saad, M.]{hobeika2013flight}
+Hobeika, C., Pichette, S., Ghodbane, A., Thibeault, C., Audet, Y., Boland,
+  J.-F.~\&~Saad, M.
+\newblock (2013).
+\newblock Flight control fault models based on SEU emulation.
+\newblock \emph{SAE International Journal of Aerospace}, 6(2013-01-2246),
+  643--649.
+
+\bibitem[Hobeika\emph{ et~al.}(2014)Hobeika, C., Pichette, S., Leonard, M.,
+  Thibeault, C., Boland, J.-F.~\&~Audet, Y.]{hobeika2014multi}
+Hobeika, C., Pichette, S., Leonard, M., Thibeault, C., Boland, J.-F.~\&~Audet,
+  Y.
+\newblock (2014).
+\newblock Multi-abstraction level signature generation and comparison based on
+  radiation single event upset.
+\newblock \emph{On-Line Testing Symposium (IOLTS), 2014 IEEE 20th
+  International}, pp.~212--215.
+
+\bibitem[Hoeffding(1963)Hoeffding, W.]{hoeffding1963probability}
+Hoeffding, W.
+\newblock (1963).
+\newblock Probability inequalities for sums of bounded random variables.
+\newblock \emph{Journal of the American statistical association}, 58(301),
+  13--30.
+
+\bibitem[Jacobs\emph{ et~al.}(2012)Jacobs, A., Cieslewski, G., George, A.~D.,
+  Gordon-Ross, A.~\&~Lam, H.]{jacobs2012reconfigurable}
+Jacobs, A., Cieslewski, G., George, A.~D., Gordon-Ross, A.~\&~Lam, H.
+\newblock (2012).
+\newblock Reconfigurable fault tolerance: A comprehensive framework for
+  reliable and adaptive FPGA-based space computing.
+\newblock \emph{ACM Transactions on Reconfigurable Technology and Systems
+  (TRETS)}, 5(4), 21.
+
+\bibitem[Jalle\emph{ et~al.}(2014{\natexlab{a}})Jalle, J., Abella, J.,
+  Quinones, E., Fossati, L., Zulianello, M.~\&~Cazorla, F.~J.]{jalle2014ahrb}
+Jalle, J., Abella, J., Quinones, E., Fossati, L., Zulianello, M.~\&~Cazorla,
+  F.~J.
+\newblock (2014{\natexlab{a}}).
+\newblock AHRB: A high-performance time-composable AMBA AHB bus.
+\newblock \emph{Real-Time and Embedded Technology and Applications Symposium
+  (RTAS), 2014 IEEE 20th}, pp.~225--236.
+
+\bibitem[Jalle\emph{ et~al.}(2014{\natexlab{b}})Jalle, J., Kosmidis, L.,
+  Abella, J., Qui\~{n}ones, E.~\&~Cazorla,
+  F.~J.]{Jalle:2014:BDT:2616606.2616668}
+Jalle, J., Kosmidis, L., Abella, J., Qui\~{n}ones, E.~\&~Cazorla, F.~J.
+\newblock (2014{\natexlab{b}}).
+\newblock Bus Designs for Time-probabilistic Multicore Processors.
+\newblock \emph{Proceedings of the Conference on Design, Automation \& Test in
+  Europe}, (DATE '14), 50:1--50:6.
+\newblock \biburlrep~\url{http://dl.acm.org/citation.cfm?id=2616606.2616668}.
+
+\bibitem[Kirner~\&~Puschner(2010)Kirner, R.~\&~Puschner, P.]{kirner2010time}
+Kirner, R.~\&~Puschner, P.
+\newblock (2010).
+\newblock Time-predictable computing.
+\newblock \bibin~\emph{Software Technologies for Embedded and Ubiquitous
+  Systems} (pp.~23--34).
+\newblock  Springer.
+
+\bibitem[Kosmidis\emph{ et~al.}(2014{\natexlab{a}})Kosmidis, L., Abella, J.,
+  Wartel, F., Quinones, E., Colin, A.~\&~Cazorla, F.~J.]{kosmidis2014pub}
+Kosmidis, L., Abella, J., Wartel, F., Quinones, E., Colin, A.~\&~Cazorla, F.~J.
+\newblock (2014{\natexlab{a}}).
+\newblock PUB: path upper-bounding for measurement-based probabilistic timing
+  analysis.
+\newblock \emph{Real-Time Systems (ECRTS), 2014 26th Euromicro Conference on},
+  pp.~276--287.
+
+\bibitem[Kosmidis\emph{ et~al.}(2014{\natexlab{b}})Kosmidis, L., Quinones, E.,
+  Abella, J., Vardanega, T., Broster, I.~\&~Cazorla,
+  F.~J.]{kosmidis2014measurement}
+Kosmidis, L., Quinones, E., Abella, J., Vardanega, T., Broster, I.~\&~Cazorla,
+  F.~J.
+\newblock (2014{\natexlab{b}}).
+\newblock Measurement-based probabilistic timing analysis and its impact on
+  processor architecture.
+\newblock \emph{Digital System Design (DSD), 2014 17th Euromicro Conference
+  on}, pp.~401--410.
+
+\bibitem[Kosmidis\emph{ et~al.}(2013)Kosmidis, L.
+  et~al.]{Kosmidis:2013:CDP:2485288.2485416}
+Kosmidis, L. et~al.
+\newblock (2013).
+\newblock A Cache Design for Probabilistically Analysable Real-time Systems.
+\newblock \emph{Proceedings of the Conference on Design, Automation and Test in
+  Europe}, (DATE '13), 513--518.
+
+\bibitem[Lahiri\emph{ et~al.}(2001)Lahiri, K., Raghunathan,
+  A.~\&~Lakshminarayana, G.]{lahiri2001lotterybus}
+Lahiri, K., Raghunathan, A.~\&~Lakshminarayana, G.
+\newblock (2001).
+\newblock LOTTERYBUS: A new high-performance communication architecture for
+  system-on-chip designs.
+\newblock \emph{Proceedings of the 38th annual Design Automation Conference},
+  pp.~15--20.
+
+\bibitem[Lamport(1994)Lamport, L.]{lamport94}
+Lamport, L.
+\newblock (1994).
+\newblock \emph{{\LaTeX: A Document Preparation System}} (\bibed. 2nd).
+\newblock  Reading, Massachusetts: Addison-Wesley.
+
+\bibitem[Lesea\emph{ et~al.}(2005)Lesea, A., Drimer, S., Fabula, J.~J.,
+  Carmichael, C.~\&~Alfke, P.]{lesea2005rosetta}
+Lesea, A., Drimer, S., Fabula, J.~J., Carmichael, C.~\&~Alfke, P.
+\newblock (2005).
+\newblock The rosetta experiment: atmospheric soft error rate testing in
+  differing technology FPGAs.
+\newblock \emph{IEEE Transactions on Device and Materials Reliability}, 5(3),
+  317--328.
+
+\bibitem[Lyons~\&~Vanderkulk(1962)Lyons, R.~E.~\&~Vanderkulk, W.]{lyons1962use}
+Lyons, R.~E.~\&~Vanderkulk, W.
+\newblock (1962).
+\newblock The use of triple-modular redundancy to improve computer reliability.
+\newblock \emph{IBM Journal of Research and Development}, 6(2), 200--209.
+
+\bibitem[Malik\emph{ et~al.}(1997)Malik, S., Martonosi, M.~\&~Li,
+  Y.-T.~S.]{Malik:1997:STA:266021.266052}
+Malik, S., Martonosi, M.~\&~Li, Y.-T.~S.
+\newblock (1997).
+\newblock Static Timing Analysis of Embedded Software.
+\newblock \emph{Proceedings of the 34th Annual Design Automation Conference},
+  (DAC '97), 147--152.
+\newblock doi:~\detokenize{10.1145/266021.266052}.
+
+\bibitem[Matsumoto\emph{ et~al.}(1998)Matsumoto, M.
+  et~al.]{Matsumoto:1998:MTE:272991.272995}
+Matsumoto, M. et~al.
+\newblock (1998).
+\newblock Mersenne Twister: A 623-dimensionally Equidistributed Uniform
+  Pseudo-random Number Generator.
+\newblock \emph{ACM Trans. Model. Comput. Simul.}, 8(1), 3--30.
+
+\bibitem[Mezzetti\emph{ et~al.}(2015)Mezzetti, E., Ziccardi, M., Vardanega, T.,
+  Abella, J., Qui{\~n}ones, E.~\&~Cazorla, F.~J.]{mezzetti2015randomized}
+Mezzetti, E., Ziccardi, M., Vardanega, T., Abella, J., Qui{\~n}ones,
+  E.~\&~Cazorla, F.~J.
+\newblock (2015).
+\newblock Randomized Caches Can Be Pretty Useful to Hard Real-Time Systems.
+\newblock \emph{Leibniz Transactions on Embedded Systems}, 2(1), 01--1.
+
+\bibitem[Open-core(accessed 2015)]{ION}
+Open-core.
+\newblock (accessed 2015).
+\newblock {Available: https://github.com/jaruiz/ION}.
+
+\bibitem[Opencores(accessed 2015)]{OpenCores}
+Opencores.
+\newblock (accessed 2015).
+\newblock Available:
+  http://opencores.org/project/complex-gaussian-pseudo-random-number-generator.
+
+\bibitem[Ostler\emph{ et~al.}(2009)Ostler, P.~S., Caffrey, M.~P., Gibelyou,
+  D.~S., Graham, P.~S., Morgan, K.~S., Pratt, B.~H., Quinn, H.~M.~\&~Wirthlin,
+  M.~J.]{ostler2009sram}
+Ostler, P.~S., Caffrey, M.~P., Gibelyou, D.~S., Graham, P.~S., Morgan, K.~S.,
+  Pratt, B.~H., Quinn, H.~M.~\&~Wirthlin, M.~J.
+\newblock (2009).
+\newblock SRAM FPGA reliability analysis for harsh radiation environments.
+\newblock \emph{Nuclear Science, IEEE Transactions on}, 56(6), 3519--3526.
+
+\bibitem[Petersen(2011)Petersen, E.]{Petersen2011}
+Petersen, E.
+\newblock (2011).
+\newblock \emph{{Single event effects in aerospace}}.
+
+\bibitem[Polito(accessed 2017)]{ITC}
+Polito.
+\newblock (accessed 2017).
+\newblock Available: http://www.cad.polito.it/downloads/tools/itc99.html.
+
+\bibitem[Quinn~\&~Wirthlin(2015)Quinn, H.~\&~Wirthlin, M.]{quinn2015validation}
+Quinn, H.~\&~Wirthlin, M.
+\newblock (2015).
+\newblock Validation techniques for fault emulation of SRAM-based FPGAs.
+\newblock \emph{IEEE Transactions on Nuclear Science}, 62(4), 1487--1500.
+
+\bibitem[Quinn\emph{ et~al.}(2012)Quinn, H., Graham, P., Morgan, K., Baker, Z.,
+  Caffrey, M., Smith, D.~\&~Bell, R.]{quinn2012orbit}
+Quinn, H., Graham, P., Morgan, K., Baker, Z., Caffrey, M., Smith, D.~\&~Bell,
+  R.
+\newblock (2012).
+\newblock On-orbit results for the Xilinx Virtex-4 FPGA.
+\newblock \emph{2012 IEEE Radiation Effects Data Workshop}, pp.~1--8.
+
+\bibitem[Quinn\emph{ et~al.}(2015)Quinn, H., Robinson, W.~H., Rech, P.,
+  Aguirre, M., Barnard, A., Desogus, M., Entrena, L., Garcia-Valderas, M.,
+  Guertin, S.~M., Kaeli, D. et~al.]{quinn2015using}
+Quinn, H., Robinson, W.~H., Rech, P., Aguirre, M., Barnard, A., Desogus, M.,
+  Entrena, L., Garcia-Valderas, M., Guertin, S.~M., Kaeli, D. et~al.
+\newblock (2015).
+\newblock Using benchmarks for radiation testing of microprocessors and FPGAs.
+\newblock \emph{IEEE Transactions on Nuclear Science}, 62(6), 2547--2554.
+
+\bibitem[Reineke\emph{ et~al.}(2007)Reineke, J., Grund, D., Berg,
+  C.~\&~Wilhelm, R.]{Reineke:2007:TPC:1290860.1290864}
+Reineke, J., Grund, D., Berg, C.~\&~Wilhelm, R.
+\newblock (2007).
+\newblock Timing Predictability of Cache Replacement Policies.
+\newblock \emph{Real-Time Syst.}, 37(2), 99--122.
+
+\bibitem[Research(accessed 2015)Research, G.]{leon3}
+Research, G.
+\newblock (accessed 2015).
+\newblock {Available:
+  http://www.gaisler.com/index.php/products/processors/leon3}.
+
+\bibitem[Robache\emph{ et~al.}(2013)Robache, R., Boland, J.-F., Thibeault,
+  C.~\&~Savaria, Y.]{robache2013methodology}
+Robache, R., Boland, J.-F., Thibeault, C.~\&~Savaria, Y.
+\newblock (2013).
+\newblock A methodology for system-level fault injection based on gate-level
+  faulty behavior.
+\newblock \emph{New Circuits and Systems Conference (NEWCAS), 2013 IEEE 11th
+  International}, pp.~1--4.
+
+\bibitem[Rockett\emph{ et~al.}(2007)Rockett, L., Patel, D., Danziger, S.,
+  Cronquist, B.~\&~Wang, J.]{rockett2007radiation}
+Rockett, L., Patel, D., Danziger, S., Cronquist, B.~\&~Wang, J.
+\newblock (2007).
+\newblock Radiation hardened FPGA technology for space applications.
+\newblock \emph{Aerospace Conference, 2007 IEEE}, pp.~1--7.
+
+\bibitem[Santinelli~\&~Cucu-Grosjean(2011)Santinelli, L.~\&~Cucu-Grosjean,
+  L.]{Santinelli:2011:TPR:1967021.1967028}
+Santinelli, L.~\&~Cucu-Grosjean, L.
+\newblock (2011).
+\newblock Toward Probabilistic Real-time Calculus.
+\newblock \emph{SIGBED Rev.}, 8(1), 54--61.
+\newblock doi:~\detokenize{10.1145/1967021.1967028}.
+
+\bibitem[Schoeberl(2009{\natexlab{a}})Schoeberl,
+  M.]{Schoeberl:2009:TCA:1540555.1554265}
+Schoeberl, M.
+\newblock (2009{\natexlab{a}}).
+\newblock Time-predictable Computer Architecture.
+\newblock \emph{EURASIP J. Embedded Syst.}, 2009, 2:1--2:17.
+\newblock doi:~\detokenize{10.1155/2009/758480}.
+
+\bibitem[Schoeberl(2009{\natexlab{b}})Schoeberl, M.]{schoeberl2009time}
+Schoeberl, M.
+\newblock (2009{\natexlab{b}}).
+\newblock Time-predictable computer architecture.
+\newblock \emph{EURASIP Journal on Embedded Systems}, 2009, 2.
+
+\bibitem[Schoeberl\emph{ et~al.}(2010)Schoeberl, M., Puffitsch, W., Pedersen,
+  R.~U.~\&~Huber, B.]{Schoeberl:2010:WET:1780354.1780356}
+Schoeberl, M., Puffitsch, W., Pedersen, R.~U.~\&~Huber, B.
+\newblock (2010).
+\newblock Worst-case Execution Time Analysis for a Java Processor.
+\newblock \emph{Softw. Pract. Exper.}, 40(6), 507--542.
+
+\bibitem[Schoeberl\emph{ et~al.}(2011)Schoeberl, M., Schleuniger, P.,
+  Puffitsch, W., Brandner, F., Probst, C.~W., Karlsson, S.~\&~Thorn,
+  T.]{schoeberl2011towards}
+Schoeberl, M., Schleuniger, P., Puffitsch, W., Brandner, F., Probst, C.~W.,
+  Karlsson, S.~\&~Thorn, T.
+\newblock (2011).
+\newblock Towards a time-predictable dual-issue microprocessor: The Patmos
+  approach.
+\newblock \emph{Bringing Theory to Practice: Predictability and Performance in
+  Embedded Systems}, 18, 11--21.
+
+\bibitem[Schoeberl\emph{ et~al.}(2014)Schoeberl, M., Chong, D.~V., Puffitsch,
+  W.~\&~Spars{\o}, J.]{schoeberl:timememory}
+Schoeberl, M., Chong, D.~V., Puffitsch, W.~\&~Spars{\o}, J.
+\newblock (2014).
+\newblock A time-predictable memory network-on-chip.
+\newblock \emph{14th International Workshop on Worst-Case Execution Time
+  Analysis}, pp.~53.
+
+\bibitem[Seznec(1993)Seznec, A.]{Seznec:1993:CTS:165123.165152}
+Seznec, A.
+\newblock (1993).
+\newblock A Case for Two-way Skewed-associative Caches.
+\newblock \emph{Proceedings of the 20th Annual International Symposium on
+  Computer Architecture}, (ISCA '93), 169--178.
+
+\bibitem[Souari\emph{ et~al.}(2015)Souari, A., Thibeault, C., Blaqui{\`e}re,
+  Y.~\&~Velazco, R.]{souari2015optimization}
+Souari, A., Thibeault, C., Blaqui{\`e}re, Y.~\&~Velazco, R.
+\newblock (2015).
+\newblock Optimization of SEU emulation on SRAM FPGAs based on sensitiveness
+  analysis.
+\newblock \emph{On-Line Testing Symposium (IOLTS), 2015 IEEE 21st
+  International}, pp.~36--39.
+
+\bibitem[Stroock(2012)Stroock, D.~W.]{stroock2012introduction}
+Stroock, D.~W.
+\newblock (2012).
+\newblock \emph{An introduction to the theory of large deviations}.
+\newblock  Springer Science \& Business Media.
+
+\bibitem[Thiele~\&~Wilhelm(2004)Thiele, L.~\&~Wilhelm, R.]{thiele2004design}
+Thiele, L.~\&~Wilhelm, R.
+\newblock (2004).
+\newblock Design for timing predictability.
+\newblock \emph{Real-Time Systems}, 28(2-3), 157--177.
+
+\bibitem[Tobiska\emph{ et~al.}(2015)Tobiska, W.~K., Atwell, W., Beck, P.,
+  Benton, E., Copeland, K., Dyer, C., Gersey, B., Getley, I., Hands, A.,
+  Holland, M., Hong, S., Hwang, J., Jones, B., Malone, K., Meier, M.~M.,
+  Mertens, C., Phillips, T., Ryden, K., Schwadron, N., Wender, S.~A., Wilkins,
+  R.~\&~Xapsos, M.~A.]{SWE20216}
+Tobiska, W.~K., Atwell, W., Beck, P., Benton, E., Copeland, K., Dyer, C.,
+  Gersey, B., Getley, I., Hands, A., Holland, M., Hong, S., Hwang, J., Jones,
+  B., Malone, K., Meier, M.~M., Mertens, C., Phillips, T., Ryden, K.,
+  Schwadron, N., Wender, S.~A., Wilkins, R.~\&~Xapsos, M.~A.
+\newblock (2015).
+\newblock Advances in Atmospheric Radiation Measurements and Modeling Needed to
+  Improve Air Safety.
+\newblock \emph{Space Weather}, 13(4), 202--210.
+\newblock doi:~\detokenize{10.1002/2015SW001169}.
+\newblock 2015SW001169.
+
+\bibitem[Topham~\&~Gonz\'{a}lez(1999)Topham, N.~\&~Gonz\'{a}lez,
+  A.]{Topham:1999:RCP:297703.297715}
+Topham, N.~\&~Gonz\'{a}lez, A.
+\newblock (1999).
+\newblock Randomized Cache Placement for Eliminating Conflicts.
+\newblock \emph{IEEE Trans. Comput.}, 48(2), 185--192.
+
+\bibitem[Udipi\emph{ et~al.}(2010)Udipi, A.~N., Muralimanohar,
+  N.~\&~Balasubramonian, R.]{udipi2010towards}
+Udipi, A.~N., Muralimanohar, N.~\&~Balasubramonian, R.
+\newblock (2010).
+\newblock Towards scalable, energy-efficient, bus-based on-chip networks.
+\newblock \emph{High Performance Computer Architecture (HPCA), 2010 IEEE 16th
+  International Symposium on}, pp.~1--12.
+
+\bibitem[Violante\emph{ et~al.}(2004)Violante, M., Sterpone, L., Ceschia, M.,
+  Bortolato, D., Bernardi, P., Reorda, M.~S.~\&~Paccagnella,
+  A.]{violante2004simulation}
+Violante, M., Sterpone, L., Ceschia, M., Bortolato, D., Bernardi, P., Reorda,
+  M.~S.~\&~Paccagnella, A.
+\newblock (2004).
+\newblock Simulation-based analysis of SEU effects in SRAM-based FPGAs.
+\newblock \emph{IEEE Transactions on Nuclear science}, 51(6), 3354--3359.
+
+\bibitem[Whitham(2008)Whitham, J.]{whitham2008real}
+Whitham, J.
+\newblock (2008).
+\newblock \emph{Real-time processor architectures for worst case execution time
+  reduction}.
+\newblock (\bibphd,~University of York).
+
+\bibitem[Wilhelm\emph{ et~al.}(2008{\natexlab{a}})Wilhelm, R.
+  et~al.]{Wilhelm:2008:WEP:1347375.1347389}
+Wilhelm, R. et~al.
+\newblock (2008{\natexlab{a}}).
+\newblock The Worst-case Execution-time Problem - Overview of Methods and
+  Survey of Tools.
+\newblock \emph{ACM Trans. Embed. Comput. Syst.}, 7(3), 36:1--36:53.
+
+\bibitem[Wilhelm\emph{ et~al.}(2008{\natexlab{b}})Wilhelm, R., Engblom, J.,
+  Ermedahl, A., Holsti, N., Thesing, S., Whalley, D., Bernat, G., Ferdinand,
+  C., Heckmann, R., Mitra, T. et~al.]{wilhelm2008worst}
+Wilhelm, R., Engblom, J., Ermedahl, A., Holsti, N., Thesing, S., Whalley, D.,
+  Bernat, G., Ferdinand, C., Heckmann, R., Mitra, T. et~al.
+\newblock (2008{\natexlab{b}}).
+\newblock The worst-case execution-time problem—overview of methods and
+  survey of tools.
+\newblock \emph{ACM Transactions on Embedded Computing Systems (TECS)}, 7(3),
+  36.
+
+\bibitem[Wirthlin\emph{ et~al.}(2014)Wirthlin, M., Takai, H.~\&~Harding,
+  A.]{wirthlin2014soft}
+Wirthlin, M., Takai, H.~\&~Harding, A.
+\newblock (2014).
+\newblock Soft error rate estimations of the Kintex-7 FPGA within the ATLAS
+  Liquid Argon (LAr) Calorimeter.
+\newblock \emph{Journal of Instrumentation}, 9(01), C01025.
+
+\bibitem[Xilinx(accessed 2017{\natexlab{a}})]{xilinnseu}
+Xilinx.
+\newblock (accessed 2017{\natexlab{a}}).
+\newblock Available: https://www.xilinx.com/xapp1073.
+
+\bibitem[Xilinx(accessed 2017{\natexlab{b}})]{xilinx}
+Xilinx.
+\newblock (accessed 2017{\natexlab{b}}).
+\newblock Available: http://www.xilinx.com.
+
+\end{thebibliography}

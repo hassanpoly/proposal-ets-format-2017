@@ -1,0 +1,105 @@
+\begin{tikzpicture}
+
+\begin{axis}[
+		grid=none, %both,
+		width = 8cm,
+		height = 6.0cm,	
+		enlarge y limits=0.1,
+   		enlarge x limits=0.1,
+   		ymin = 0.0,
+   		ymax = 1.0,
+   		xmin = 0.0,
+   		xmax = 100.0,
+   		xtick={0,20,40,...,100},
+   		ytick={0,0.2,0.4,...,1.0},
+   		%title ={},
+   		xlabel={$average\ SEUs/day$},
+   		ylabel = {$P_{SEU}$},
+   		legend style={at={(0.03,-0.27)}, anchor=north west, legend columns = 3}
+		]
+
+\addplot[color=blue,mark=o] coordinates {
+(0,0)
+(10,0.340759)
+(20,0.565402)
+(30,0.713495)
+(40,0.811124)
+(50,0.875486)
+(60,0.917915)
+(70,0.945886)
+(80,0.964326)
+(90,0.976482)
+(100,0.984496)
+
+};
+	
+\addplot[color=red,mark=x] coordinates {
+(0,0)
+(10,0.188064)
+(20,0.340759)
+(30,0.464739)
+(40,0.565402)
+(50,0.647134)
+(60,0.713495)
+(70,0.767376)
+(80,0.811124)
+(90,0.846645)
+(100,0.875486)
+
+
+};
+
+\addplot[color=black,mark=square] coordinates {
+(0,0)
+(10,0.067088)
+(20,0.129675)
+(30,0.188064)
+(40,0.242535)
+(50,0.293352)
+(60,0.340759)
+(70,0.384987)
+(80,0.426247)
+(90,0.464739)
+(100,0.500648)
+
+};
+
+
+\legend{$T = 1h$,$T = 30'$,$T = 10'$}
+
+\end{axis}
+
+\end{tikzpicture}
+
+%\begin{tikzpicture}
+%\begin{axis}[
+%    ybar,
+%    enlargelimits=0.2,
+%    legend style={at={(0.5,-0.15)},anchor=north,legend columns=-1},
+%    ylabel={\% of Schedulable Tasks},
+%    symbolic x coords={Random,FF,BF,GA,Exhaustive},
+%    xtick=data,
+%    %nodes near coords,
+%    %nodes near coords align={vertical},
+%    ]
+%\addplot+[bar width=5.0mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+%coordinates {
+%	(Random,0.18)   +- (0,0.13)
+%	(FF,0.58)   +- (0,0.22)
+%	(BF,0.58)   +- (0,0.22)
+%	(GA,0.81) +- (0,0.17)
+%	(Exhaustive,0.91)   +- (0,0.13)
+%	
+%};
+%\addplot+[bar width=5.0mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+%coordinates {
+%	(Random,0.23)   +- (0,0.13)
+%	(FF,0.62)   +- (0,0.25)
+%	(BF,0.62)   +- (0,0.25)
+%	(GA,0.90) +- (0,0.13)
+%	(Exhaustive,0.99)   +- (0,0.05)
+%	
+%};
+%\legend{Rate Monotonic,Earliest Deadline First}
+%\end{axis}
+%\end{tikzpicture}

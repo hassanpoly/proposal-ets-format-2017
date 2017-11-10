@@ -1,0 +1,444 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCUMENT CLASS DECLARATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Use the following options:
+% \documentclass[paper type% ("letterpaper" required)
+% , one or two sided% ("oneside" or "twoside")%
+% , font size% ("12pt" required)%
+% , document type% ("these", "memoire", "memoireprojet" or "thesepararticles")%
+% , document language ("francais" or "english)%
+% , addition options% ("creativecommons" if the document is under the creative commons license, "hyperref", "withAlgo2e" to use algorithm2e package with proper formating)
+%]{thETS}
+
+
+
+
+%% Exemple with a Ph.D thesis under creative commons, using hyperref
+\documentclass[letterpaper%
+, twoside%
+, 12pt%
+,these%
+, english%
+,creativecommons,hyperref%
+]{thETS}
+
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage{mdwlist}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT: PRINTING WITH THE PROPER MARGINS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% If you create a pdf with pdftex, and print it using acrobat reader, set the
+%% "scaling" option to "none" to print with the proper margins.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DECLARATION OF AN ADDITION LIST OF REFERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Exemple of an additional list of references called "refs"
+% "refs" is used as a suffix to all bibliography related commands
+\newcites{refs}{LIST OF REFERENCES}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TITLE PAGE OPTIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{METHODOLOGY AND ALGORITHMS FOR HIGH-LEVEL MODELLING OF COSMIC
+RADIATION IMPACTS ON ELECTRICAL SYSTEMS}
+
+\author{HASSAN ANWAR}
+\authorcopyright{HASSAN ANWAR}
+
+\datesoutenance{"20-December-2017"}
+
+\datedepot{"02-December-2017"}
+
+\directeur{M. }{Claude Thiebeault}{Départment de génie électrique  à l’École de technologie supérieure}
+
+%\directeur{Mrs.}{Prénom Nom}{Nom du département et institution}
+
+\codirecteur{Mrs.}{Yvon Savaria}{Départment de génie électrique  à l’École Polytechnique de Montréal}
+
+%\codirecteurB{M.}{Prénom Nom}{département et institution}
+
+\president{M.}{First Name Last Name}{Department and institution}
+
+\examinexterne{M.}{First Name Last Name}{Department and institution}
+
+%\jury{Mme.}{Prénom Nom}{département et institution}{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CHANGING THE NAME OF THE DIPLOMA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% It is possible to change the name of the diploma by redefining
+% the command \lediplome, as follows:
+%\renewcommand{\lediplome}{OF A MASTER’S DEGREE\\WITH THESIS IN ELECTRICAL ENGINEERING\\M.A.Sc.}
+
+\listfiles
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ACTUAL DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\pagenumbering{Roman}
+
+%%- Title page -%%
+\maketitle
+
+%%- Jury presentation -%%
+\presentjury
+
+%%- Foreword -%%
+%\begin{foreword}
+%
+%\lipsum[1] % Texte de remplissage pour donner un exemple de la mise en page
+%
+%\end{foreword}
+
+
+
+%%- Acknowledgements -%%
+%\begin{acknowledgements}
+%
+%\lipsum[1] % Text filling, to have an example of the layout
+%
+%
+%\end{acknowledgements}
+
+
+%%- Summary -%%
+
+%\begin{summary}{French title}{mot-clé1, mot-clé2}
+%
+%\lipsum[1] % Text filling, to have an example of the layout
+%
+%\end{summary}
+
+
+%%- Abstract -%%
+
+
+
+\input{./sections-ets/Abstract}
+
+%%- Table of contents -%%
+\tableofcontents
+ 
+%%- List of tables -%%
+\listoftables
+
+
+%%- List of figures -%%
+\listoffigures
+
+
+%%- List of abbreviations -%%
+\begin{listofabbr}[3cm]
+\item [DUT]  Design Under Test 
+
+\item [FPGA]  Field-Programmable Gate Array 
+HDL Hardware Description Language 
+
+
+\item [SBU] Single-Bit Upset 
+\item [SEE] Single-Event Upset 
+\item [SEL] Single-Event Latch-up 
+\item [SER] Soft Error Rate 
+\item [SET] Single-Event Transient 
+\item [SEU] Single-Event Upset 
+\item [SRAM] Static Random Access Memory 
+\item [TMR] Triple Modular Redundancy 
+\end{listofabbr}
+
+
+%%%- List of symbols -%%
+%\begin{listofsymbols}[3cm]
+%\item [a] Première lettre de l'alphabet
+%\item [A] Première lettre de l'alphabet en majuscule
+%\end{listofsymbols}
+
+
+\cleardoublepage
+
+\pagenumbering{arabic}
+
+% Marginpar to the left of the document
+\reversemarginpar
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THESIS EXAMPLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introduction}
+\input{./sections-ets/Introduction}
+
+%%- Uncomment the literature review for a thesis by articles -%%
+%\begin{literaturereview}
+
+%\end{literaturereview}
+
+%%- First demo chapter -%%
+\chapter{Related Work and Prior Work}
+\input{./sections-ets/Related}
+
+\chapter{Proposed Approach}
+\input{./sections-ets/Approach}
+
+
+\chapter{Preliminary Results}
+\input{./sections-ets/Preliminary}
+%
+%\chapter{Conclusion}
+%\input{./sections-ets/Conclusions}
+
+
+%\section{Layout tests}
+
+%In this sections, several environments are presented.
+%
+%\subsection{Listing tests}
+%
+%Presentation of the main listing environments: enumerations and lists.
+%
+%\subsubsection{Enumerations: enum environment}
+%
+%Enum environment test:
+%\begin{enumerate}
+% \item test 1
+% \item test 2
+%\end{enumerate}
+%
+%\subsubsection{Lists: itemize environment}
+%
+%Test of the itemize environment
+%\begin{itemize}
+% \item test 1
+% \item test 2
+%\end{itemize}
+%
+%\subsection{Equations tests}
+%
+%Layout of the equations:
+%
+%\begin{equation}
+%   \beta = 8
+%\end{equation}
+%
+%\begin{equation}
+%   \gamma = \alpha \times 3
+%\end{equation}
+%
+%\section{Second section}
+%
+%Example of a second section, to test the layout in the table of contents.
+%
+%
+%%%- Second demo chapter -%%
+%\chapter{Second Chapter}
+%
+%\section{Table layout tests}
+%
+%Tables have the same constraints than the figures, except for the caption that has to be on top.
+%
+%
+%\begin{table}
+%		\parbox{0.65\textwidth}{\caption{Test of a long table caption, with linebreak.}} % Contrainte manuelle de la largeur de la légende
+%		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+%		\hline
+%			{\bf titre} & {\bf titre} & {\bf titre} & {\bf titre} & {\bf titre} & {\bf titre} & {\bf titre} & {\bf titre} \\
+%	  \hline
+%			blá & blá & blá & blá & blá & blá & blá & blá \\
+%	  \hline
+%			blá & blá & blá & blá & blá & blá & blá & blá \\
+%	  \hline
+%			blá & blá & blá & blá & blá & blá & blá & blá \\
+%	  \hline
+%			blá & blá & blá & blá & blá & blá & blá & blá \\
+%	  \hline
+%			blá & blá & blá & blá & blá & blá & blá & blá \\
+%	  \hline
+%			blá & blá & blá & blá & blá & blá & blá & blá \\
+%	  \hline
+%		\end{tabular}
+%\end{table}
+%
+%
+%\section{References test}
+%
+%\subsection{References to the bibliography}
+%
+%Reference from the bibliography \cite{BookExample}.
+%
+%\subsection{References to the list of references "refs"}
+%
+%References from the list of references "refs", declared at the beginning of the document \citerefs{Test}.
+%
+%\subsection{References to a label of the document}
+%
+%Reference to a Figure associated to a label: Figure \ref{fig:vueEts}.
+%
+%\subsection{URL references}
+%
+%\subsubsection{Test of "href"}
+%
+%Href is used to integrate a link to a text:
+%\href{http://www.etsmtl.ca/Etudiants-actuels/Cycles-sup/Realisation-etudes/Guides-gabarits}{Link to the template page.}.
+%
+%\subsubsection{Test de url}
+%
+%Url is used to format a clickable link:
+%\url{http://www.etsmtl.ca/Etudiants-actuels/Cycles-sup/Realisation-etudes/Guides-gabarits}.
+%
+%%%- Third demo chapter -%%
+%\chapter{Example of a thesis by article, with integrated article}
+%
+%% \articleAuthors{Names}{Affiliations} is used to print authors and their affiliations. Names must be declared as {First name1 Last Name1}{First Name2 Last Name2}... , as well as the affiliations
+%%Exemple \articleAuthors{{First Name Last Name}}{{Affiliation}}
+%
+%\articleAuthors{
+%{First name Last name\textsuperscript{1}}{First name Last name\textsuperscript{1}}
+%}{
+%{\textsuperscript{1} Département de Génie Mécanique, École de Technologie Supérieure,\\
+%1100 Notre-Dame Ouest, Montréal, Québec, Canada H3C 1K3
+%\\~\\
+%Article soumis à la revue « Vecteur environnement » en septembre 2010.}
+%}
+%
+%\section{Section 1}
+%
+%\lipsum[1] % Text filling, to have an example of the layout
+%
+%%%- Conclusion -%%
+%\begin{conclusion}
+%
+%\lipsum[1] % Text filling, to have an example of the layout
+%
+%\end{conclusion}
+%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Appendix example:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\appendix
+%
+%%% To use more than one appendix
+%\multiannexe
+%
+%%% Appendix from an external file
+%% \include{extApp}
+
+\chapter{Appendix example}
+
+
+\section{First section of the appendix}
+
+
+\subsection{Figures in annexes}
+
+%\begin{figure}
+%	\centering
+%	\fbox{
+%		\includegraphics[width=0.75\textwidth]{Figures/vueEts.jpg}
+%	}
+%	 \\ \parbox{0.75\textwidth}{\caption{Figure in an appendix.}\label{fig:testAp}}
+%\end{figure}
+%
+%\begin{figure}
+%	\centering
+%	\fbox{
+%	\parbox{0.975\linewidth}{
+%	\subfloat[first figure]{
+%		\includegraphics[width=0.47\linewidth]{Figures/vueEts.jpg}
+%	}\hspace{0.009\linewidth}
+%	\subfloat[second figure]{
+%		\includegraphics[width=0.47\linewidth]{Figures/vueEts.jpg}
+%	}
+%	
+%	\subfloat[third figure]{
+%		\includegraphics[width=0.47\linewidth]{Figures/vueEts.jpg}
+%	}\hspace{0.009\linewidth}
+%	\subfloat[fourth figure]{
+%		\includegraphics[width=0.47\linewidth]{Figures/vueEts.jpg}
+%	}}}
+%	\\ \parbox{0.975\linewidth}{\caption{Subfig example.}}
+%\end{figure}
+%
+%In the annexes, the figures are declared in the same way. Their numbering changes automatically (e.g. Figure \ref{fig:testAp}).
+%
+%\subsubsection{Tables in annexes}
+%
+%\begin{table}
+%		\parbox{0.65\textwidth}{\caption{Table in an appendix.}\label{tab:testAp}}
+%
+%		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+%		\hline
+%			{\bf titre} & {\bf titre} & {\bf titre} & {\bf titre} & {\bf titre} & {\bf titre} & {\bf titre} & {\bf titre} \\
+%	  \hline
+%			blá & blá & blá & blá & blá & blá & blá & blá \\
+%	  \hline
+%			blá & blá & blá & blá & blá & blá & blá & blá \\
+%	  \hline
+%			blá & blá & blá & blá & blá & blá & blá & blá \\
+%	  \hline
+%			blá & blá & blá & blá & blá & blá & blá & blá \\
+%	  \hline
+%			blá & blá & blá & blá & blá & blá & blá & blá \\
+%	  \hline
+%			blá & blá & blá & blá & blá & blá & blá & blá \\
+%	  \hline
+%		\end{tabular}
+%\end{table}
+%
+%Same behaviour for the tables (e.g., Table \ref{tab:testAp}).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIBLIOGRAPHY AND REFERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%- Bibliography -%%
+\newpage
+% Single spacing for the bibliography
+\begin{spacing}{1}
+	\nocite{*} % The "nocite" command can be used to print references that haven't been used in the document. The "*" option specifies that every reference should be printed
+	\bibliographystyle{bibETS} % ETS bibliography style
+	\addcontentsline{toc}{chapter}{BIBLIOGRAPHY} % Addition of the bibliography in the table of contents
+
+	\bibliography{biblio_en} % List of bibliography files, biblio.bib is an example
+
+\end{spacing}
+
+%%- Other list of references, "refs" example --%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% IMPORTANT: HOW TO COMPILE AND PRINT ADDITIONAL REFERENCES (replace "refs" by the chosen name)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Follow these three steps:
+%   1. Compile the document once, to save the used references in refs.aux
+%   2. Compile the references
+% 		- On Linux: Use the "bibtex refs" command in the document folder
+%		- On MacOSX (MacTex distribution): Use the "/usr/texbin/bibtex refs" command in the document folder
+%		- On Windows: Edit the "update_refs.bat" script to put the right suffix ("refs" here), and launch the script
+%   3. Recompile the document TWICE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+% Same commands than for the bibliography, only with the "refs" suffix
+\begin{spacing}{1}
+	%\nociterefs{*}
+	\bibliographystylerefs{bibETS}
+	\addcontentsline{toc}{chapter}{LIST OF REFERENCES}
+
+	\bibliographyrefs{refs}
+
+\end{spacing}
+
+\end{document}

@@ -1,0 +1,103 @@
+\begin{tikzpicture}
+
+\begin{groupplot}[
+		group style={group size=3 by 1, horizontal sep=0.8cm, vertical sep=2cm, xlabels at=edge bottom, ylabels at=edge left},
+		grid=none, %both,
+		width = 6.5cm,
+		height = 6.5cm,	
+		xtick=data,
+		ybar,
+		enlarge y limits=0.2,
+   		enlarge x limits=0.3,
+		ymin = 0.0,
+    		legend style={at={(1.67,-0.20)},anchor=north,legend columns=-1},
+   		ylabel={\% of Schedulable Tasks},
+   		symbolic x coords={$|P| = 20$,$|P| = 40$,$|P| = 80$},
+    		xtick=data,
+		]
+
+\nextgroupplot[title = {$\bar{U}_{<\mathbf{C}, \mathbf{T}>}$ = 0.8}]
+\addplot+[bar width=5.0mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {
+	($|P| = 20$,0.753125)   +- (0,0.042823)
+	($|P| = 40$,0.806250)   +- (0,0.032275)
+	($|P| = 80$,0.850000)   +- (0,0.038415)
+	
+};
+\addplot+[bar width=5.0mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {
+	($|P| = 20$,1.00)   +- (0,0.00)
+	($|P| = 40$,1.00)   +- (0,0.00)
+	($|P| = 80$,1.00)   +- (0,0.00)
+	
+};
+\legend{Rate Monotonic,Earliest Deadline First}
+
+\nextgroupplot[title = {$\bar{U}_{<\mathbf{C}, \mathbf{T}>}$ = 0.9}]
+\addplot+[bar width=5.0mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {
+	($|P| = 20$,0.675000)   +- (0,0.080956)
+	($|P| = 40$,0.759375)   +- (0,0.036234)
+	($|P| = 80$,0.775000)   +- (0,0.041143)
+	
+};
+\addplot+[bar width=5.0mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {
+	($|P| = 20$,0.975000)   +- (0,0.054725)
+	($|P| = 40$,1.00)   +- (0,0.00)
+	($|P| = 80$,1.00)   +- (0,0.00)
+	
+};
+
+
+\nextgroupplot[title = {$\bar{U}_{<\mathbf{C}, \mathbf{T}>}$ = 1.0}]
+\addplot+[bar width=5.0mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {
+	($|P| = 20$,0.665625)   +- (0,0.095527)
+	($|P| = 40$,0.756250)   +- (0,0.056673)
+	($|P| = 80$,0.775000)   +- (0,0.038415)
+	
+};
+\addplot+[bar width=5.0mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {
+	($|P| = 20$,0.809375)   +- (0,0.027362)
+	($|P| = 40$,0.853125)   +- (0,0.039115)
+	($|P| = 80$,0.950000)   +- (0,0.053522)
+	
+};
+\end{groupplot}
+
+\end{tikzpicture}
+
+%\begin{tikzpicture}
+%\begin{axis}[
+%    ybar,
+%    enlargelimits=0.2,
+%    legend style={at={(0.5,-0.15)},anchor=north,legend columns=-1},
+%    ylabel={\% of Schedulable Tasks},
+%    symbolic x coords={Random,FF,BF,GA,Exhaustive},
+%    xtick=data,
+%    %nodes near coords,
+%    %nodes near coords align={vertical},
+%    ]
+%\addplot+[bar width=5.0mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+%coordinates {
+%	(Random,0.18)   +- (0,0.13)
+%	(FF,0.58)   +- (0,0.22)
+%	(BF,0.58)   +- (0,0.22)
+%	(GA,0.81) +- (0,0.17)
+%	(Exhaustive,0.91)   +- (0,0.13)
+%	
+%};
+%\addplot+[bar width=5.0mm, mark=none,error bars/.cd,y dir=both,y explicit] 
+%coordinates {
+%	(Random,0.23)   +- (0,0.13)
+%	(FF,0.62)   +- (0,0.25)
+%	(BF,0.62)   +- (0,0.25)
+%	(GA,0.90) +- (0,0.13)
+%	(Exhaustive,0.99)   +- (0,0.05)
+%	
+%};
+%\legend{Rate Monotonic,Earliest Deadline First}
+%\end{axis}
+%\end{tikzpicture}

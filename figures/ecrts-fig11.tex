@@ -1,0 +1,61 @@
+\begin{tikzpicture}
+\begin{axis}[
+title=Rate Monotonic Scheduling,
+ymin=0,
+    width=7.5cm,
+    ybar,
+    enlargelimits=0.2,
+    legend style={at={(0.5,-0.2)},anchor=north,legend columns=-1},
+    ylabel={\% of Schedulable Tasks},
+    symbolic x coords={Random,BF,GA,Opt},
+    xtick=data,
+    axis y line*=right,
+    ylabel near ticks,
+    ]
+\addplot coordinates {(Random,0) (BF,0) (GA,0) (Opt,0)};
+
+\addplot+[mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {%sched
+
+(Random,0.305556)   +- (0,0.164254)
+(BF,0.616667)   +- (0,0.201289)
+(GA,0.711111)   +- (0,0.209603)
+(Opt,0.805556)   +- (0,0.191202)
+
+
+};
+
+\legend{\% of Energetic Overhead,\% of Schedulable Tasks}
+\end{axis}
+\begin{axis}[
+ymin=0,
+    width=7.5cm,
+    height = 6.5cm,
+    ybar,
+    enlargelimits=0.2,
+    legend style={at={(0.5,-0.15)},anchor=north,legend columns=-1},
+    ylabel={\% of Energetic Overhead},
+    symbolic x coords={RND,BF,GA,Opt},
+    xtick=data,
+    hide x axis,
+    axis y line*=left,
+    ylabel near ticks,
+    ]
+
+\addplot+[mark=none,error bars/.cd,y dir=plus,y explicit] 
+coordinates {%cost
+
+(RND,0.065589)   +- (0,0.281955)
+(BF,0.177757)   +- (0,0.220785)
+(GA,0.000000)   +- (0,0.168282)
+(Opt,0.023764)   +- (0,0.170339)
+
+
+	
+};
+
+\addplot coordinates {(RND,0)  (BF,0) (GA,0) (Opt,0)};
+\end{axis}
+
+
+\end{tikzpicture}

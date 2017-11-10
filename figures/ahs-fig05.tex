@@ -1,0 +1,140 @@
+\pgfplotsset{every axis/.append style={font=\small,semithick},
+	every major grid/.append style={densely dotted},
+	minor grid style={densely dotted},
+  %tick label style={font=\Large},
+  compat=1.3,
+}
+
+\begin{tikzpicture}
+
+
+
+\begin{groupplot}[
+		group style={group size=2 by 1, horizontal sep=1.5cm, vertical sep=2cm, xlabels at=edge bottom, ylabels at=edge left},
+		enlargelimits=0.05,
+		width = 8.0cm,
+		height = 6.0cm,
+		%xmin=0,
+		%xmax=1,
+		%ymin= 0,
+		%ymax=1.1,
+		%xtick={0.200, 0.205, 0.210,...,0.220},
+		%ytick={0.01,0.1,1,10},
+		%y tick label style={/pgf/number format/std},
+		scaled y ticks = true,
+		y tick label style={/pgf/number format/precision={3}},
+		xlabel={1/Lifetime},
+		ylabel= {1/Availability},
+		grid=major,
+		%ymode=log,
+		xmode=log,
+		x tick label style={/pgf/number format/precision={3},/pgf/number format/zerofill={true}},
+		log basis x=2,
+		xticklabel=\pgfmathparse{1/(2^\tick)}\pgfmathprintnumber{\pgfmathresult},
+		legend style={at={(0.60,-0.28)}, anchor=north west, legend columns = 5}
+		]
+
+
+\nextgroupplot[title = {$SEUs/day = 16.5$}, xmax = 0.210, ymax = 1.0075]
+
+\addplot+[color=black,mark=o,error bars/.cd,y dir=none,y explicit,] 
+coordinates {%rule
+%(131.010088, 1.014298)   +- (251506.777102, 72.417836) % 1 2.000000 
+%(25.078999, 0.996160)   +- (8994.752246, 355.362006) % 1 4.000000 
+(1.874291, 1.006820)   +- (9.903481, 1363.689942) % 1 8.000000 
+(0.199917, 1.005190)   +- (16.107159, 6230.685898) % 1 16.000000 
+(0.197838, 1.008949)   +- (41.523593, 6213.116807) % 1 32.000000 
+
+};
+
+\node[above] at (axis cs:0.199917, 1.005190) {\hspace{-0.8cm}$16$};
+\node[above] at (axis cs:0.209, 1.005190) {\hspace{0.8cm}$8$};
+\node[above] at (axis cs:0.199, 1.0072) {\hspace{0.4cm}$32$};
+
+\addplot+[smooth,mark=x,color=black,error bars/.cd,y dir=none,y explicit] 
+coordinates {%hmm
+%(0.246099, 1.005958)   +- (0.631435, 5701.599306) % 2 0.500000 
+(0.219753, 1.004417)   +- (1.058317, 6013.519317) % 2 0.750000 
+(0.207347, 1.004523)   +- (2.609102, 6191.744206) % 2 0.875000 
+(0.203716, 1.004724)   +- (3.084003, 6264.075911) % 2 0.937500 
+(0.199917, 1.005190)   +- (16.107159, 6230.685898) % 2 0.968750 
+
+};
+
+\node[above] at (axis cs:0.199917, 1.005190) {\hspace{0.5cm}$.97$};
+\node[above] at (axis cs:0.203716, 1.004724) {\hspace{0cm}$.94$};
+\node[above] at (axis cs:0.207347, 1.004523) {\hspace{0cm}$.88$};
+
+\addplot+[smooth,mark=square,color=black,error bars/.cd,y dir=none,y explicit] 
+coordinates {%d-hmm
+(0.208527, 1.003507)   +- (34.742129, 6073.317774) % 3 0.500000 
+(0.201729, 1.003949)   +- (28.744439, 6335.676134) % 3 0.750000 
+(0.200140, 1.004132)   +- (26.803844, 6382.065331) % 3 0.875000 
+(0.199582, 1.004415)   +- (28.442017, 6277.902799) % 3 0.937500 
+(0.198993, 1.004722)   +- (37.009449, 6191.744206) % 3 0.968750 
+
+};
+
+\node[above] at (axis cs:0.208527, 1.003507) {\hspace{0cm}$.5$};
+\node[above] at (axis cs:0.201729, 1.003949) {\hspace{0cm}$.75$};
+\node[above] at (axis cs:0.200140, 1.004132) {\hspace{0.2cm}$.88$};
+\node[above] at (axis cs:0.199582, 1.004415) {\hspace{0.3cm}$.94$};
+\node[above] at (axis cs:0.198993, 1.004722) {\hspace{0cm}$.97$};
+
+
+\legend{Rule-based,HMM,D-HMM}
+
+
+\nextgroupplot[title = {$SEUs/day = 62$}, ymax = 1.0004,  xmax = 0.205, y tick label style={/pgf/number format/precision={4}},]
+
+\addplot+[color=black,mark=o,error bars/.cd,y dir=none,y explicit] 
+coordinates {%rule
+%(461.254613, 1.105183)   +- (3669940.253373, 102.165202) % 1 2.000000 
+%(52.795523, 1.013655)   +- (31149.197304, 1289.430715) % 1 4.000000 
+(0.714970, 0.999122)   +- (0.931150, 19725.167874) % 1 8.000000 
+(0.196333, 1.000343)   +- (40.278146, 77454.988308) % 1 16.000000 
+(0.196216, 1.000941)   +- (40.278146, 77720.927986) % 1 32.000000 
+
+};
+
+\node[above] at (axis cs:0.196333, 1.000343) {\hspace{0.6cm}$16$};
+\node[above] at (axis cs:0.196333,1.00038) {\hspace{0.5cm}$32$};
+\node[above] at (axis cs:0.2045,1.0003) {\hspace{0.6cm}$8$};
+
+\addplot+[mark=x,color=black,error bars/.cd,y dir=none,y explicit] 
+coordinates {%hmm
+(0.229590, 1.000074)   +- (0.620649, 78324.323049) % 2 0.500000 
+(0.204245, 1.000102)   +- (1.984058, 75631.049190) % 2 0.750000 
+%(0.196556, 1.000194)   +- (36.976599, 77388.716663) % 2 0.875000 
+(0.196556, 1.000194)   +- (36.976599, 77388.716663) % 2 0.937500 
+(0.196355, 1.000231)   +- (40.278146, 77454.988308) % 2 0.968750 
+
+};
+
+\node[above] at (axis cs:0.204245, 1.000102) {\hspace{0.0cm}$.75$};
+\node[above] at (axis cs:0.196556, 1.000194) {\hspace{1.1cm}$.88, .94$};
+\node[above] at (axis cs:0.196355, 1.000231) {\hspace{0.0cm}$.97$};
+
+\addplot+[mark=square,color=black,error bars/.cd,y dir=none,y explicit] 
+coordinates {%dhmm
+(0.206276, 0.999862)   +- (28.700722, 76274.988807) % 3 0.500000 
+(0.200221, 1.000058)   +- (28.920311, 78391.800387) % 3 0.750000 
+(0.197731, 1.000105)   +- (35.281994, 79414.513653) % 3 0.875000 
+(0.197117, 1.000117)   +- (36.486410, 78594.756419) % 3 0.937500 
+(0.196614, 1.000154)   +- (40.436074, 77654.314809) % 3 0.968750
+
+};
+
+\node[above] at (axis cs:0.200221, 1.000058) {\hspace{0.0cm}$.75$};
+\node[above] at (axis cs:0.197731, 1.000105) {\hspace{0.3cm}$.88$};
+\node[above] at (axis cs:0.197117, 1.000117) {\hspace{0.3cm}$.94$};
+\node[above] at (axis cs:0.196614, 1.000154) {\hspace{0.0cm}$.97$};
+
+
+
+
+
+\end{groupplot}
+
+
+\end{tikzpicture}

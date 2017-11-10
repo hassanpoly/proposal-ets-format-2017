@@ -1,0 +1,38 @@
+\BOOKMARK [0][]{chapter.5}{Chapter 1 Introduction}{}% 1
+\BOOKMARK [1][]{section.6}{Context and Motivation}{chapter.5}% 2
+\BOOKMARK [1][]{section.7}{Problem Statement}{chapter.5}% 3
+\BOOKMARK [1][]{section.8}{Research Objectives}{chapter.5}% 4
+\BOOKMARK [1][]{section.9}{Contribution}{chapter.5}% 5
+\BOOKMARK [0][]{chapter.10}{Chapter 2 Related Work and Prior Work}{}% 6
+\BOOKMARK [1][]{section.11}{Radiation Environment}{chapter.10}% 7
+\BOOKMARK [2][-]{subsection.12}{Faults Caused by Cosmic Rays in Digital Circuits}{section.11}% 8
+\BOOKMARK [2][-]{subsection.13}{Single Event Effects Mechanism}{section.11}% 9
+\BOOKMARK [2][-]{subsection.14}{Neutrons Effects on FPGA}{section.11}% 10
+\BOOKMARK [2][-]{subsection.16}{Shielding Effect}{section.11}% 11
+\BOOKMARK [1][]{section.18}{Design Verification by Fault Injection}{chapter.10}% 12
+\BOOKMARK [2][-]{subsection.19}{Simulation}{section.18}% 13
+\BOOKMARK [2][-]{subsection.20}{Emulation}{section.18}% 14
+\BOOKMARK [2][-]{subsection.21}{Radiation testing}{section.18}% 15
+\BOOKMARK [1][]{section.22}{Fault Models}{chapter.10}% 16
+\BOOKMARK [2][-]{subsection.23}{Stuck-at Fault Model}{section.22}% 17
+\BOOKMARK [2][-]{subsection.24}{Functional Fault Model}{section.22}% 18
+\BOOKMARK [1][]{section.25}{Faults Behavioural Modeling}{chapter.10}% 19
+\BOOKMARK [1][]{section.26}{Conclusion}{chapter.10}% 20
+\BOOKMARK [0][]{chapter.27}{Chapter 3 Proposed Approach}{}% 21
+\BOOKMARK [1][]{section.28}{Sequential Circuit Emulation}{chapter.27}% 22
+\BOOKMARK [1][]{section.29}{Modeling Faults in Sequential Circuit}{chapter.27}% 23
+\BOOKMARK [2][-]{subsection.30}{Soft-Error Modeling and Analysis in Sequential Circuit}{section.29}% 24
+\BOOKMARK [1][]{section.31}{Markov Chain Analysis for Faulty Behaviour Model}{chapter.27}% 25
+\BOOKMARK [2][-]{subsection.32}{SER Measurement in Sequential Circuits}{section.31}% 26
+\BOOKMARK [2][-]{subsection.33}{Modeling with Probabilistic Calculation Methods}{section.31}% 27
+\BOOKMARK [1][]{section.34}{Optional: Fault Mitigation}{chapter.27}% 28
+\BOOKMARK [1][]{section.35}{Project Plan}{chapter.27}% 29
+\BOOKMARK [0][]{chapter.36}{Chapter 4 Preliminary Results}{}% 30
+\BOOKMARK [1][]{section.37}{Relative Sensitivity Based Emulation}{chapter.36}% 31
+\BOOKMARK [1][]{section.42}{High-Level Fault Model}{chapter.36}% 32
+\BOOKMARK [1][]{section.43}{Sequential Circuits Fault model}{chapter.36}% 33
+\BOOKMARK [1][]{section.55}{Conclusion}{chapter.36}% 34
+\BOOKMARK [0][]{chapter.56}{Chapter 5 Appendix example}{}% 35
+\BOOKMARK [1][]{section.57}{First section of the appendix}{chapter.56}% 36
+\BOOKMARK [2][-]{subsection.58}{Figures in annexes}{section.57}% 37
+\BOOKMARK [0][]{subsection.58}{BIBLIOGRAPHY}{}% 38

@@ -1,0 +1,116 @@
+\begin{tikzpicture}
+
+\node [align=center, 
+    text width=3cm, inner sep=0.25cm] at (2.4cm, -0.8cm) {\textsc{Rule-based}};
+\node [align=center, 
+    text width=3cm, inner sep=0.25cm] at (7.3cm, -0.8cm) {\textsc{HMM}};
+\node [align=center, 
+    text width=3cm, inner sep=0.25cm] at (12.05cm, -0.8cm) {\textsc{D-HMM}};
+\begin{axis}[
+title={$SEUs/day = 62$},
+ymin=0,
+    width=16cm,
+    height = 5.5cm,
+    ybar=5pt,
+    bar width=12pt,
+    %enlarge y limits=0.15,
+    enlarge x limits=0.1,
+    legend style={at={(0.5,-0.25)},anchor=north,legend columns=-1},
+    ylabel={Lifetime (yrs.)},
+    symbolic x coords={$2$, $8$, $32$, ,$0.50$, $0.88$, $0.97$, , $0.50_{}$, $0.88_{}$, $0.97_{}$},
+    xtick=data,
+    %axis y line*=right,
+    axis y line*=left,
+    ylabel near ticks,
+    ymin = 3,
+    ymax =5.5,
+    ]
+
+
+\addplot+[mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {%life
+
+($2$,0.002747)   +- (0,0.000000)
+%($4$,0.005833)   +- (0,0.000001)
+($8$,0.013988)   +- (0,0.000006)
+%($16$,0.038619)   +- (0,0.000146)
+($32$,0.169467)   +- (0,0.005788)
+
+($0.50$,3.512458)   +- (0,1.760035)
+%($0.75$,4.351058)   +- (0,1.011237)
+($0.88$,4.447272)   +- (0,1.019450)
+%($0.94$,4.772173)   +- (0,0.750689)
+($0.97$,4.958341)   +- (0,0.390914)
+
+($0.50_{}$,4.734985)   +- (0,0.038697)
+%($0.75$,4.909448)   +- (0,0.046231)
+($0.88_{}$,4.982835)   +- (0,0.054077)
+%($0.94$,5.029395)   +- (0,0.054120)
+($0.97_{}$,5.052945)   +- (0,0.050037)
+
+};
+
+%\addplot+[] coordinates {($2$,0)  ($8$,0) ($32$,0) ($0.50$,0) ($0.88$,0) ($0.97$,0) ($0.50_{}$,0) ($0.88_{}$,0) ($0.97_{}$,0)};
+\addplot+[] coordinates {($2$,3)  ($8$,3) ($32$,3) ($0.50$,3) ($0.88$,3) ($0.97$,3) ($0.50_{}$,3) ($0.88_{}$,3) ($0.97_{}$,3)};
+
+\node[above] at (axis cs:$2$,3) {\hspace{-0.6cm}$.003$};
+\node[above] at (axis cs:$8$,3) {\hspace{-0.5cm}$.1$};
+\node[above] at (axis cs:$32$,3) {\hspace{-0.5cm}$.2$};
+
+\legend{Lifetime (yrs.),Availability (\%)}
+\end{axis}
+
+
+\begin{axis}[
+ymin=0,
+    width=16cm,
+    height = 5.5cm,
+    ybar=5pt,
+    bar width=12pt,
+    %enlarge y limits=0.15,
+    enlarge x limits=0.1,
+    legend style={at={(0.5,-0.15)},anchor=north,legend columns=-1},
+    ylabel={Availability (\%)},
+    symbolic x coords={$2$, $8$, $32$, ,$0.50$, $0.88$, $0.97$, , $0.50_{}$, $0.88_{}$, $0.97_{}$},
+    xtick=data,
+    hide x axis,
+    %axis y line*=left,
+    axis y line*=right,
+    ylabel near ticks,
+    ymin = 0.98,
+    ymax =1.06,
+    y tick label style={/pgf/number format/zerofill={true}},
+    ]
+    
+    
+\addplot+[] coordinates {($2$,0.98)  ($8$,0.98) ($32$,0.98) ($0.50$,0.98) ($0.88$,0.98) ($0.97$,0.98) ($0.50_{}$,0.98) ($0.88_{}$,0.98) ($0.97_{}$,0.98)};
+%\addplot+[] coordinates {($2$,0)  ($8$,0) ($32$,0) ($0.50$,0) ($0.88$,0) ($0.97$,0) ($0.50_{}$,0) ($0.88_{}$,0) ($0.97_{}$,0)};
+
+\addplot+[mark=none,error bars/.cd,y dir=both,y explicit] 
+coordinates {%avail
+
+($2$,0.925025)   +- (0,0.540547)
+%($4$,0.942412)   +- (0,0.321500)
+($8$,1.057893)   +- (0,0.172947)
+%($16$,0.982587)   +- (0,0.056025)
+($32$,0.974338)   +- (0,0.021143)
+
+($0.50$,0.998795)   +- (0,0.003829)
+%($0.75$,0.994664)   +- (0,0.002988)
+($0.88$,0.991128)   +- (0,0.003024)
+%($0.94$,0.986639)   +- (0,0.002953)
+($0.97$,0.982415)   +- (0,0.003227)
+
+($0.50_{}$,1.000040)   +- (0,0.003353)
+%($0.75$,0.994611)   +- (0,0.003321)
+($0.88_{}$,0.991380)   +- (0,0.003312)
+%($0.94$,0.988427)   +- (0,0.003260)
+($0.97_{}$,0.986189)   +- (0,0.003232)
+	
+};
+
+
+\end{axis}
+
+
+\end{tikzpicture}

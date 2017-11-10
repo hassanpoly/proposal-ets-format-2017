@@ -1,0 +1,6 @@
+\select@language {english}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces FPGA Structure and Design Flow\relax }}{9}{figure.caption.15}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Upset FPGA configuration bits may change the logic and routing.\relax }}{10}{figure.caption.17}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Structure of the proposed cache.\relax }}{28}{figure.caption.44}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces The hash function uses a random number, the address bits, and four XOR stages to produce a random placement.\relax }}{29}{figure.caption.52}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Execution Time Measurement\relax }}{30}{figure.caption.54}

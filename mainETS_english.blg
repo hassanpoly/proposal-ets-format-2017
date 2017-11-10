@@ -1,0 +1,76 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: mainETS_english.aux
+The style file: bibETS.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: biblio_en.bib
+Warning--string name "jan" is undefined
+--line 159 of file biblio_en.bib
+Warning--string name "may" is undefined
+--line 190 of file biblio_en.bib
+Warning--string name "may" is undefined
+--line 268 of file biblio_en.bib
+Warning--string name "jan" is undefined
+--line 330 of file biblio_en.bib
+Warning--string name "mar" is undefined
+--line 350 of file biblio_en.bib
+Repeated entry---line 438 of file biblio_en.bib
+ : @inproceedings{altmeyer2014correctness
+ :                                       ,
+I'm skipping whatever remains of this entry
+Warning--string name "may" is undefined
+--line 800 of file biblio_en.bib
+Warning--string name "nov" is undefined
+--line 827 of file biblio_en.bib
+Warning--string name "feb" is undefined
+--line 853 of file biblio_en.bib
+Warning--string name "jan" is undefined
+--line 878 of file biblio_en.bib
+Warning--string name "jul" is undefined
+--line 926 of file biblio_en.bib
+Warning--string name "oct" is undefined
+--line 957 of file biblio_en.bib
+Warning--string name "oct" is undefined
+--line 978 of file biblio_en.bib
+You've used 86 entries,
+            2861 wiz_defined-function locations,
+            1091 strings with 23096 characters,
+and the built_in function-call counts, 38269 in all, are:
+= -- 3395
+> -- 3046
+< -- 39
++ -- 1081
+- -- 990
+* -- 3528
+:= -- 6436
+add.period$ -- 346
+call.type$ -- 86
+change.case$ -- 492
+chr.to.int$ -- 81
+cite$ -- 172
+duplicate$ -- 1321
+empty$ -- 2463
+format.name$ -- 1110
+if$ -- 7695
+int.to.chr$ -- 6
+int.to.str$ -- 1
+missing$ -- 0
+newline$ -- 526
+num.names$ -- 344
+pop$ -- 735
+preamble$ -- 1
+purify$ -- 492
+quote$ -- 0
+skip$ -- 1158
+stack$ -- 0
+substring$ -- 172
+swap$ -- 147
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 911
+warning$ -- 0
+while$ -- 258
+width$ -- 0
+write$ -- 1234
+(There was 1 error message)
