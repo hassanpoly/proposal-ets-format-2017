@@ -2,6 +2,9 @@
 
 This chapter is dedicated to the revision of some of the fundamental concepts and current research in different areas related to this project: radiation effects on SRAM-FPGAs, soft-error, hard-error. Fault-injection, SEUs, Signatures, benchmarks for radation testing, and behavioral fault modeling. All of these topics are equally relevant for the purpose of this research that, ideally, places itself as an attractive research project.
 
+
+ Most of the work done so far for soft-error analysis and evaluation is either on employing simulation framework, using fault emulation system on hardware, i.e., emulate faults on  FPGAs, and based on the efforts to find the analytical expression that represent the faulty behavior of the system
+
 \section{Radiation Environment}
 
 A Single Event Effect (SEE) results from a single energetic particle. When the particle strikes a sensitive node in a semi-conductor device, the ionization by the particle might produce a current pulse inside the device, which might cause soft or hard errors in the configurtaion memory of the device. Results in data corruption, transient disturbance, high current conditions (non-destructive and destructive
@@ -448,7 +451,7 @@ symbolic ADD-based algorithms. The limitation of this work is to convert the des
 
 
 
-
+\label{related}
 \section{Relation to State-of-the-Art}
 The work done so far [1, 2, 3, 4, and 5] evaluated and quantified the SEU effects by performing simulation, emulation, and radiation on an SRAM-based FPGA. Implemented a design, observed its faulty behavior in the presence of SEU and extracted the corresponding fault model. Presented an automated methodology to efficiently used the SEU controller. Discussed the fault injection on the specific subsets rather than random and discussed the selection of the suitable benchmark for FPGA and microprocessor radiations. 
 

@@ -1,51 +1,26 @@
 
 
-This chapter is dedicated to the methodology that we propose to exert to achieve the objectives of this research project, i.e. Methodology and Algorithms for High-level Modeling of Cosmic Radiations Impacts on Electrical Systems. First of all, we will the main research axis involve in this project.
+This chapter is dedicated to the methodology that we propose to exert to achieve the objectives of this research project, i.e. Methodology and Algorithms for High-level Modeling of Cosmic Radiations Impacts on Electrical Systems.
+
+\section{Relation to State-of-the-Art}
+Starting from the background, the facts established in the Chapter~\ref{intro}--- the digital circuits vulnerable to radiations require high-reliability requirements. The faults due to particle strikes cause different effects in the system behavior, e.g., stuck-at-fault. As discussed in~\ref{related}.The previous work on soft error analysis and evaluation, the researchers are focused on the low abstractions level. Most of the work done based on the interaction of the cosmic rays with the silicon atoms and its analysis, prediction of error,  and estimating the model of transistors and circuit layout structure that can tolerate radiations effects. On circuit level researchers are more focused on the generation and propagation of the radiation-induced transient pulses. The effects of these pulses are simulated with the help of SPICE. These fundamental analysis is important and provide insight of soft error rate. However, they can not take the overall erroneous behavior of the circuit at the architecture level, the errors produced at the low level propagate to the high level of abstraction. Further, the increased complexity of integrated circuits, and integration of several components, it is more difficult now to do the low-level circuit analysis and make the model at low-level. It is more viable solution to find the faulty response of the circuit at low level and model it to the high-level of abstraction. The high-level design suppresses a lot of unnecessary details, reduce the complexity, and its closer to the designer way of thinking. Our problem is unique in terms that it involve emulation of the hardware and behavioral model, to find the faulty response of the system. As can be depicted from the Figure~\ref{fig:ychart}.
+
+The objective of the thesis is to construct a model from the faulty response observed at low-level circuit fault emulation. This model provide the response of the system under fault. It can be described with Y-chart as shown in Figure~\ref{fig:ychart}, in which the high-level analysis (Behavioral View) based on the faulty response at the circuit level. In high-level abstractions level the detailed of the implemented design is hide from the designer, therefore the designer believe that the source of errors to occur is bit-upset. In this work, we propose a solution to solve the problem (mimic the low-level faulty response to the high-level behavioral model) based on the Hidden Markov Model, that uses the concept of hidden states and observed states to find not only the hidden states of the faulty system but also accurately predict the observed states. 
 
 
-Starting from the background, establised in the Chapter~\ref{intro}, the digital circuits vulnerable to radiations require high reliability  requirements. The faults due to particle strikes cause different effects in the system behavior ranging from stuck@ to dead process.
+\begin{figure}[tb!]
 
-Most of the work done so far is either on employing simulation framework, fault emulation system on hardware, e.g., FPGAS, and based on the efforts to find the analytical expression that represent the faulty behavior of the system. Our problem is unique interms that it involve emulation of the hardware and behavioral model, to find the faulty response of the system. 
+ \centering
+  \captionsetup{justification=centering}    
+   \includegraphics[scale=0.8]{Figures/ychart-block.pdf}
+   \caption{Contribution of this work on Gajski-Kuhn chart.}
+\label{fig:ychart}
+\end{figure}
 
+\section{Why Hidden Markov Model?}
 
-The main objective of the thesis is to obtain a model, that model the behavioral response of the system under fault. In this work we propose a model based on the Hidden Markov Model, that uses the concept of hidden states and observed states to find not only the hidden states of the faulty system but also accurately predict the signature. 
+The HMM is called hidden because only the outputs emitted by the system are observable (signatures --- in ours problem domian), not underlying states of the system (Stuck-at-fault). The HMM can be visualized as a simple finite state machine. The HMM has a strong statistical foundation; it has the ability for efficient learning algorithm, which can take place directly from the raw sequence data. \textbf{The problem in hand:} can be solved by using the HMM as we can observe the sequence of signatures, but we do not know the which states of the system went through to generate that particular signature. The analyses of Hidden Markov Model seek to recover the states from the observed data.
 
-
-\section{Link to Related Work}
-
-The previous work on soft error analysis and evaluation, the researchers focused on the low abstractions level. Most of the work done based on the interaction of the cosmic rays with the silicon atoms and its analysis and predicting and estimating the model of transistors and circuit layout structure. If the work is done on circuit level researchers are more focused on the generation and propagation of the radiation-induced transient pulses. The effects of these pulses are simulated with the help of SPICE. These fundamental analysis is important and provide insight of soft error rate. However, they can not take the overall erroneous behavior of the circuit at the architecture level. How the errors produced at the low level propagate to the high level of abstraction. The increased complexity of integrated circuits, and integration of several components it is difficult now to either do the low-level circuit analysis, make the model at low level. It is more viable solution to find the faulty response of the circuit at low level and model it to the high-level of abstraction. The high-level design suppresses a lot of unnecessary details , reduce the complexity, and it s closer to the designer way of thinking. 
-
-
-\section{High Level Error Analysis}
-
-
-
-The contribution of the Thesis can be described with Y-chart as shown in Figure~ in which we do the high-level analysis based on the faulty response at the circuit level. In high-level abstractions level the detailed of the implemented design is hide from the designer, therefore the errors are typically occurred due to bit-upsets. 
-
-After the error occur at low-level, we need to catch their faulty response in the form of the signature as shown in Figure~ 
-
-
-In digital sequential circuit, a single event upset cause a  faulty repose of the underlying circuit. Consider this faulty response occur due to the a node in the circuit stuck-at-1, now this node response that is stuck-at-1 as shown in Figure~ can propagate to multiple outputs, and produce multiple erroneous output. The way this SEU interrupt at high-level of abstraction could typical manifest multiple correlated; "change in states of the design", and "change in signature values."
-
-Inorder to model the fault occur at low level, the faulty response of the circuit to high level of abstraction, I propose to use the Hidden Markov Model.
-
-
-HMM is based on  the two things:a) Observabale States, b) Hidden States. If we closely observe above mentioned problem, we realized that in this scenario --  signatures are my observable state, and the fault occur due to the bit-flip that cause some node in the circuit to stuck, stuck-at-1 $\rightarrow$ Cin is the hidden state.
-
-In this thesis, we propose a method based on the Hidden Markov Model to evaluate the severity of the faulty behavior induced by the SEUs as a high level behavioral level. 
-
-
-Befor going into the details:
-
-\textbf{Hidden States:} The true states of the system that may be descrobed by a Markov Process, e.g., Stuck-at-1, some particular node.
-
-\textbf{Observable State:} The state of the process, visible, e.g., Signature (difference between original output and faulty output).
-
-\textbf{$\Pi Vector$:} contains the probability of the hidden model being in a particular hidden state at time t = 1.
-
-\textbf{state transition matrix:}  holding the probability of a hidden state given the previous hidden state.
-
-\textbf{confusion matrix:} containing the probability of observing a particular observable state given that the hidden model is in a particular hidden state. 
 
 
 \section{Preliminaries of Hidden Markov Model}
@@ -59,13 +34,23 @@ A Markov process  is a stochastic process that satisfies the Markov property -- 
 \end{tcolorbox}
 
 
-Inorder to apply the HMM, we need a system that generate probabilistic output patterns in time, e.g., faulty response of the 3-bit counter, as a result the node is stuck. Afterwards, we need to look at the system where we want to predict is not what we observe -  the underlying system is hidden. For example, in the case of a three bit counter, the observed sequence is the "signature" and the hidden is the "stuck-at-node." Now, we wish to devise an algorithm to predict "stuck-at-node", without actually knowing about the node. It is important to note that the number of states in the hidden process and the number of observable states may be different. 
+Inorder to apply the HMM, we need a system that generate probabilistic output patterns in time, e.g., faulty response of the 3-bit counter, as a result the node is stuck. Afterwards, we need to look at the system where we want to predict is not what we observe ---  the underlying system is hidden. For example, in the case of a three bit counter, the observed sequence is the "signature" and the hidden is the "stuck-at-node." Now, we wish to devise an algorithm to predict "stuck-at-node", without actually knowing about the node. It is important to note that the number of states in the hidden process and the number of observable states may be different. 
 
 
-In the 3-bit counter example, there are total ?? nodes where the signal can get stuck and we can get the n-numbers of different signatures (chapter Preliminaries drive signatures for all nodes)., here for simplicity I can give the example of four different signatures named \textit{Sign-1, Sign-2, Sign-3, and Sign-4}. In such cases, the observed sequence is probabilistically related to the hidden process. We can model such process using a hidden Markov model, where there is an underlying hidden Markov process changing over time, and a set of observable states which are related to somehow to the hidden states.
+In the 3-bit counter example, there are total n-nodes where the signal can get stuck (stuck-at-1, and stuck-at-0) both are possible. and we can get the n- numbers of different signatures (chapter Preliminaries drive signatures for all nodes). Here for simplicity I can give the example of four different signatures named \textit{Sign-1, Sign-2, Sign-3, and Sign-4}. In such cases, the observed sequence is probabilistically related to the hidden process. We can model such process using a hidden Markov model, where there is an underlying hidden Markov process changing over time, and a set of observable states which are related to somehow to the hidden states.
 
 
 The figure shows the Markov model for the hidden and the observable states for the 3-bit counter example. The hidden states are (stuck-nodes), and observable are (signatures). 
+
+
+\begin{figure}[tb!]
+
+ \centering
+  \captionsetup{justification=centering}    
+   \includegraphics[scale=0.8]{Figures/HMM.pdf}
+   \caption{HMM model 3-bit counter.}
+\label{fig:ychart}
+\end{figure}
 
 \subsection{Probabilities in a HMM}
 
@@ -131,6 +116,94 @@ Finding the hidden states that most probably generated an observed sequence.
 
 The third problem is generating a HMM given a sequence of observations.
 \end{tcolorbox}
+
+
+
+\section{Case Study}
+
+
+Consider you have an FPGA board, with some benchmark, e.g., counter is running on it. You need to  ask to perform a radiation induced experiment on it, drive the signatures, and make the high level model of it.
+
+Suppose at any given time, the system can be in one of N possible states.
+
+\begin{center}
+$S = {S_1, S_2,....., S_N}$
+\end{center}
+
+From the experimental data you observed there are only three possible states in which system can go, e.g., stuck-at-1$\rightarrow O_{0}$, stuck-at-0$\rightarrow O_{1}$, and stuck-at-1$\rightarrow C_{1}$. I further observed that the transistion between these states can be described by the transition matrix.
+
+
+\begin{center}
+
+
+A = {$a_ij$} = \bordermatrix{~& 0.4 & 0.3 & 0.3 \cr
+                   & 0.2 & 0.6 &0.2 \cr
+                   & 0.1 & 0.1 &0.8 \cr}
+\end{center}
+
+--- Question
+
+\begin{itemize}
+\item I model this behavior of the system in MATLAB and ask the high-level simulink designer you can find the response of the system as you like. He set the system paramters to know the faulty response of the system for the next seven different radiation experiment in order of (stuck-at-1$\rightarrow C_{1}$, stuck-at-1$\rightarrow C_{1}$, stuck-at-1$\rightarrow O_{0}$, stuck-at-1$\rightarrow O_{0}$, stuck-at-1$\rightarrow C_{1}$, stuck-at-0$\rightarrow O_{1}$, stuck-at-1$\rightarrow C_{1}$  ) given that the outcome of first radiation experiment is stuck-at-1$\rightarrow C_{1}$.
+
+\item \textbf{Answer}
+
+
+\item P(stuck-at-1$\rightarrow C_{1}$, stuck-at-1$\rightarrow C_{1}$, stuck-at-1$\rightarrow O_{0}$, stuck-at-1$\rightarrow O_{0}$, stuck-at-1$\rightarrow C_{1}$, stuck-at-0$\rightarrow O_{1}$, stuck-at-1$\rightarrow C_{1}$ | model)
+\end{itemize}
+
+\hspace{0.2cm} = P(stuck-at-1$\rightarrow C_{1}$) P(stuck-at-1$\rightarrow C_{1}$| stuck-at-1$\rightarrow C_{1}$) P(stuck-at-1$\rightarrow C_{1}$| stuck-at-1$\rightarrow C_{1}$) P(stuck-at-1$\rightarrow O_{0}$|stuck-at-1$\rightarrow C_{1}$) P(stuck-at-1$\rightarrow O_{0}$|stuck-at-1$\rightarrow O_{0}$) P(stuck-at-1$\rightarrow C_{1}$|stuck-at-1$\rightarrow O_{0}$) P(stuck-at-0$\rightarrow O_{1}$|stuck-at-1$\rightarrow C_{1}$) P(stuck-at-1$\rightarrow C_{1}$| stuck-at-0$\rightarrow O_{1}$)
+
+\hspace{0.2cm} = $\pi_3$ $\times$ $a_33$ $\times$ $a_33$ $\times$ $a_13$ $\times$ $a_11$ $\times$ $a_31$ $\times$ $a_23$ $\times$ $a_32$
+
+\hspace{0.2cm} = $1 \times 0.8 \times 0.8 \times 0.1 \times 0.4 \times 0.3 \times 0.1 \times 0.2$
+
+\hspace{0.2cm} = 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{High Level Error Analysis}
+
+
+
+
+
+
+In digital sequential circuit, a single event upset cause a  faulty repose of the underlying circuit. Consider this faulty response occur due to the a node in the circuit stuck-at-1, now this node response that is stuck-at-1 as shown in Figure~ can propagate to multiple outputs, and produce multiple erroneous output. The way this SEU interrupt at high-level of abstraction could typical manifest multiple correlated; "change in states of the design", and "change in signature values."
+
+Inorder to model the fault occur at low level, the faulty response of the circuit to high level of abstraction, I propose to use the Hidden Markov Model.
+
+
+HMM is based on  the two things:a) Observabale States, b) Hidden States. If we closely observe above mentioned problem, we realized that in this scenario --  signatures are my observable state, and the fault occur due to the bit-flip that cause some node in the circuit to stuck, stuck-at-1 $\rightarrow$ Cin is the hidden state.
+
+In this thesis, we propose a method based on the Hidden Markov Model to evaluate the severity of the faulty behavior induced by the SEUs as a high level behavioral level. 
+
+
+Befor going into the details:
+
+\textbf{Hidden States:} The true states of the system that may be descrobed by a Markov Process, e.g., Stuck-at-1, some particular node.
+
+\textbf{Observable State:} The state of the process, visible, e.g., Signature (difference between original output and faulty output).
+
+\textbf{$\Pi Vector$:} contains the probability of the hidden model being in a particular hidden state at time t = 1.
+
+\textbf{state transition matrix:}  holding the probability of a hidden state given the previous hidden state.
+
+\textbf{confusion matrix:} containing the probability of observing a particular observable state given that the hidden model is in a particular hidden state. 
+
 
 \section{Sequential Circuit Emulation}
 
