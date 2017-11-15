@@ -1,6 +1,6 @@
 
 
-This chapter is dedicated to the revision of some of the fundamental concepts and current research in different areas related to this project: radiation effects on SRAM-FPGAs, soft-error, hard-error. Fault-injection, SEUs, Signatures, and benchmarks for radation testing. All of these topics are equally relevant for the purpose of this research that, ideally, places itself as an attractive research project.
+This chapter is dedicated to the revision of some of the fundamental concepts and current research in different areas related to this project: radiation effects on SRAM-FPGAs, soft-error, hard-error. Fault-injection, SEUs, Signatures, benchmarks for radation testing, and behavioral fault modeling. All of these topics are equally relevant for the purpose of this research that, ideally, places itself as an attractive research project.
 
 \section{Radiation Environment}
 
@@ -18,33 +18,33 @@ effects). SEE can if not handled well cause unwanted functional interrupts or in
 
 
 
-%\begin{table}
-%\caption{Single Event Effects Summary}
-%\centering
-%\label{SEE-Summary}
-%\scalebox{0.4}{
-%
-%   \begin{tabular}{c|c|c}
-%         \toprule
-%    \hline
-%     
-%     Single Event Upset (SEU)                  & corruption of the information \\ & stored in a memory element            & Memories, latches in logic devices                                  \\ \hline
-%    
-%    Multiple Bit Upset (MBU)                  & several memory elements \\ & corrupted by a single strike                & Memories, latches in logic devices                                  \\ \hline
-%    Single Event Functional Interrupt (SEFI) & corruption of a data path      & Complex devices with built-in state       \\ \hline
-%    Single Hard Error (SHE)                   & unalterable change of state in\\ & a memory element                     & Memories, latches in logic devices                                 \\ \hline
-%    Single Event Transient (SET)              & Impulse response of certain\\ & amplitude and duration                  & Analog and Mixed Signal circuits                      \\ \hline
-%    Single Event Disturb (SED)                & Momentary corruption of the\\&information stored in a bit             & combinational logic, latches in logic devices                       \\ \hline
-%    Single Event Latchup (SEL)                & high-current conditions                                              & CMOS, BiCMOS devices                                                \\ \hline
-%    Single Event Snapback (SESB)              & high-current conditions                                              & N-channel MOSFET, SOI devices                                       \\ \hline
-%    Single Event Burnout (SEB)                & Destructive burnout due to\\ & high-current conditions                  & BJT Power MOSFET    \\ \hline
-%    Single Event Gate Rupture (SEGR)         & Rupture of gate dielectric due\\&to high electrical field\\ & conditions & Power MOSFETs \\ \hline
-%    
-%    \bottomrule
-%    
-%    \end{tabular}
-%    }
-%\end{table}
+\begin{table}
+\caption{Single Event Effects Summary}
+\centering
+\label{SEE-Summary}
+\scalebox{0.4}{
+
+   \begin{tabular}{c|c|c}
+         \toprule
+    \hline
+     
+     Single Event Upset (SEU)                  & corruption of the information \\ & stored in a memory element            & Memories, latches in logic devices                                  \\ \hline
+    
+    Multiple Bit Upset (MBU)                  & several memory elements \\ & corrupted by a single strike                & Memories, latches in logic devices                                  \\ \hline
+    Single Event Functional Interrupt (SEFI) & corruption of a data path      & Complex devices with built-in state       \\ \hline
+    Single Hard Error (SHE)                   & unalterable change of state in\\ & a memory element                     & Memories, latches in logic devices                                 \\ \hline
+    Single Event Transient (SET)              & Impulse response of certain\\ & amplitude and duration                  & Analog and Mixed Signal circuits                      \\ \hline
+    Single Event Disturb (SED)                & Momentary corruption of the\\&information stored in a bit             & combinational logic, latches in logic devices                       \\ \hline
+    Single Event Latchup (SEL)                & high-current conditions                                              & CMOS, BiCMOS devices                                                \\ \hline
+    Single Event Snapback (SESB)              & high-current conditions                                              & N-channel MOSFET, SOI devices                                       \\ \hline
+    Single Event Burnout (SEB)                & Destructive burnout due to\\ & high-current conditions                  & BJT Power MOSFET    \\ \hline
+    Single Event Gate Rupture (SEGR)         & Rupture of gate dielectric due\\&to high electrical field\\ & conditions & Power MOSFETs \\ \hline
+    
+    \bottomrule
+    
+    \end{tabular}
+    }
+\end{table}
 
 
 
@@ -253,13 +253,203 @@ The impact of SEUs on SRAM FPGA devices has been studied in~\cite{bellato2004eva
 
 Memory scrubbing is a well-known correction technique for the configuration memory of SRAM-based FPGAs. It consists on re-writing the configuration memory after the FPGA is configured to restore its original content. It is often a transparent operation for the running application. This is possible because modern FPGAs offer a dynamic partial reconfiguration (DPR) feature. The circuit that enables the scrubbing is commonly named scrubber. Additionally, readback is the process of reading the configuration memory of the FPGA after it is configured. Both processes (readback and scrubbing) can be used to implement different scrubbing methodologies as shown in~\cite{herrera2013design}. Scrubbing can be implemented using an internal or external interface as shown in~\cite{berg2008effectiveness}. When external interface is used, the scrubbing logic is implemented outside the FPGA. In the case of Xilinx FPGAs several external interfaces are available; however, the Select MAP interface has the highest data throughput. On the other hand, there is only one internal interface named ICAP~\cite{xilinx}. This internal interface can be accessed from the reconfigurable logic of the FPGA and it is a replica of the Select MAP interface. Also scrubbers can be implemented in software or hardware. The scrubbing process can be implemented using a microprocessor with the advantage of a high flexibility to implement different complex scrubbing methodologies but with lower configuration speeds and lower energy efficiency.
 
-\section{Faults Behavioural Modeling}
+\section{Faults Behavioral Modeling}
 
 %\subsection{Built-In Self-Test (BIST)}
 %\subsection{All Test Pattern Generator (ATPG)}
 %\subsection{Scan Chain Testing}
 
-\section{Conclusion}
+
+Intensive research has been done in the analysis of the faults for combinational circuits~\cite{mitra2005robust},~\cite{miskov2006mars} and sequential circuits~\cite{asadi2005soft},~\cite{miskov2007soft}. The most of the research work has been done is related to the transient fault analysis, soft error rate (SER) analysis and prediction, failure-in-time calculations. 
+
+I summarize all those which related to this project at some extent as follows.
+
+In~\cite{chen2017fault} this paper proposes the fault propagation process between the different subsystem of the
+main system, combined with the finite state machine, but they did not provide any experimental data to support their idea. Only, MTBF is provided.
+
+In~\cite{li2016monte} in this paper, Monte Carlo technique is used for the soft error analysis of the sequential
+circuits. They perform the logic simulation for latch-level error propagation to estimate the SEUs. This work is mainly focused on the convergence of the variance of the estimate of SEUs.
+They insert the fault into the simulator and observe it to the output. Apply the Monte Carol technique
+to find the number of samples and the time for the estimation of the error
+  
+  
+In~\cite{kapare2016automated} in this work, they propose a methodology to estimate the output quality of approximate
+sequential circuits (faulty circuits) based on finding the analytical expressions for predicting
+approximation errors from statistical data gathered from performing limited characterization of the
+approximate circuits (faulty circuits). They propose a methodology for estimating/predicting the output
+quality of a faulty circuit. They want to accurately predict the error behavior. Simulation-based results. Fault assumptions. Drive the analytical expression for the faulty
+circuits. Compare the results of the analytical expression and the simulation to observe the error
+difference. They did Curve fitting for analytical expression. 
+
+In~\cite{ebrahimi2015comprehensive}  the key idea behind this paper to present the result for SER analysis on an embedded
+processor. There platform employs a combination of models at device level, gate level error
+propagation and at architectural level.
+Limitation: The main limitation of this work - as they claimed they performed all the experiment on
+the embedded processor but in experiment section instead using a processor chip, they used the
+processor core and drive all the results via simulation of this core under the assumption of the fault. While using processor core under the radiations the primarily concerns is for the cache memory instead
+of the core itself.
+
+In~\cite{ubar2014modeling} this work is based on the Simulation, transformed the circuit into their required tool format, then they
+insert the fault on different nodes and calculate the SER. The main limitation of this work is the tools limitation for the transformation of the circuit.
+
+
+
+In~\cite{mirzadeh2014modeling} In this work, author proposed a fault behaviour model developed with a neural network
+concept in a novel way. The neural networks (NNs) structure was used to synthesize the faulty output of a
+circuit at a high-level of abstraction. All the strategies that were proposed in this research have novelty;
+and effort is exercised to find an appropriate structure for the neural network. The idea is good to make a model with NNs. But it underestimate the power of NNs for
+smaller circuits
+
+
+
+In~\cite{ranjan2014aslan} this technique is used to estimate the output quality of a faulty circuit which uses the concept
+of unrolling the circuit each clock cycle and compares this faulty unrolled circuit with the original circuit
+using a quality evaluation circuit and generates some vectors, which indicate the quality of the circuit
+at that cycle. Unless the quality constraints are satisfied. The faulty circuit is unrolled every cycle with incremental improvements in each cycle. Thus,
+if the desired output quality is high, the cost of unrolling and analyzing error metric also increases
+substantially.
+
+In~\cite{brkic2014symbolic} the key idea behind this paper presents a symbolic analysis method for unreliable logic
+gates. The limitation of this paper is that they consider only the example of two input NAND gate
+and their test platform and drive the mathematical fault model. This is too small circuit for symbolic
+algorithm validation. They also assumed the fault in the design.
+
+In~\cite{chan2013statistical} this paper addresses the estimating output quality of a faulty hardware circuit by pre-
+characterizing the relationship between Error metric behavior and characteristics of approximate
+hardware circuits. These values are stored in lookup tables which are used to retrieve Error metric
+composition for a given approximate hardware module and then compose error metrics for output
+quality using regression-based models. This approach also takes into consideration the input
+distributions of the faulty circuit. There are certain disadvantages of using this technique. First, this technique is limited to
+only adders and circuits constructed using blocks of adders. It is not scalable to multipliers or sequential
+circuits as the regression-based model is not applicable for these circuits as this approach requires
+error metrics to be additive in some way to use regression-based approach. Secondly, the
+characterization time increases as the number of nodes increase in the circuit as the larger number of
+simulations are required. In addition, the memory overhead required is large as we need to store
+multiple lookup tables for this approach. Hence, this technique is not particularly useful for complex
+circuits or for circuits having a high number of nodes.
+
+
+
+
+
+In~\cite{shazli2011high}, in this work, the Soft Error Rate (SER) computation problem is modeled as a Boolean
+Satisfiability (SAT) problem and SAT solvers are used to compute SER for combinational and
+sequential circuits. They used an automated flow to convert combinational and sequential behavioral
+descriptions into equivalent SAT instances. The use of Boolean Satisfiability (SAT) approaches, to
+model soft errors in early design stages presented. The transformation of the circuit into Boolean Satisfiability SAT problem is challenging task
+itself, plus its too hard for complex circuits. Only Simulation work is presented.
+
+
+
+In~\cite{al2010fault}, the objective of that work was to investigate the design of soft error tolerant sequential
+circuits based on adding redundant states at the state diagram level. The objective of adding redundant
+states is to guarantee tolerance of all single soft errors of states with high probability of occurrence.
+They also propose technique to get the minimum number of redundant states that will add minimize
+hardware overhead. They implement a tool for computing soft error reliability for sequential circuits based on
+the Monte Carlo simulation. They develop an algorithm that add redundant states that create an area
+overhead problem. Monte-Carlo estimation method to estimate the failure rate by injection faults
+during simulation. All the work based on the simulation. Convert the circuit into respective FSM, inject
+faults randomly, simulate it and propose the redundant states.
+
+
+
+
+In~\cite{yu2010scalable}, this paper, authors developed novel and efficient ways to sample logic circuit behavior,
+model the impact of soft errors, and estimate the circuit reliability. Their method was described that
+used the probabilistic transfer matrices to calculate signal and error probability distributions in the
+sequential circuits at the logic level. This work is mainly focused on finding the signal probabilities at the gate level. To do so
+they partition the combinational part of the sequential circuit, and then find the probabilities of each
+individual gates.
+
+In~\cite{lingasubramanian2010probabilistic}, this work, they calculated the maximum error in digital logic circuits and the respective
+worst-case input pattern, through maximum a posteriori hypothesis, using a Shenoy-Shafer algorithm.
+They showed the importance of handling maximum error behavior for achieving fault tolerant
+computing machines. They studied the circuit-specific error bounds for fault-tolerant computing. This work is mainly focused on finding the signal probabilities; convert the signal
+probabilities into angles. Use conditional error model, which is not the case in real-time testing.
+Simulation and assumption work. They calculated the average output error in sequential circuits and
+studied the transient error behavior across different time instances, using a dynamic time evolving
+probabilistic error model.
+
+In~\cite{miskov2008modeling}, Markov chain for the steady-state behavior of the sequential circuits, Symbolic framework
+based on the BDD/ADD is presented. They did the Single Error Rate (SER) evaluation, purposed to do
+for the gate sizing, find the gate size that has the highest soft error impact based on this recommend
+different gate size for the transistor technology. They use the only Simulation, assume fault occurs, suppose the glitch size, and assign the
+probabilities in the HSPICE simulator. They make the model of the faulty circuit by supposing it gets
+fault make a model with Markov chain, ADD/BDD and then compare it with the simulation using the
+HSPICE. They also assume that an error occurs only in the first clock cycle of a w-cycle simulation with
+no new errors occurring in subsequent cycles. It has difficulty simulating circuits over many cycles
+because of the way it employs the time-frame technique. The circuit size and the number of primary
+inputs and outputs grow linearly with the number of simulated cycles, and memory usage becomes
+unmanageable after a few simulated cycles. Another source of inaccuracy in their work is that it
+assumes an error occurs only in the first clock cycle of a w-cycle simulation, and no new errors arrive in
+subsequent cycles.
+
+In~\cite{miskov2007mars}, the symbolic framework based on Binary Decision Diagram (BDD) / Algebraic Decision
+Diagram (ADD) to analysis sequential reliability is presented in this paper. They calculate how much the
+gate output is suspected of an error. The MES is calculated at the electrical (transistor) level regarding
+the duty cycle, signal amplitude (voltage), and the gate error probability of individual gates associated
+with different input probabilities. They use only Simulation, assume fault occur, suppose the glitch size, Simulate by inserting
+glitch of different time-period. Find the gate error probability of individual gates. 
+
+
+In~\cite{miskov2007mars}, n this work, they estimate the likelihood that a SET in a sequential circuit will lead to errors
+in clock cycles following the particle hit, and find after the hit (which is an assumption) how many clock
+cycles needs to get the SER below the threshold level. The main idea was to allow for symbolic modelingand efficient estimation of the susceptibility of a sequential circuit to soft errors. A symbolic modeling
+methodology for efficient estimation of the soft error susceptibility of a sequential circuit.
+Limitation: They solved the problem with the analytical approach. Almost similar to the previous work.~\cite{miskov2007mars},~\cite{miskov2008modeling}. There main concern after particle hit (in experiment they did not performed this) how many
+clock cycles will it take to get SER decrease.
+
+
+In~\cite{das2007monitoring}, Error Monitoring scheme to detect the Transient Error. The idea presented in this work has a worth to compute the error for each stage
+independently. But they didn't provide they experimental setup details, no details for the how the fault
+occurs in their system.
+
+In~\cite{asadi2005soft}, they provide the multicycle analytical framework to analyze the multi-cycle error
+propagation. The major limitation to their work is the measuring unit the used in their work “mean time
+to manifest error.” The common terminology for this kind of work is SER. This is the simulation work,
+with the assumption that the fault will occur in the flip-flop and proceed to other flip-flop. They did not
+consider the fault occurs in the combinational logic of the sequential circuit.
+
+In~\cite{miskov2010multiple}, the key idea presented in this paper is to analysis the susceptibility of the circuits outputs
+errors originating from the single or multiple fault transients faults. They are keener to find the part of
+the circuit that has the highest error generating probability.
+The Simulation work, they assumed the fault scenarios for their benchmark. Focus only on the
+SET. They droved the errors for flip-flop and gates separately
+
+
+
+
+
+In~\cite{svenningsson2010model}, In this paper the idea presented how model-implemented fault injection can be utilized to
+simulate the effect of hardware related faults in embedded systems. Model level and hardware level
+fault behavior comparison is presented.
+The limitation of this work; simulation work, they assume the fault scenarios for their pedal examples. Although, the
+perform the emulation on the microcontroller as well but they develop a separate tool which change
+the bit value in the register or memory cell of the assembly language.
+
+
+In~\cite{hayne1999behavioral}, in this work, they proposed two tools, which facilitate the fault simulation of behavioral
+models, described using VHDL. The tool is the Behavioral Fault Mapper (BFM). The BFM algorithm
+accepts a fault-free VHDL model of the design (combinational circuit) and a fault list of N faults from
+which it produces N faulty models. The assumed 8 different fault models e.g., Stuck-Then, Stuck-Else,
+Assignment Control, Dead Process, Dead Clause, Micro-operation, Local Stuck-data, Global Stuck-data. The faulty models they constructed in their work from the faults based on the assumptions
+and deliberately make them fail. There is no emulation performed.
+
+In~\cite{hachtel1996markovian}, Modeling the Probabilistic Behaviour of the Finite State Machine, calculating the steady state
+behaviour of the circuit and used for estimating the switching activity of the circuit for the purpose of
+power evaluation. They showed how steady-state probabilities of very large FSM’s can be computed by
+symbolic ADD-based algorithms. The limitation of this work is to convert the design FSM into ADD, many assumptions, and simulations only.
+
+
+
+
+
+
+
+
+
+
+\section{Relation to State-of-the-Art}
 The work done so far [1, 2, 3, 4, and 5] evaluated and quantified the SEU effects by performing simulation, emulation, and radiation on an SRAM-based FPGA. Implemented a design, observed its faulty behavior in the presence of SEU and extracted the corresponding fault model. Presented an automated methodology to efficiently used the SEU controller. Discussed the fault injection on the specific subsets rather than random and discussed the selection of the suitable benchmark for FPGA and microprocessor radiations. 
 
 
