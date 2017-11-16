@@ -119,6 +119,173 @@ The third problem is generating a HMM given a sequence of observations.
 
 
 
+\section{HMM Solutions}
+
+Hidden Markov Model can give the answer of three major questions, compute the probability of a given sequence of observations, compute the most probable sequence of states, given a sequence of observations and learn the best model, given an observation.
+
+In order to find the solution of these three questions:
+
+
+\textbf{The Three basic HMM Problems and Solutions}
+
+\begin{itemize}
+\item Problem 1 : Probability Evaluation
+ \begin{itemize}
+ \item How do we efficiently compute the $P(O|\Pi)$ from the given observation sequence $O = {O_1, O_2,...,O_n}$.
+ 
+  \begin{itemize}
+  \item The possible solution is given by the Forward and Backward procedures.
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item Problem 2 : Optimal State Sequence
+ \begin{itemize}
+ \item Given observation sequence $O = {O_1, O_2,....,}O_n$ and model $\Pi$ how do we choose a hidden state sequence $Q={q_1,q_2,q_3,...q_n}$
+that is optimal, i.e., best explains the data. 
+  \begin{itemize}
+  \item The solution is provided by the Viterbi algorithm.
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+
+
+
+\begin{itemize}
+\item Problem 3 : How do we adjust the paramters of the model $\Pi = {\pi, A, B}$ to maximize the likelihood $P(O|\pi)$ 
+ \begin{itemize}
+ \item Given observation sequence $O = {O_1, O_2,....,}O_n$ and model $\Pi$ how do we choose a hidden state sequence $Q={q_1,q_2,q_3,...q_n}$
+that is optimal, i.e., best explains the data. 
+  \begin{itemize}
+  \item The solution is either Expectation-Maximization or Baum-Welch re-estimation.
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+
+
+
+
+
+
+\section{HMM Application for Signature}
+
+
+\subsection{Evaluation Application}
+
+For probability evaluation we need to compute the likelihood of an observation sequence $O = {O_1, O_2,...,o_t}$ given a particular HMM model $ \Pi = {A, B, \pi}$. The computation of this probability involves all the possible hidden state sequence and evaluate the corresponding probability. 
+
+\begin{itemize}
+
+\item  $P(O | \Pi) = \sum\limits_{\forall Q}^{} P (O | X, \Pi) P (X, \pi)$ 
+
+\item For a specific state sequence $X = {x_1, x_2,...,x_t}, P(O | Q, \Pi):$
+
+ \hspace {0.2cm} $P (O | X, \Pi) = \prod_{t=1}^{T} P (o_t | q_t, \Pi) = \prod_{t=1^{T} b_{x_t} (o_t)}$
+ 
+ \item The probability of the state sequence $X$:
+ \\
+ \hspace {0.2cm} $ P (X | \Pi ) = \pi_{x_1} a_{x_1 x_2} a_{x_2 x_3},...,a_{x_{T-1} x_T}$
+ 
+ \item The final expression we get:
+ 
+
+
+$P (O | \Pi ) = \sum\limits_{x_1, x_2,..., x_T} \pi_{x_1} b_{x_1} (o_{x_1}) a_{x_1 x_2} b_{q_2} (o_{x_2}),..., a_{x_{T-1} x_T} b_{xT} (o_{xT})$
+
+\item If there are $N^T$ possible state sequence, this approach becomes infeasible to apply or implement even for the smaller circuits.
+
+\begin{itemize}
+\item For N = 5 and T = 100, the order of magnitude --- $10^7$
+\end{itemize}
+ 
+
+\end{itemize}
+
+This problem can be solved by using the Forward Algorithm:
+
+\textbf{Example:} Consider an example where we have a number of HMM (a set of trplet $(\pi, A, B)$) describing different systems, and a sequence of observation, e.g., you will get these system by performing radiation/fault emulation experiments for hours and hours of testing. You have number of HMM in simulink library and want to know which HMM most probably generated the given sequence (signature).
+
+
+We will use the forward algorithm to calculate the probability of an observation sequence given a particular hidden Markov Model, and find the most probable HMM. Suppose that you have a HMM that describe the stuck-at-node, and we also have a sequence of signatures. Suppose the stuck-at-nodes works in this order $(stuck-at-c_0)$, $(stuck-at-c_1)$, $(stuck-at-O_1)$, the signatures: Sign-1, Sign-2, Sign-3. There is some hidden relationship between stuck-at-node and the signatures, we can make a "Trellis" diagram as shown in Figure....
+
+
+From trellis figure we conclude the following:
+
+\begin{itemize}
+
+\item Each column in the trellis represents the possible state of the stuck-at-node and each state in column is connected to the each state in the adjacent column.
+
+\item The transition between the states --- state transitions has the probability provided by the "state transistion matrix."
+
+\item Each column in the signature observations at that time: the probability of this signature observation given anyone of the above stuck-at-node state is provided by the confusion matrix. 
+
+\item As mentioned above one of the possibility of calculating the probabilities of the observed states would be find each possible sequence of the hidden stuck-at-node states and sum all these probabilities. Just for this example, there would be $3^3 = 27$ possible sequences, its extremely complex to do this. So, we used the forward algorithm that can calculate the probabilities of observing a sequence recursively given a HMM.
+
+\end{itemize}
+
+\textbf{Forward algorithm Steps:}
+
+
+
+
+
+
+\subsection{Decoding Application}
+The decoding capability of HMM helps to find the sequence of hidden states that generated the given observed output. In the FPGA fault emulation and radiation experiment we are interested to find the hidden states of the system as they represent some valuable information that can later used to give to the Simulink model.
+ 
+\textbf{Example:} Consider an example of the signature and stuck-at-fault; an FPGA test designer can only sense the signature but wants to know the stuck-at-fault node, i.e., hidden state.
+\textbf{Answer}: We will use the \underline{Viterbi Algorithm} to determine the most probable sequence of hidden states that give the sequence of observations and HMM. Inshort, decoding helps to find the hidden sequence most likely to have generated a sequence of observation --- solved using Viterbi algorithm.
+\subsubsection{Viterbi Algorithm}
+
+
+The Viterbi algorithm is based on the assumption that the most \textit{likely} path (hidden states sequence), $Q^* = argmax_Q P(Q|O) $, is a good estimation of the sequence of hidden states that generated the observed sequence $(O)$. The viterbi algorithm generates a path $X = (x_1, x_2,...,x_T)$, which is a sequence of states $x_n \in S = {s_1, s_2,...,s_k}$ that produce the sequence of observations $Y = (y_1,y_2,...,y_T) \in {1,2,...,N}^T N = Observation space$.
+
+\textbf{Initialization:}
+
+
+
+\begin{itemize}
+
+
+\item The Observation space $O =  {o_1,o_2,...,o_N}$
+
+\item the state space $S = {s_1,s_2,...,s_K}$
+
+\item an array of the initial probabilities $\Pi = (\pi_1, \pi_2,...,\pi_K)$; $\pi_i is the probability the x_1 == s_i$
+
+\item a sequence of observations $Y = (y_1,y_2,...,y_T)$; $yt == i$ the observation at time $t$ is $o_i$
+
+\item the state transition matrix $A_ij$ stores the transition probability from state $s_i$ to $s_j$
+
+
+\item emission matrix $B_ij$ stores the probability of observing $o_j$ from the state $s_i$
+\end{itemize}  
+
+\textbf{Recursion:}
+
+We need to determine the hidden states by calculating $P(X|O)$. However, this brute force approach becomes intractable if the number of states gets larger, as the number of state path grows exponentially $(N^T)$. So, we need to calculate the $argmax_X P(X|O)$ . The most likely sequence is given by the recursion relations.
+
+\begin{center}
+
+\begin{itemize}
+
+
+\item $V_1,k = P (y_1|k) \times \pi_k$
+
+\item $V_t,k = max_{x \in S} (P (y_t|k) \times a_x,k \times V_t-1,x)$
+
+\item $V_t,k$ probability of the most probably sequence $P (x_1, x_2,...,x_T, y_1,y_2,...,y_T)$
+
+\end{itemize}
+
+\end{center}
+
+
+\textbf{Final:}
+
+The most likely hidden state sequence $X = (x_1,x_2,...,x_N)$ 
+
 \section{Case Study}
 
 
@@ -136,7 +303,8 @@ From the experimental data you observed there are only three possible states in 
 \begin{center}
 
 
-A = {$a_ij$} = \bordermatrix{~& 0.4 & 0.3 & 0.3 \cr
+A = {$a_ij$} = \bordermatrix{~& & & \cr
+                   & 0.4 & 0.3 & 0.3 \cr
                    & 0.2 & 0.6 &0.2 \cr
                    & 0.1 & 0.1 &0.8 \cr}
 \end{center}
@@ -158,8 +326,7 @@ A = {$a_ij$} = \bordermatrix{~& 0.4 & 0.3 & 0.3 \cr
 
 \hspace{0.2cm} = $1 \times 0.8 \times 0.8 \times 0.1 \times 0.4 \times 0.3 \times 0.1 \times 0.2$
 
-\hspace{0.2cm} = 
-
+The above mentioned model assumes that each state can be uniquely associated with an observable event. This model is too restrictive to be used for most of the realistic problems like ours, where we have no information of the underlying system only observe the outcome due to the result of change in hidden state.
 
 
 
