@@ -226,6 +226,44 @@ From trellis figure we conclude the following:
 
 \textbf{Forward algorithm Steps:}
 
+We need to calculate the probability of observing a signature recursively given a HMM. 
+
+\begin{enumerate}
+
+\item The first step is the initialization step at t = 1 when there is no path to the state. The probability of being at state at t = 1 is actually the initial probability:
+\begin{itemize}
+
+
+ \item $P (state | t = 1) = \pi $
+\item The initial probability at t = 1 is the probability multiplied by the associated observation probability.
+$\alpha(j) = \pi(j) b_i (O_1)$
+\end{itemize}
+
+\item Second, we need to define a \textbf{partial probability} which is the probability of reaching an intermediate state in the trellis.
+
+\begin{itemize}
+
+\item For example, the T-long signature sequence: $(Y_k1, Y_k2,..., Y_kT)$, the partial probabilities $\alpha 's$. Figure shows the Trellis diagram. Calculate the probability of reaching an intermediate state in the trellis diagram as the sum of all possible paths to that state.
+
+\item The partial probability of state $j$ at time $t$ is $t(j)$, to calculate the partial probability:
+
+$\alpha_t(j) = P (observation | hidden state is j) \times P (all paths to state j at time t)$
+
+\item The partial probabilities for the final observation hold the probability of reaching those states going through all the possible paths. The sum of these final partial probabilities is the sum of all possible paths. 
+
+\hspace {4.5 cm}$\alpha_{t+1}(j) = b_jk_{t+1} \sum\limits^{n}_{i = 1} \alpha_t(i) a_{ij}$
+
+
+
+
+\end{itemize}
+\item This expression can be used to calculate the $\alpha$. We can find the probability of an observation given HMM. The probability of the sequence given the HMM is then the sum of the partial probabilities at time t = T. This is called termination step.
+ 
+ \hspace {4.5 cm}$P(Y^K) = \sum\limits^{n}_{j=1} \alpha_T (j)$
+
+\end{enumerate}
+
+
 
 
 
@@ -328,6 +366,25 @@ A = {$a_ij$} = \bordermatrix{~& & & \cr
 
 The above mentioned model assumes that each state can be uniquely associated with an observable event. This model is too restrictive to be used for most of the realistic problems like ours, where we have no information of the underlying system only observe the outcome due to the result of change in hidden state.
 
+
+\subsection{Learning}
+
+We can also find the optimal solution for our model by using the learning application of the HMM. The learning application works on the model parameters and observations to find the model that fits the data. There are three different techniques to do: a) Maximum Likelihood Estimation, b) Viterbi Training, and c) Baum  Welch = Forward-Backward Algorithm. 
+
+The Baum-Welch works in the following way:
+
+\begin{enumerate}
+
+
+\item Find the forward probabilities with the forward algorithm
+\item Find the backward probabilities with the backward algorithm
+\item Find the contribution of the current sequence to the transitions of the model.
+\item Find the contribution of the current sequence to the emission probabilities of the model.
+\item Find the new model parameters (starting probabilities, transition probabilities, and emission probabilities).
+\item Find the new log likelihood of the model.
+\item Stop when the change in the log likelihood is smaller than a given threshold or the maximum number of iterations is being passed.
+
+\end{enumerate} 
 
 
 
