@@ -371,18 +371,71 @@ The above mentioned model assumes that each state can be uniquely associated wit
 
 We can also find the optimal solution for our model by using the learning application of the HMM. The learning application works on the model parameters and observations to find the model that fits the data. There are three different techniques to do: a) Maximum Likelihood Estimation, b) Viterbi Training, and c) Baum  Welch = Forward-Backward Algorithm. 
 
+
+Suppose we have a HMM: $\Pi = (\pi, A, B)$. The Baum-Welch algorithm is used to find  a local maximum for $\Pi^* = arg max_{\Pi} P (O | \Pi)$, i.e., the HMM parameters $\Pi$ that maximize the probability of the observation.
+
 The Baum-Welch works in the following way:
 
 \begin{enumerate}
 
 
-\item Find the forward probabilities with the forward algorithm
-\item Find the backward probabilities with the backward algorithm
-\item Find the contribution of the current sequence to the transitions of the model.
-\item Find the contribution of the current sequence to the emission probabilities of the model.
-\item Find the new model parameters (starting probabilities, transition probabilities, and emission probabilities).
-\item Find the new log likelihood of the model.
-\item Stop when the change in the log likelihood is smaller than a given threshold or the maximum number of iterations is being passed.
+\item Find the forward probabilities with the forward algorithm.
+
+
+\begin{itemize}
+\item $\alpha_{i}(1) = \pi_{i} b_{i} (o_{1})$
+\item $\alpha_{i}(t + 1) = b_{i}(o_{t+1}) \sum\limits^{N}_{j=1}\alpha_{j}(t)a_{ji}$
+
+\end{itemize}
+
+\item Find the backward probabilities with the backward algorithm.
+
+\begin{itemize}
+\item $\beta(t) = P(o_{t+1} o_{t+2},...,o_{T} | x_{t} = i, \Pi) $
+
+\item $\beta_{i}(T) = 1$
+\item $\beta_{i}(t) = \sum\limits^{N}_{j=1} a[x_i, x_j] b[x_j,o_{t + 1}\beta_{j}(t + 1)]$
+
+\end{itemize}
+\item Find the probability of state $i$ at time $t$
+
+\begin{itemize}
+
+\item $P (x_t = i, O | \Pi) = P (o_1, o_2,...,o_t, x_t = i | \Pi) P (o_{t + 1}, o_{t + 2},...,o_{T} | x_{t} = i, \Pi) == \alpha_{i}(t) \beta_{i}(t) $
+
+\item use the Bayes Theorem:
+
+$P(x_t = i | O, \Pi) = \frac{P(x_t = i, O | \Pi)}{P(O | \Pi)} = \Upsilon_{i}(t)$
+
+\end{itemize}
+\item Find the probability of a transition from state $i$ to state $j$ at time $t$
+
+\begin{itemize}
+\item $\xi_{t}(i,j) = P (x_t = i,x_{t + 1} = j | O, \Pi)$
+
+
+\item These probabilities can be computed bu using the forward and backward variables:
+
+$\xi_{t}(i,j) = \frac{\alpha_i (t) a[x_i x_j] b[x_j,o_{t + 1}] \beta_j (t + 1)   }{P(O | \Pi)}$
+
+\end{itemize}
+\item Find the expected transition and emission counts:
+
+$\sum\limits_{t = 1}^{ T } \Upsilon_i (t)$ = expected number of transition from $x_i$
+
+$\sum\limits_{t = 1}^{ T} \xi_t (i ,j)$ = expected number of transition from $x_i$ to $x_j$
+
+\item Perform the parameter estimation by the ratio of expected count the maximization step:
+
+
+$\overline{a}[x_i, x_j] = \frac{\sum\limits_{t = 1}^{T - 1}\xi_{t} (i, j)}{\sum\limits_{t = 1} T - 1 \Upsilon_{j}(t)} $
+
+
+
+
+$\overline{b}[x_i, o_k] = \frac{\sum\limits_{t = 1}^{T - 1}\Upsilon_{j} (t) 1 (o_t = k)}{\sum\limits_{t = 1}^{T - 1} \Upsilon_{j}(t)} $
+
+\item Stop the computation when the change in the log likelihood is smaller than a given threshold or the maximum iterations are passed.
 
 \end{enumerate} 
 
