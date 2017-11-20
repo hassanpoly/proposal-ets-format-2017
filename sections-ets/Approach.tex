@@ -595,10 +595,8 @@ $\overline{b}[x_i, o_k] = \frac{\sum\limits_{t = 1}^{T - 1}\Upsilon_{j} (t) 1 (o
 
 
 
-Once we have all the information as shown in Figure~\ref{fig:lib} about the stuck-at-fault nodes, signatures, HMM parameters, probabilities of the stuck-at-node. We can create the libraries of the faulty components, their respective FSMs, faulty VHDL entities to use it for the simulation and the verification purposes. We can also implement back to the FPGAs. These models help to make faulty components can be used by the designer to substitutes different part of the entire circuit to observe the faulty behavior of each sub-circuit on the system.
-
-
- We can also extract the different kinds of other information like bit utilization, resources utilization.
+Once we have all the information as shown in Figure~\ref{fig:lib} about the stuck-at-fault nodes, signatures, HMM parameters, probabilities of the stuck-at-node. We can create the libraries of the faulty components, their respective faulty behavioral models, faulty VHDL entities to use it for the simulation and the verification purposes. We can also implement it to the FPGAs. This work helps to make faulty components that can be used by the designer to substitutes different part of the entire circuit to observe the faulty behavior of each sub-circuit on the system.
+The key utilization of this work:
 
 \begin{figure}[tb!]
 
@@ -609,7 +607,21 @@ Once we have all the information as shown in Figure~\ref{fig:lib} about the stuc
 \label{fig:lib}
 \end{figure}
 
+\begin{itemize}
 
+
+\item This work facilitates the fault simulation of faulty behavioral models. We put a fault-free circuit in the Simulink based simulator and N stuck-at-node data then it produces the N faulty behavioral models.
+
+\item We also produce the faulty VHDL entities which help to investigate the verification and testing.
+
+\item This work able to analyze the multi-cycle error propagation behavior.
+
+\item We will get the real-time fault occurrence and propagation data rather than normal, exponential, Poisson, Weibull, etc., user supposed fault probability distribution.
+
+\item We will able to study hardware faults at high-level of abstraction.
+
+\item We will also be able to establish a relationship between the bit-flip information to the fault model.
+\end{itemize}
 
 
 %\subsection{Emulation Environment and Framework}
@@ -731,16 +743,16 @@ Once we have all the information as shown in Figure~\ref{fig:lib} about the stuc
 
 \textbf{Summary}
 
-\textbf{Phase  01:} The emulation platform will be the starting point of research. We will use the SEUs for the configuration memory upsets. Selection of a suitable benchmark, which is probably ITC'99~\cite{ITC}used for the testing purpose and signature generation.
+\textbf{Phase  01:} The emulation platform will be the starting point of the research. We will use the SEUs for the configuration memory upsets. Selection of a suitable benchmark, which is probably ITC'99~\cite{ITC}used for the testing purpose and signature generation.
 
 \textbf{Phase  02:} Evaluate the radiation based experimental setup results for signature under the neutron radiation at Triumf.
 
 
-\textbf{Phase 03:} Implement that above mentioned methodology and high-level model for soft-error of sequential circuits.
+\textbf{Phase 03:} Implement that above-mentioned methodology and high-level model for soft-error of sequential circuits.
 
-%\section{Timetable}
-%The development of the tasks identified in Chapter~\ref{sec:approach}, and the most important milestones of this project are presented in Figure~\ref{timetable}.
-%In our intentions, the design of a time predictable computer architecture, the development of novel timing analysis techniques, and the FPGA prototypes implementation will unfold as a series of sequential tasks with relatively small interleaving. Dependability and real-time requirements, on the other hand, should be kept in mind throughout the whole advancement of the project.
+\section{Timetable}
+The development of the tasks are presented in Figure~\ref{timetable}.
+
 
 \begin{figure}[h]
 \centering
