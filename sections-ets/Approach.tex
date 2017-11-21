@@ -4,7 +4,7 @@ This chapter is dedicated to the methodology that we propose to exert to achieve
 
 
 \section{Relation to State-of-the-Art}
-Starting from the background, the facts established in the Chapter~\ref{intro}--- the digital circuits vulnerable to radiations require high-reliability requirements. The faults due to particle strikes cause different effects in the system behavior, e.g., stuck-at-fault. As discussed in~\ref{related} in digital sequential circuit, a single event upset cause a multiple faulty response of the underlying circuit. Consider an example of  a 3-bit counter as shown in Figure~\ref{fig:counter} the node is stuck-at-1$\rightarrow O_0$. This stuck node response can propagate to multiple outputs, as shown in Table~\ref{s@1-O0} and produce multiple erroneous outputs. The way this SEU interrupt at high-level of abstraction could typical manifest multiple correlated; "change in states of the design", and "change in signature values." To model the fault occur at the low level, and make the model of the faulty response of the circuit at high-level of abstraction, I propose to use the Hidden Markov Model. 
+Starting from the background, the facts established in the Chapter~\ref{introduction}--- the digital circuits vulnerable to radiations require high-reliability requirements. The faults e.g., stuck-at-fault due to particle strikes cause different effects in the system behavior. As discussed in Chapter ~\ref{related} in digital sequential circuit, a single event upset causes a multiple faulty response of the underlying circuit. Consider an example of  a 3-bit counter as shown in Figure~\ref{fig:counter} the node is stuck-at-1$\rightarrow O_0$. This stuck node response can propagate to multiple outputs, as shown in Table~\ref{s@1-O0} and produce multiple erroneous outputs. The way this SEU interrupt at high-level of abstraction could typical manifest multiple correlated; "change in states of the design", and "change in signature values." To model the fault occur at the low-level, and make the model of the faulty response of the circuit at high-level of abstraction, I propose to use the Hidden Markov Model. 
 
 
 
@@ -61,9 +61,9 @@ Faulty Value (Binary) & Faulty Value & Original Value & Arithmetic Signature   \
 \section{Why Hidden Markov Model?}
 
 
-We used the HMM for modeling and analysis of the sequential circuits susceptible to soft-errors. We prefer to use the HMM analysis over the other modeling techniques, e.g., BDD/ADD, Boolean Satisfiability problem (SAT), Monte-Carlo sampling, approximate approaches, symbolic methods for efficient estimation, simulator methods. As all these techniques require to transform the circuit into their respective tool and require a lot of mathematical notations. While in HMM we can directly make the model just looking into the signature values, construct the high-level model that can be further use for the analysis. The HMM can be used very well to model systems which consists of different observable outputs on different hidden conditions.
+We used the HMM for modeling and analysis of the sequential circuits susceptible to soft-errors. We prefer to use the HMM analysis over the other modeling techniques, e.g., BDD/ADD, Boolean Satisfiability problem (SAT), Monte-Carlo sampling, approximate approaches, symbolic methods for efficient estimation, and simulation methods. As all these techniques require to transform the circuit into their respective tool and require a lot of mathematical notations. While in HMM we can directly make the model just looking into the signature values, construct the high-level model that can be further use for the analysis. The HMM can be used suitably to model systems which consist of different observable outputs (signature in our problem domain) on different hidden conditions (stuck-at-node).
 
-To make the HMM. Firstly, we need to have two copies of the original circuit --- named Fault-Free circuit, and a Faulty circuit (\textit{hit circuit}). The Fault free circuit is used to collect the correct behavior of the circuit (fault-free outputs), and faulty is used to collect the faulty response of the circuit (faulty output). The difference between them give us the signature as shown in the Figure~\ref{fig:SG} and depicted in the following equation.
+To make the HMM. Firstly, we need to have two copies of the original circuit --- named Fault-Free circuit, and a Faulty circuit (\textit{hit circuit}). The Fault free circuit is used to collect the correct behavior of the circuit (fault-free outputs), and faulty is used to collect the faulty response of the circuit (faulty output). The difference between them give us the signature as shown in the Figure~\ref{fig:SG} and represented in the following equation.
 
 \begin{center}
 $Arithmetic$ $Signature$ $=$ $Original$ $Value$ $-$ $Faulty$ $Value$
@@ -83,10 +83,10 @@ $Arithmetic$ $Signature$ $=$ $Original$ $Value$ $-$ $Faulty$ $Value$
 
 
 
-Hidden Markov Model is a statistical model in which a system can be modeled is assumed to be a Markov process with unobserved, i.e., hidden states. A Markov process  is a stochastic process that satisfies the Markov property -- \underline{memorylessness}, meaning, a process that satisfies the Markov property if the prediction of the future of the system output based solely on its present state, it is independent of the future and past states. Inorder to apply the HMM, we need a system that generate probabilistic output patterns in time, e.g., faulty response of the 3-bit counter, as a result the node is stuck-at-fault. Afterwards, we need to look at the system and need to know which state of the system give that particular output ---  the underlying system is hidden. For example, in the case of a three bit counter, the observed sequence is the "signature" and the hidden is the "stuck-at-node." Now, we wish to devise a model to predict "stuck-at-node", without actually knowing about the node. It is important to note that the number of states in the hidden process and the number of observable states may be different. 
+Hidden Markov Model is a statistical model in which a system can be modeled is assumed to be a Markov process with unobserved states, i.e., hidden states. A Markov process  is a stochastic process that satisfies the Markov property -- \underline{memorylessness}, meaning, a process that satisfies the Markov property, if the prediction of the future of the system output based solely on its present state, it is independent of the future and past states. Inorder to apply the HMM, we need a system that generate probabilistic output patterns in time, e.g., faulty response of the 3-bit counter, as a result the node is stuck-at-fault. Afterwards, we need to look at the system and need to know which state of the system give that particular output ---  the underlying system is hidden. For example, in the case of a 3-bit counter, the observed sequence is the "signature" and the hidden is the "stuck-at-node." Now, we wish to devise a model to predict "stuck-at-node", without actually knowing about the node. It is important to note that the number of states in the hidden process and the number of observable states may be different. 
 
 
-In the 3-bit counter example, there are total n-nodes where the signal can get stuck (stuck-at-1, and stuck-at-0) both are possible. and we can get the  different signatures (chapter Preliminaries derive signatures for all the nodes). Here for simplicity, I can give the example of four different signatures and construct the HMM. The signarures are: \textit{Sign-1, Sign-2, Sign-3, and Sign-4}. The observed signatures are probabilistically related to the hidden process. We can model such process using a hidden Markov model, where there is an underlying hidden Markov process changing over time, and a set of observable states which are related to somehow to the hidden states.
+In the 3-bit counter example, there are total 11-nodes including clock, where the signal can get stuck (stuck-at-1, and stuck-at-0) both are possible. We can get the  different signatures as mentioned in Chapter~\ref{preliminary}. Here for simplicity, I can give the example of four different signatures and construct the HMM. The signatures are: \textit{Sign-1, Sign-2, Sign-3, and Sign-4}. The observed signatures are probabilistically related to the hidden process. We can model such process using a hidden Markov model, where there is an underlying hidden Markov process changing over time, and a set of observable states which are related to somehow to the hidden states.
 
 
 The figure~\ref{fig:HMM-3-bit} shows the Markov model for the hidden and the observable states for the 3-bit counter example. The hidden states are (stuck-at-nodes), and observable states are  the signatures. 
@@ -104,7 +104,7 @@ The figure~\ref{fig:HMM-3-bit} shows the Markov model for the hidden and the obs
 
 
 
-The HMM is based on  the two things:a) Observable States, and b) Hidden States. If we closely observe above mentioned 3-bit counter example, we realized that in that scenario --  signatures are the observable state, and the fault occur due to the bit-flip that cause some node in the circuit to stuck, i.e., stuck-at-1 $\rightarrow$ $O_o$ is the hidden state. In this thesis, we used the concept of HMM to construct the high-level model based on the signature information.
+The HMM is based on  the two things: a) Observable States, and b) Hidden States. If we closely observe above mentioned 3-bit counter example, we realized that in that scenario --  signatures are the observable state, and the fault occur due to the bit-flip that cause some node in the circuit to stuck, i.e., stuck-at-1 $\rightarrow$ $O_o$ is the hidden state. In this thesis, we used the concept of HMM to construct the high-level model based on the signature information.
 
 
 
@@ -123,7 +123,7 @@ The HMM is based on  the two things:a) Observable States, and b) Hidden States. 
 \end{figure}
 
 
-The Figure~\ref{fig:HMM-air} shows the basic HMM applied to the FPGA based fault emulation system. We model this system with the HMM, where, the outputs emitted by the system (FPGA under radiation/ Fault Emulation) are observable (signatures --- in our problem domain), not underlying states of the system (Stuck-at-fault). The HMM can be visualized as a simple finite state machine. The HMM has a strong statistical foundation; it has the ability for efficient learning algorithm, which can take place directly from the raw sequence data. \textbf{The problem in hand:} can be solved by using the HMM as we can observe the sequence of signatures, but we do not know the which states (stuck-at-node) of the system went through to generate that particular signature. The analyses of Hidden Markov Model seek to recover the states from the observed data.
+The Figure~\ref{fig:HMM-air} shows the basic HMM applied to the FPGA based fault emulation system. We model this system with the HMM, where, the outputs emitted by the system (FPGA under radiation/ Fault Emulation) are observable (signatures --- in our problem domain), and underlying states of the system (Stuck-at-nodes). The HMM can be visualized as a simple finite state machine. The HMM has a strong statistical foundation; it has the ability for efficient learning algorithm, which can take place directly from the raw sequence data. \textbf{The problem in hand:} can be solved by using the HMM as we can observe the sequence of signatures, but we do not know the which states (stuck-at-nodes) of the system went through to generate that particular signature. The analyses of Hidden Markov Model seek to recover the states from the observed data.
 
 
 
@@ -137,7 +137,7 @@ The Figure~\ref{fig:HMM-air} shows the basic HMM applied to the FPGA based fault
 There are three important things to know about the probabilities in HMM.
 
 \begin{itemize}
-\item The connections between the hidden states of the system, and the observable states of the system represent the probability of generating a particular observed state given that the Markov process is in a particular hidden state.
+\item The connections between the hidden states of the system, and the observable states of the system represent the probability of generating a particular observed state given that the Markov process is in a particular hidden state as shown in Figure~\ref{fig:HMM-3-bit}.
 
 \item The probabilities entering into the observable states will sum to "1." 
 
@@ -161,7 +161,7 @@ CM = \bordermatrix{~& Sign-1 & Sign-2 & Sign-3 & Sign-4\cr
 
 \subsection{HMM Parameters}
 
-A hidden Markov Model is described as $(\Pi, A, B)$ as shown in Figure~\ref{MARKOV-SERIS}, Where,
+A hidden Markov Model is described as $(\Pi, A, B)$ as shown in Figure~\ref{fig:MARKOV-SERIS}, Where,
 
 
 \begin{figure}[tb!]
@@ -184,7 +184,7 @@ $A = (a_ij)$ state transistion matrix;  \hspace{0.3cm} $P_r(x_i | {x_j}_{t-1})$
 $B = (b_ij)$ confusion matrix;     \hspace{0.3cm}        $P_r(y_i | x_j)$
 
 
-We can find the initial state probability vector,state transistion matrix and confusion matrix  from our experimental data generated by the radiation or emulation experiment.
+We can find the initial state probability vector, state transition matrix and confusion matrix  from our experimental data generated by the radiation or emulation experiment.
 
 \textbf{Hidden States:} The true states of the system that may be described by a Markov Process, e.g., Stuck-at-fault, some particular node.
 
@@ -243,7 +243,7 @@ In order to find the solution of these three questions, we called it HMM applica
  \item Given signatures sequence $O = {O_1, O_2,....,}O_n$ and model $\Pi$ how do we choose a hidden state sequence (stuck-at-fault) $Q={q_1,q_2,q_3,...q_n}$
 that is optimal, i.e., best explains the data. 
   \begin{itemize}
-  \item The Viterbi algorithm~\ref{forney1973viterbi} helps to find the answer of this application
+  \item The Viterbi algorithm~\cite{forney1973viterbi} helps to find the answer of this application
   \end{itemize}
  \end{itemize}
 \end{itemize}
@@ -256,7 +256,7 @@ that is optimal, i.e., best explains the data.
  \item Given observation sequence $O = {O_1, O_2,....,}O_n$ and model $\Pi$ how do we choose a hidden state sequence $Q={q_1,q_2,q_3,...q_n}$
 that is optimal, i.e., best explains the data. 
   \begin{itemize}
-  \item The solution is either to use Expectation-Maximization~\ref{moon1996expectation} or Baum-Welch re-estimation~\ref{leggetter1995maximum}.
+  \item The solution is either to use Expectation-Maximization~\cite{moon1996expectation} or Baum-Welch re-estimation~\cite{leggetter1995maximum}.
   \end{itemize}
  \end{itemize}
 \end{itemize}
@@ -427,7 +427,7 @@ The Viterbi algorithm is based on the assumption that the most \textit{likely} p
 
 \item the state space $S = {s_1,s_2,...,s_K}$
 
-\item an array of the initial probabilities $\Pi = (\pi_1, \pi_2,...,\pi_K)$; $\pi_i is the probability the x_1 == s_i$
+\item an array of the initial probabilities $\Pi = (\pi_1, \pi_2,...,\pi_K)$; $\pi_i$ $is$ $the$ $probability$ $the$ $x_1$ $==$ $s_i$
 
 \item a sequence of observations $Y = (y_1,y_2,...,y_T)$; $yt == i$ the observation at time $t$ is $o_i$
 
@@ -505,7 +505,7 @@ The most likely hidden state sequence $X = (x_1,x_2,...,x_N)$
 
 \subsection{Learning}
 
-The third application of the HMM is optimizing the parameters of the model. There are two possible solutions of this problem either to chose supervised learning and unsupervised learning.  In supervised learning you have one input variable, one output variable and use the algorithm to learn the mapping from the input to output, e.g., logistic regression, linear regression. We can map our problem to supervised learning, our goal is find the mapping function that when we have a new signature the mapping function can predict the stuck-at-node. Now, consider a case where I have only signature data and no information how these signatures comes from stuck-at-nodes.  This is the unsupervised learning because there is no answer available. In this thesis problem we opt for the unsupervised learning, because we have only the data available is signature, and we will find the parameters that maximize the probability of the hidden sequence.  
+The third application of the HMM is optimizing the parameters of the model. There are two possible solutions to this problem either to chose supervised learning and unsupervised learning.  In supervised learning, you have one input variable, one output variable, and use the algorithm to learn the mapping from the input to output, e.g., logistic regression, linear regression. If we  map our problem to supervised learning, in this case, our goal is to find the mapping function. When we have a new signature, the mapping function can predict the stuck-at-node. Now, consider a situation where only signatures data is available and no information how these signatures come from the stuck-at-nodes.  This is the unsupervised learning because there is no answer available. In this thesis problem, we opt for the unsupervised learning, because we have only the data available that is a signature, and we will find the parameters that maximize the probability of the hidden sequence.  
 
 We can also find the optimal solution for our model by using the learning application of the HMM. The learning application works on the model parameters and observations to find the model that fits the data. There are three different techniques to do: a) Maximum Likelihood Estimation, b) Viterbi Training, and c) Baum  Welch = Forward-Backward Algorithm. 
 
@@ -595,7 +595,7 @@ $\overline{b}[x_i, o_k] = \frac{\sum\limits_{t = 1}^{T - 1}\Upsilon_{j} (t) 1 (o
 
 
 
-Once we have all the information as shown in Figure~\ref{fig:lib} about the stuck-at-fault nodes, signatures, HMM parameters, probabilities of the stuck-at-node. We can create the libraries of the faulty components, their respective faulty behavioral models, faulty VHDL entities to use it for the simulation and the verification purposes. We can also implement it to the FPGAs. This work helps to make faulty components that can be used by the designer to substitutes different part of the entire circuit to observe the faulty behavior of each sub-circuit on the system.
+Once we have all the information as shown in Figure~\ref{fig:lib} about the stuck-at-fault nodes, signatures, HMM parameters, probabilities of the stuck-at-node. We can create the libraries of the faulty components, their respective faulty behavioral models, faulty VHDL entities, to use it for the simulation and the verification purposes. We can also implement it to the FPGAs. This work helps to make faulty components that can be used by the designer to substitutes different part of the entire circuit to observe the faulty behavior of each sub-circuit on the system.
 The key utilization of this work:
 
 \begin{figure}[tb!]
@@ -610,13 +610,13 @@ The key utilization of this work:
 \begin{itemize}
 
 
-\item This work facilitates the fault simulation of faulty behavioral models. We put a fault-free circuit in the Simulink based simulator and N stuck-at-node data then it produces the N faulty behavioral models.
+\item This work facilitates the fault simulation of faulty behavioral models. We put a fault-free circuit in the Simulink based simulator and N stuck-at-node data then it produces the N-faulty behavioral models.
 
 \item We also produce the faulty VHDL entities which help to investigate the verification and testing.
 
 \item This work able to analyze the multi-cycle error propagation behavior.
 
-\item We will get the real-time fault occurrence and propagation data rather than normal, exponential, Poisson, Weibull, etc., user supposed fault probability distribution.
+\item We will get the real-time fault occurrences and propagation data rather than normal, exponential, Poisson, Weibull, etc., user supposed fault probability distribution.
 
 \item We will able to study hardware faults at high-level of abstraction.
 
@@ -745,10 +745,10 @@ The key utilization of this work:
 
 \textbf{Phase  01:} The emulation platform will be the starting point of the research. We will use the SEUs for the configuration memory upsets. Selection of a suitable benchmark, which is probably ITC'99~\cite{ITC}used for the testing purpose and signature generation.
 
-\textbf{Phase  02:} Evaluate the radiation based experimental setup results for signature under the neutron radiation at Triumf.
+\textbf{Phase  02:} Evaluate the radiation based experimental results for signature under the neutron radiation at Triumf.
 
 
-\textbf{Phase 03:} Implement that above-mentioned methodology and high-level model for soft-error of sequential circuits.
+\textbf{Phase 03:} Implement the above-mentioned methodology and high-level model for soft-error of the sequential circuits.
 
 \section{Timetable}
 The development of the tasks are presented in Figure~\ref{timetable}.

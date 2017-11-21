@@ -6,20 +6,22 @@ for SRAM FPGAs}
 % no \IEEEPARstart
 
 
-This work addresses to make the FPGA based emulation platform that imitates the radiation based experiment. In this work, the signature is calculated that presents the faulty behavior of the computation. The new fault emulation technique is used, this method is based on the bits relative sensitivity, and it's feature. The purpose to use the sensitivity specific bits to produce the highly accurate fault behavior as expected in the real-time testing environment.  We observed that the signature computed by our sensitivity-based method are $98.47$\% closer for adder circuit and $99.49$ \% closer for the multiplier circuit to the radiation based signature.
+This work addresses to make the FPGA based emulation platform that imitates the radiation based experiment. In this work, the signature is calculated that presents the faulty behavior of the computation. The new fault emulation technique is used --- the method is based on the bits relative sensitivity, and it's feature. The purpose to use the sensitivity specific bits to produce the highly accurate fault behavior as expected in the real-time testing environment.  We observed that the signature computed by our sensitivity-based method are $98.47$\% closer for adder circuit and $99.49$ \% closer for the multiplier circuit to the radiation based signature.
 
-Space is not the only environment where radiation is found. Indeed, it has already been proved that the integrated circuits can also be affected by the radiations at the commercial flight altitudes~\cite{normand1996single}. At ground level, the effect of the radiations can be felt, although this effect is much less than the effect in space\cite{normand2004single}. As a result, the field of aeronautics has been concerned for the consequences of cosmic radiation. Studies to investigate the sensitivity of avionics-based electronic devices to induced particle bombardment are increasing~\cite{bagshaw2008cosmic}.
-The potential analysis of a malfunction due to radiation encourages manufacturers to invest more and more in the development of the design tools that allows the choice of the mitigation strategies. On the other hand, verify the estimation of the resulting reliability. In the 1980s,
-components have begun to be developed for space applications and Aviation
-In the 1990s, the explosion of the development of consumer electronics multiplied
-Commercial Off-The-Shelf (COTS) components, which are increasingly
-economic and available in large quantity. Further,  the reduction
-of the transistor sizes, the intrinsically small transistor is less sensitive to
-radiation. But because of its smaller sensitive surface, the opposite effect is observed at the level of an integrated circuit. Indeed, the sensitivity of the components increases while the ability of
-engraving decreases despite the gain brought by the miniaturization. The two main factors
-of this conjecture are the increase in the density of integration and the
-threshold voltages of the transistors. For the last ten years or so, studies have been able to provide the evidence of the potential sensitivity of integrated circuits at high altitude commercial flights \cite{normand1998extensions}. This is particularly the case for complex components with high integration such as
-those based on Static Random Access Memory (SRAM) \cite{baumann2005radiation}, which is the target technology for this project. The aerospace industry is looking for the solutions that offer an acceptable compromise between radiation reliability and the system cost, including those based on user-programmable integrated circuits based on static memory. The search for such solutions has implications for the complete flow of design and development of embedded systems. Indeed, this requires the designers to check design robustness to the radiations design. For this purpose, simulation tools that allow the injection of faults in the design is being used. But simulation-based verification has its limits, long testing time is added to the conventional verification, which is already considered to the bottleneck of the design process. The system, once implemented, should also be subject to costly laboratory testing using particle accelerators. To provide a cost-effective pre-certification process, the fault emulation techniques were developed by our research group ~\cite{hobeika2014multi,  bocquillon2009evaluation,souari2015optimization}. The purpose of these techniques is to reproduce as close as possible radiation based test results. In this work, we extend the previous work and make the following contributions. \\
+%Space is not the only environment where radiation is found. Indeed, it has already been proved that the integrated circuits can also be affected by the radiations at the commercial flight altitudes~\cite{normand1996single}. At ground level, the effect of the radiations can be felt, although this effect is much less than the effect in space\cite{normand2004single}. As a result, the field of aeronautics has been concerned for the consequences of cosmic radiation. Studies to investigate the sensitivity of avionics-based electronic devices to induced particle bombardment are increasing~\cite{bagshaw2008cosmic}.
+%The potential analysis of a malfunction due to radiation encourages manufacturers to invest more and more in the development of the design tools that allows the choice of the mitigation strategies. On the other hand, verify the estimation of the resulting reliability. In the 1980s,
+%components have begun to be developed for space applications and Aviation
+%In the 1990s, the explosion of the development of consumer electronics multiplied
+%Commercial Off-The-Shelf (COTS) components, which are increasingly
+%economic and available in large quantity. Further,  the reduction
+%of the transistor sizes, the intrinsically small transistor is less sensitive to
+%radiation. But because of its smaller sensitive surface, the opposite effect is observed at the level of an integrated circuit. Indeed, the sensitivity of the components increases while the ability of
+%engraving decreases despite the gain brought by the miniaturization. The two main factors
+%of this conjecture are the increase in the density of integration and the
+%threshold voltages of the transistors. For the last ten years or so, studies have been able to provide the evidence of the potential sensitivity of integrated circuits at high altitude commercial flights \cite{normand1998extensions}. This is particularly the case for complex components with high integration such as
+%those based on Static Random Access Memory (SRAM) \cite{baumann2005radiation}, which is the target technology for this project. The aerospace industry is looking for the solutions that offer an acceptable compromise between radiation reliability and the system cost, including those based on user-programmable integrated circuits based on static memory. The search for such solutions has implications for the complete flow of design and development of embedded systems. Indeed, this requires the designers to check design robustness to the radiations design. For this purpose, simulation tools that allow the injection of faults in the design is being used. But simulation-based verification has its limits, long testing time is added to the conventional verification, which is already considered to the bottleneck of the design process. The system, once implemented, should also be subject to costly laboratory testing using particle accelerators. To provide a cost-effective pre-certification process, the fault emulation techniques were developed by our research group ~\cite{hobeika2014multi,  bocquillon2009evaluation,souari2015optimization}. The purpose of these techniques is to reproduce as close as possible radiation based test results.
+
+In this work, we extend the previous work and make the following contributions. \\
 
 
 
@@ -90,7 +92,7 @@ radiation}.
 
 \item{In this work, we propose a fault injection method by using relative sensitivity values between the bits features: e.g., bits belong to LUT at "0", bits belong to LUT at "1", bits belong to Non-LUT at "0", bits belong to Non-LUT at "1"}.
 
-\item{Zero-siganture has been derived by flipping the bits-at-1, bits-at-0, random, relative sensitivity between bit-at-1, bits-at-0, and relative sensitivity between bits-status and their features}.
+\item{Zero-signature has been derived by flipping the bits-at-1, bits-at-0, random, relative sensitivity between bit-at-1, bits-at-0, and relative sensitivity between bits-status and their features}.
 \end{itemize}
 
 %In this work, we developed a high-level mathematical models that represent the faulty behavior of digital circuits. The modeling of the faulty behavior of the circuit could be beneficial for the designers to take the necessary mitigation measures for the design in the appropriate abstract level before sending the design in an environment that is harsh for the electronic components, e.g., aircraft flying at the altitude of 50,000 ft.
@@ -257,12 +259,12 @@ In order, to find the faulty behavior of the circuits for their early validation
 %
 
 
-FPGAs are complex reconfigurable devices that comprise a wide family of different resources. The basic structure of modern FPGAs includes interconnect resources, clock-management resources, configurable logic blocks (CLBs), input/output
-blocks (IOBs), and embedded blocks such as digital signal processors (DSPs), general-purpose processors, high-speed IOBs, and memories. CLBs are used to perform simple
-combinational and sequential logic. These blocks are typically formed of look-up tables
-(LUTs), multiplexers, flip-flops, and carry logic. Programmable interconnect resources, such
-as routing switches, allow interconnecting CLBs, IOBs and embedded blocks to implement multiple systems.
-The logic and routing resources in an FPGA are controlled by the bits of a configuration memory, which may be based on either antifuse, flash, or SRAM technology. 
+%FPGAs are complex reconfigurable devices that comprise a wide family of different resources. The basic structure of modern FPGAs includes interconnect resources, clock-management resources, configurable logic blocks (CLBs), input/output
+%blocks (IOBs), and embedded blocks such as digital signal processors (DSPs), general-purpose processors, high-speed IOBs, and memories. CLBs are used to perform simple
+%combinational and sequential logic. These blocks are typically formed of look-up tables
+%(LUTs), multiplexers, flip-flops, and carry logic. Programmable interconnect resources, such
+%as routing switches, allow interconnecting CLBs, IOBs and embedded blocks to implement multiple systems.
+%The logic and routing resources in an FPGA are controlled by the bits of a configuration memory, which may be based on either antifuse, flash, or SRAM technology. 
 
 %The
 %design flow of FPGA-based systems as shown in Figure~\ref{fig:fpga-struct} adapted from ~\cite{hauck2010reconfigurable} involves the creation of a bitstream to load into the
@@ -279,28 +281,28 @@ The logic and routing resources in an FPGA are controlled by the bits of a confi
 %\end{figure}
 
 
-In such devices, this memory may represent more
-than 80 percent of the total memory bits, increasing the probability of configuration faults.
-Upset configuration bits may change the logic and routing of the implemented system, as
-shown in Figure~\ref{fig:seu}, leading to functional failures in an unpredictable way. In contradiction, the primary concern for anti-fuse and flash-based FPGAs is SETs and SEUs within user flip-flops
-and block memories. However, the configuration memory blocks of anti-fuse and flash-based
-FPGAs offer a relative immunity to SEEs, but these devices have lower logic capacity and
-cannot be reprogrammed an unlimited number of times, making SRAM-based FPGAs more
-suitable for complex systems requiring frequent reconfiguration and adaptation~\cite{quinn2015validation, violante2004simulation}.
-
-\begin{figure}
- \centering
-  \captionsetup{justification=centering}    
-   \includegraphics[width=8cm, height=4cm]{Figures/seu.pdf}
-   \caption{Upset FPGA configuration bits may change the logic and routing~\cite{manuzzato2010single}.}
-\label{fig:seu}
-\end{figure}
-
-
-
+%In such devices, this memory may represent more
+%than 80 percent of the total memory bits, increasing the probability of configuration faults.
+%Upset configuration bits may change the logic and routing of the implemented system, as
+%shown in Figure~\ref{fig:seu}, leading to functional failures in an unpredictable way. In contradiction, the primary concern for anti-fuse and flash-based FPGAs is SETs and SEUs within user flip-flops
+%and block memories. However, the configuration memory blocks of anti-fuse and flash-based
+%FPGAs offer a relative immunity to SEEs, but these devices have lower logic capacity and
+%cannot be reprogrammed an unlimited number of times, making SRAM-based FPGAs more
+%suitable for complex systems requiring frequent reconfiguration and adaptation~\cite{quinn2015validation, violante2004simulation}.
+%
+%\begin{figure}
+% \centering
+%  \captionsetup{justification=centering}    
+%   \includegraphics[width=8cm, height=4cm]{Figures/seu.pdf}
+%   \caption{Upset FPGA configuration bits may change the logic and routing~\cite{manuzzato2010single}.}
+%\label{fig:seu}
+%\end{figure}
+%
 
 
-The SRAM-based FPGAs are particularly sensitive to single event upsets (SEUs). The configuration memory is the most sensitive part, by changing the configuration memory, may affect the overall functionality of the system. The work have done so far deal the SEU effects on FPGAs, combines the simulation, radiation, and emulation testing~\cite{quinn2015validation, violante2004simulation, hobeika2014multi, robache2013methodology, quinn2015using, souari2015optimization}. These papers described how they make the faulty behavior of the system to build an accurate representation of the system. The work presented in~\cite{quinn2015using} described the benchmark that can be used for the reliability and radiation effects study on FPGAs and microprocessors. FPGAs offer high densities and run-time programmability facility make inconvenient to use in the aerospace domain. But, FPGAs are sensitive to high-energy ions.  We need to study the sensitivity of SRAM-based FPGAs to heavy ions that show the suitability and analysis of effects of radiation on FPGAs when employed in space, e.g., usage of FPGAs in aircraft. The work presented in~\cite{hobeika2014multi} investigate the sensitivity of SRAM-based FPGAs devices not only for the simulation-based approach but also used emulation and radiation testing for evaluating the effects of SEUs. The work presented in~\cite{souari2015optimization} described the fault injection emulation in Xilinx FPGA based on the identification of critical configuration bits. Based on SRAM-based FPGAs, two aspects can be considered:
+
+%
+%The SRAM-based FPGAs are particularly sensitive to single event upsets (SEUs). The configuration memory is the most sensitive part, by changing the configuration memory, may affect the overall functionality of the system. The work have done so far deal the SEU effects on FPGAs, combines the simulation, radiation, and emulation testing~\cite{quinn2015validation, violante2004simulation, hobeika2014multi, robache2013methodology, quinn2015using, souari2015optimization}. These papers described how they make the faulty behavior of the system to build an accurate representation of the system. The work presented in~\cite{quinn2015using} described the benchmark that can be used for the reliability and radiation effects study on FPGAs and microprocessors. FPGAs offer high densities and run-time programmability facility make inconvenient to use in the aerospace domain. But, FPGAs are sensitive to high-energy ions.  We need to study the sensitivity of SRAM-based FPGAs to heavy ions that show the suitability and analysis of effects of radiation on FPGAs when employed in space, e.g., usage of FPGAs in aircraft. The work presented in~\cite{hobeika2014multi} investigate the sensitivity of SRAM-based FPGAs devices not only for the simulation-based approach but also used emulation and radiation testing for evaluating the effects of SEUs. The work presented in~\cite{souari2015optimization} described the fault injection emulation in Xilinx FPGA based on the identification of critical configuration bits. Based on SRAM-based FPGAs, two aspects can be considered:
 
 %\subsection{Emulation}
 %The emulation of SEUs in an FPGA is done by flipping the bit in the configuration memory. The emulation can be done by using the IP provided by the Xilinx named - SEM core. The work adopted the emulation work also proposed in the~\cite{hobeika2013flight}.  The work described a completed automated methodology to emulate SEUs on an FPGA efficiently. The work presented in~\cite{hobeika2014multi} used the Artix-7 board for the emulation puposes. 
@@ -317,7 +319,7 @@ The SRAM-based FPGAs are particularly sensitive to single event upsets (SEUs). T
 
 
 
-The emulation of SEUs in an FPGA is done by flipping the bit in the configuration memory. The emulation can be done by using the IP provided by the Xilinx named - SEM core~\cite{xilinx}. The Xilinx SEM core is used to get the bit flip in the configuration memory of the FPGA. The emulation platform used in this work was designed for the radiation experiment as discussed in section~\ref{intro}. In this work, this platform is employed for the fault emulation. The platform comprises of two Artix-7 FPGAs. The "Referenc-Board" comprises of the original design, e.g., 16-bit adder and 8-bit multiplier. The design under "Test -Board" is subjected to fault emulation.  
+The emulation of SEUs in an FPGA is done by flipping the bit in the configuration memory. The emulation can be done by using the IP provided by the Xilinx named - SEM core~\cite{xilinx}. The Xilinx SEM core is used to get the bit flip in the configuration memory of the FPGA. The emulation platform used in this work was designed for the radiation experiment as discussed in section~\ref{intro}. In this work, this platform is employed for the fault emulation. The platform comprises of two Artix-7 FPGAs. The "Reference-Board" comprises of the original design, e.g., 16-bit adder and 8-bit multiplier. The design under "Test -Board" is subjected to fault emulation.  
 
 %The work adopted the emulation work also proposed in the~\cite{hobeika2013flight}.  The work described a completed automated methodology to emulate SEUs on an FPGA efficiently. The work presented in~\cite{hobeika2014multi} used the Artix-7 board for the emulation puposes. 
 
@@ -332,7 +334,7 @@ This research work comprises of four-step:
 \end{itemize}
 
 
-The bit flip causes the malfunctioning of the design, and generate the erroneous output behavior of the circuit. To catch the erroneous output behavior of the circuit and corresponding bit that cause that error, two outputs were generated a) Original output (without fault) b) Faulty output (under bitflip). Then the formula as expressed in equation~\ref{eq:1} is used that computes the difference between two boards results if the calculated output is zero revealed no error generated, and the corresponding bit is not critical, if the difference between them is either greater than or less than numeric zero, signature is recorded in the BRAM. The signature is computed based on the difference between the two ouptputs.
+The bit flip causes the malfunctioning of the design, and generate the erroneous output behavior of the circuit. To catch the erroneous output behavior of the circuit and corresponding bit that cause that error, two outputs were generated a) Original output (without fault) b) Faulty output (under bit flip). Then the formula as expressed in equation~\ref{eq:1} is used that computes the difference between two boards results if the calculated output is zero revealed no error generated, and the corresponding bit is not critical, if the difference between them is either greater than or less than numeric zero, signature is recorded in the BRAM. The signature is computed based on the difference between the two ouptputs.
 
 \begin{equation} \label{eq:1}
 \textit{Arithmetic Signature = Faulty \textsubscript{output} - Original \textsubscript{output}} 
@@ -411,17 +413,6 @@ To do the classification of the bits either belongs to LUTs or non-LUTs. Startin
 
 \end{algorithmic}
 \end{algorithm}
-
-
-
-
-
-
-
-
-
-
-
 
 
 

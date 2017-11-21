@@ -1,0 +1,252 @@
+
+
+
+
+\section{Sensitivity Based Signature Generation and
+High-Level Modeling}
+
+
+
+
+
+We make the following new contributions: \\
+
+\begin{itemize}
+
+
+\item{This work presented a methodology for modeling the faulty behavior of digital circuits. In this work, the abstract high-level model/mathematical representation of the signature is presented. This signature model is constructed for the FPGA-based circuits and can be described at a high-level of abstraction.}  
+\end{itemize}
+
+In this work, we developed a high-level mathematical models that represent the faulty behavior of digital circuits. The modeling of the faulty behavior of the circuit could be beneficial for the designers to take the necessary mitigation measures for the design in the appropriate abstract level before sending the design in an environment that is harsh for the electronic components, e.g., aircraft flying at the altitude of 50,000 ft. 
+
+In Order, to characterize the faulty behavior of circuits for their early validation, we extracted the information from the arithmetic signatures and presented in a simple high-level mathematical model. To emulate faults in the FPGA based design and then described at a high-level of abstraction. We also developed a suitable fault injection method. The fault injection method is based on the sensitivity of the bits proposed by [anis paper]. But in this paper we went one step further and considered the bits features as well, i.e., the bits belong to look-up-table or not look-up-table bits. We observed by considering the bits feature; we produced more realistic results closer to the real-time experiments. In this paper, we also provide the results if the sensitivity of the bits is not taking into consideration lead towards the deviated results for the real-time radiation experiment.
+
+
+
+\section{Fault Modeling}
+
+Once we get the signature from the emulation, validate all the bits flip information and zero signature validation.Next target is to drive a mathematical expression or model that can represent the high-level model that correspondence the low-level circuit faulty outputs. This model helps the designer to analyze the circuit and propose the necessary mitigation techniques at the earlier stage of the design. 
+
+
+
+\begin{algorithm}
+\caption{Generate a High-level Model of  Adder in Simulink}
+\begin{algorithmic}
+\REQUIRE $0\leq i \geq16$ \\
+\textbf{Compute}\\ 
+\hspace{1.5cm}{$Original =  A $ $ $+$ $ $ B$ } \\
+\hspace{1.5cm}{$Faulty =  A $ $ $+$ $ $ B$ } \\
+\vspace{0.20 cm }
+\textbf{Stuck-at-1:}
+\vspace{0.20 cm }
+
+\IF{$Original(i) == 1$ $and$  $Faulty (i) == 0 $}
+\vspace{0.10 cm }
+\STATE $Signature \leftarrow  \{$+$ 2^{i},$ $ $$zeros$$\{i-1\}\}$
+\vspace{0.10 cm }
+\ENDIF
+\vspace{0.20 cm }
+
+\textbf{Stuck-at-0:}
+\vspace{0.20 cm }
+\IF{$Original(i) == 0$ $and$  $Faulty (i) == 1 $}
+\vspace{0.10 cm }
+\STATE $Signature \leftarrow  \{$-$ 2^{i},$ $ $$zeros$$\{i-1\}\}$
+\vspace{0.10 cm }
+\ENDIF
+
+
+
+\vspace{0.20 cm }
+
+%\textbf{Stuck-at-0:}
+\vspace{0.20 cm }
+\IF {$Original$$-$$Faulty$  $==$ $MSB=1$ $and$ $1$}
+\vspace{0.10 cm }
+\STATE $Signature \leftarrow  \{$$Original-Faulty$$\}$
+\vspace{0.10 cm }
+\ENDIF
+
+
+
+
+%%\STATE $N \leftarrow -n$
+%%\ELSE
+%\STATE $X \leftarrow x$
+%\STATE $N \leftarrow n$
+%\ENDIF
+%\WHILE{$N \neq 0$}
+%\IF{$N$ is even}
+%\STATE $X \leftarrow X \times X$
+%\STATE $N \leftarrow N / 2$
+%\ELSE[$N$ is odd]
+%\STATE $y \leftarrow y \times X$
+%\STATE $N \leftarrow N - 1$
+%\ENDIF
+%\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}
+\caption{Generate a High-level Model of  Multiplier in Simulink}
+\begin{algorithmic}
+\REQUIRE $ i = 16$  $bit$ $unsigned$ \\
+\textbf{Compute}\\ 
+\hspace{1.5cm}{$Original =  A $ $ \times $ $ B$ } \\
+\hspace{1.5cm}{$Faulty =  A $ $ \times $ $ B$ } \\
+\vspace{0.20 cm }
+\textbf{Stuck-at-1:}
+\vspace{0.20 cm }
+
+\IF{$Original$  $ - $  $Faulty$ $==$+$2^{i}$}
+\vspace{0.10 cm }
+\STATE $Signature \leftarrow  \{$+$ 2^{i}\}$
+\vspace{0.10 cm }
+%\ENDIF
+\vspace{0.20 cm }
+
+
+\ELSIF{$Original$  $ - $  $Faulty$ $==$ +$A$ $\times$ $2^{i}$ $or$ $ $+$B$ $\times$ $2^{i}$}
+\vspace{0.10 cm }
+\STATE $Signature \leftarrow  \{$+$  $A$ $ $ \times $ $2^{i} $ $ $or$ $ $ $+$ $B$ $ $ \times $ $2^{i}\}$
+
+
+\vspace{0.10 cm }
+\ENDIF
+\vspace{0.20 cm }
+
+\vspace{0.20 cm }
+\textbf{Stuck-at-0:}
+\vspace{0.20 cm }
+
+\IF{$Original$  $ - $  $Faulty$ $==$ -$2^{i}$}
+\vspace{0.10 cm }
+\STATE $Signature \leftarrow  \{$-$ 2^{i}\}$
+\vspace{0.10 cm }
+%\ENDIF
+\vspace{0.20 cm }
+
+
+\ELSIF{$Original$  $ - $  $Faulty$ $==$ -$A$ $\times$ $2^{i}$ $or$ $ $-$B$ $\times$ $2^{i}$}
+\vspace{0.10 cm }
+\STATE $Signature \leftarrow  \{$-$  $A$ $ $ \times $ $2^{i} $ $ $or$ $ $ $-$  $B$ $ $ \times $ $2^{i}\}$
+
+\vspace{0.10 cm }
+\ENDIF
+\vspace{0.20 cm }
+
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Adder Signature Fault Model}
+
+The adder is comprised of two 16-bits number. The adder signature is the 16-bit hexadecimal format with sign extension. The hexadecimal value comprises: first four from left are the signature hexadecimal representation, and the rest represent sign extension. The signature values with this simple expression shown in Table~\ref{adder signature format}.
+
+
+
+\begin{table}
+\center
+\caption{Adder Signature Format.}
+
+\label{adder signature format}
+
+\begin{tabular}{|c | c |} 
+ \hline
+Decimal Format & Hexadecimal   \\ 
+\hline
+
+ 
+ 
+ $16$& $00000010$    \\
+ \hline
+ $64$ & $00000040$  \\ 
+ \hline
+ 
+ $128$ & $00000080$  \\
+ \hline
+ $-1024$ & $FFFFFC00$ \\
+ \hline
+ $-512$ & $FFFFFE00$ \\
+ \hline
+ $-8$ & $FFFFFFF8$   \\
+ \hline
+ 
+ 
+\end{tabular}
+\end{table}
+
+
+%_-^+
+
+\textit{\begin{equation}
+\label{eq:2}
+  \pm2\textsuperscript{i}    \hspace{0.5 cm} 0\leq i \geq15
+\end{equation}}
+
+The Equation \ref{eq:2} can represent the adder high-level fault model. By using this equation, we can capture 99.99 \% of the signature. Table~\ref{adder signature format} shows two kinds of signature; positive signature and negative signature. The positive signature values can be modeled as \textbf{single stuck-at-one} model fault affecting an adder output bit $i$,  it adds $0$ when the target bit is at $1$ (flipped to $0$ in the faulty output). The signature computed can be expressed as $+2^{i}$. Consider the following example:
+
+
+%\rule{\linewidth}{1 pt} % A
+%\vskip-\baselineskip\vskip1.5pt % A+B
+%\rule{\linewidth}{0.1pt} %B
+\vspace{ 0.1 cm}
+\hspace{-0.3 cm}\textbf{Example:}
+\hrule height 2pt width \hsize \kern 1pt \hrule width \hsize height 1pt
+
+\vspace{0.2 cm}
+$Original$ $=$ $24$; $binary $ $ equivalent$ $11000$ \\
+
+\hspace{-0.15cm} $Faulty$ $=$ $8$; $binary $ $ equivalent$ $01000$ \\
+
+$fourth$ $bit$ $flipped$ $from$ $"1"$ $to$ $"0"$
+
+$By$ $using$ $equation$ \ref{eq:1}: \\
+
+$signature$ $=$ $8$ - $24$ $==$ $8$ $+$ $(-24)$ $=$ $16$ \\
+
+$4^{th}$ $ bit $ $flipped$; $i$  $=$ $4$, $2^{4}$ $=$ $16$
+\vspace{0.01cm}
+\hrule height 2pt width \hsize \kern 1pt \hrule width \hsize height 1pt
+
+\vspace{0.25 cm}
+
+Similarly, for the negative signature values can be modeled as single stuck-at zero model - fault affecting an adder output bit $i$, it adds $0$ when the target bit is at $0$ (flipped to $1$ in the faulty output), it adds $-2i$ to the adder output. We also observed that few signatures that didn't follow the rule number one could be modeled with: 
+
+Rule 2: if the signature cannot be modeled with the Equation~\ref{eq:1}, if the arithmetic signature values expressed in binary format and contained exactly two bits@1, including one at the MSB.
+
+\hspace{-0.3 cm}\textbf{Example valid signatures for rule \# 02:}
+\hrule height 2pt width \hsize \kern 1pt \hrule width \hsize height 1pt
+\begin{center}
+$1010 0000 0000 0000$ \\
+$1000 1000 0000 0000$ \\
+$1000 1000 0000 0000$ \\
+$1000 0000 0000 0100$ \\
+$1000 0000 0000 0001$ \\
+\end{center}
+\hrule height 2pt width \hsize \kern 1pt \hrule width \hsize height 1pt
+
+
+
+
+
+
+
+
+\subsection{Multiplier Signature Fault Model}
+
+For the 8 - bit multiplier two modeling rules have been formulated:
+
+\textbf{Rule \# 01:} This rule defines the signature can be expressed by the Equation \ref{eq:1} that represent the stuck-at-1 and stuck-at-0 fault model, when the multiplier behaves as the bit flipped occur at the output of the multiplier. 
+
+\textbf{Rule \# 02:}The rule number two defines the format of the signature obtained when a bit flipped cause the multiplier to behave as if when an input bit is either stuck-at-0 or stuck-at-1 can be represented \{$-$$A$ $\times$ $2^{i}$ $or$  $-$$B$ $\times$ $2^{i}$ \}, \{$+$$A$ $\times$ $2^{i}$ $or$  $+$$B$ $\times$ $2^{i}$ \} respectively.
+\section{Conclusions}
+
+
+The ultimate objective of this work is to implement a pre-certification strategy.
+A sophisticated evaluation of the robustness of the designs implemented in the
+SRAM-based FPGAs before sending them to the costly phase of
+certification. The technique of injecting faults by emulation was adopted for
+established strategy.  The results obtained have illustrated that the content of the bits of
+configuration has a significant impact on the type of events observed. In this work, we also present an approach for modeling the faulty behavior of a
+digital circuit in the presence of faults.
