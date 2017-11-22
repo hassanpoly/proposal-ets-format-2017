@@ -1,31 +1,108 @@
 
 
-This chapter is dedicated to the revision of some of the fundamental concepts and current research in different areas related to this project: radiation effects on SRAM-FPGAs, soft-error, hard-error. Fault-injection, SEUs, Signatures, benchmarks for radation testing, and behavioral fault modeling. All of these topics are equally relevant for the purpose of this research that, ideally, places itself as an attractive research project.
+This chapter is dedicated to the fundamental concepts and current research in different areas related to this project: radiation effects on SRAM-FPGAs, soft-error, hard-error. Fault-injection, SEUs, Signatures, benchmarks for radation testing, and behavioral fault modeling. All of these topics are equally relevant for the purpose of this research that, ideally, places itself as an attractive research project.
 
 
- Most of the work done so far for soft-error analysis and evaluation is either on employing simulation framework, using fault emulation system on hardware, i.e., emulate faults on  FPGAs, and based on the efforts to find the analytical expression that represent the faulty behavior of the system
+%Most of the work done so far for soft-error analysis and evaluation is either on employing simulation framework, using fault emulation system on hardware, i.e., emulate faults on  FPGAs, and based on the efforts to find the analytical expression that represent the faulty behavior of the system
 
 \section{Radiation Environment}
 
-A Single Event Effect (SEE) results from a single energetic particle. When the particle strikes a sensitive node in a semi-conductor device, the ionization by the particle might produce a current pulse inside the device, which might cause soft or hard errors in the configurtaion memory of the device. Results in data corruption, transient disturbance, high current conditions (non-destructive and destructive
-effects). SEE can if not handled well cause unwanted functional interrupts or in worst case catastrophic failures. Commonly, SEEs include single event upset (SEU), single event latch-up (SEL), single event burn-out (SEB), and single event transient (SET) etc as mentioned in Table~\ref{SEE-Summary}. SEEs may happen to electronic devices in these environments which is prune to the radiations. For example,
+
+The electronics systems operate in the space are exposed to radiations. The first evident were observed in the sixties but it was difficult to separate soft-error from the other form of interference. The first evidence of malfunctions in electronic circuits embarked in spacecraft caused by the radiations reported in may 1979. In the outer space there are three main types of radiative sources that effects the Earth's atmospher.
+
 \begin{itemize}
 
+\item Galactic cosmic rays.
 
-   \item  Space (caused by space radiation)
-    \item Air-plane (caused by atmospheric neutron)
-    \item Close to nuclear reactor (caused by reaction neutron)
-    \item Everywhere (IF caused by natural decay radiation in the materials of devices)
+\item Radiation from the sun, i.e., solar wind and solar flares.
+
+\item Earth's magnetic field, e.g., magnetospher and radiation belts.
 
 \end{itemize}
 
 
+\textbf{Cosmic Rays:} The origin of cosmic rays is hardly known. However, we have information about they are energetic particle spread throughout the galaxy including the solar system. This radiation comes from sources present in and out of our
+galaxy. Interactions with interstellar matter, shock waves and 
+electromagnetic fields accelerate this radiation. As a result, at the scale of our
+solar system, it appears with an isotropic angular distribution and the particles are ionized. The sun is also the origin of some of these particles, but most of them come from the galactic sources known as galactic cosmic rays (GCR) wulf 22016.
+Cosmic radiation was discovered by V. Hess in 1912 through measurements made from balloon probes. The cosmic rays constitute of 85\% of proton that is basically nuclei of hydrogen atom, 12\% are alpha particles that is helium nuclei, and the others are electrons and nuclei of heavier atoms. The energy of cosmic rays ranges from 1GeV to 108 TeV. lafebre.
+
+
+\textbf{Radiation from the Sun:} The Sun alone accounts for 99.8\% of the total mass of the solar system, the remaining 0.2\% including planets, including the Earth. The sun is mainly composed of hydrogen (90%) and helium (8%). In the center of the Sun, thermonuclear fusion reactions convert hydrogen into helium. The energy produced on this occasion is emitted in the form of light,
+of radiation and particles. The sun has two essential sources: feeding the terrestrial radiative environment: solar flares and solar winds. 
+
+\textbf{Solar Flares:} The activity level of the sun is never constant but follows a cyclical variation that composed of active years followed by calm (no activity) years. The period of recent solar cycles has
+varied between 9 and 13 years, with an average of about 11 years. The last cycle has ended around 2007 and since solar activity is growing again. The activity of solar cycles is frequently measured by the number of sunspots observed, but many
+Solar processes show the same variation. Figure I-2 shows proton generated from solar events during five solar cycles. The curve shows the number of sunspots and vertical lines indicate the generation of solar protons. The first sunspot was observed in 1610 by Galileo while he devoted himself to the observation of the sun. The number of sunspots varies cyclically and most events
+generating important proton influence appear during active solar years. During a solar cycle of 11 years, there are 4 years of low activity and 7 years of strong activity, punctuated by sporadic emissions of large particle fluxes, In this radiative context, there are two types of solar flares:
+- Proton solar flares, lasting from a few hours to a few days, and
+whose primary emission consists of protons of significant energy (up to
+a few hundred MeV). The reference in this area is the August proton eruption 1972 visible in Figure I-2.
+- Solar flares with heavy ions, whose main emission consists of heavy ions variable composition from one eruption to another, and whose duration is at most a few
+hours. The reference in this field is the heavy ion eruption of September 1977.
+
+\textbf{The solar wind:}
+The solar corona causes the solar wind to dilute in space. The solar corona is the outer part of the Sun's atmosphere. It represents with the astronomical unit (1UA = 1.51$^{11}$ m). The solar wind fills the entire solar system and
+interacts with the magnetic fields of the planets creating magnetospheric cavities. The
+plasma density is of the order of 10$^{12}$ particles per cubic centimeter at the sun and falls to 10 particles per cubic centimeter at the Earth's orbit. This plasma is
+primarily consisting of electrons, protons, and helium.
+
+
+\textbf{The Earth's magnetic field}
+The terrestrial magnetosphere is a natural cavity in the space environment in which the
+Earth is relatively protected from outside influences. It is compressed on the side making
+face to the Sun, and stretched to the other. It is a region of space dominated by the interaction between
+the solar wind and the geomagnetic field (Figure I-4). However, at polar sides
+the geomagnetic rigidity is reduced and therefore the particles from the
+cosmic rays that have polar trajectories can penetrate to low
+elevations. Satellites whose orbits have large inclination angles are therefore more
+exposed to cosmic particles. The magnetospheric cavity resulting from the interaction of the solar wind with the field
+geomagnetic is not static; it is subject to variations in the solar wind and the
+interplanetary magnetic filed. The result is a complex dynamic at the origin of the magnetic storm events whose most spectacular manifestations are the aurora borealis.
+and radio disturbances.
+
+\textbf{Radiation Belts:}
+Radiation belts commonly known as Van Allen Radiation belt constitute of charged particles trapped within the magnetosphere.
+Discovered in 1958 by J.A Van Allen (Explorer I mission), these belts are located in the outside the Earth's atmosphere but still in the area of space influenced by the magnetic field of the Earth. The light charged particles (protons and electrons) named inner belt and the outer belt is formed by the energetic electrons, and the energies in between ten KeV to hundred KeV.
+
+ 
+
+Van Allen belts count: 
+\begin{itemize}
+
+\item 2 electron belts centered at altitudes of 9,000 km and 60,000 km 
+\item  1 proton belt at an altitude of 12000 km 
+
+
+\end{itemize}
+The dissymmetry of these belts is due to the deformation of the magnetosphere under the effect of solar wind and the inclination between the magnetic axis and the axis of earth rotation. 
+The magnetic flux is very low and the proton fluxes change according to the altitude and
+solar activity.
+
+
+Based on the above information: we can conclude that many forms of radiations are interacting with the Earth's atmosphere. Ionized radiations make the case more severe for the microelectronics. These cosmic rays and solar particles continuously bombarding the Earth's and colliding with the atoms mainly nitrogen and oxygen which is 80\% and 20\% of the atmosphere respectively. These particles interact in two ways: either they lose some of their energy by ionization, or they may cause nuclear reactions thus forming a shower of
+secondary particles (Figure I-8). The secondary particles generated are essentially:
+neutrons, protons, electrons, muons, pions, photons (Figure I-9). 
+
+
+Concerning radiation effects on electronics, the neutron particles are the most prominent. Neutrons are measurable at the altitude of 330 Km and their density increases until it reaches around 20 KM altitude. However, the density decreases below the 20 KM altitude and about 500 times lesser at ground level as compare to 20 KM altitude. For avionics the \textbf{neutrons} are the dominant particles.  Until 90's the neutrons with energy above 100 MeV were considered dangerous for electronics components. But due to the shrinking the transistor size, circuits are now become more sensitive to the low energies. Although the neutrons are non-ionized particles, they can hit different atoms, interact with the semiconductor generate ions that may produce faults.   
+
+\subsection{Fault Caused by Cosmic Rays in Digital Circuits}
+
+
+Ionizing particles can cause transient, permanent or destructive effects in the materials they pass through. They can therefore interact with embedded electronics and have critical consequences for the success of a space mission or avionics altitudes flights. Following the interaction, two types of effects emerge ---
+single event effects (SEE) (caused by a single particle) and the total ionizing dose. In this research work we mainly focused on the SEE.
+
+
+A Single Event Effect (SEE) results from a single energetic particle. When the particle strikes a sensitive node in a semi-conductor device, the ionization by the particle might produce a current pulse inside the device, which might cause soft or hard errors in the configurtaion memory of the device. Results in data corruption, transient disturbance, high current conditions (non-destructive and destructive
+effects). If SEE cannot handle well cause unwanted functional interrupts or in worst case catastrophic failures. Commonly, SEEs include: single event upset (SEU), single event latch-up (SEL), single event burn-out (SEB), and single event transient (SET) etc as mentioned in Table~\ref{SEE-Summary}. 
+
 
 \begin{table}
-\caption{Single Event Effects Summary}
+\caption{Single Event Effects Summary~\cite{manuzzato2010single}}
 \centering
 \label{SEE-Summary}
-\scalebox{0.4}{
+\scalebox{0.7}{
 
    \begin{tabular}{c|c|c}
          \toprule
@@ -51,11 +128,17 @@ effects). SEE can if not handled well cause unwanted functional interrupts or in
 
 
 
-\subsection{Faults Caused by Cosmic Rays in Digital Circuits}
 \subsection{Single Event Effects Mechanism}
-\subsection{Neutrons Effects on FPGA}
 
 
+When a particle passes through a semiconductor, it can directly or indirectly deposit charges in the silicon: a heavy ion deposits this charge linearly, it is why it is associated with a characteristic LET (linear energy transfer). This notion of deposit
+charge is actually the translation of the generation of electron-hole pairs (Figure I-10a). Near the junction, these
+pairs will first recombine (Figure I-10b) at the polarized reverse PN junction.  Then quickly diffusion principle will prevail (Figure I-10c). The duration of this
+process is variable and can last from a few picoseconds to a hundred
+nanoseconds.
+
+
+\subsection{SEE Effects on FPGA}
 
 
 
@@ -80,23 +163,33 @@ device.
 
 
 
-\subsection{Shielding Effect}
 
 The process starts with the system design written
 in a hardware description language (HDL), e.g., VHDL or Verilog. Next, the design is optimized and mapped into the FPGA’s available resources through logical synthesis,
 technology mapping, placement, and routing. Finally, the generated bitstream downloaded into the device, and the device starts functioning according to the designer design.
-Like any other semiconductor device, FPGAs are sensitive to radiation effects.
+Like any other semiconductor device, FPGAs are sensitive to radiation effects (due to neutron).
 Mostly, these effects depend on the technology used to store the configuration data.
-Regarding the impact of SEEs on reliability and functionality, FPGAs based on SRAM
-technology are a particular class of devices. The foremost concern for SRAM-based FPGAs is
-SEUs within the configuration memory. In such devices, this memory may represent more
-than 80 percent of the total memory bits, increasing the probability of configuration faults.
+The foremost concern for SRAM-based FPGAs is
+SEUs within the configuration memory, because the configuration memory controls all the operations e.g., data and control.
 Upset configuration bits may change the logic and routing of the implemented system, as
 shown in Figure~\ref{fig:seu}, leading to functional failures in an unpredictable way. In contradiction, the primary concern for anti-fuse and flash-based FPGAs is SETs and SEUs within user flip-flops
 and block memories. However, the configuration memory blocks of anti-fuse and flash-based
 FPGAs offer a relative immunity to SEEs, but these devices have lower logic capacity and
-cannot be reprogrammed an unlimited number of times, making SRAM-based FPGAs more
-suitable for complex systems requiring frequent reconfiguration and adaptation~\cite{quinn2015validation, violante2004simulation}.
+cannot be reprogrammed an unlimited number of times (flash-based) and anti-fuse only time programmable, making SRAM-based FPGAs more
+suitable for complex systems requiring frequent reconfiguration and adaptation~\cite{quinn2015validation, violante2004simulation}. Errors produces in the FPGAs due to SEU can be classified into two different categories - errors affecting the logic blocks and errors affecting the routing~\ref{sterpone2006new}. For the logic block the SEU can produce the following errors~\ref{sterpone2006new}.
+
+\begin{itemize}
+\item LUT error: SEU modified the one bit of the LUT.
+
+\item MUX erros: SEU changed the configuration of the MUX in logic block.
+
+\item Flip-Flop error: SEU modified the configuration of a FF.
+
+Routing resources are about the 80 percent of FPGA resources, SEE can create different phenomenas that modifies the different programmable Interconnect Points (PIPs)~\ref{sterpone2006new}.
+
+\end{itemize}
+
+
 
 \begin{figure}
  \centering
@@ -108,6 +201,7 @@ suitable for complex systems requiring frequent reconfiguration and adaptation~\
 
 
 
+
 %\subsection{Faults, and Failure}
 
 
@@ -115,15 +209,35 @@ suitable for complex systems requiring frequent reconfiguration and adaptation~\
 
 
 
-As we discussed before, SRAM-based FPGAs are particularly sensitive to SEUs. The configuration memory is the most sensitive part, by changing the configuration memory, may affect the overall functionality of the system. The work have done so far deal the SEU effects on FPGAs, combines the simulation, radiation, and emulation testing~\cite{quinn2015validation, violante2004simulation, hobeika2014multi, robache2013methodology, quinn2015using, souari2015optimization}. These papers described how they make the faulty behavior of the system to build an accurate representation of the system. The work presented in~\cite{quinn2015using} described the benchmark that can be used for the reliability and radiation effects study on FPGAs and microprocessors. FPGAs offer high densities and run-time programmability facility make inconvenient to use in the aerospace domain. But, FPGAs are sensitive to high-energy ions.  We need to study the sensitivity of SRAM-based FPGAs to heavy ions that show the suitability and analysis of effects of radiation on FPGAs when employed in space, e.g., usage of FPGAs in aircraft. The work presented in~\cite{hobeika2014multi} investigate the sensitivity of SRAM-based FPGAs devices not only for the simulation-based approach but also used emulation and radiation testing for evaluating the effects of SEUs. The work presented in~\cite{souari2015optimization} described the fault injection emulation in Xilinx FPGA based on the identification of critical configuration bits. Based on SRAM-based FPGAs, two aspects can be considered:
 
-\begin{itemize}
+The second domain to understand in this project is designing, testing and verification by fault injection. As we discussed before, SRAM-based FPGAs are particularly sensitive to SEUs. The configuration memory is the most sensitive part. By changing the configuration memory, may affect the overall functionality of the system. The work done so far to study the SEU effects on FPGAs, combines the emulation, simulation, and radiation testing
+
+\subsection{Emulation}
+
+The purpose of fault emulation to reproduce as closely as possible radiation based results, evaluate the criticality of FPGA resources, analyze the impact of flipping the critical bits, find the faulty response of the circuit by flipping the bits and find techniques that help to reduce the emulation time. Several works have been done so far deals with the analysis of SEU effects on FPGAs.
+
+The work presented in ~\cite{hobeika2014multi} provide an emulation platform for the signature generation. This work is focused on the identification of the emulation zone,  fault list generation, SEU emulation. The purpose of their work is to investigate the sensitivity of SRAM-based FPGAs devices not only for the simulation-based approach but also used emulation and radiation testing for evaluating the effects of SEUs. In this paper they also provide the results for the radiation based signature and simulation based signature. 
+
+The work presented in~\ref{souari2015optimization, souari2016towards} deals about the fault injection into the FPGA configuration memory based on the sensitivity of the bits by considering that the 'bits-at-one' are more sensitive to the "bits-at-zeros". They have developed a methodology to extract the list of configuration bit addresses of the design LUTs based on the .ebc file of the design.
+
+The work presented in~\cite{quinn2015using} described the benchmark that can be used for the reliability and radiation effects study on FPGAs and microprocessors. 
+
+An accelerated fault injection technique is presented in~\ref{di2014fault} bassed on the design essential bits provided by the \textit{bitgen} command of Xilinx ISE tool. Similarly, there are few other techniques are availble for the fault emulation based on the random fault injection, two board FPGA and single FPGA~\ref{faure2005single}.
 
 
-\item SEUs may alter the contents of a register in the data path, or the content of the state register.
-\item SEUS may alter the content of the configuration memory.
 
-\end{itemize}
+
+
+
+
+
+%FPGAs are sensitive to radiations. We need to study the sensitivity of SRAM-based FPGAs to neutrons that show the suitability and analysis of effects of radiation on FPGAs when employed in space, e.g., usage of FPGAs in aircraft.
+
+
+ The work presented in~\cite{hobeika2014multi}  The work presented in~\cite{souari2015optimization} described the fault injection emulation in Xilinx FPGA based on the identification of critical configuration bits. 
+
+
+
 
 
 
