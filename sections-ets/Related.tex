@@ -214,93 +214,71 @@ The second domain to understand in this project is designing, testing and verifi
 
 \subsection{Emulation}
 
-The purpose of fault emulation to reproduce as closely as possible radiation based results, evaluate the criticality of FPGA resources, analyze the impact of flipping the critical bits, find the faulty response of the circuit by flipping the bits and find techniques that help to reduce the emulation time. Several works have been done so far deals with the analysis of SEU effects on FPGAs.
+The purpose of fault emulation to reproduce as closely as possible radiation based results, evaluate the criticality of FPGA resources, analyze the impact of flipping the critical bits, find the faulty response of the circuit by flipping the bits and find techniques that help to reduce the emulation time. Several works have been done so far deals with the analysis of SEU effects on FPGAs. The emulation of SEUs in an FPGA is done by flipping the bit in the configuration memory. 
 
-The work presented in ~\cite{hobeika2014multi} provide an emulation platform for the signature generation. This work is focused on the identification of the emulation zone,  fault list generation, SEU emulation. The purpose of their work is to investigate the sensitivity of SRAM-based FPGAs devices not only for the simulation-based approach but also used emulation and radiation testing for evaluating the effects of SEUs. In this paper they also provide the results for the radiation based signature and simulation based signature. 
+The work presented in ~\cite{hobeika2014multi} provide an emulation platform for the signature generation. This work is focused on the identification of the emulation zone,  fault list generation, SEU emulation, result Analysis. The purpose of their work is to investigate the sensitivity of SRAM-based FPGAs devices not only for the simulation-based approach but also used emulation and radiation testing for evaluating the effects of SEUs. In this paper they also provide the results for the radiation based signature and simulation based signature. They showed that simulation and emulation based signatures could contain the same error values as obtained with radiation but their probability of occurrence could significantly different. The arithmetic signature for TRIUMF to emulation is 85.3 % for adder and 84.8% for the multiplier. Similarly, the matching with the simulation of adder and multiplier with TRIUMF is 84.8 % and 100 % respectively.
 
-The work presented in~\ref{souari2015optimization, souari2016towards} deals about the fault injection into the FPGA configuration memory based on the sensitivity of the bits by considering that the 'bits-at-one' are more sensitive to the "bits-at-zeros". They have developed a methodology to extract the list of configuration bit addresses of the design LUTs based on the .ebc file of the design.
+The work presented in~\ref{souari2015optimization, souari2016towards} deals about the fault injection into the FPGA configuration memory based on the sensitivity of the bits by considering that the 'bits-at-one' are more sensitive to the "bits-at-zeros". The Emulation setup presented in this paper adopted the approach for the estimation by fault injection based on the sensitivity. Authors proposed the method in which fault are injected based on the specific bits configurations defined according to their contents and the type of FPGA resources.
+
+
+
+They have developed a methodology to extract the list of configuration bit addresses of the design LUTs based on the .ebc file of the design.  For the identification of an emulation zone, they used the concept of the essential bits which can be extracted by the Xilinx BitGen command.
 
 The work presented in~\cite{quinn2015using} described the benchmark that can be used for the reliability and radiation effects study on FPGAs and microprocessors. 
 
 An accelerated fault injection technique is presented in~\ref{di2014fault} bassed on the design essential bits provided by the \textit{bitgen} command of Xilinx ISE tool. Similarly, there are few other techniques are availble for the fault emulation based on the random fault injection, two board FPGA and single FPGA~\ref{faure2005single}.
 
 
+The work  proposed in the~\cite{hobeika2013flight} described a completed automated methodology to emulate SEUs on an FPGA efficiently. The authors used the reconfigurable flight control system based on a reference adaptive control model. 
+In this work, 253227 bits are identified as the total essential bits among them, 57464 belongs to the interested essential bits. The step is used to minimize the time because an FPGA device contains millions of configurable bits, emulating a bit flip for every cell would be time-consuming. BitGen gives only the essential bits; that
+considered critical bits.  
+
+The difference between the work presented in~\cite{hobeika2014multi} and~\cite{hobeika2013flight} is that; in~\cite{hobeika2013flight} the authors used the flight control system that is based on a linear plant model. Whereas, in~\cite{hobeika2014multi}the emulation is performed on the circuits (adder and multiplier). 
 
 
 
+%\begin{itemize}
+%
+%\item   {Classification of the configuration bits into subsets.
+%        a.  Bits set to 1/0 of LUT.
+%        b. Bits set to 1/0 configuring other than LUT.
+%        c. Bits set to 1/0 configuring other resources not identified as  potentially critical by bitgen.}
+%        
+%        
+%\item  {Estimating the number of critical bits of the set by randomly injecting faults in the bits of each set. This method helps to find the most critical zones of the FPGA.}
+%
+%\item {Prioritized the fault injection in the identified (step-2) most critical zones.
+%These classification steps are done with the help of EBC and EBD files provided by the bitgen. The experimental results presented in [5] evaluated the SEU sensitiveness as well as bitgen efficiency. The results are evaluated between random fault injection with different prioritized bit subsets.  The first observation authors concluded - the bitgen did not accurately identify all the critical bits meaning the bitgen limitations. Second authors did the prioritizing the most sensitive subset. It would involve exhaustive fault injection. The authors used fault injection to get an estimated number of critical bits as well as the related estimation error. They used the term critical bit error estimate (CBEE). The authors claimed the CBEE observed for the random approach is higher than the observed under the bits subsets.  The ratio of observed critical bits (ROCB) observed for the random injection is far less than the different bits subsets.}
 
 
 
-%FPGAs are sensitive to radiations. We need to study the sensitivity of SRAM-based FPGAs to neutrons that show the suitability and analysis of effects of radiation on FPGAs when employed in space, e.g., usage of FPGAs in aircraft.
-
-
- The work presented in~\cite{hobeika2014multi}  The work presented in~\cite{souari2015optimization} described the fault injection emulation in Xilinx FPGA based on the identification of critical configuration bits. 
-
-
-
-
-
+%\end{itemize}
 
 \subsection{Simulation}
 
-The work presented in~\cite{robache2013methodology} discuss the fault simulation, fault emulation, and radiation testing. Starting from the simulation, I can interrogate how the authors used the concept of signatures to capture and reproduce the faulty behavior due to SEUs very early in the design process.
-Radiation testing is an expensive approach and requires a state-of-the-art facility. The alternative to the radiation testing is the fault-injection approach.  The work presented in~\cite{hobeika2014multi} described the concept of faulty behavior signature. The work demonstrates how faulty behavior signatures allow building high-level models, e.g., high-level faulty model, i.e., Simulink, that reflects the faulty behavior of a combinational circuit represented at gate-level  (injected with one fault arbitrarily selected from a fault list). The main contribution of this work is to capture the effects of radiations on a circuit modeled at a low abstraction level and then abstract it to a  higher level. This challenge can be accomplished by introducing the concept of faulty behavior signature.  The fault injection tool that is used named - LIFTING.  The purpose of this tool is to study the effects of different types of faults on a circuit at gate-level. The tool used the stuck-at 0 and 1 are injected in each node of the design. The LIFTING is a simulation-based gate-level fault injection tool that used the circuit netlist file, e.g.  *.v file, input test vectors, and fault parameters as inputs produced two output files. The one is the golden report and the second consist of fault injection report. These two outputs are used to generate the signatures.  The signature represents the compressed faulty behavior of the circuit. The signatures consist of arrays of errors and their probabilities of occurrence. The signatures are either arithmetic or logic.  The third step is to make a high-level model that corresponds the low-level circuit. The work presented in this paper helps to make a faulty block with Simulink that reads a signature and generates errors according to the distribution.
+Simulation based testing are low cost and flexible but it is difficult to get the accurate results from the simulation based testing. For simulation based testing the work presented in the~\cite{violante2004simulation} described a approach for fault injection based on the simulation during early design phase when the hardware system is not ready. The work presented in~\ref{robache2013methodology} demonstrates how faulty behavior signatures allow building high-level models, i.e., high-level faulty model, e.g., fault model in MATLAB Simulink, that reflects the faulty behavior of a combinational circuit represented at gate-level. The fault injection tool that is used named - LIFTING.  The purpose of this tool is to study the effects of different types of faults on a circuit at gate-level. The tool used the stuck-at 0 and 1 are injected in each node of the design. The LIFTING is a simulation-based gate-level fault injection tool that used the circuit netlist file, e.g.  *.v file, input test vectors, and fault parameters as inputs produced two output files. The one is the golden report and the second consist of fault injection report. These two outputs are used to generate the signatures.  The signature represents the compressed faulty behavior of the circuit. The signatures consist of arrays of errors and their probabilities of occurrence. The signatures are either arithmetic or logic.  The third step is to make a high-level model that corresponds the low-level circuit. The work presented in this paper helps to make a faulty block with Simulink that reads a signature and generates errors according to the distribution.
 
-\subsection{Emulation}
-The emulation of SEUs in an FPGA is done by flipping the bit in the configuration memory. The emulation can be done by using the IP provided by the Xilinx named - LogiCORE. The work adopted the emulation work also proposed in the~\cite{hobeika2013flight}.  The work described a completed automated methodology to emulate SEUs on an FPGA efficiently. The authors used the reconfigurable flight control system based on a reference adaptive control model. The difference between the work presented in~\cite{hobeika2014multi} and~\cite{hobeika2013flight} is that; in~\cite{hobeika2013flight} the authors used the flight control system that is based on a linear plant model. Whereas, in~\cite{hobeika2014multi}the emulation is performed on the circuits (adder and multiplier). The work presented in~\cite{hobeika2014multi} used the SEU controller. The emulation is the four step process.
-
-\begin{itemize}
-
-\item Identification of an emulation zone.
-\item Fault list generation.
-\item SEU emulation.
-\item Result Analysis.
-
-\end{itemize}
+\subsection{Radiation Testing}
+Radiation testing is an expensive approach and requires a state-of-the-art facility. The work presented in~\cite{hobeika2014multi} described the effects of radiations on a circuit modeled at a low- level and then abstract it to a  higher level. In this work the also compared the results which are expressed as signatures of fault simulation, emulation, and radiation. They  want to capture and regenerate the faulty behavior occur due to SEUs early in the design process. Their hardware setup consists of two Artix-7 board. Board A used as a reference and board- B is subjected to radiations. The board-A is not bombarded, and it hosted the counters, reference design error detection and signature computation, memories to store signatures and communication controller. A total 20 runs performed on the adder and 14 on the multipliers. Arithmetic errors for both approached DSP and LUT are observed (151 vs. 291 for DSP). This is due to DSP strategy; SEUs can add registers in the data path, leading to the sequential type of errors. The authors in this work compare the results from the fault simulation, fault emulation, and radiation testing. 
 
 
 
-The identification of an emulation zone used the concept of the essential bits which can be extracted by the Xilinx BitGen command. For example, 253227 bits are identified as the total essential bits in~\cite{hobeika2013flight}, among them, 57464 belongs to the interested essential bits. The step is used to minimize the time because an FPGA device contains millions of configurable bits, emulating a bit flip for every cell would be time-consuming. BitGen gives only the essential bits; that
-considered critical bits. The second step generates the fault list. This action creates a list of the corresponding bit addresses (exact bit position to be emulated).  For example, authors observed 7000 emulation requests in~\cite{hobeika2013flight}.  The third step used auto-correct mode in which one bit is flipped at a time and the detect-only mode  (bit flips accumulation possible) where bits are flipped without correction. In the final step, an in-house script is used to characterize and quantify the design sensitivity to SEUs. This script is used to compare the results with the faulty one and fault-free. Authors observed 638 total number of failure in~\cite{hobeika2013flight}. Similarly, authors observed 80384 essential bits among them 2454 are considered as the interested ones for the adder circuit, for multiplier interested essential bits are 1314 among 92337 total essential bits.
-The emulation can be performed on the Virtex 5. The 16-bit adder and  8-bit-by-8-bit multiplier are used as a testing circuit. The signatures are recorded in the accumulation mode. And, the estimation of the critical bits performed in the auto-correct mode.
-The Emulation setup presented in~\cite{souari2015optimization} adopted the approach for the estimation by fault injection based on the sensitivity. Authors proposed the method in which fault are injected based on the specific bits configurations defined according to their contents and the type of FPGA resources. This new approach outperformed the traditional random fault injection with speed up factors to two orders of magnitude. This fault injection method based on the prioritizing specific subsets of configuration bits. These configuration bits are classified with the statistical analysis according to their values (0 or 1, and 2). The SEU controller a macro developed by Xilinx assuring fault injection, detection, and correction is used a fault injection engine in their experiments. The fault injection is prioritized using the following three steps:
+The work presented in~\cite{dsilva2015neutron} used the Flash-based FPGA under neutron beam to observed the SEE in avionics applications. They observed that the failure in time rate for flip-flops, SRAM cell, PLL are resonably low. They proposed that the FFs can be hardened by the TMR. 
 
-\begin{itemize}
+In~\cite{maillard2015neutron} authors tested the UltraScale Kintex FPGA under neutron and proton beam. They examined the single event upset response of the FPGA. They presented the result in terms of failure in time calculation. They observed that  there are 0.1\% are uncorrectable events. 
 
-\item   {Classification of the configuration bits into subsets.
-        a.  Bits set to 1/0 of LUT.
-        b. Bits set to 1/0 configuring other than LUT.
-        c. Bits set to 1/0 configuring other resources not identified as  potentially critical by bitgen.}
-        
-        
-\item  {Estimating the number of critical bits of the set by randomly injecting faults in the bits of each set. This method helps to find the most critical zones of the FPGA.}
 
-\item {Prioritized the fault injection in the identified (step-2) most critical zones.
-These classification steps are done with the help of EBC and EBD files provided by the bitgen. The experimental results presented in [5] evaluated the SEU sensitiveness as well as bitgen efficiency. The results are evaluated between random fault injection with different prioritized bit subsets.  The first observation authors concluded - the bitgen did not accurately identify all the critical bits meaning the bitgen limitations. Second authors did the prioritizing the most sensitive subset. It would involve exhaustive fault injection. The authors used fault injection to get an estimated number of critical bits as well as the related estimation error. They used the term critical bit error estimate (CBEE). The authors claimed the CBEE observed for the random approach is higher than the observed under the bits subsets.  The ratio of observed critical bits (ROCB) observed for the random injection is far less than the different bits subsets.}
+The work presented in~\cite{quinn2015using} did the radaition testing in the Los Almos Neutron Science Center (LANSCE). The results are provided for the micro-controller, ARM cores, GPUs, and FPGAs. The B13 from ITC99~\cite{ITC} is used under the hardware benchmark suite; Virtex- 5 is used as a hardware platform. They also provide the result for the mitigation. For mitigation, they used X-TMR and VERI-Place. The failure in time (FIT) are decreased under mitigation, but the overhead is increased (circuit area increased).
+
+\textbf{Hardware Benchmark Testing}
+For the hardware radiation testing the authors used the B13 from the ITC’99 benchmark suite. The circuit is too small so it can be replicated 30 times, the implementation is done on the Virtex-5. Both unmitigated and mitigated version are tested. The results for FPGA radiation reports SDCs from the mitigated circuits normalized to the SDCs from the unmitigated circuits. Mitigated circuits are likely to fail at three times the rate of the unmitigated circuit, because of the increased size of the circuit from the mitigation process. The mitigated circuit cross-section is three times larger than an unmitigated circuit when SEUs accumulate. The authors conclude; the VERI-place mitigated circuits perform better than the X-TMR mitigated circuits.
+
+\textbf{Software Benchmark Testing}
+Software benchmark radiation testing is done on the flash-based microcontroller,  a ferroelectric-memory-based microcontroller, two ARMs, and GPUs. These components are tested with both mitigated and unmitigated codes. The results reported in the paper for two different microcontroller and two ARMs cores. For microprocessors: these microprocessors have very small SRAM the FITs are very small. In some cases, there is no error from the code during many days of testing. They also implemented the matrix multiplication, FFT, and Hotspot on NVIDIA K20 GPU and applied mitigation methods (ECC, ABFT, and DWC).  The purpose is to see the effect of overhead by applying the mitigation technique; the overhead has been increased as compared it with the unhardened configuration.
 
 
 
-\end{itemize}
 
-
-
-\subsection{Radiation testing}
-The hardware setup consists of two Artix-7 board. Board A used as a reference and board- B is subjected to radiations. The board-A is not bombarded, and it hosted the counters, reference design error detection and signature computation, memories to store signatures and communication controller. A total 20 runs performed on the adder and 14 on the multipliers. Arithmetic errors for both approached DSP and LUT are observed (151 vs. 291 for DSP). This is due to DSP strategy; SEUs can add registers in the data path, leading to the sequential type of errors. The authors in this work compare the results from the fault simulation, fault emulation, and radiation testing. The purpose is to express as signatures, intended to reproduce the faulty behavior. They showed that simulation and emulation based signatures could contain the same error values as obtained with radiation but their probability of occurrence could significantly different. The arithmetic signature for TRIUMF to emulation is 85.3 % for adder and 84.8% for the multiplier. Similarly, the matching with the simulation of adder and multiplier with TRIUMF is 84.8 % and 100 % respectively.
-
-
-
-%\subsection{Stuck-at Fault Model}
-%\subsection{Functional Fault Model}
-%\subsection{Open Fault}
-%\subsection{Stuck-On and Stuck-Off}
-
-
-\section{Fault Models}
-
-
-\subsection{Stuck-at Fault Model}
-
-\subsection{Functional Fault Model}
 
 
 
@@ -308,56 +286,47 @@ The hardware setup consists of two Artix-7 board. Board A used as a reference an
 
 
 %\subsection{Benchmark for Radiation Testing}
-The suitable selection of the benchmark for the radiation testing of microprocessor and FPGAs is a recently topic of ongoing research. The benchmarks are used to evaluate the performance under different architectures, technology, and compiler. There is no such standard benchmark employed to study microprocessor and FPGAs under the effects of radiations; make it difficult to assess the changes in fabrication technology, architecture, and circuitry. The work presented in~\cite{quinn2015using}described the software and hardware benchmark under the neutron test data. The unavailability of the such a benchmark for testing because radiation hardness assurance techniques are applied only to circuit layouts or manufacturing process. There is no standard test circuits available, researcher, used flip-flop or D-latches to compare their results. In recent years, radiation effects community shown interest to develop a standard set of circuits that include complex and realistic algorithms and can be adapted to different FPGAs.  Currently, without standard benchmark researcher used the following approach for testing:
+%The suitable selection of the benchmark for the radiation testing of microprocessor and FPGAs is a recently topic of ongoing research. The benchmarks are used to evaluate the performance under different architectures, technology, and compiler. There is no such standard benchmark employed to study microprocessor and FPGAs under the effects of radiations; make it difficult to assess the changes in fabrication technology, architecture, and circuitry. The work presented in~\cite{quinn2015using}described the software and hardware benchmark under the neutron test data. The unavailability of the such a benchmark for testing because radiation hardness assurance techniques are applied only to circuit layouts or manufacturing process. There is no standard test circuits available, researcher, used flip-flop or D-latches to compare their results. In recent years, radiation effects community shown interest to develop a standard set of circuits that include complex and realistic algorithms and can be adapted to different FPGAs.  Currently, without standard benchmark researcher used the following approach for testing:
+%
+%\begin{itemize}
+%
+%
+%\item Homemade Design.
+%\item Circuits from Opencore.
+%\item Proprietary designs.
+%\end{itemize}
+%
+%
+%The problem with this approach as no two organizations used the same set of codes or circuits, difficult to make the comparison. There is a need for collaboration to make a suitable set of benchmark for reliability application and study the effects of radiation under the same conditions. The criteria used to set a standard benchmark including:
+%
+%Repeatability of benchmark tests.
+%A representative of deployed computing workload.
+%Availability of fixed input vectors.
+%Cross-platform implementation.
+%The ability to repeat test itself is an important part of the standardized testing. By repeating the algorithms, the input test vector, the compilation, the synthesis setting help researchers to have the enough information. It is necessary to provide a wide variety of realistic algorithms so that the system can be tested as likely to the realistic application. Defining the input test vector is an essential step because many hardware errors can be observed under the specific set of the test vector. It is an open question which input test vector should be adopted, under the specific set of criteria. Finally, the implementation of the algorithms in portable languages help to use the same set of codes on the different platform. For example, assembly language for the microprocessors limit the ability to compare and port codes on the different platform. But the hardware benchmark developed in VHDL can ease the problem; the same circuit can be ported to any FPGA.
+%
+%\textbf{FPGA Radiation Benchmark}
+%
+%The FPGA benchmark mentioned in this paper is ITC'99 which is well defined ATPG benchmark. This benchmark meets all the requirements, e.g., realistic algorithms, input vectors, scalability, and portability. The circuits are implemented in the HDL so that it can be ported to different FPGAs. The first 15 circuits from the ITC'99 are adopted for the benchmark as shown in Table I.
 
-\begin{itemize}
-
-
-\item Homemade Design.
-\item Circuits from Opencore.
-\item Proprietary designs.
-\end{itemize}
-
-
-The problem with this approach as no two organizations used the same set of codes or circuits, difficult to make the comparison. There is a need for collaboration to make a suitable set of benchmark for reliability application and study the effects of radiation under the same conditions. The criteria used to set a standard benchmark including:
-
-Repeatability of benchmark tests.
-A representative of deployed computing workload.
-Availability of fixed input vectors.
-Cross-platform implementation.
-The ability to repeat test itself is an important part of the standardized testing. By repeating the algorithms, the input test vector, the compilation, the synthesis setting help researchers to have the enough information. It is necessary to provide a wide variety of realistic algorithms so that the system can be tested as likely to the realistic application. Defining the input test vector is an essential step because many hardware errors can be observed under the specific set of the test vector. It is an open question which input test vector should be adopted, under the specific set of criteria. Finally, the implementation of the algorithms in portable languages help to use the same set of codes on the different platform. For example, assembly language for the microprocessors limit the ability to compare and port codes on the different platform. But the hardware benchmark developed in VHDL can ease the problem; the same circuit can be ported to any FPGA.
-
-\textbf{FPGA Radiation Benchmark}
-
-The FPGA benchmark mentioned in this paper is ITC'99 which is well defined ATPG benchmark. This benchmark meets all the requirements, e.g., realistic algorithms, input vectors, scalability, and portability. The circuits are implemented in the HDL so that it can be ported to different FPGAs. The first 15 circuits from the ITC'99 are adopted for the benchmark as shown in Table I.
-
-\textbf{Software Radiation Benchmark}
-
-The software radiation benchmark is harder to design than the FPGA radiation benchmark. The development of the standard set of algorithm that can be ported on different architectures would be a challenging task e.g., porting an algorithm to 16-bit microcontroller to GPU. The authors are interested in the software benchmark where the computational load can be divided into the parallel processes or run on a single core. The commonly used software benchmark comprises of fast fourier transform, matrix multiplication and quick-sort algorithm as they are commonly used in many applications and useful for the evaluating the reliability of parallel processors. The software benchmark comprises the following code.
-
-\begin{itemize}
-\item AES-128;
-\item Cache test;
-\item FFT;
-\item Hotspot;
-\item HPCCG;
-\item Matrix Multiply;
-\item Quicksort
-\end{itemize}
-
-
+%\textbf{Software Radiation Benchmark}
+%
+%The software radiation benchmark is harder to design than the FPGA radiation benchmark. The development of the standard set of algorithm that can be ported on different architectures would be a challenging task e.g., porting an algorithm to 16-bit microcontroller to GPU. The authors are interested in the software benchmark where the computational load can be divided into the parallel processes or run on a single core. The commonly used software benchmark comprises of fast fourier transform, matrix multiplication and quick-sort algorithm as they are commonly used in many applications and useful for the evaluating the reliability of parallel processors. The software benchmark comprises the following code.
+%
+%\begin{itemize}
+%\item AES-128;
+%\item Cache test;
+%\item FFT;
+%\item Hotspot;
+%\item HPCCG;
+%\item Matrix Multiply;
+%\item Quicksort
+%\end{itemize}
 
 
 
-\textbf{Radiation Testing}
-The radiation testing is completed at Los Almos Neutron Science Center (LANSCE). The results are provided for the microcontroller, ARM cores, GPUs, and FPGAs. The B13 from ITC99 is used under the hardware benchmark suite; Virtex- 5 is used as a hardware platform. They also provide the result for the mitigation. For mitigation, they used X-TMR and VERI-Place. The failure in time (FIT) are decreased under mitigation, but the overhead is increased (circuit area increased).
 
-\textbf{Hardware Benchmark Testing}
-For the hardware radiation testing the authors used the B13 from the ITC’99 benchmark suite. The circuit is too small so it can be replicated 30 times, the implementation is done on the Virtex-5. Both unmitigated and mitigated version are tested. The results for FPGA radiation reports SDCs from the mitigated circuits normalized to the SDCs from the unmitigated circuits. Mitigated circuits are likely to fail at three times the rate of the unmitigated circuit, because of the increased size of the circuit from the mitigation process. The mitigated circuit cross-section is three times larger than an unmitigated circuit when SEUs accumulate. The authors conclude; the VERI-place mitigated circuits perform better than the X-TMR mitigated circuits.
 
-\textbf{Software Benchmark Testing}
-Software benchmark radiation testing is done on the flash-based microcontroller,  a ferroelectric-memory-based microcontroller, two ARMs, and GPUs. These components are tested with both mitigated and unmitigated codes. The results reported in the paper for two different microcontroller and two ARMs cores. For microprocessors: these microprocessors have very small SRAM the FITs are very small. In some cases, there is no error from the code during many days of testing. They also implemented the matrix multiplication, FFT, and Hotspot on NVIDIA K20 GPU and applied mitigation methods (ECC, ABFT, and DWC).  The purpose is to see the effect of overhead by applying the mitigation technique; the overhead has been increased as compared it with the unhardened configuration.
-In short, the work presented in [3] evaluate a common set of hardware and software benchmarks to evaluate reliability and radiation effects on FPGA and microprocessors.
 
 
 
@@ -366,119 +335,149 @@ In short, the work presented in [3] evaluate a common set of hardware and softwa
 %\section{Fault-detection, mitigation and correction in the FPGA }
 
 
-The impact of SEUs on SRAM FPGA devices has been studied in~\cite{bellato2004evaluating}. Many  techniques  have  been  proposed to provide highly reliable FPGA devices, e.g. radiation-hardened FPGAs~\cite{rockett2007radiation}, in-order to lower the effect of radiation-induced SEUs. However, radiation-hardened  SRAM  FPGAs  typically have  a  low  density, and  they  only  may  lower  the  probability of SEUs to occur but  not  completely avoid  them. Therefore, non radiation-hardened FPGAs, like the  Xilinx Kintex-7, are evaluated under a harsh radiation  environment~\cite{wirthlin2014soft}. Even on radiation-hardened FPGAs, the SEU rate in a low-earth orbit flight experiment can be up to 16 events per day~\cite{quinn2012orbit}. A wide  variety  of  SEU  fault  mitigation  techniques  for SRAM-based  FPGAs  have  been  proposed  during  the  past years. These techniques can be categorized into module redundancy techniques such as triple modular redundancy (TMR)~\cite{lyons1962use} and techniques that use scrubbing of the FPGA configuration memory~\cite{heiner2009fpga}. Also the combination of  both techniques has been shown to be able to increase the reliability of FPGA modules significantly ~\cite{ostler2009sram}. FPGA-based TMR approaches replicate a given module which shall be protected either statically or dynamically~\cite{angermeier2011runtime}. The different granularities of voted replicas  are evaluated in~\cite{bolchini2007tmr}. However, no upset rates and consequential no reliability figures are provided. Nevertheless, TMR techniques are  known to often cause an excessive and unacceptable overhead in terms of power  consumption and area. Since the intensity of a cosmic rays is not constant but may vary over several magnitudes depending on the solar activity, a worst-case radiation protection is far too expensive in most cases. A self-adaptive system is proposed in~\cite{glein2014self}, which monitors the current SEU rate and exploits the opportunity of partial reconfiguration of FPGAs to implement redundancy such as TMR on demand. 
+%The impact of SEUs on SRAM FPGA devices has been studied in~\cite{bellato2004evaluating}. Many  techniques  have  been  proposed to provide highly reliable FPGA devices, e.g. radiation-hardened FPGAs~\cite{rockett2007radiation}, in-order to lower the effect of radiation-induced SEUs. However, radiation-hardened  SRAM  FPGAs  typically have  a  low  density, and  they  only  may  lower  the  probability of SEUs to occur but  not  completely avoid  them. Therefore, non radiation-hardened FPGAs, like the  Xilinx Kintex-7, are evaluated under a harsh radiation  environment~\cite{wirthlin2014soft}. Even on radiation-hardened FPGAs, the SEU rate in a low-earth orbit flight experiment can be up to 16 events per day~\cite{quinn2012orbit}. A wide  variety  of  SEU  fault  mitigation  techniques  for SRAM-based  FPGAs  have  been  proposed  during  the  past years. These techniques can be categorized into module redundancy techniques such as triple modular redundancy (TMR)~\cite{lyons1962use} and techniques that use scrubbing of the FPGA configuration memory~\cite{heiner2009fpga}. Also the combination of  both techniques has been shown to be able to increase the reliability of FPGA modules significantly ~\cite{ostler2009sram}. FPGA-based TMR approaches replicate a given module which shall be protected either statically or dynamically~\cite{angermeier2011runtime}. The different granularities of voted replicas  are evaluated in~\cite{bolchini2007tmr}. However, no upset rates and consequential no reliability figures are provided. Nevertheless, TMR techniques are  known to often cause an excessive and unacceptable overhead in terms of power  consumption and area. Since the intensity of a cosmic rays is not constant but may vary over several magnitudes depending on the solar activity, a worst-case radiation protection is far too expensive in most cases. A self-adaptive system is proposed in~\cite{glein2014self}, which monitors the current SEU rate and exploits the opportunity of partial reconfiguration of FPGAs to implement redundancy such as TMR on demand. 
 
-Memory scrubbing is a well-known correction technique for the configuration memory of SRAM-based FPGAs. It consists on re-writing the configuration memory after the FPGA is configured to restore its original content. It is often a transparent operation for the running application. This is possible because modern FPGAs offer a dynamic partial reconfiguration (DPR) feature. The circuit that enables the scrubbing is commonly named scrubber. Additionally, readback is the process of reading the configuration memory of the FPGA after it is configured. Both processes (readback and scrubbing) can be used to implement different scrubbing methodologies as shown in~\cite{herrera2013design}. Scrubbing can be implemented using an internal or external interface as shown in~\cite{berg2008effectiveness}. When external interface is used, the scrubbing logic is implemented outside the FPGA. In the case of Xilinx FPGAs several external interfaces are available; however, the Select MAP interface has the highest data throughput. On the other hand, there is only one internal interface named ICAP~\cite{xilinx}. This internal interface can be accessed from the reconfigurable logic of the FPGA and it is a replica of the Select MAP interface. Also scrubbers can be implemented in software or hardware. The scrubbing process can be implemented using a microprocessor with the advantage of a high flexibility to implement different complex scrubbing methodologies but with lower configuration speeds and lower energy efficiency.
-
-\section{Faults Behavioral Modeling}
-
-%\subsection{Built-In Self-Test (BIST)}
-%\subsection{All Test Pattern Generator (ATPG)}
-%\subsection{Scan Chain Testing}
+%Memory scrubbing is a well-known correction technique for the configuration memory of SRAM-based FPGAs. It consists on re-writing the configuration memory after the FPGA is configured to restore its original content. It is often a transparent operation for the running application. This is possible because modern FPGAs offer a dynamic partial reconfiguration (DPR) feature. The circuit that enables the scrubbing is commonly named scrubber. Additionally, readback is the process of reading the configuration memory of the FPGA after it is configured. Both processes (readback and scrubbing) can be used to implement different scrubbing methodologies as shown in~\cite{herrera2013design}. Scrubbing can be implemented using an internal or external interface as shown in~\cite{berg2008effectiveness}. When external interface is used, the scrubbing logic is implemented outside the FPGA. In the case of Xilinx FPGAs several external interfaces are available; however, the Select MAP interface has the highest data throughput. On the other hand, there is only one internal interface named ICAP~\cite{xilinx}. This internal interface can be accessed from the reconfigurable logic of the FPGA and it is a replica of the Select MAP interface. Also scrubbers can be implemented in software or hardware. The scrubbing process can be implemented using a microprocessor with the advantage of a high flexibility to implement different complex scrubbing methodologies but with lower configuration speeds and lower energy efficiency.
 
 
-Intensive research has been done in the analysis of the faults for combinational circuits~\cite{mitra2005robust},~\cite{miskov2006mars} and sequential circuits~\cite{asadi2005soft},~\cite{miskov2007soft}. The most of the research work has been done is related to the transient fault analysis, soft error rate (SER) analysis and prediction, failure-in-time calculations. 
 
-I summarize all those which related to this project at some extent as follows.
+\section{Fault Models}
 
-In~\cite{chen2017fault} this paper proposes the fault propagation process between the different subsystem of the
-main system, combined with the finite state machine, but they did not provide any experimental data to support their idea. Only, MTBF is provided.
 
-In~\cite{li2016monte} in this paper, Monte Carlo technique is used for the soft error analysis of the sequential
-circuits. They perform the logic simulation for latch-level error propagation to estimate the SEUs. This work is mainly focused on the convergence of the variance of the estimate of SEUs.
-They insert the fault into the simulator and observe it to the output. Apply the Monte Carol technique
-to find the number of samples and the time for the estimation of the error
-  
-  
-In~\cite{kapare2016automated} in this work, they propose a methodology to estimate the output quality of approximate
+The last domain of this work is related to the fault models, and fault analysis. We further divided this into three different categories and provide a related work on each domain separately. The most of the research work has been done is related to the transient fault analysis, soft error rate (SER) analysis and error prediction, failure-in-time calculations all these research done on the different abstraction levels.
+
+
+
+\subsection{Behavioral Domain:}
+
+
+In~\cite{chen2017fault} authors proposed the fault propagation process between the different subsystem of the
+main system, combined with the finite state machine. This work is based on the FSM and fault propagation model. 
+
+In~\cite{svenningsson2010model}, authors presented the idea that how model-based fault injection can be utilized to
+simulate the effect of hardware related faults in embedded systems. Model level and hardware level
+fault behavior comparison is presented.
+
+In~\cite{hayne1999behavioral},  they proposed two tools, which facilitate the fault simulation of behavioral
+models, described using VHDL. The tool is the Behavioral Fault Mapper (BFM). The BFM algorithm
+accepts a fault-free VHDL model of the design (combinational circuit) and a fault list of N faults from
+which it produces N faulty models. The assumed 8 different fault models, e.g., Stuck-Then, Stuck-Else,
+Assignment Control, Dead Process, Dead Clause, Micro-operation, Local Stuck-data, Global Stuck-data. 
+
+In~\cite{kapare2016automated}  they proposed a methodology to estimate the output quality of approximate
 sequential circuits (faulty circuits) based on finding the analytical expressions for predicting
 approximation errors from statistical data gathered from performing limited characterization of the
-approximate circuits (faulty circuits). They propose a methodology for estimating/predicting the output
-quality of a faulty circuit. They want to accurately predict the error behavior. Simulation-based results. Fault assumptions. Drive the analytical expression for the faulty
-circuits. Compare the results of the analytical expression and the simulation to observe the error
-difference. They did Curve fitting for analytical expression. 
-
-In~\cite{ebrahimi2015comprehensive}  the key idea behind this paper to present the result for SER analysis on an embedded
-processor. There platform employs a combination of models at device level, gate level error
-propagation and at architectural level.
-Limitation: The main limitation of this work - as they claimed they performed all the experiment on
-the embedded processor but in experiment section instead using a processor chip, they used the
-processor core and drive all the results via simulation of this core under the assumption of the fault. While using processor core under the radiations the primarily concerns is for the cache memory instead
-of the core itself.
-
-In~\cite{ubar2014modeling} this work is based on the Simulation, transformed the circuit into their required tool format, then they
-insert the fault on different nodes and calculate the SER. The main limitation of this work is the tools limitation for the transformation of the circuit.
-
-
+approximate circuits (faulty circuits). They proposed a methodology for estimating/predicting the output
+quality of a faulty circuit. They want to accurately predict the error behavior. 
 
 In~\cite{mirzadeh2014modeling} In this work, author proposed a fault behaviour model developed with a neural network
 concept in a novel way. The neural networks (NNs) structure was used to synthesize the faulty output of a
 circuit at a high-level of abstraction. All the strategies that were proposed in this research have novelty;
 and effort is exercised to find an appropriate structure for the neural network. The idea is good to make a model with NNs. But it underestimate the power of NNs for
-smaller circuits
+smaller circuits.
+
+
+In~\cite{janschek2017errorsim} authors proposed the high-level fault behavior mode. This work  used for the error propagation analysis. The tool have the ability to simulate different fault-models, e.g., offset, stuck-at-fault, noise, delay, package drop, and bit-flip. 
+
+In~\cite{hobeika2013flight} authors presented the new fault model that can be used by the designer at an earlier stage in the design process. In this work, they used the adaptive control model and did the SEU emulation on it. They found the new fault model, e.g., Control amplification, Sign Inversion, etc.
+
+The work presented in~\cite{thibeault2013library} based on the C/C++ description of an application. They used the technique to convert the circuit into control and data flow graph (CDFG) file, then used the resource estimation tool, to find the resources required to implement an application on an FPGA.
+
+The limitation of this work is the resources utilization tool for different FPGA. You need to modify the resource utilization for each new FPGA device. Moreover, this work is based on the .ncd file of the circuit provided by the Xilinx ISE tool, which is no more available for the newer FPGAs. 
+
+The work presented at the behavioral level did not have the insight information of the how fault effect the hardware at the circuit level. For example, in~\cite{janschek2017errorsim} the supposed the fault distribution are normal, exponential, Poisson, Weibull. The methodology we present in this thesis based on the fault emulation at the circuit-level and abstract it to the high-level. So, in this case, we will get the information not only how the model works at the high-level but also get the real-time information about the fault behavior at the low-level.
+
+
+\subsection{Transformation Domain}
+
+
+The transformation of the circuit into their respective tools is costly procedure and assume alot of assumptions, e.g., fault assumption to cause error in the expression or node.
 
 
 
-In~\cite{ranjan2014aslan} this technique is used to estimate the output quality of a faulty circuit which uses the concept
-of unrolling the circuit each clock cycle and compares this faulty unrolled circuit with the original circuit
+The work presented in~\cite{ubar2014modeling} is based on the Simulation, transformed the circuit into their required tool format, then they
+insert the fault on different nodes and calculate the SER. 
+
+In~\cite{brkic2014symbolic} the key idea behind this paper presented a symbolic analysis method for unreliable logic
+gates. 
+
+In~\cite{chan2013statistical} authors addressed the estimating output quality of a faulty hardware circuit by pre-
+characterizing the relationship between Error metric behavior and characteristics of approximate
+hardware circuits. These values are stored in lookup tables which are used to retrieve Error metric
+composition for a given approximate hardware module and then compose error metrics for output
+quality using regression-based models. This approach also takes into consideration the input
+distributions of the faulty circuit. 
+
+
+Modeling the probabilistic behavior of the Finite State Machine, calculating the steady state
+behaviour of the circuit and used for estimating the switching activity of the circuit for the purpose of
+power evaluation presented in~\cite{hachtel1996markovian}. They showed how steady-state probabilities of very large FSM’s can be computed by
+symbolic ADD-based algorithms.
+
+
+In~\cite{shazli2011high}, Soft Error Rate (SER) computation problem is modeled as a Boolean
+Satisfiability (SAT) problem and SAT solvers are used to compute SER for combinational and
+sequential circuits. They used an automated flow to convert combinational and sequential behavioral
+descriptions into equivalent SAT instances. The use of Boolean Satisfiability (SAT) approaches, to
+model soft errors in early design stages presented.
+
+
+
+In~\cite{miskov2007mars}, the symbolic framework based on Binary Decision Diagram (BDD) / Algebraic Decision
+Diagram (ADD) to analysis sequential reliability is presented in this paper. They calculate how much the
+gate output is suspected of an error. The MES is calculated at the electrical (transistor) level regarding
+the duty cycle, signal amplitude (voltage), and the gate error probability of individual gates associated
+with different input probabilities. 
+
+
+
+
+The limitation of working in this domain and make the model of the faulty behavior is to convert the design into respective tool, e.g., BDD/ADD, many assumptions, and simulations only. Need to drive the mathematical expressions for the fault model,  also need to assume the fault in the design, plus its too hard for complex circuits
+
+
+\subsection{Circuit Level}
+
+
+In~\cite{li2016monte} authors presented a  Monte Carlo technique for the soft error analysis of the sequential
+circuits. They perform the logic simulation for latch-level error propagation to estimate the SEUs. This work is mainly focused on the SEUs convergence means after how many clock cycles the circuit becomes fault free.
+They insert the fault into the simulator and observe it to the output. Apply the Monte Carol technique
+to find the number of samples and the time for the estimation of the error
+  
+  
+
+  The key idea behind In~\cite{ebrahimi2015comprehensive} is to present the result for SER analysis on an embedded
+processor. There platform employs a combination of models at device level, gate level error
+propagation and at architectural level. They used the
+processor core and drive all the results via simulation of this core under the assumption of the fault. While using processor core under the radiations the primarily concerns is for the cache memory instead
+of the core itself.
+
+
+this technique  used in~\cite{ranjan2014aslan} is to estimate the output quality of a faulty circuit which uses the concept
+of unrolling the circuit with each clock cycle and compares this faulty unrolled circuit with the original circuit
 using a quality evaluation circuit and generates some vectors, which indicate the quality of the circuit
 at that cycle. Unless the quality constraints are satisfied. The faulty circuit is unrolled every cycle with incremental improvements in each cycle. Thus,
 if the desired output quality is high, the cost of unrolling and analyzing error metric also increases
 substantially.
 
-In~\cite{brkic2014symbolic} the key idea behind this paper presents a symbolic analysis method for unreliable logic
-gates. The limitation of this paper is that they consider only the example of two input NAND gate
-and their test platform and drive the mathematical fault model. This is too small circuit for symbolic
-algorithm validation. They also assumed the fault in the design.
-
-In~\cite{chan2013statistical} this paper addresses the estimating output quality of a faulty hardware circuit by pre-
-characterizing the relationship between Error metric behavior and characteristics of approximate
-hardware circuits. These values are stored in lookup tables which are used to retrieve Error metric
-composition for a given approximate hardware module and then compose error metrics for output
-quality using regression-based models. This approach also takes into consideration the input
-distributions of the faulty circuit. There are certain disadvantages of using this technique. First, this technique is limited to
-only adders and circuits constructed using blocks of adders. It is not scalable to multipliers or sequential
-circuits as the regression-based model is not applicable for these circuits as this approach requires
-error metrics to be additive in some way to use regression-based approach. Secondly, the
-characterization time increases as the number of nodes increase in the circuit as the larger number of
-simulations are required. In addition, the memory overhead required is large as we need to store
-multiple lookup tables for this approach. Hence, this technique is not particularly useful for complex
-circuits or for circuits having a high number of nodes.
-
-
-
-
-
-In~\cite{shazli2011high}, in this work, the Soft Error Rate (SER) computation problem is modeled as a Boolean
-Satisfiability (SAT) problem and SAT solvers are used to compute SER for combinational and
-sequential circuits. They used an automated flow to convert combinational and sequential behavioral
-descriptions into equivalent SAT instances. The use of Boolean Satisfiability (SAT) approaches, to
-model soft errors in early design stages presented. The transformation of the circuit into Boolean Satisfiability SAT problem is challenging task
-itself, plus its too hard for complex circuits. Only Simulation work is presented.
-
-
-
-In~\cite{al2010fault}, the objective of that work was to investigate the design of soft error tolerant sequential
-circuits based on adding redundant states at the state diagram level. The objective of adding redundant
-states is to guarantee tolerance of all single soft errors of states with high probability of occurrence.
-They also propose technique to get the minimum number of redundant states that will add minimize
-hardware overhead. They implement a tool for computing soft error reliability for sequential circuits based on
-the Monte Carlo simulation. They develop an algorithm that add redundant states that create an area
-overhead problem. Monte-Carlo estimation method to estimate the failure rate by injection faults
-during simulation. All the work based on the simulation. Convert the circuit into respective FSM, inject
-faults randomly, simulate it and propose the redundant states.
-
-
-
-
-In~\cite{yu2010scalable}, this paper, authors developed novel and efficient ways to sample logic circuit behavior,
+In~\cite{yu2010scalable}, authors developed novel and efficient ways to sample logic circuit behavior,
 model the impact of soft errors, and estimate the circuit reliability. Their method was described that
 used the probabilistic transfer matrices to calculate signal and error probability distributions in the
 sequential circuits at the logic level. This work is mainly focused on finding the signal probabilities at the gate level. To do so
 they partition the combinational part of the sequential circuit, and then find the probabilities of each
 individual gates.
 
-In~\cite{lingasubramanian2010probabilistic}, this work, they calculated the maximum error in digital logic circuits and the respective
+
+In~\cite{miskov2007mars},  they estimate the likelihood that a SET in a sequential circuit will lead to errors
+in clock cycles following the particle hit, and find after the hit (which is an assumption) how many clock
+cycles needs to get the SER below the threshold level. The main idea was to allow for symbolic modelingand efficient estimation of the susceptibility of a sequential circuit to soft errors. A symbolic modeling
+methodology for efficient estimation of the soft error susceptibility of a sequential circuit.
+Limitation: They solved the problem with the analytical approach. Almost similar to the previous work.~\cite{miskov2007mars},~\cite{miskov2008modeling}. There main concern after particle hit (in experiment they did not performed this) how many
+clock cycles will it take to get SER decrease.
+
+
+
+
+In~\cite{lingasubramanian2010probabilistic}, authors calculated the maximum error in digital logic circuits and the respective
 worst-case input pattern, through maximum a posteriori hypothesis, using a Shenoy-Shafer algorithm.
 They showed the importance of handling maximum error behavior for achieving fault tolerant
 computing machines. They studied the circuit-specific error bounds for fault-tolerant computing. This work is mainly focused on finding the signal probabilities; convert the signal
@@ -490,31 +489,10 @@ probabilistic error model.
 In~\cite{miskov2008modeling}, Markov chain for the steady-state behavior of the sequential circuits, Symbolic framework
 based on the BDD/ADD is presented. They did the Single Error Rate (SER) evaluation, purposed to do
 for the gate sizing, find the gate size that has the highest soft error impact based on this recommend
-different gate size for the transistor technology. They use the only Simulation, assume fault occurs, suppose the glitch size, and assign the
-probabilities in the HSPICE simulator. They make the model of the faulty circuit by supposing it gets
-fault make a model with Markov chain, ADD/BDD and then compare it with the simulation using the
-HSPICE. They also assume that an error occurs only in the first clock cycle of a w-cycle simulation with
-no new errors occurring in subsequent cycles. It has difficulty simulating circuits over many cycles
-because of the way it employs the time-frame technique. The circuit size and the number of primary
-inputs and outputs grow linearly with the number of simulated cycles, and memory usage becomes
-unmanageable after a few simulated cycles. Another source of inaccuracy in their work is that it
-assumes an error occurs only in the first clock cycle of a w-cycle simulation, and no new errors arrive in
-subsequent cycles.
-
-In~\cite{miskov2007mars}, the symbolic framework based on Binary Decision Diagram (BDD) / Algebraic Decision
-Diagram (ADD) to analysis sequential reliability is presented in this paper. They calculate how much the
-gate output is suspected of an error. The MES is calculated at the electrical (transistor) level regarding
-the duty cycle, signal amplitude (voltage), and the gate error probability of individual gates associated
-with different input probabilities. They use only Simulation, assume fault occur, suppose the glitch size, Simulate by inserting
-glitch of different time-period. Find the gate error probability of individual gates. 
+different gate size for the transistor technology. 
+ 
 
 
-In~\cite{miskov2007mars}, n this work, they estimate the likelihood that a SET in a sequential circuit will lead to errors
-in clock cycles following the particle hit, and find after the hit (which is an assumption) how many clock
-cycles needs to get the SER below the threshold level. The main idea was to allow for symbolic modelingand efficient estimation of the susceptibility of a sequential circuit to soft errors. A symbolic modeling
-methodology for efficient estimation of the soft error susceptibility of a sequential circuit.
-Limitation: They solved the problem with the analytical approach. Almost similar to the previous work.~\cite{miskov2007mars},~\cite{miskov2008modeling}. There main concern after particle hit (in experiment they did not performed this) how many
-clock cycles will it take to get SER decrease.
 
 
 In~\cite{das2007monitoring}, Error Monitoring scheme to detect the Transient Error. The idea presented in this work has a worth to compute the error for each stage
@@ -530,32 +508,24 @@ consider the fault occurs in the combinational logic of the sequential circuit.
 In~\cite{miskov2010multiple}, the key idea presented in this paper is to analysis the susceptibility of the circuits outputs
 errors originating from the single or multiple fault transients faults. They are keener to find the part of
 the circuit that has the highest error generating probability.
-The Simulation work, they assumed the fault scenarios for their benchmark. Focus only on the
-SET. They droved the errors for flip-flop and gates separately
 
 
 
 
 
-In~\cite{svenningsson2010model}, In this paper the idea presented how model-implemented fault injection can be utilized to
-simulate the effect of hardware related faults in embedded systems. Model level and hardware level
-fault behavior comparison is presented.
-The limitation of this work; simulation work, they assume the fault scenarios for their pedal examples. Although, the
-perform the emulation on the microcontroller as well but they develop a separate tool which change
-the bit value in the register or memory cell of the assembly language.
+The work done in this domain use only simulation, assume fault occurs, suppose the glitch size, and assign the
+probabilities in the HSPICE simulator. Authors make the model of the faulty circuit by supposing it gets
+fault make a model with Markov chain, ADD/BDD and then compare it with the simulation using the
+HSPICE. They also assume that an error occurs only in the first clock cycle of a w-cycle simulation with
+no new errors occurring in subsequent cycles. It has difficulty simulating circuits over many cycles
+because of the way it employs the time-frame technique. Moreover, fault can occur in combinational part of the sequential circuit as well. The circuit size and the number of primary
+inputs and outputs grow linearly with the number of simulated cycles, and memory usage becomes
+unmanageable after a few simulated cycles. Another source of inaccuracy in fault analysis at this level is it
+assumes an error occurs only in the first clock cycle of a w-cycle simulation, and no new errors arrive in
+subsequent cycles.
 
 
-In~\cite{hayne1999behavioral}, in this work, they proposed two tools, which facilitate the fault simulation of behavioral
-models, described using VHDL. The tool is the Behavioral Fault Mapper (BFM). The BFM algorithm
-accepts a fault-free VHDL model of the design (combinational circuit) and a fault list of N faults from
-which it produces N faulty models. The assumed 8 different fault models e.g., Stuck-Then, Stuck-Else,
-Assignment Control, Dead Process, Dead Clause, Micro-operation, Local Stuck-data, Global Stuck-data. The faulty models they constructed in their work from the faults based on the assumptions
-and deliberately make them fail. There is no emulation performed.
 
-In~\cite{hachtel1996markovian}, Modeling the Probabilistic Behaviour of the Finite State Machine, calculating the steady state
-behaviour of the circuit and used for estimating the switching activity of the circuit for the purpose of
-power evaluation. They showed how steady-state probabilities of very large FSM’s can be computed by
-symbolic ADD-based algorithms. The limitation of this work is to convert the design FSM into ADD, many assumptions, and simulations only.
 
 
 
