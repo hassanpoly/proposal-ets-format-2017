@@ -1,14 +1,29 @@
 
 
-This chapter is dedicated to the fundamental concepts and current research in different areas related to this project: radiation effects on SRAM-FPGAs, soft-error, hard-error. Fault-injection, SEUs, Signatures, benchmarks for radation testing, and behavioral fault modeling. All of these topics are equally relevant for the purpose of this research that, ideally, places itself as an attractive research project.
+This chapter is dedicated to the fundamental concepts and current research in different areas related to this project: radiation environment, radiation effects on SRAM-FPGAs, soft-error, Fault-injection, SEUs, Signatures,  and behavioral fault modeling. All of these topics are equally relevant for the purpose of this research that, ideally, places itself as an attractive research project.
 
 
-%Most of the work done so far for soft-error analysis and evaluation is either on employing simulation framework, using fault emulation system on hardware, i.e., emulate faults on  FPGAs, and based on the efforts to find the analytical expression that represent the faulty behavior of the system
+
+
+
+%The potential analysis of a malfunction due to radiation encourages manufacturers to invest more and more in the development of the design tools that allows the choice of the mitigation strategies. In the 1980s,
+%components have begun to be developed for space applications and Aviation
+%In the 1990s, the explosion of the development of consumer electronics multiplied
+%Commercial Off-The-Shelf (COTS) components, which are
+%economical and available in large quantity. Further,  the reduction
+%of the transistor sizes, the intrinsically small transistor is less sensitive to
+%radiation. But because of its smaller sensitive surface, the opposite effect is observed at the level of an integrated circuit. Indeed, the sensitivity of the components increases while the ability of
+%engraving decreases despite the gain brought by the miniaturization. The two main factors
+%of this conjecture are the increase in the density of integration and the
+%threshold voltages of the transistors. For the last ten years or so, studies have been able to provide the evidence of the potential sensitivity of integrated circuits at high altitude commercial flights \cite{normand1998extensions}. This is particularly the case for complex components with high integration such as
+%those based on Static Random Access Memory (SRAM) \cite{baumann2005radiation}, which is the target technology for this project. The aerospace industry is looking for the solutions that offer an acceptable compromise between radiation reliability and the system cost, including those based on user-programmable integrated circuits based on static memory. The search for such solutions has implications for the complete flow of design and development of embedded systems. Indeed, this requires the designers to check design robustness to the radiations design. For this purpose, simulation tools that allow the injection of faults in the design is being used. But simulation-based verification has its limits, long testing time is added to the conventional verification, which is already considered to the bottleneck of the design process. The system, once implemented, should also be subject to costly laboratory testing using particle accelerators. To provide a cost-effective fault emulation techniques were developed by our research group ~\cite{hobeika2014multi,  bocquillon2009evaluation,souari2015optimization}.
+
+
 
 \section{Radiation Environment}
 
 
-The electronics systems operate in the space are exposed to radiations. The first evident were observed in the sixties but it was difficult to separate soft-error from the other form of interference. The first evidence of malfunctions in electronic circuits embarked in spacecraft caused by the radiations reported in may 1979. In the outer space there are three main types of radiative sources that effects the Earth's atmospher.
+The electronics systems operate in the space are exposed to radiations. The first evident were observed in the sixties, but it was difficult to separate soft-error from the other form of interference. The first evidence of malfunctions in electronic circuits embarked in spacecraft caused by the radiations reported in may 1979~\cite{may1979alpha}. In the outer space, there are three main types of radiative sources that effect the Earth's atmosphere.
 
 \begin{itemize}
 
@@ -21,71 +36,94 @@ The electronics systems operate in the space are exposed to radiations. The firs
 \end{itemize}
 
 
-\textbf{Cosmic Rays:} The origin of cosmic rays is hardly known. However, we have information about they are energetic particle spread throughout the galaxy including the solar system. This radiation comes from sources present in and out of our
-galaxy. Interactions with interstellar matter, shock waves and 
-electromagnetic fields accelerate this radiation. As a result, at the scale of our
-solar system, it appears with an isotropic angular distribution and the particles are ionized. The sun is also the origin of some of these particles, but most of them come from the galactic sources known as galactic cosmic rays (GCR) wulf 22016.
-Cosmic radiation was discovered by V. Hess in 1912 through measurements made from balloon probes. The cosmic rays constitute of 85\% of proton that is basically nuclei of hydrogen atom, 12\% are alpha particles that is helium nuclei, and the others are electrons and nuclei of heavier atoms. The energy of cosmic rays ranges from 1GeV to 108 TeV. lafebre.
+\subsection{Galactic Cosmic Rays} 
+
+The origin of cosmic rays is hardly known. However, we have information about they are energetic particle spread throughout the galaxy including the solar system~\cite{SWE20216}. This radiation comes from sources present in and out of our
+universe. Interactions with an interstellar matter, shock waves and electromagnetic fields, accelerate these radiations. As a result, at the scale of our
+solar system, it appears with an isotropic angular distribution, and the particles are ionized. The sun is also the origin of some of these particles, but most of them come from the galactic sources known as galactic cosmic rays (GCR).
+Cosmic radiation was discovered by V. Hess in 1912 through measurements made from balloon probes~\cite{cronin1999cosmic}. The cosmic rays constitute of 85\% of the proton that is nuclei of the hydrogen atom, 12\% are alpha particles that are helium nuclei, and the others are electrons and nuclei of heavier atoms. The energy of cosmic rays ranges from 1GeV to 108 TeV. 
 
 
-\textbf{Radiation from the Sun:} The Sun alone accounts for 99.8\% of the total mass of the solar system, the remaining 0.2\% including planets, including the Earth. The sun is mainly composed of hydrogen (90%) and helium (8%). In the center of the Sun, thermonuclear fusion reactions convert hydrogen into helium. The energy produced on this occasion is emitted in the form of light,
+\subsection{Radiation from the Sun} 
+
+The sun alone accounts for 99.8\% of the total mass of the solar system, the remaining 0.2\% including planets, including the Earth. The sun is mainly composed of hydrogen 90\% and helium 8\%~\cite{wikisun}. In the center of the sun, thermonuclear fusion reactions convert hydrogen into helium. The energy produced on this occasion is emitted in the form of light,
 of radiation and particles. The sun has two essential sources: feeding the terrestrial radiative environment: solar flares and solar winds. 
 
-\textbf{Solar Flares:} The activity level of the sun is never constant but follows a cyclical variation that composed of active years followed by calm (no activity) years. The period of recent solar cycles has
-varied between 9 and 13 years, with an average of about 11 years. The last cycle has ended around 2007 and since solar activity is growing again. The activity of solar cycles is frequently measured by the number of sunspots observed, but many
-Solar processes show the same variation. Figure I-2 shows proton generated from solar events during five solar cycles. The curve shows the number of sunspots and vertical lines indicate the generation of solar protons. The first sunspot was observed in 1610 by Galileo while he devoted himself to the observation of the sun. The number of sunspots varies cyclically and most events
-generating important proton influence appear during active solar years. During a solar cycle of 11 years, there are 4 years of low activity and 7 years of strong activity, punctuated by sporadic emissions of large particle fluxes, In this radiative context, there are two types of solar flares:
+\subsubsection{Solar Flares} 
+
+The activity level of the sun is never constant but follows a cyclical variation that composed of active years followed by calm (no activity) years. The period of recent solar cycles has
+varied between 9 and 13 years, with an average of about 11 years~\cite{nasa}. The last maximum solar activity is observed in April 2014 period of the "solar-cycle" started in 2008. The activity of solar cycles is frequently measured by the number of sunspots observed. The first sunspot was observed in 1610 by Galileo while he devoted himself to the observation of the sun. The number of sunspots varies cyclically, and most events are
+generating protons appear during active solar years. During a solar cycle of 11 years, there are 4 years of low activity and 7 years of strong activity, punctuated by sporadic emissions of large particle fluxes, In this radiative context, there are two types of solar flares: \\
 - Proton solar flares, lasting from a few hours to a few days, and
 whose primary emission consists of protons of significant energy (up to
-a few hundred MeV). The reference in this area is the August proton eruption 1972 visible in Figure I-2.
+a few hundred MeV). \\
 - Solar flares with heavy ions, whose main emission consists of heavy ions variable composition from one eruption to another, and whose duration is at most a few
-hours. The reference in this field is the heavy ion eruption of September 1977.
+hours. 
 
-\textbf{The solar wind:}
-The solar corona causes the solar wind to dilute in space. The solar corona is the outer part of the Sun's atmosphere. It represents with the astronomical unit (1UA = 1.51$^{11}$ m). The solar wind fills the entire solar system and
-interacts with the magnetic fields of the planets creating magnetospheric cavities. The
-plasma density is of the order of 10$^{12}$ particles per cubic centimeter at the sun and falls to 10 particles per cubic centimeter at the Earth's orbit. This plasma is
-primarily consisting of electrons, protons, and helium.
+\subsubsection{The Solar Wind}
+
+The solar wind begins in the solar corona, where temperatures are in million degrees. This gives the electrons enough energy to allow them to
+escape from the gravitational field of the Sun. In reaction, protons and heavy ions are also ejected so that the sun retains a zero electric charge. The Sun evacuates about $10^{14}$ kilograms of material each day. 
 
 
-\textbf{The Earth's magnetic field}
-The terrestrial magnetosphere is a natural cavity in the space environment in which the
-Earth is relatively protected from outside influences. It is compressed on the side making
-face to the Sun, and stretched to the other. It is a region of space dominated by the interaction between
-the solar wind and the geomagnetic field (Figure I-4). However, at polar sides
-the geomagnetic rigidity is reduced and therefore the particles from the
-cosmic rays that have polar trajectories can penetrate to low
-elevations. Satellites whose orbits have large inclination angles are therefore more
-exposed to cosmic particles. The magnetospheric cavity resulting from the interaction of the solar wind with the field
-geomagnetic is not static; it is subject to variations in the solar wind and the
-interplanetary magnetic filed. The result is a complex dynamic at the origin of the magnetic storm events whose most spectacular manifestations are the aurora borealis.
-and radio disturbances.
+\subsection{The Earth's Magnetic Field}
 
-\textbf{Radiation Belts:}
-Radiation belts commonly known as Van Allen Radiation belt constitute of charged particles trapped within the magnetosphere.
-Discovered in 1958 by J.A Van Allen (Explorer I mission), these belts are located in the outside the Earth's atmosphere but still in the area of space influenced by the magnetic field of the Earth. The light charged particles (protons and electrons) named inner belt and the outer belt is formed by the energetic electrons, and the energies in between ten KeV to hundred KeV.
+The Van Allen radiation belts are two toroidal zones of the magnetosphere magnetic field surrounding the magnetic equator and containing a high-density
+energy particles. The magnetosphere is the region surrounding a celestial object in which the
+physical phenomena are dominated or organized by its magnetic field. It is located above the ionosphere around $800$ to $1,000$ $km$ of altitude. The distribution and type of particles vary according to geographical position and altitude. The most important disturbance in their arrangements is the South Atlantic Anomaly (SAA) where these belts come within $500$ $kms$ of the Earth.
 
- 
+\subsection{Affects of Radiations}
+These previously mentioned sources of particulate matter affect only persons and equipment
+outside the Earth's atmosphere. However, since 1992, the year of observation of the first
+bit-flipped in an atmospheric flight memory. It has been demonstrated that the particles responsible for these
+phenomena are atmospheric neutrons ~\cite{leray2004atmospheric}.
+Atmospheric neutrons are the result of the collision of cosmic radiation,
+mainly protons, with the atoms present in the upper atmosphere of the Earth~\cite{guenzer1979single}. The result of these collisions is either the formation of ionized particles or a nuclear reaction which
+produced mainly neutrons, protons, electrons, etc. These phenomena are called
+"Atmospheric shower" as \cite{ziegler1996ibm} shown in Figure~\ref{shower}. The product resulting from these collisions is the generation of
+protons, neutrons, muons, etc. Since neutrons are uncharged particles, they do not
+cause  - directly operational failure of electronic devices. On the other hand, they can generate kernels of recoil in
+the material they cross. When these ions originate in the active zones of the integrated circuit, they are able to modify the normal behavior of the components~\cite{normand1998extensions}.
+%
 
-Van Allen belts count: 
+
+\begin{figure}[h]
+ \centering
+  \captionsetup{justification=centering}    
+   \includegraphics[scale=0.5]{Figures/showerplusaircraft.png}
+  \caption{Cosmic rays shower~\cite{ziegler1996ibm}.}
+\label{shower}
+\end{figure}
+
+
+\subsubsection{Neutron interactions}
+The neutron is a particle without electric charge but with mass. By penetrating into
+the material a particle encounters a lot of vacuum, and in case of impact, it mostly strikes electrons\cite{normand1998extensions}. Therefore, the probability that a neutron interacts is varied. However, indirect effects are significant. Indeed, it can only be stopped by a
+collision with a nucleus during a spallation reaction, which releases very light particles
+ionizing. During the collision various phenomena can occur, the three most important ones are the following:
 \begin{itemize}
 
-\item 2 electron belts centered at altitudes of 9,000 km and 60,000 km 
-\item  1 proton belt at an altitude of 12000 km 
+\item{Elastic scattering: the incident neutron imparts a part of its energy to the atom
+which can leave its crystalline mesh if the energy it receives is sufficient.}
+\item{Inelastic scattering: the atom captures the incident neutron, recovers part of its
+then release it. The excited atom can then return to its original state by
+the emission of a ray $\gamma$, but in general, it leaves its crystalline mesh and interacts.}
+\item{Transmutation: The incident neutron is absorbed by the nucleus of the atom struck. The particle moves into another atomic element. This effect is not significant except in the
+particular where the neutron comes into contact with a boron atom (used for doping
+of substrates in CMOS technology). The latter disintegrates by emitting an $\alpha$ particle and
+a lithium $7$ atom, which may interact in turn.}
+Neutrons are classified into three categories according to their energy: slow neutrons
+$(<1$ $ $ $eV$$)$ including thermal neutrons $(26$ $ $$meV$$)$, intermediate neutrons (between $(1$ $  $$meV$$)$ and
+ $(100$ $ $$keV$$)$ and fast neutrons $(>$$100$ $ $$keV$$)$.
+
+
 
 
 \end{itemize}
-The dissymmetry of these belts is due to the deformation of the magnetosphere under the effect of solar wind and the inclination between the magnetic axis and the axis of earth rotation. 
-The magnetic flux is very low and the proton fluxes change according to the altitude and
-solar activity.
 
 
-Based on the above information: we can conclude that many forms of radiations are interacting with the Earth's atmosphere. Ionized radiations make the case more severe for the microelectronics. These cosmic rays and solar particles continuously bombarding the Earth's and colliding with the atoms mainly nitrogen and oxygen which is 80\% and 20\% of the atmosphere respectively. These particles interact in two ways: either they lose some of their energy by ionization, or they may cause nuclear reactions thus forming a shower of
-secondary particles (Figure I-8). The secondary particles generated are essentially:
-neutrons, protons, electrons, muons, pions, photons (Figure I-9). 
 
-
-Concerning radiation effects on electronics, the neutron particles are the most prominent. Neutrons are measurable at the altitude of 330 Km and their density increases until it reaches around 20 KM altitude. However, the density decreases below the 20 KM altitude and about 500 times lesser at ground level as compare to 20 KM altitude. For avionics the \textbf{neutrons} are the dominant particles.  Until 90's the neutrons with energy above 100 MeV were considered dangerous for electronics components. But due to the shrinking the transistor size, circuits are now become more sensitive to the low energies. Although the neutrons are non-ionized particles, they can hit different atoms, interact with the semiconductor generate ions that may produce faults.   
+Based on the above information: we can conclude that many forms of radiations are interacting with the Earth's atmosphere. Ionized radiations make the case more severe for the microelectronics. These cosmic rays and solar particles continuously bombarding the Earth's and colliding with the atoms. Neutron particles are the most prominent. Neutrons are measurable at the altitude of 330 Km and their density increases until it reaches around 20 KM altitude. However, the density decreases below the 20 KM altitude and about 500 times lesser at ground level as compare to 20 KM altitude. For avionics the \textbf{neutrons} are the dominant particles.  Until 90's the neutrons with energy above 100 MeV were considered dangerous for electronics components. But due to the shrinking the transistor size, circuits are now become more sensitive to the low energies. Although the neutrons are non-ionized particles, they can hit different atoms, interact with the semiconductor generate ions that may produce faults.   
 
 \subsection{Fault Caused by Cosmic Rays in Digital Circuits}
 
@@ -536,8 +574,7 @@ subsequent cycles.
 
 
 \label{related}
-\section{Relation to State-of-the-Art}
-The work done so far [1, 2, 3, 4, and 5] evaluated and quantified the SEU effects by performing simulation, emulation, and radiation on an SRAM-based FPGA. Implemented a design, observed its faulty behavior in the presence of SEU and extracted the corresponding fault model. Presented an automated methodology to efficiently used the SEU controller. Discussed the fault injection on the specific subsets rather than random and discussed the selection of the suitable benchmark for FPGA and microprocessor radiations. 
+
 
 
 
