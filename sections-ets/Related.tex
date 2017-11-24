@@ -224,23 +224,24 @@ Routing resources are about the 80 percent of FPGA resources; SEE can create dif
 
 
 
-The second domain to understand in this project is designing, testing and verification of the design (digital circuit) by fault injection. As we discussed before, SRAM-based FPGAs are particularly sensitive to SEUs. The configuration memory is the most sensitive part. By changing the configuration memory, may affect the overall functionality of the system. The work done so far to study the SEU effects on FPGAs, combines the emulation, simulation, and radiation testing.
+The second domain to understand in this project is designing, testing, and verification of the design (digital circuit) by fault injection on FPGAs. As we discussed before, SRAM-based FPGAs are particularly sensitive to SEUs. The configuration memory is the most sensitive part. By changing the configuration memory, may affect the overall functionality of the system. The work done so far to study the SEU effects on FPGAs, combines the emulation, simulation, and radiation testing.
 
 \subsection{Emulation}
 
 The purpose of fault emulation to reproduce as closely as possible radiation based results, evaluate the criticality of FPGA resources, analyze the impact of flipping the critical bits, find the faulty response of the circuit. Several works have been done so far deals with the analysis and emulation of SEUs in an FPGA which is done by flipping the bit in the configuration memory. 
 
-The work presented in ~\cite{hobeika2014multi} provide an emulation platform for the signature generation. This work is focused on the identification of the emulation zone,  fault list generation, SEU emulation, and result Analysis. The purpose of their work is to investigate the sensitivity of SRAM-based FPGAs devices not only for the simulation-based approach but also used and emulation and a radiation testing for evaluating the effects of SEUs. In this paper, they also provide the results for the radiation based signature and simulation-based signature. They showed that simulation and emulation-based signatures could contain the same error values as obtained with radiation but their probability of occurrence could significantly different. The arithmetic signature for TRIUMF to emulation is 85.3\% for adder and 84.8\% for the multiplier. 
+The work presented in~\cite{hobeika2014multi} provide an emulation platform for the signature generation. This work is focused on the identification of the emulation zone,  fault list generation, SEU emulation, and result Analysis. The purpose of their work is to investigate the sensitivity of SRAM-based FPGAs for evaluating the effects of SEUs. In this paper, they also provide the results for the radiation based signature and simulation-based signature. They showed that simulation and emulation-based signatures could contain the same error values as obtained with radiation but their probability of occurrence could significantly different. The arithmetic signature for TRIUMF to emulation is 85.3\% for adder and 84.8\% for the multiplier. 
 
-The work presented in~\citep{souari2015optimization, souari2016towards} deals about the fault injection into the FPGA configuration memory based on the sensitivity of the bits by considering that the 'bits-at-one' are more sensitive to the "bits-at-zeros." They have developed a methodology to extract the list of "configuration bit addresses of the design LUTs" based on the essential bits file of the design named \textit{.ebc},  which can be extracted by the Xilinx \textit{BitGen} command.
+The work presented in~\citep{souari2015optimization, souari2016towards} deals about the fault injection into the FPGA configuration memory based on the sensitivity of the bits by considering that the "bits-at-one" are more sensitive to the "bits-at-zeros." They have developed a methodology to extract the list of "configuration bit addresses of the design LUTs" based on the essential bits file of the design named \textit{.ebc},  which can be extracted by the Xilinx \textit{BitGen} command.
 
 
 
-An accelerated fault injection technique is presented in~\citep{di2014fault} bassed on the design essential bits provided by the \textit{bitgen}. Similarly, there are few other techniques are availble for the fault emulation based on the random fault injection~\citep{faure2005single}.
+
+An accelerated fault injection technique is presented in~\citep{di2014fault} based on the design essential bits provided by the \textit{bitgen}. Similarly, there are few other techniques availble for the fault emulation based on the random fault injection~\citep{faure2005single}.
 
 
 The work proposed in the~\cite{hobeika2013flight} described a completed automated methodology to emulate SEUs on an FPGA efficiently. The authors used the reconfigurable flight control system as an application.
-In this work, they are focused on the essential bits identification to speed-up the fault emulation and proposed` on the new fault models.
+In this work, they are focused on the essential bits identification to speed-up the fault emulation and proposed on the new fault models.
 
 
 
@@ -267,17 +268,17 @@ The work presented in~\cite{quinn2015using} described the benchmark that can be 
 
 Simulation-based testing is low cost and flexible, but it is difficult to get the accurate results. For simulation-based testing, the work presented in the~\cite{violante2004simulation} described an approach for fault injection based on the simulation during early design phase when the hardware system is not ready.  This work helped to find the probability for an SEU to change the behavior of a given circuit.
 
-The work presented in~\ref{robache2013methodology} demonstrates how faulty behavior signatures allow building high-level models, i.e., high-level faulty model, e.g., fault model in MATLAB simulink, that reflects the faulty behavior of a combinational circuit represented at gate-level. The fault injection tool is used named - LIFTING.  The purpose of this tool is to study the effects of different types of faults on a circuit at gate-level. The tool used the stuck-at-0 and stuck-at-1 are injected in each node of the design. The LIFTING is a simulation-based gate-level fault injection tool that used the circuit netlist file, e.g.  *.v file. The work presented in this paper helps to make a faulty block with simulink that reads a signature and generates errors according to the distribution.
+The work presented in~\ref{robache2013methodology} demonstrates how faulty behavior --- signatures allow building high-level models, i.e., high-level faulty model, e.g., fault model in MATLAB simulink, that reflects the faulty behavior of a combinational circuit represented at gate-level. The fault injection tool is used named  LIFTING.  The purpose of this tool is to inject different types of faults on a circuit at gate-level. The tool used the stuck-at-0 and stuck-at-1 in each node of the design. The LIFTING is a simulation-based gate-level fault injection tool that used the circuit netlist file, e.g.  *.v file. The work presented in this paper helps to make a faulty block with Simulink that reads a signature and generates errors according to the distribution.
 
 \subsection{Radiation Testing}
-Radiation testing is an expensive approach and requires a state-of-the-art facility. The work presented in~\cite{hobeika2014multi} described the effects of radiations on a circuit at the circuit-level. In this work the also compared the results which are expressed as signatures of fault simulation, emulation, and radiation. They want to capture and regenerate the faulty behavior occurs due to SEUs early in the design process. Their hardware setup consists of two Artix-7 board. Board A used as a reference and board- B is subjected to radiations. The board-A is not bombarded, and it hosted the counters, reference design error detection, and signature computation.
+Radiation testing is an expensive approach and requires a state-of-the-art facility. The work presented in~\cite{hobeika2014multi} described the effects of radiations on a circuit at the circuit-level. In this work the also compared the results which are expressed as signatures based on fault simulation, emulation, and radiation testing of the FPGA. They want to capture and regenerate the faulty behavior occurs due to SEUs early in the design process. 
 
-The work presented in~\citep{dsilva2015neutron} used the Flash-based FPGA under neutron beam to observed the SEE in avionics applications. They observed that the failure in time rate for flip-flops, SRAM cell, PLL are reasonably low. They proposed the SEL testing procedure and observed Flash-based FPGAs are immune to SEL. 
+The work presented in~\citep{dsilva2015neutron} used the Flash-based FPGA under neutron beam to observed the SEE in avionics applications. They observed; the failure-in-time rate for flip-flops, SRAM cell, PLL are reasonably low. They proposed the SEL testing procedure and observed Flash-based FPGAs are immune to SEL. 
 
 In~\citep{maillard2015neutron} authors tested the UltraScale Kintex FPGA under neutron and proton beam. They examined the single event upset response of the FPGA. They presented the result regarding a failure in time calculation. They observed that there are less than 0.1\% uncorrectable events. 
 
 
-Software benchmark radiation testing is done on the flash-based micro-controller. They also tested a ferroelectric-memory-based micro-controller, two ARMs, and GPUs. These components are tested with both mitigated and unmitigated codes. The results reported in the paper for two different microcontroller and two ARMs cores. For microprocessors: they observed the FITs are very small. In some cases, there is no error from the code during many days of testing.
+Software benchmark radiation testing is done on the flash-based micro-controller. They also tested a ferroelectric-memory-based micro-controller, two ARMs, and GPUs. These components are tested with both mitigated and unmitigated codes. The results reported in the paper for two different microcontroller and two ARMs cores. For microprocessors: they observed the FITs are very small. In some cases, there is no error from the code during many days of testing. 
 
 
 
@@ -347,134 +348,115 @@ Software benchmark radiation testing is done on the flash-based micro-controller
 \section{Fault Models}
 
 
-The last domain of this work is related to the fault models, and fault analysis. We further divided this into three different categories and provide a related work on each domain separately. The most of the research work has been done is related to the transient fault analysis, soft error rate (SER) analysis and error prediction, error propagation,and failure-in-time calculations.
-
+The last domain of this work is related to the fault models, and fault analysis. We further divided into three different categories: behavior domain, transformation and circuit domain and provide a related work on each domain separately.
 
 
 \subsection{Behavioral Domain:}
 
 
-In~\citep{chen2017fault} authors proposed the fault propagation process between the different subsystem of the
-main system, combined with the finite state machines. This work is based on the FSM and fault propagation model. In this work, authors analyzed how the fault comes in one sub-system effects the others and leads towards the overall failure of the system. They calculated the Mean Time Between Failure (MTBF).
 
-In~\citep{svenningsson2010model}, authors presented the idea that how model-based fault injection can be utilized to
-simulate the effect of hardware related faults in embedded systems. Model level and hardware level
-fault behavior comparison is presented. They performed the emulation on the micro-controller. They develop a tool which change the bit value in the register or memory cell through assembly language program. Basically, they modified the code through assembly tools and analyze the behavior of the fault.
 
-In~\citep{hayne1999behavioral}, authors proposed two tools, which facilitate the fault simulation of behavioral
+In~\citep{svenningsson2010model}, authors, presented the idea that how model-based fault injection can be utilized to
+simulate the effect of hardware related faults in embedded systems. Model-level and hardware-level
+fault behavior comparison is presented. They performed the emulation on the micro-controller. They developed a tool which changed the bit value in the register or memory cell through assembly language program. They modified the code through assembly tools and analyzed the behavior of the fault.
+
+In~\citep{hayne1999behavioral}, authors, proposed two tools, which facilitate the fault simulation of behavioral
 models, described using VHDL. The tool is the Behavioral Fault Mapper (BFM). The BFM algorithm
 accepts a fault-free VHDL model of the design (combinational circuit) and a fault list of N faults from
-which it produces N faulty models. The assumed 8 different fault models, e.g., Stuck-Then, Stuck-Else,
-Assignment Control, Dead Process, Dead Clause, Micro-operation, Local Stuck-data, Global Stuck-data. They fault is based on the assumption and deliberately make them fail with VHDL code. 
+which it produces N faulty models. The assumed eight different fault models, e.g., Stuck-Then, Stuck-Else,
+Assignment Control, Dead Process, Dead Clause, Micro-operation, Local Stuck-data, and Global Stuck-data. 
 
-The work presented in~\citep{kapare2016automated} proposed a methodology to estimate the output quality of faulty
-sequential circuits based on finding the analytical expressions for predicting
-faulty errors from statistical data gathered from performing limited characterization of the faulty circuits. They proposed a methodology for estimating/predicting the output
-quality of a faulty circuit. They want to accurately predict the error behavior of the faulty circuit. They find the results from the analytical expression and the simulation to observe the error difference.
-
-In~\citep{mirzadeh2014modeling} In this work, author proposed a fault behaviour model developed with a neural network
-concept. The neural networks (NNs) structure was used to synthesize the faulty output of a
-circuit at a high-level of abstraction. They used the NN to replicate the faulty behavior of the circuit in the presence of the fault. The idea is good to make a model with NNs. But the work is done on the simulator, so there no experimental verification and evidence available about the real-time signatures observe under radiation or fault emulation. Morover, author claimed in their "proposed methodology" paper ---"The goal of developing a behavioral fault model of a circuit is to create a library of faulty components reusable at high-level of abstraction." But they provide any results for the library of faulty components.
+In~\citep{chen2017fault} authors, proposed the fault propagation process between the different subsystem of the
+main system, combined with the finite state machines. This work is based on the FSM and fault propagation model. In this work, authors analyzed how the fault comes in one sub-system effects the others and leads towards the overall failure of the system. They calculated the Mean Time Between Failure (MTBF).
 
 
-In~\citep{janschek2017errorsim} authors proposed the high-level fault behavior model. This work  used for the error propagation analysis. They developed a tool that have the ability to simulate different fault-models, e.g., offset, stuck-at-fault, noise, delay, package drop, and bit-flip. They used the passenger jet Simulink model for the experimental purpose. They analyzed the critical and non-critical sensor fault for the closed-loop passenger jet control sequence.
+The work presented in ~\citep{mirzadeh2014modeling} proposed a fault behavior model developed with a neural network
+concept. The neural network is used to synthesize the faulty output of a
+circuit at a high-level of abstraction. They used a neural network to replicate the faulty behavior of the circuit in the presence of the fault. The idea is good to make a model with neural networks. But the work is done based on simulations only, no hardware experimental results reported. Moreover, the author claimed in their "proposed methodology chapter"  --- "The goal of developing a behavioral fault model of a circuit is to create a library of faulty components reusable at high-level of abstraction." But they didn't provide any results for the library of faulty components.
 
-In~\citep{hobeika2013flight} authors presented the new fault model that can be used by the designer at an earlier stage in the design process. In this work, they used the adaptive control model and did the SEU emulation on it. They found the new fault model, e.g., Control amplification, Sign Inversion, etc.
+
+In~\citep{janschek2017errorsim} authors proposed the high-level fault behavior model. This work used for the error propagation analysis. They developed a tool that has the ability to simulate different fault-models, e.g., offset, stuck-at-fault, noise, delay, package drop, and bit-flip. They used the passenger jet Simulink model for the experimental purpose. They analyzed the critical and non-critical sensor fault for the closed-loop passenger jet control sequence.
+
+In~\citep{hobeika2013flight} authors presented the new fault model that can be used by the designer at an earlier stage in the design process. In this work, they used the adaptive control model and did the SEU emulation on it. They found the new fault model, e.g., control amplification, sign inversion, etc. They also provide the information about the design essential bits and the bits used for the fault emulation.
 
 The work presented in~\citep{thibeault2013library} based on the C/C++ description of an application. They used the technique to convert the circuit into control and data flow graph (CDFG) file, then used the resource estimation tool, to find the resources required to implement an application on an FPGA. This work is based on the .xdl and .ncd file of the design provided by the Xilinx tools, which are no more compatible with new FPGAs.
 
 
-The work presented at the behavioral level did not have the insight information of the how fault effect the hardware at the circuit level. For example, in~\citep{janschek2017errorsim} the supposed the fault distribution are normal, exponential, Poisson, Weibull. Similary, the work presented in the above mentioned papers based on the assumption of the fault except the work presented in~\citep{hobeika2013flight}, but this work is also based on the tools which are obsolete now.
+The work presented at the behavioral level did not have the insight information of the how fault influences the hardware at the circuit level. For example, the work presented in~\citep{janschek2017errorsim} supposed the fault distribution is normal, exponential, Poisson, Weibull. The most of the research work has been done is related to the transient fault analysis, soft error rate (SER) analysis and error prediction, error propagation,and failure-in-time calculations.
 
 
-The methodology we present in this thesis based on the fault emulation at the circuit-level and abstract it to the high-level. So, in this case, we will get the information not only how the model works at the high-level but also get the real-time information about the faulty behavior at the low-level.
+The methodology we present in this thesis based on the fault emulation at the circuit-level and abstract it to the high-level. Details are in the Chapter~\ref{approach}, in which detail information given about the model abstraction at the high-level based on the low-level circuit behavior.
 
 
 \subsection{Transformation Domain}
 
 
 
-There has been a lot of work done for the analysis of the fault analysis and error propagation based on the technique involve the transformation of the circuit or design into some other equivalent domain, e.g., Binary decision diagram, Boolean Satisfiability problem.
+There has been a lot of work done for the analysis of the faulty circuits and error propagation based on the techniques that involve the transformation of the circuit or design into some other equivalent domain, e.g., Binary Decision Diagram, then analyze the fault and error behavior. Compute the SER  and error probabilities.
 
-The work presented in~\citep{ubar2014modeling} is based on the Simulation, authors transformed the circuit into their required tool format, i.e., structurally synthesized BDD, then they
+The work presented in~\citep{ubar2014modeling} is based on the simulation of the faulty circuit, authors transformed the circuit into their required tool format, i.e., structurally synthesized BDD, then they
 insert the fault on different nodes to calculate the SER. 
 
 
-
-In~\citep{chan2013statistical} authors addressed the estimating output quality of a faulty hardware circuit by pre-
-characterizing the relationship between Error metric behavior and characteristics of approximate
-hardware circuits. These values are stored in lookup tables which are used to retrieve Error metric
-composition for a given approximate hardware module and then compose error metrics for output
-quality using regression-based models. This technique is feasible to adders only not scalable to multiplier or any sequential circuit, because the error-metric is based on the regression model which requires additive nature of the circuit. In addition, the memory overhead required is large as we need to store multiple lookup tables for this approach. Hence, this technique is not particularly useful for complex circuits or for circuits having a high number of nodes.
-
-
-
 Modeling the probabilistic behavior of the Finite State Machine, calculating the steady state
-behaviour of the circuit and used for estimating the switching activity of the circuit for the purpose of
-power evaluation presented in~\citep{hachtel1996markovian}. They showed how steady-state probabilities of very large FSM’s can be computed by
-symbolic ADD-based algorithms. In this work, authors needs to convert the FSM into respective BDD model to perform the fault simulation.
+behavior of the circuit and used for estimating the switching activity of the circuit for
+power evaluation presented in~\citep{hachtel1996markovian}. They showed how steady-state probabilities of very large FSM’s could be computed by
+symbolic ADD-based algorithms. In this work, authors need to convert the FSM into respective BDD model to perform the fault simulation.
 
 
-In~\citep{shazli2011high}, Soft Error Rate (SER) computation problem is modeled as a Boolean
-Satisfiability problem and SAT solvers are used to compute SER for combinational and
+In~\citep{shazli2011high}, soft error rate  computation problem is modeled as a Boolean
+Satisfiability (SAT) problem and SAT solvers are used to compute SER for combinational and
 sequential circuits. They used an automated flow to convert combinational and sequential behavioral
-descriptions into equivalent SAT instances. They used of Boolean Satisfiability approaches, to
-model soft errors in early design stages presented.
+descriptions into equivalent SAT instances and analyzed them for SER.
 
 
 
 In~\citep{miskov2007mars}, the symbolic framework based on Binary Decision Diagram / Algebraic Decision
-Diagram to analysis sequential reliability is presented. They calculate how much the
-gate output is suspected of an error. The error is calculated at the electrical (transistor) level. They also calculate the gate error probability of individual gates associated
-with different input probabilities. 
+Diagram is presented for sequential circuit analysis. They determined output gate susceptibility to error. The error is calculated at the transistor level. They also estimate the gate error probabilities.
 
 
-The limitation of working in this domain require converting the circuit into a tool with many assumptions. The most of the work is based on the simulations. This work requires deriving the mathematical expressions for the fault model in the tool converted format. This work also needs to assume that the fault in the design, plus its too hard for complex circuits to convert and derive their mathematical expressions.S
+The limitation of working in this domain require converting the circuit into a tool with many assumptions. The most of the work is based on the mathematical and analytical expressions. This requires deriving the mathematical expressions for the fault model in the tool converted format. This work also needs to assume the fault will create an erroneous output, plus its too hard for complex circuits to transform and derive their mathematical expressions.
 
 
 \subsection{Circuit Level}
 
 
 In~\citep{li2016monte} authors presented a  Monte Carlo technique for the soft error analysis of the sequential
-circuits. They perform the logic simulation for latch-level error propagation to estimate the SEUs. This work is mainly focused on the SEUs convergence means after how many clock cycles the circuit becomes fault free.
+circuits. They performed the logic simulation for latch-level error propagation to estimate the SEUs. This work is mainly focused on the SEUs convergence meaning after how many clock cycles the circuit becomes fault free.
 They insert the fault into the simulator and observe it to the output. Apply the Monte Carol technique
-to find the number of samples and the time for the estimation of the error
+to find the number of samples and the time for the estimation of the error.
   
   
 
 The key idea behind~\citep{ebrahimi2015comprehensive} is to present the result for SER analysis on an embedded
-processor. There platform employs a combination of models at device level, gate level, and architectural level. They used the
-processor core and derive all the results via simulation under the assumption of the fault. While using processor core under the radiations the primarily concerns is for the cache memory instead
+processor. Their platform employs a combination of models at a device level, a gate level, and architectural level. They used the
+processor core and derived all the results via simulation under the assumption of the fault. While using processor core under the radiations, the primary concerns is for the cache memory instead
 of the core itself.
 
 
-The technique  used in~\citep{ranjan2014aslan} is to estimate the output quality of a faulty circuit which used the concept
-of unrolling the circuit with each clock cycle and compares this faulty unrolled circuit with the original circuit and find the errors.
+The technique used in~\citep{ranjan2014aslan} is to estimate the output quality of a faulty circuit. They used the concept
+of unrolling the circuit with each clock cycle and compares faulty unrolled circuit with the original circuit and find the errors.
 The cost of unrolling and analyzing error metric also increase
 with circuit complexity.
 
-In~\citep{yu2010scalable}, authors developed novel and efficient ways to sample logic circuit behavior. They 
-model the impact of soft errors, and estimate the circuit reliability. Their method based on the probabilistic transfer matrices to calculate signal and error probability distributions in the
-sequential circuits at the logic level. This work is mainly focused on finding the signal probabilities at the gate level. To do so
-they partition the combinational part of the sequential circuit, and then find the probabilities of each
-individual gates.
+In~\citep{yu2010scalable}, authors developed novel and efficient ways to examine a behavior of a circuit. They model the impact of soft errors and estimate the circuit reliability. Their method is based on the probabilistic transfer matrices to calculate signal and error probability distributions in the
+sequential circuits at the logic level. This work is mainly focused on finding the signal probabilities at the gate level. They partitioned the combinational part of the sequential circuit, and then find the probabilities of each gate.
 
 
 In~\citep{miskov2007mars},  authors estimated the likelihood that a SET in a sequential circuit will lead to errors
-in clock cycles following the particle hit, and find after the hit (which is an assumed fault) how many clock
-cycles needs to get the SER below the threshold level. The main idea is to allow for symbolic modeling and efficient estimation of the susceptibility of a sequential circuit to soft errors.
+in clock cycles following the particle hit, and found after the hit (which is an assumed fault) how many clock
+cycles needs to get the SER below the threshold level which they set. The main idea is to do symbolic modeling and efficient estimation of the susceptibility of a sequential circuit to soft errors.
 
 
 
-In~\citep{lingasubramanian2010probabilistic}, authors calculated the maximum error in digital circuits and find the respective
+
+In~\citep{lingasubramanian2010probabilistic}, authors calculated the maximum error in digital circuits and found the respective
 worst-case input pattern, through a posteriori hypothesis, using a Shenoy-Shafer algorithm.
 They showed the importance of handling maximum error behavior for achieving fault tolerant
-computing machines. This work is mainly focused on finding the signal probabilities; convert the signal
-probabilities into angles, used conditional error model, which is not the case in real-time testing.
+computing machines. .
 
-
-In~\citep{miskov2008modeling}, Markov chain for the steady-state behavior of the sequential circuits, Symbolic framework
-based on the BDD/ADD is presented. They did the Single Error Rate  evaluation, purposed to do
+In~\citep{miskov2008modeling}, Markov chain for the steady-state behavior of the sequential circuits, a Symbolic framework
+based on the BDD/ADD is presented. They did the Single Error Rate evaluation, purposed to do
 for the gate sizing, find the gate size that has the highest soft error impact based on this recommend
 different gate size for the transistor technology. 
  
@@ -482,17 +464,17 @@ different gate size for the transistor technology.
 
 
 
-In~\citep{das2007monitoring}, error monitoring scheme to detect the Transient Error is presented. The idea presented in this work has a worth to compute the error for each stage
+In~\citep{das2007monitoring}, error monitoring scheme to detect the transient error is presented. The idea presented in this work has worth to compute the error for each stage
 independently. But they didn't provide they experimental setup details, to analyze the benefits and overhead of this technique.
 
-In~\citep{asadi2005soft}, they provide the multi-cycle analytical framework to analyze the multi-cycle error
-propagation. The major limitation to their work is the measuring unit they used in their work “mean time
-to manifest error.” The common terminology for this kind of work is SER. This is the simulation work,
-with the assumption that the fault will occur in the flip-flop and proceed to other flip-flop. They did not
-consider the fault occurs in the combinational logic of the sequential circuit.
+In~\citep{asadi2005soft}, they provided the multi-cycle analytical framework to analyzed the multi-cycle error
+propagation. The major limitation of their work is the measuring unit they used  “mean time
+to manifest error.” The standard terminology for this kind of work is SER. This is the simulation work,
+with the assumption that the fault will occur in the flip-flop and proceed to another flip-flop. They did not
+consider the fault occurred in the combinational logic of the sequential circuit.
 
-In~\citep{miskov2010multiple}, authors presented an idea to analysis the susceptibility of the circuits, outputs
-errors originating from the single or multiple fault transients faults. They are keener to find the part of
+In~\citep{miskov2010multiple}, authors presented an idea to analysis the susceptibility of the circuits. The analyzed the outputs
+errors originating from the single or multiple fault transients. They are keener to find the part of
 the circuit that has the highest error generating probability.
 
 
@@ -500,13 +482,16 @@ the circuit that has the highest error generating probability.
 
 
 
-The work is done in this domain used simulation, assumed fault occurs, supposed the glitch size, and assigned the
-probabilities in the HSPICE simulator. Authors make the model of the faulty circuits make a model with Markov chain, ADD/BDD and then compare it with the simulation using the
-HSPICE. They also assumed that an error occurs only in the first clock cycle of a w-cycle simulation with
-no new errors occurring in subsequent cycles. It has difficulty simulating circuits over many cycles
-because of the way it employs the time-frame technique. Moreover, a fault can occur in a combinational part of the sequential circuit as well. The circuit size and the number of primary
+
+The work is done in this domain used simulation setup for error calculation, assumed fault occurred, supposed the glitch size, and assigned the
+probabilities for fault propagation in the HSPICE simulator. Authors make the model of the faulty circuits, analyzed them using modeling techniques, compare results with the simulations results derived by using the
+HSPICE. 
+
+They also assumed that an error occurs only in the first clock cycle of a w-cycle simulation with
+no new errors occurring in subsequent cycles which also underestimates the usability of this work.  There is one more bottleneck if the circuit size and the number of primary
 inputs and outputs grow linearly with the number of simulated cycles, and memory usage becomes
 unmanageable after a few simulated cycles.
+
 
 
 
