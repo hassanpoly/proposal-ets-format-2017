@@ -51,7 +51,7 @@ The sun alone accounts for 99.8\% of the total mass of the solar system, the rem
 \subsubsection{Solar Flares} 
 
 The activity level of the sun is never constant but follows a cyclical variation that composed of active years followed by calm (no activity) years. The period of recent solar cycles has
-varied between 9 and 13 years, with an average of about 11 years \citep{nasa}. The last maximum solar activity is observed in April 2014 period of the "solar-cycle" started in 2008 \citep{nasa}. The activity of solar cycles is frequently measured by the "number of sunspots observed." The first sunspot was observed in 1610 by Galileo while he devoted himself to the observation of the sun. The number of sunspots varies cyclically, and most sunspots events are
+varied between 9 and 13 years, with an average of about 11 years \citep{nasa}. The last maximum solar activity is observed in April 2014 period of the "solar-cycle" started in 2008 \citep{nasa}. The activity of solar cycles is frequently measured by the "number of sunspots observed." The first sunspot was observed in 1610 by Galileo \citep{nasa}. The number of sunspots varies cyclically, and most sunspots events are
 generating protons appear during active solar years. During a solar cycle of 11 years, there are 4 years of low activity, and 7 years of strong activity, punctuated by sporadic emissions of large particle fluxes, In this radiative context, there are two types of solar flares: \\
 - Proton solar flares, lasting from few hours to few days, and primary emission consists of protons of significant energy (up to
 a few hundred MeV). \\
@@ -60,7 +60,7 @@ a few hundred MeV). \\
 \subsubsection{The Solar Wind}
 
 The solar wind begins in the solar corona, where temperatures are in millions of degrees, gives electrons enough energy to allow them to
-escape from the gravitational field of the Sun. In reaction, protons and heavy ions are also ejected. The Sun evacuates about $10^{14}$ kilograms of material each day. 
+escape from the gravitational field of the Sun. In reaction, protons and heavy ions are also ejected. The Sun evacuates about $10^{14}$ kilograms of material each day during solar wind. 
 
 
 \subsection{The Earth's Magnetic Field}
@@ -74,10 +74,10 @@ The previously mentioned sources of particulate matter influence only persons an
 outside the Earth's atmosphere. However, since 1992, the year of observation of the first
 bit-flipped in-flight memory~\citep{taber1995investigation, taber1993single} observed. It has been demonstrated that the particles responsible for these
 phenomena are atmospheric neutrons~\citep{leray2004atmospheric, jedec2006measurement}.
-One more incident reported in~\cite{SWE20216} about the neutron influenced aircraft's operation of the flight from Singapore to Perth started incorrect values, after the investigation: SEE resulting from the high-energy atmospheric neutrons were interacting with the integrated circuits.
+One more incident reported in~\cite{SWE20216} about the neutron influenced aircraft's operation of the flight from Singapore to Perth started incorrect values, after the investigation: it revealed that the SEE resulting from the high-energy atmospheric neutrons were interacting with the integrated circuits.
 Atmospheric neutrons are the result of the collision of cosmic radiation,
 mainly protons, with the atoms present in the upper atmosphere of the Earth. The result of these collisions is either the formation of ionized particles or a nuclear reaction which
-produced mainly neutrons, protons, electrons, etc. These phenomena are called
+produced mainly neutrons, protons, electrons, etc. This phenomena is called
 "Atmospheric shower" as shown in Figure~\ref{shower}. The product resulting from these collisions is the generation of
 protons, neutrons, muons, etc. Since neutrons are uncharged particles, they do not
 cause  - operational failure directly of electronic devices. However, they can generate kernels of recoil in
@@ -98,7 +98,7 @@ the material they cross. When these ions originate in the active zones of the in
 
 
 
-The neutron is a particle without electric charge but with a mass. When a high-energy neutron moves through a silicon substrate, charged particles are produced. If the charge of these particles is sufficient enough, then they can alter the state of the static memory.  For avionics the \textbf{neutrons} are the dominant particles~\citep{xilinnseu}. Neutrons are measurable at the altitude of 330 KM and their density increases until it reaches around 40 Km altitude (Future's aircraft flying altitude). However, the density decreases below the 40 Km altitude and about 500 times lesser at ground level as compare to 40 Km altitude. Until 90's the neutrons with energy above 100 MeV were considered dangerous for electronics components. But due to the shrinking the transistor size, circuits are now become more sensitive to the low energies as well.   
+The neutron is a particle without electric charge but with a mass. When a high-energy neutron moves through a silicon substrate, charged particles are produced. If the charge of these particles is sufficient enough, then they can alter the state of the static memory.  For avionics the \textbf{neutrons} are the dominant particles~\citep{xilinnseu}. Neutrons are measurable at the altitude of 330 KM and their density increases until it reaches around 40 km altitude. An intense environment exists at the altitude of 10 km to 40 km. The density decreases below the 40 km altitude and about 500 times lesser at ground level as compare to 40 km altitude. Until 90's the neutrons with energy above 100 MeV were considered dangerous for electronics components. But due to the shrinking the transistor size, circuits are now become more sensitive to the low energies as well.   
 
 \subsection{Fault Caused by Cosmic Rays in Digital Circuits}
 
@@ -107,12 +107,12 @@ Ionizing particles can interact with an embedded electronics and have critical c
 single event effects (SEE) (caused by a single particle) and the total ionizing dose (long-term radiation effects, mostly due to electrons and protons). In this research work, we mainly focused on the SEEs.
 
 
-A Single Event Effect (SEE) results from a single energetic particle. When the particle strikes a sensitive node in a semi-conductor device, the ionization by the particle might produce a current pulse inside the device, which might cause soft or hard errors in the configurtaion memory of the device. Results in data corruption, transient disturbance, high current conditions (non-destructive and destructive
+A Single Event Effect (SEE) results from a single energetic particle. When the particle strikes a sensitive node in a semi-conductor device, the ionization by the particle might produce a current pulse inside the device, which might cause soft or hard errors in the configuration memory of the device. Results in data corruption, transient disturbance, high current conditions (non-destructive and destructive
 effects). If SEE cannot handle well cause unwanted functional interrupts or in worst case catastrophic failures. Commonly, SEEs include: single event upset (SEU), single event latch-up (SEL), single event burn-out (SEB), and single event transient (SET) etc as mentioned in Table~\ref{SEE-Summary}. 
 
 
 \begin{table}
-\caption{Single Event Effects Summary~\cite{manuzzato2010single}}
+\caption{Single Event Effects Summary~\citep{manuzzato2010single}}
 \centering
 \label{SEE-Summary}
 \scalebox{0.7}{
@@ -144,9 +144,9 @@ effects). If SEE cannot handle well cause unwanted functional interrupts or in w
 \subsection{Single Event Effects Mechanism}
 
 
-When a highly energetic particle, e.g., protons, neutrons, alpha particles passes through a semiconductor, it can directly or indirectly deposit charges in the silicon. This notion of deposit
-charge is actually the translation of the generation of electron-hole pairs. Near the junction, these
-pairs will first recombine at the polarized reverse PN junction.  Then quickly diffusion principle will prevail . The duration of this
+When highly energetic particles, e.g., protons, neutrons, alpha particles passes through a semiconductor, it can directly or indirectly deposit charges in the silicon. This notion of deposit
+charge is actually the generation of electron-hole pairs. Near the junction, these
+pairs will first recombine at the polarized reverse PN junction.  Then quickly diffusion principle will prevail. SEEs are usually the profuct of the deposition and collection of charge over a sensitive node of the circuit~\citep{manuzzato2010single}. The duration of this
 process is variable and can last from a few picoseconds to a hundred
 nanoseconds.
 
@@ -199,7 +199,7 @@ Errors produce in the FPGAs due to SEU can be classified into two different cate
 
 \item Flip-Flop error: SEU modified the configuration of an FF.
 
-Routing resources are about the 80 percent of FPGA resources; SEE can create different phenomena that modifies the programmable Interconnect Points (PIPs)~\ref{sterpone2006new}.
+Routing resources are about the 80 percent of FPGA resources; SEE can create different phenomena that modifies the programmable Interconnect Points (PIPs)~\citep{sterpone2006new}.
 
 \end{itemize}
 
@@ -266,9 +266,9 @@ The work presented in~\cite{quinn2015using} described the benchmark that can be 
 
 \subsection{Simulation}
 
-Simulation-based testing is low cost and flexible, but it is difficult to get the accurate results. For simulation-based testing, the work presented in the~\cite{violante2004simulation} described an approach for fault injection based on the simulation during early design phase when the hardware system is not ready.  This work helped to find the probability for an SEU to change the behavior of a given circuit.
+Simulation-based testing is low cost and flexible, but it is difficult to get the accurate results. For simulation-based testing, the work presented in the~\citep{violante2004simulation} described an approach for fault injection based on the simulation during early design phase when the hardware system is not ready.  This work helped to find the probability for an SEU to change the behavior of a given circuit.
 
-The work presented in~\ref{robache2013methodology} demonstrates how faulty behavior --- signatures allow building high-level models, i.e., high-level faulty model, e.g., fault model in MATLAB simulink, that reflects the faulty behavior of a combinational circuit represented at gate-level. The fault injection tool is used named  LIFTING.  The purpose of this tool is to inject different types of faults on a circuit at gate-level. The tool used the stuck-at-0 and stuck-at-1 in each node of the design. The LIFTING is a simulation-based gate-level fault injection tool that used the circuit netlist file, e.g.  *.v file. The work presented in this paper helps to make a faulty block with Simulink that reads a signature and generates errors according to the distribution.
+The work presented in~\citep{robache2013methodology} demonstrates how faulty behavior --- signatures allow building high-level models, i.e., high-level faulty model, e.g., fault model in MATLAB simulink, that reflects the faulty behavior of a combinational circuit represented at gate-level. The fault injection tool is used named  LIFTING.  The purpose of this tool is to inject different types of faults on a circuit at gate-level. The tool used the stuck-at-0 and stuck-at-1 in each node of the design. The LIFTING is a simulation-based gate-level fault injection tool that used the circuit netlist file, e.g.  *.v file. The work presented in this paper helps to make a faulty block with Simulink that reads a signature and generates errors according to the distribution.
 
 \subsection{Radiation Testing}
 Radiation testing is an expensive approach and requires a state-of-the-art facility. The work presented in~\cite{hobeika2014multi} described the effects of radiations on a circuit at the circuit-level. In this work the also compared the results which are expressed as signatures based on fault simulation, emulation, and radiation testing of the FPGA. They want to capture and regenerate the faulty behavior occurs due to SEUs early in the design process. 

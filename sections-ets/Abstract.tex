@@ -3,46 +3,15 @@
 
 
 \begin{abstract}{FPGA, SEU, Modeling}
-The   effects   of   cosmic   radiation   (CR)   on   aircraft’s   embedded   electronics   are   part   of   research   from   last  
-few   years. The   low   electrical   conductivity   of   composite   materials   combined   with   the   required  
-increasing   voltage   levels   of   the   aircraft   lead   to   reinforcement   of   electromagnetic   (EM)   protection.  
-Aircraft   implies   more   electrical   systems   while   composite   material   does   not   bring   the   same   level   of   EM  
-shielding   against   conventional   EM   environment.   Aircraft   flying   at   altitude/latitude   (55,000   feet),   for  
-long   flight   times   (more   than   15   hours)   and   cross   polar   routes   (North   or   South   latitudes)   are   prone   to  
-CR.   Without   an   atmosphere   to   protect   from   ionizing   or   particle   radiation,   current   CMOS ­based  
-electronics   are   subject   to   hard and soft errors,   generalized   performance   reduction,   accelerated   wear,   and,  
-ultimately,   unrecoverable   system   failure.   Consequently,   equipment   protection   against   CR   is   becoming  
-as   critical   as   protection   against   any   external   environment. Today,   solutions   to   protect   electrical   systems  
-from   CR   are   developed   in   an   incremental   way   from   previous   observation,   experience   and   knowledge.  
-Unfortunately,   these   solutions   are   costly,   time,   and   energy   consuming   e.g.,   dedicated   heavy   conductive  
-electrical   path   way   and   redundant   electrical   functions.   Consequently,   to   progress   more   rapidly   towards  
-the   safe   and   energy­efficient   aircraft,   it   is   now   necessary   to   anticipate   the   integration/installation  
-constraints   of   the   electrical   system   in   the   early   phase   of   the   aircraft   design   to   relax   weight   and   drag  
-penalty   of   the   CR   plenty.   To   this   end,   electrical   system   providers   need   a   unique   computer   environment  
-for   performing   CR   prototyping   supporting   the   decision ­making   for   the   selection   of   the   most   suitable  
-light-weight CR protective solutions, while maintaining safety at its highest level. 
-In   this   project,   we   will   study   the   novel   algorithms   and   methodology   for   high   levels   modeling   of   cosmic  
-radiation   impacts   on   the   aircraft   flying   at   the   altitude/latitude   of   55,000   ft.   This   project   is   the   extension  
-of   the   AVIO403   project   which   studies   the   impact   of   cosmic   radiation   on­board   avionics   systems   and  
-also   the   part   of   a   big   project   named   EPICEA   (Electromagnetic   Platform   for   lightweight  
-Integration/Installation   of   electrical   systems   in   Composite   Electrical   Aircraft).   In   this   project,   starting  
-from   the   review   process   of   the   AVIO403   project.   We   will   perform   the   bibliographic   review   of   the   CR  
-effects   on   the   electrical   systems.   The   results   and   data   collected   during   the   AVIO403   project   by   using  
-already   available   software   e.g.,   MATLAB.   We   will   develop   a   dynamic   high­level   fault   simulator   that  
-consists   of   the   analysis   of   consequences   of   cosmic   radiation   effects   on   electrical   systems.   This   project  
-aims   at   defining   a   novel   approach   for   high   levels   modeling   of   cosmic   radiation   impacts   on   electrical  
-systems.   In   particular,   our   research   intends   to   provide   solutions   able   to   mitigate   multiple   problems,  
-including,   but   not   limited   to   a)   SRAM   based   CR   emulation   strategy   for   complex   systems, b) Signature generation on the FPGA-based emulation platform and for the radiation-based experiment c)   A  
-well­thoughtful   preparation   of   cosmic   radiation­based   experiments   at   TRIUMF   in   Vancouver. d) Modelling the faulty behaviour for the more complex system e.g., sequential circuits, generation and analysis of the signatures.  We   also  
-need   to   adapt   the   results   to   aircraft   conditions   since   the   data   recorded   on   the   test-bench   aircraft   and  
-in­flight   experiments   are/will   be   on   a   metallic   structure.   We   will   use   behavioral   simulation   tools   to  
-evaluate   the   consequences   of   CR   in   different   conditions   at   electrical   components   and   systems   level.  
-We   also   add   prediction   features   in   our   software   to   predict   the   behavior   of   cosmic   rays.   We   will   develop  
-the   methodology   to   enable   computer   model   that   helps   control   interactions   of   cosmic   rays   with   the  
-electronic   components.   We   will   investigate   the   sensitivity   of   electrical   systems   to   CR   concerning   their  
-criticality   level.   We   need   to   focus   on   the   electronic   components   malfunctions   and   damages.   Few  
-companies   e.g.,   ISONEO   and   Bombardier   Aerospace   will   involve.   These   companies   provide   some  
-useful   guidelines   e.g.,   ISONEO   will   provide   the   requirements   for   their   CR   computer   models   at   system level   that   would   apply   to   the   EPICEA   platform.   We   will   present   our   results   and   perform   the  
-experiments with those gathered during the EPICEA project. 
+Cosmic radiation   (CR)   produces soft errors on aircraft’s   embedded electronic system. Aircraft flying   at altitude of  55,000   feet,   and cross polar   routes   (North or   South latitudes)   are prone to neutron flux. CMOS ­based  
+electronics are   subject to   hard and soft errors. Equipment protection   against   CR   is becoming critical. The solutions to   protect electrical systems  
+from cosmic rays are   developed but
+Unfortunately,   these solutions   are costly,   time,   and energy   consuming, e.g.,   dedicated heavy   conductive electrical   path. To progress   towards the   safe and   efficient aircraft,   it is   now necessary to   anticipate the   aircraft embedded systems constraints in   the early   phase of   the aircraft   design. 
+
+In this project,   we will   study the   novel algorithms   and methodology   for high   levels modeling   of cosmic  
+radiation impacts on   the aircraft. This thesis aims   at defining a   novel approach for   high levels   modeling of   cosmic radiation   impacts on   digital sequential circuits.   In   particular,  our   thesis   intends   to   provide   solutions   able   to   mitigate   multiple   problems,  
+including  a)  Bits relative sensitivity based emulation   strategy   for   complex   systems, b) Signature generation on the FPGA-based emulation platform, c) analyze the signatures from the radiation-based experiment, d) Modelling the faulty behavior of the sequential circuit observed at lower level of abstraction to abstract it at the higher level of abstraction. The methodology adopted in this thesis is based on the Hidden Markov Model (HMM). HMM is used for modeling and analysis of the sequential circuits. Faulty behavior of the circuit is modeled with the HMM. HMM helped to identified the fault model.
+
+
 
 \end{abstract}

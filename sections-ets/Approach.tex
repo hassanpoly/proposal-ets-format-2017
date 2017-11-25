@@ -3,7 +3,7 @@
 This chapter is dedicated to the methodology that we propose to achieve the objectives of this thesis, i.e. Methodology and Algorithms for High-level Modeling of Cosmic Radiations Impacts on Electrical Systems.
 
 
-
+\label{approach}
 \section{Relation to State-of-the-Art}
 Starting from the background, the facts established in the Chapter~\ref{introduction}--- the digital circuits vulnerable to radiations require high-reliability requirements. The faults e.g., stuck-at-fault due to particle strikes cause different effects in the system behavior. As discussed in Chapter ~\ref{related} in digital sequential circuit, a single event upset causes a multiple faulty response of the underlying circuit. Consider an example of  a 3-bit counter as shown in Figure~\ref{fig:counter} the node is stuck-at-1$\rightarrow O_0$. This stuck node response can propagate to multiple outputs, as shown in Table~\ref{s@1-O0} and produce multiple erroneous outputs. The way this SEU interrupt at high-level of abstraction could typical manifest multiple correlated; "change in states of the design", and "change in signature values." To model the fault occur at the low-level, and make the model of the faulty response of the circuit at high-level of abstraction, I propose to use the Hidden Markov Model. 
 
