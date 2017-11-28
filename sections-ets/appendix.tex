@@ -1,0 +1,282 @@
+
+%\section{High-level Fault Models Pseudo Codes}
+
+\begin{itemize}
+
+\item \textbf{Lost signal or event fault:} This kind of fault model we might observe when a certain process of a system stop working. For example, a 3-bit counter, the result of first two bits are accurate but the third flip-flop didn't respond.
+
+
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+process (clk, rst)
+ count <= "000";
+ count <= count + 1;
+end process;
+\end{lstlisting}
+
+\textbf{High-Level Model}
+
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+process (clk, rst)
+ count <= "00";
+ count <= count + 1;
+end process;
+\end{lstlisting}
+
+
+
+\item \textbf{Stuck Signal:} In this kind of fault model the signal is stuck to some fixed value. For example, the input of a FIR filter stuck to some unknown fixed value. 
+
+ 
+
+\item \textbf{Variable change fault:} This fault behavior shows the situation in which either input, output, or intermediate calculation value changes to some other value. Now, consider a case as shown in Table~\ref{FMFIR}, the expected faulty output of the FIR filter: $\{1, 6, 5, 16, 15\}$ due to variable change fault the faulty output observed: $\{1, 80, 5, 16, 15\}$. The signature observed from the variable change fault is only one position different from the expected signature (stuck-at-fault).  It means we cannot use the stuck-at-fault model to imitate this kind of faulty behavior. This is  the limitation of the stuck-at-fault (applies to other models as well). In this thesis, will make different fault-model to represent that signature.
+
+
+\begin{table}[tb!]
+\center
+\caption{Variable Change Fault Models FIR}
+
+\label{FMFIR}
+\scalebox{0.75}{
+\begin{tabular}{|c|c|c|c|} 
+ \hline
+ \rowcolor{lightgray}
+\shortstack {Faulty Value \\(Stuck-at-fault)} & \shortstack {Faulty Value \\ (Variable change)} & \shortstack {Signature \\ (Stuck-at-fault)} & \shortstack {Signature \\ (Variable Change)}   \\ 
+\hline
+
+ 
+ 
+ 1& 1 & 0 & 0  \\
+ \hline
+ 6 & 80 & 1 & -75 \\ 
+ \hline
+ 
+ 5 & 5 & 0 & 0 \\
+ \hline
+ 6& 16& 1& 1 \\
+ \hline
+ 15 & 15  &  0& 0 \\
+
+ \hline
+ 
+ 
+\end{tabular}
+}
+\end{table}
+
+\item \textbf{Changing the specified range of output:} This kind of faulty behavior, shows if we get the output which is out of the range of the expected value. For example, the 3-bit counter gives the output that is out of range of 3-bit counter, e,g., $out$ $<=$ $10$.
+
+\item \textbf{Delayed Fault:} This fault explains the situation in which the output is delayed according to the pre-determined outputs. For example, the output of the counter comes after ten clock cycle delay.
+
+
+
+\item \textbf{Invert Fault:} When the fault occurs, and it inverts the actual value to the faulty value, e.g., true to false and false to true. This kind of fault observes for \textit{if} and \textit{else}
+conditional statements. In the following example, the \textit{if} statement start working on condition: \textit{false} instead of \textit{true}.
+
+
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+if (A = B) then 
+ out <= in1;
+else
+ out <= in2
+end if;
+\end{lstlisting}
+
+\textbf{High-Level Model}
+
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+if (false) then 
+ out <= in1;
+else
+ out <= in2
+end if;
+\end{lstlisting}
+
+
+\item \textbf{Short Circuit Fault:} The fault model makes the two independent variables dependent on each other. In the following example, \textit{out1 <= in1} and \textit{out2 <= in2}, but this fault makes the \textit{out2} dependent on the \textit{out1} result.
+
+
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+if (A = B) then 
+ out1  <= in1;
+ out2 <= in2;
+else
+ out1 <= in3;
+ out2 <=in4;
+end if;
+\end{lstlisting}
+
+
+\textbf{High-level Model}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+if (A = B) then 
+ out1 <= in1;
+ out2 <=in1;
+else
+ out1 <= in3;
+ out2 <=in3;
+end if;
+\end{lstlisting}
+
+
+
+
+\item \textbf{Open Circuit Fault:} The signal can take any non-deterministic value.
+
+
+
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+if (A = B) then 
+ out1  <= in1;
+else
+ out1 <= in2;
+end if;
+\end{lstlisting}
+
+
+\textbf{High-level Model}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+if (A = B) then 
+ out1 <= A;
+else
+ out1 <= A;
+end if;
+\end{lstlisting}
+
+
+\item \textbf{Stuck-Then:} This fault model describes the failure of the \textit{if-then-else} statement in which the \textit{else}
+ statement never executed. In the following example, the \textit{else }
+statement never execute.
+
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+if (A = B) then 
+ out1  <= in1;
+else
+ out1 <= in2;
+end if;
+\end{lstlisting}
+
+
+\textbf{High-level Model}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+if (true) then 
+ out1 <= in1;
+else
+ out1 <= in2;
+end if;
+\end{lstlisting}
+
+
+
+\item \textbf{Stuck-Else:} This fault model represents the behavior in which the \textit{then} statement never execute.
+
+
+
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+if (A = B) then 
+ out1  <= in1;
+else
+ out1 <= in2;
+end if;
+\end{lstlisting}
+
+
+\textbf{High-level Model}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+if (false) then 
+ out1 <= in1;
+else
+ out1 <= in2;
+end if;
+\end{lstlisting}
+
+
+
+\item \textbf{Dead Process:} This fault model describes the failure of the statement inside the \textit{process} statement. We can make the high-level model of this fault by changing the sensitivity list of the process statement.
+
+
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+process(clk, rst)
+ begin
+ state 1 <= in1;
+ state 2 <= in2;
+ end process;
+\end{lstlisting}
+
+
+\textbf{High-level Model}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+process(constant='1')
+ begin
+ state 1 <= in1;
+ state 2 <= in2;
+ end process;
+\end{lstlisting}
+
+
+
+\item \textbf{Micro-operation fault}: This fault model represents the failure of the operation of the logical operator, arithmetic operator, and relational operator, e.g., xor, <=.   
+
+
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+if (A = B) then 
+ out1  <= in1 and in2 ;
+else
+ out1 <= in2;
+end if;
+\end{lstlisting}
+
+
+\textbf{High-level Model}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+if (A = B) then 
+ out1 <= in1 or in2;
+else
+ out1 <= in2;
+end if;
+\end{lstlisting}
+
+\item \textbf{Swap Value Fault:} The fault model depicts  swapping the values between two variables.
+
+
+
+\begin{lstlisting}[frame=single]  % Start your code-block
+if (A = B) then 
+ out1  <= in1;
+ out2 <= in2;
+else
+ out3 <= in3;
+ out4 <= in4;
+end if;
+\end{lstlisting}
+
+
+\textbf{High-level Model}
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+if (A = B) then 
+ out1  <= in2;
+ out2 <= in1;
+else
+ out3 <= in4;
+ out4 <= in3;
+end if;
+\end{lstlisting}
+
+\end{itemize}
+

@@ -5,7 +5,7 @@ This chapter is dedicated to the methodology that we propose to achieve the obje
 
 \label{approach}
 \section{Relation to State-of-the-Art}
-Starting from the background, the facts established in the Chapter~\ref{introduction}--- the digital circuits vulnerable to radiations require high-reliability requirements. The faults e.g., stuck-at-fault due to particle strikes cause different effects in the system behavior. As discussed in Chapter ~\ref{related} in digital sequential circuit, a single event upset causes a multiple faulty response of the underlying circuit. Consider an example of  a 3-bit counter as shown in Figure~\ref{fig:counter} the node is stuck-at-1$\rightarrow O_0$. This stuck node response can propagate to multiple outputs, as shown in Table~\ref{s@1-O0} and produce multiple erroneous outputs. The way this SEU interrupt at high-level of abstraction could typical manifest multiple correlated; "change in states of the design", and "change in signature values." To model the fault occur at the low-level, and make the model of the faulty response of the circuit at high-level of abstraction, I propose to use the Hidden Markov Model. 
+Starting from the background, remember the facts established in the Chapter~\ref{introduction} mainly the fact that the digital circuits vulnerable to radiations require high-reliability requirements. The faults e.g., stuck-at-fault due to particle, strikes cause different effects in the system behavior based on an FPGA. As discussed in Chapter ~\ref{related} in digital sequential circuit, a single event upset causes a multiple faulty response of the underlying circuit. Consider the example of  a 3-bit counter as shown in Figure~\ref{fig:counter}. The node is stuck-at-0$\rightarrow C_0$. This stuck node response can propagate to multiple outputs, as shown in Table~\ref{c@0-c0} and produce multiple erroneous outputs. The way this SEU interrupt at high-level of abstraction could typical manifest multiple correlated; "change in states of the design", and "change in signature values." To model the fault occur at the low-level, and make the model of the faulty response of the circuit at high-level of abstraction, I propose to use the Hidden Markov Model. 
 
 
 
@@ -13,43 +13,41 @@ Starting from the background, the facts established in the Chapter~\ref{introduc
 
  \centering
   \captionsetup{justification=centering}    
-   \includegraphics[scale=0.6]{Figures/counter.png}
-   \caption{Signature Generation}
+   \includegraphics[scale=0.6]{Figures/counter.pdf}
+   \caption{Signature Generation.}
 \label{fig:counter}
 \end{figure}
 
-
-
 \begin{table}[tb!]
 \center
-\caption{Stuck-at-1$\rightarrow O_0$}
+\caption{Stuck-at-0$\rightarrow C_0$}
 
-\label{s@1-O0}
+\label{c@0-c0}
 
 \begin{tabular}{|c | c| c | c| } 
  \hline
  \rowcolor{lightgray}
-Faulty Value (Binary) & Faulty Value & Original Value & Arithmetic Signature   \\ 
+Faulty Value(Binary) & Faulty Value & Original Value & Arithmetic Signature   \\ 
 \hline
-mimic
+
  
  
- 001& 1 &0 & -1  \\
+ 000& 0 &0 & 0  \\
  \hline
- 011 & 3 & 1 & -2 \\ 
+ 001 & 1 & 1 & 0 \\ 
  \hline
  
- 101 & 5 & 2 & -3 \\
+ 000 & 0 & 2 & 2 \\
  \hline
- 111& 7& 3& -4 \\
+ 001& 1& 3& 2 \\
  \hline
- 001 & 1  &  4& 3 \\
+ 000 & 0  &  4& 4 \\
  \hline
- 011 & 3 & 5 &2  \\
+ 001 & 1 & 5 &4  \\
  \hline
- 101 & 5 & 6 & 1 \\
+ 000 & 0 & 6 & 6 \\
  \hline
- 111 & 7 & 7 & 0 \\
+ 001 & 1 & 7 & 6 \\
  \hline
  
  
@@ -58,27 +56,32 @@ mimic
 
 \section{Description of Fault Behavior}
 
-Before going into the details of the HMM approach, I prefer to give the brief description of fault behaviors that we will observe during the radiation testing and fault emulation. Based on the results, we got so far mentioned in the Chapter~\ref{preliminary} the most prominent fault behavior we will observe is "Stuck-at-fault." However, there are few other fault behaviors; we might experience which shows the limitation of the stuck-at-fault model, make it impractical to use at high-level to imitate the same faulty behavior.
+Before going into the details of the HMM approach, I prefer to give the brief description of fault behaviors that we may observe during the radiation testing and fault emulation. Based on the fault models mentioned in the~\ref{faultmodels} the most prominent fault behavior we will observe is "Stuck-at-fault." However, there are few other fault behaviors; we might experience which shows the limitation of the stuck-at-fault model, and we need to develop more fault models at high-level to imitate the same faulty behavior. The pseudo-codes for High-level fault models are mentioned in the Appendix.
 
 \begin{itemize}
 
-\item \textbf{Lost signal or event fault:} This kind of fault we might observe when a certain process of a system stop working. For example, 3-bit counter, the result of first two bits are accurate but the third flip-flop didn't respond.
+\item \textbf{Lost signal or event fault:} This kind of fault model we might observe when a certain process of a system stop working. For example, a 3-bit counter, the result of first two bits are accurate but the third flip-flop didn't respond.
 
-\item \textbf{Stuck Signal:} In this kind of fault the signal is stuck to some fixed value. 
 
-\item \textbf{Variable change fault:} This fault behavior shows the situation in which either input, output, or intermediate calculation value changes to some other value. Now, consider a case as shown in Table~\ref{FMFIR}, the faulty output of the FIR filter: {1, 6, 5, 16,..., 15} due to stuck-at-fault and the faulty output  observed: {1, 80, 5, 16,..., 15} due to variable change fault. The signature you got from the stuck-at-fault in the circuit is only one position different from the "Variable change fault" signature.  It means we cannot use the stuck-at-fault model to imitate this kind of faulty behavior. This is  the limitation of the stuck-at-fault (applies to other models as well). We will make a different fault-model that represent that signature.
+
+
+\item \textbf{Stuck Signal:} In this kind of fault model the signal is stuck to some fixed value. For example, the input of a FIR filter stuck to some unknown fixed value. 
+
+ 
+
+\item \textbf{Variable change fault:} This fault behavior shows the situation in which either input, output, or intermediate calculation value changes to some other value. Now, consider a case as shown in Table~\ref{FMFIR}, the expected faulty output of the FIR filter: $\{1, 6, 5, 16, 15\}$ due to variable change fault the faulty output observed: $\{1, 80, 5, 16, 15\}$. The signature observed from the variable change fault is only one position different from the expected signature (stuck-at-fault).  It means we cannot use the stuck-at-fault model to imitate this kind of faulty behavior. This is  the limitation of the stuck-at-fault (applies to other models as well). In this thesis, will make different fault-model to represent that signature.
 
 
 \begin{table}[tb!]
 \center
-\caption{Fault Models FIR}
+\caption{Variable Change Fault Models FIR}
 
 \label{FMFIR}
-\scalebox{0.5}{
+\scalebox{0.75}{
 \begin{tabular}{|c|c|c|c|} 
  \hline
  \rowcolor{lightgray}
-Faulty Value(Stuck-at-fault) & Faulty Value (Variable change) & Signature (Stuck-at-fault) & Signature (Variable Change)   \\ 
+\shortstack {Faulty Value \\(Stuck-at-fault)} & \shortstack {Faulty Value \\ (Variable change)} & \shortstack {Signature \\ (Stuck-at-fault)} & \shortstack {Signature \\ (Variable Change)}   \\ 
 \hline
 
  
@@ -101,61 +104,96 @@ Faulty Value(Stuck-at-fault) & Faulty Value (Variable change) & Signature (Stuck
 }
 \end{table}
 
-\item \textbf{Changing the specified range of output:} This kind of faulty behavior, we can observe if we get the output which is out of the range of the expected value. For example, the 3-bit counter gives the output in four-bit value.
+\item \textbf{Changing the specified range of output:} This kind of faulty behavior, shows if we get the output which is out of the range of the expected value. For example, the 3-bit counter gives the output that is out of range of 3-bit counter, e,g., $out$ $<=$ $10$.
 
-\item \textbf{Delayed Fault:} This fault explains the situation in which the output is not coming in the order according to the pre-determined outputs. For example, the output of the counter comes after ten clock cycle delay.
+\item \textbf{Delayed Fault:} This fault explains the situation in which the output is delayed according to the pre-determined outputs. For example, the output of the counter comes after ten clock cycle delay.
 
 
 
-\item \textbf{Invert Fault:} When the fault occurs, and it inverted the actual value to the faulty value, e.g., true to false and false to true.
+\item \textbf{Invert Fault:} When the fault occurs, and it inverts the actual value to the faulty value, e.g., true to false and false to true. This kind of fault observes for \textit{if} and \textit{else}
+conditional statements. In the following example, the \textit{if} statement start working on condition: \textit{false} instead of \textit{true}.
 
-\item \textbf{Short Circuit Fault:} The fault make the two independent variables dependent on each other. For example, clock and reset, reset signal start behaving like a clock or vice-versa.
+
+
+
+\item \textbf{Short Circuit Fault:} The fault model makes the two independent variables dependent on each other. In the following example, \textit{out1 <= in1} and \textit{out2 <= in2}, but this fault makes the \textit{out2} dependent on the \textit{out1} result.
+
+
+
+
+
 
 \item \textbf{Open Circuit Fault:} The signal can take any non-deterministic value.
 
-\item \textbf{Stuck-Then:} This fault represent the failure of the \textit{if-then-else} statement in which the else statement never execute.
-
-\item \textbf{Stuck-Else:} This fault represents the behavior in which the \textit{then} statement never execute.
-
-\item \textbf{Dead Process:} This fault represents the failure of the statement inside the \textit{process} statement. 
-
-\item \textbf{Micro-operation fault}: This represents the failure of the operation of the logical operator, arithmetic operator, and relational operator, e.g., xor, <=.   
-
-
-\item \textbf{Swap Value Fault:} The fault that swap the values between two variables.
-
-
-In this thesis, we will make the high-level fault models of all above mentioned fault behaviors in the Simulink. 
 
 
 
-\textbf{Example: Stuck-Then:}
 
-if(A = B ) then \\
-\hspace{0.4 cm} Z <= '1'; else \\
-\hspace{0.4 cm} Z <= '0'; end if; \\
- 
-To produce that response in the Simulink we can alter the code in such a way that it produce the Stuck-Then fault behavioral response.
-\\
-if (TRUE) then  \\
-\hspace{0.4 cm} Z <= '1'; else \\
-\hspace{0.4 cm} Z <= '0'; end if; \\
+\item \textbf{Stuck-Then:} This fault model describes the failure of the \textit{if-then-else} statement in which the \textit{else}
+ statement never executed. In the following example, the \textit{else }
+statement never execute.
 
 
 
 
 
+
+\item \textbf{Stuck-Else:} This fault model represents the behavior in which the \textit{then} statement never execute.
+
+
+
+
+
+
+
+\item \textbf{Dead Process:} This fault model describes the failure of the statement inside the \textit{process} statement. We can make the high-level model of this fault by changing the sensitivity list of the process statement.
+
+
+
+
+
+
+
+\item \textbf{Micro-operation fault}: This fault model represents the failure of the operation of the logical operator, arithmetic operator, and relational operator, e.g., xor, <=.   
+
+
+
+\item \textbf{Swap Value Fault:} The fault model depicts  swapping the values between two variables.
+
+
+
+
+The above are the pseudo codes of the expected fault models. In this thesis, we will make the high-level fault models of all above mentioned fault behaviors in the Simulink. 
+
+
+
+\item \textbf{Constant Fault}: This fault model force the variable to assign some unknown constant.
+
+
+
+
+
+\item \textbf{Amplification}: This fault model force the variable to multiply with some value
+
+
+
+
+\item \textbf{Increase and Decrease }: This fault model force the variable either increase or decrease from its original value
 
 
 \end{itemize}
 
 
+
+
+
+
 \section{Why Hidden Markov Model?}
 
 
-We used the HMM for modeling and analysis of the sequential circuits susceptible to soft-errors. We prefer to use the HMM analysis over the other modeling techniques, e.g., BDD/ADD, Boolean Satisfiability problem (SAT), Monte-Carlo sampling, approximate approaches, symbolic methods for efficient estimation, and simulation methods. As all these techniques require to transform the circuit into their respective tool and require a lot of mathematical notations. While in HMM we can directly make the model just looking into the signature values, construct the high-level model that can be further use for the analysis. The HMM can be used suitably to model systems which consist of different observable outputs (signature in our problem domain) on different hidden conditions, i.e., fault behavior, e.g., stuck-at-fault, or delay fault.
+We plan to the HMM for modeling and analysis of the sequential circuits susceptible to soft-errors. We prefer to use the HMM analysis over the other modeling techniques, e.g., BDD/ADD, Boolean Satisfiability problem (SAT), Monte-Carlo sampling, approximate approaches, symbolic methods for efficient estimation, and simulation methods. As all these techniques require to transform the circuit into their respective tool and require a lot of mathematical notations. While in HMM we can directly make the model just looking into the signature values, construct the high-level model that can be further use for the analysis. The HMM can be used suitably to model systems which consist of different observable outputs (signature in our problem domain) on different hidden conditions, i.e., fault behavior, e.g., stuck-at-fault, or delay fault.
 
-To make the HMM. Firstly, we need to have two copies of the original circuit --- named Fault-Free circuit, and a Faulty circuit (\textit{hit circuit}). The Fault free circuit is used to collect the correct behavior of the circuit (fault-free outputs), and faulty is used to collect the faulty response of the circuit (faulty output). The difference between them give us the signature as shown in the Figure~\ref{fig:SG} and represented in the following equation.
+To make the HMM. we first need to have two copies of the original circuit --- named Fault-Free circuit, and a Faulty circuit (\textit{hit circuit}). The Fault free circuit is used to collect the correct behavior of the circuit (fault-free outputs), and faulty is used to collect the faulty response of the circuit (faulty output). The difference between them give us the signature as shown in the Figure~\ref{fig:SG} and represented in the following equation.
 
 \begin{center}
 $Arithmetic$ $Signature$ $=$ $Original$ $Value$ $-$ $Faulty$ $Value$
@@ -175,7 +213,7 @@ $Arithmetic$ $Signature$ $=$ $Original$ $Value$ $-$ $Faulty$ $Value$
 
 
 
-Hidden Markov Model is a statistical model in which a system can be modeled is assumed to be a Markov process with unobserved states, i.e., hidden states. A Markov process  is a stochastic process that satisfies the Markov property -- \underline{memorylessness}, meaning, a process that satisfies the Markov property, if the prediction of the future of the system output based solely on its present state, it is independent of the future and past states. Inorder to apply the HMM, we need a system that generate probabilistic output patterns in time, e.g., faulty response of the 3-bit counter, as a result the node is stuck-at-fault. Afterwards, we need to look at the system and need to know which state of the system give that particular output ---  the underlying system is hidden. For example, in the case of a 3-bit counter, the observed sequence is the "signature" and the hidden is the "stuck-at-fault or any other fault." Now, we wish to devise a model to predict that "fault behavior", without actually knowing about the node. It is important to note that the number of states in the hidden process and the number of observable states may be different. 
+Hidden Markov Model is a statistical model in which a system that can be modeled is assumed to be a Markov process with unobserved states, i.e., hidden states. A Markov process  is a stochastic process that satisfies the Markov property -- \underline{memorylessness}, meaning, a process that satisfies the Markov property, if the prediction of the future of the system output based solely on its present state, it is independent of the future and past states. In order to apply the HMM, we need a system that generates probabilistic output patterns in time, e.g., faulty response of the 3-bit counter, as a result the node is stuck-at-fault. Afterwards, we need to look at the system and need to know which state of the system give that particular output ---  the underlying system is hidden. For example, in the case of a 3-bit counter, the observed sequence is the "signature" and the hidden is the "stuck-at-fault or any other fault." Now, we wish to devise a model to predict that "fault behavior", without actually knowing about the node. It is important to note that the number of states in the hidden process and the number of observable states may be different. 
 
 
 In the 3-bit counter example, there are total 11-nodes including clock, where the signal can get stuck (stuck-at-1, and stuck-at-0) both are possible. We can get the  different signatures as mentioned in Chapter~\ref{preliminary}. Here for simplicity, I can give the example of four different signatures and construct the HMM. The signatures are: \textit{Sign-1, Sign-2, Sign-3, and Sign-4}. The observed signatures are probabilistically related to the hidden process. We can model such process using a hidden Markov model, where there is an underlying hidden Markov process changing over time, and a set of observable states which are related to somehow to the hidden states.
@@ -215,7 +253,7 @@ The HMM is based on  the two things: a) Observable States, and b) Hidden States.
 \end{figure}
 
 
-The Figure~\ref{fig:HMM-air} shows the basic HMM applied to the FPGA based fault emulation system. We model this system with the HMM, where, the outputs emitted by the system (FPGA under radiation/ Fault Emulation) are observable (signatures --- in our problem domain), and underlying states of the system (Stuck-at-fault, delay fault, etc). The HMM can be visualized as a simple finite state machine. The HMM has a strong statistical foundation; it has the ability for efficient learning algorithm, which can take place directly from the raw sequence data. \textbf{The problem in hand:} can be solved by using the HMM as we can observe the sequence of signatures, but we do not know  which fault behavior  of the system it went through to generate that particular signature. The analyses of Hidden Markov Model seek to recover the states from the observed data.
+The Figure~\ref{fig:HMM-air} shows the basic HMM applied to the FPGA based fault emulation system. We model this system with the HMM, where, the outputs emitted by the system (FPGA under radiation/ Fault Emulation) are observable (signatures --- in our problem domain), and underlying states of the system (Stuck-at-fault, delay fault, swap value fault, etc). The HMM can be visualized as a simple finite state machine. The HMM has a strong statistical foundation; it has the ability for efficient learning algorithm, which can take place directly from the raw sequence data. \textbf{The problem in hand} can be solved by using the HMM as we can observe the sequence of signatures, but we do not know  which fault behavior  of the system it went through to generate that particular signature. Because, we don't know which node is attached by the SEU during the radiation experiment or the fault injection. The analyses of Hidden Markov Model seek to recover the states from the observed data.
 
 
 
@@ -237,23 +275,23 @@ There are three important things to know about the probabilities in HMM.
 $Pr(Sign-1|Stuck) + Pr(Sign-1|Stuck) + Pr(Sign-1|Stuck)  = 1 $
 \end{center}
 
-\item In addition, probabilities define the Markov process, we have another matrix termed as "confusion matrix", which contains the probabilities of the observable states given a particular hidden state. The following matrix is the confusion matrix for the 3-bit counter example.
+\item In addition, probabilities define the Markov process, we have another matrix termed as "confusion matrix", which contains the probabilities of the observable states given a particular hidden state. The following matrix is the confusion matrix for the 3-bit counter example. We can extract the confusion matrix values from the radiation and fault emulation experiment.
 
 
 \begin{center}
 
 
 CM = \bordermatrix{~& Sign-1 & Sign-2 & Sign-3 & Sign-4\cr
-                  Stuck@1\rightarrow{C_0}& 0.60 & 0.20 & 0.15&0.05 \cr
-                  $delay$  $fault$\rightarrow{C_1} & 0.25 & 0.25 &0.25 &0.25\cr
-                  $Variable$  $Change$\rightarrow{O_0} & 0.05 & 0.10 &0.35 &0.50\cr}
+                  Stuck@0\rightarrow{C_0}& 0.60 & 0.20 & 0.15&0.05 \cr
+                  $Delay$   & 0.25 & 0.25 &0.25 &0.25\cr
+                  $Variable$ $ $ $Change$ & 0.05 & 0.10 &0.35 &0.50\cr}
 \end{center}
 \end{itemize}
 
 
 \subsection{HMM Parameters}
 
-A hidden Markov Model is described as $(\Pi, A, B)$ as shown in Figure~\ref{fig:MARKOV-SERIS}, Where,
+A hidden Markov Model is described as $(\Pi, A, B)$ as shown in Figure~\ref{fig:MARKOV-SERIS}, where,
 
 
 \begin{figure}[tb!]
@@ -321,7 +359,7 @@ In order to find the solution of these three questions, we called it HMM applica
 \begin{itemize}
 \item Applications 1 : Probability Evaluation
  \begin{itemize}
- \item How do we efficiently compute the (probability of the signatures given that the HMM parameters) $P(O|\Pi)$ from the given observed signature sequence $O = {O_1, O_2,...,O_n}$.
+ \item How do we efficiently compute $P(O|\Pi)$ the probability of the signatures given that the HMM parameters from the given observed signature sequence $O = {O_1, O_2,...,O_n}$.
  
   \begin{itemize}
   \item We can use the forward algorithm~\cite{ghahramani1996factorial}.
@@ -411,7 +449,7 @@ We will use the forward algorithm to calculate the probability of an observation
 \end{figure}
 
 
-From trellis figure we conclude the following:
+From the trellis figure we conclude the following:
 
 \begin{itemize}
 
@@ -483,7 +521,7 @@ $\alpha_t(j) = P (observation | hidden state is j) \times P (all paths to state 
 \end{figure}
 
 
-To design it for the decoding application there are two possibilities to use either viterbi decoding algorithm or posterior decoding. The viterbi gives the most likely sequence while posterior decoding gives the most likely state at each position. Here, we are more focused on the sequence of hidden states (use in simulator to reproduce the signatures) that give the respective signatures, in this case viterbi algorithm is preferable. The decoding capability of HMM helps to find the sequence of the fault behavior either it comes only from the stuck-at-fault and/or other fault behavior that generated the given signatures. In the FPGA fault emulation and radiation experiment we are interested to find the fault behavior of the system as they represent some valuable information that can later be used to give to the Simulink model to reproduce the signatures (if we know the fault behavior and their respective probabilities) as shown in Figure~\ref{fig:HMMsig}.
+To design it for the decoding application there are two possibilities to use either Viterbi decoding algorithm or at posterior decoding. The Viterbi gives the most likely sequence while posterior decoding gives the most likely state at each position. Here, we are more focused on the sequence of hidden states (use in simulator to reproduce the signatures) that give the respective signatures, in this case Viterbi algorithm is preferable. The decoding capability of HMM helps to find the sequence of the fault behavior either it comes only from the stuck-at-fault and/or other fault behavior that generated the given signatures. In the FPGA fault emulation and radiation experiment we are interested to find the fault behavior of the system as they represent some valuable information that can later be used to give to the Simulink model to reproduce the signatures (if we know the fault behavior and their respective probabilities) as shown in Figure~\ref{fig:HMMsig}.
 
 
 
@@ -683,23 +721,55 @@ $\overline{b}[x_i, o_k] = \frac{\sum\limits_{t = 1}^{T - 1}\Upsilon_{j} (t) 1 (o
 
 
 
-\section{Utilization}
+\section{Faulty components Library Utilization}
 
+As mentioned in the Chapter~\ref{faultmodels} we will provide the library of the faulty components. These fault models will be based on the signatures, HMM parameters. We can create the libraries of the faulty components. These components can be used by the designer to observe the faulty behavior of each sub-circuit on the system as shown in Figure~\ref{fig:lib1}.  If we want to find the faulty behavior of a MAC effected by the faulty behavior of an adder and/or an accumulator, we can observe this behavior by replacing the fault-free model with the faulty model.
 
-
-Once we have all the information as shown in Figure~\ref{fig:lib} about the different fault behavior, signatures, HMM parameters, probabilities of the fault behavior. We can create the libraries of the faulty components, their respective faulty behavioral models, faulty VHDL entities, to use it for the simulation and the verification purposes. We can also implement it to the FPGAs. This work helps to make faulty components that can be used by the designer to substitutes different part of the entire circuit to observe the faulty behavior of each sub-circuit on the system.
-
-
-The key utilization of this work:
 
 \begin{figure}[tb!]
 
  \centering
   \captionsetup{justification=centering}    
-   \includegraphics[scale=0.8]{Figures/simulink.pdf}
-   \caption{Library creation}
-\label{fig:lib}
+   \includegraphics[scale=0.8]{Figures/MAC.pdf}
+   \caption{Example of the faulty Component}
+\label{fig:lib1}
 \end{figure}
+
+
+We also have a plan to create a faulty finite state machines / faulty circuit models in Simulink. Then use the available functionality in the Simulink ( VHDL code generator) to find the respective VHDL entity, to get the individual VHDL entity as shown in Figure~\ref{fig:library1}. The VHDL entity helps to find the resources utilization of the FPGA, and it is independent of the tool and technology easily portable to any FPGA as discussed in the Chapter~\ref{faultmodels} due to change in the tools some of the work became ineffective or out-of-date. If we have the faulty VHDL components, they are highly useful for understanding the system's behavior.
+%\textbf{Example:} A simulink designer needs to estimate the resource utilization of any digital circuit (operates in the radiation environment) that contain adder, multiplier, and flip-flops. He also interested to find the faulty behavior of this circuit. 
+%
+%A designer has a HMM which helps to find the possible fault models, based on this fault model example, designer will create the respective faulty circuit model / FSM. Once the designer have a FSM, he will create the VHDL entity and find the respective faulty circuit resource as well.tem's behavior.
+%
+
+\begin{figure}[tb!]
+
+ \centering
+  \captionsetup{justification=centering}    
+   \includegraphics[scale=0.8]{Figures/library.pdf}
+   \caption{VHDL entity creation and usage}
+\label{fig:library1}
+\end{figure}
+
+
+
+
+
+%
+%\begin{figure}[tb!]
+%
+% \centering
+%  \captionsetup{justification=centering}    
+%   \includegraphics[scale=0.8]{Figures/simulink.pdf}
+%   \caption{Library creation}
+%\label{fig:lib}
+%\end{figure}
+
+%\begin{itemize}
+
+The key utilization of this work:
+
+
 
 \begin{itemize}
 
@@ -840,66 +910,14 @@ The key utilization of this work:
 
 \textbf{Summary}
 
-\textbf{Phase  01:} The emulation platform will be the starting point of the research. We will use the SEUs for the configuration memory upsets. Selection of a suitable benchmark, which is probably ITC'99~\cite{ITC}used for the testing purpose and signature generation.
+\textbf{Phase  01:} The emulation platform will be the starting point of the research. We will use the SEUs for the configuration memory upsets. Selection of a suitable benchmark, which is probably ITC'99~\citep{ITC}used for the testing purpose and signature generation.
 
 \textbf{Phase  02:} Evaluate the radiation based experimental results for signature under the neutron radiation at Triumf.
 
 
 \textbf{Phase 03:} Implement the above-mentioned methodology and high-level model for soft-error of the sequential circuits.
 
-%\section{Timetable}
-%The development of the tasks are presented in Figure~\ref{timetable}.
-%
-%
-%\begin{figure}[h]
-%\centering
-%\begin{tikzpicture}
-%\begin{ganttchart}[
-%x unit=0.36cm,
-%y unit title=1.0cm,
-%y unit chart=1.5cm,
-%%vgrid,
-%hgrid,
-%inline,
-%]{1}{48}
-%\gantttitle{Research Project}{48} \\
-%\gantttitle{2016}{12} \gantttitle{2017}{12} \gantttitle{2018}{12} \gantttitle{2019}{12}\\
-%
-%
-%
-%\ganttbar[bar height=.4]{Literature Review and Comp .Exam}{6}{24}\\
-%%\ganttmilestone[]{Comp. Exam}{20}\\
-%%\ganttmilestone[]{AHS}{6}
-%%\ganttmilestone[]{TODAES}{12}\\
-%\ganttbar[bar height=.4]{Emulation Platform for Seq. ckt}{6}{35} \\
-%\ganttbar[bar height=.4]{Radiation Experiment}{13}{24} \\
-%\ganttbar[bar height=.4]{Modelling and Analysis}{25}{42} \\
-%%\ganttmilestone[]{TAAS}{30}\\
-%%\ganttbar[bar height=.4]{Novel Timing analysis techniques}{22}{38} \\
-%%\ganttmilestone[]{DAC}{36}\\
-%%\ganttbar[bar height=.4]{FPGA Implementation}{27}{38} \\
-%%\ganttmilestone[]{TRETS}{40}\\
-%\ganttbar[bar height=.4]{Tech. Demo.}{35}{42} \\
-%%\ganttmilestone[]{IAC}{44}\\
-%\ganttbar[bar height=.4]{Thesis Writing}{35}{46}
-%%\ganttmilestone[]{Thesis}{44}\\
-%%\ganttbar[bar height=.4]{The \emph{PolyOrbite} Project}{1}{44} 
-%
-%%\ganttlink{elem0}{elem1}
-%%\ganttlink{elem0}{elem2}
-%%\ganttlink{elem0}{elem3}
-%
-%%\ganttlink{elem3}{elem4}
-%
-%%\ganttlink{elem5}{elem6}
-%%\ganttlink{elem5}{elem7}
-%
-%%\ganttlink{elem7}{elem8}
-%\end{ganttchart}
-%\end{tikzpicture}
-%\caption{Timetable.}
-%\label{timetable}
-%\end{figure}
+
 
 
 

@@ -1,14 +1,14 @@
 
 
-\section{A new Emulation Technique for Sensitivity Analysis
+\section{A new Emulation Technique Based on Bits Relative Sensitivity
 for SRAM FPGAs}
 \label{intro}
 % no \IEEEPARstart
 
 
-The purpose of this work is  to  use the sensitivity specific bits to produce the highly accurate fault behavior as expected in the real-time testing environment. Because the work done in~\citep{souari2016towards} showed that if we consider the bits relative sensitivity --- the bits at "1" are more sensitive than the bits at "0", we get more realistic results, closer to the radiation based experiments. 
+The purpose of this work is to  studying the relative sensitivity ratio difference between the configuration bits set to "1" and those set to "0" to produce the highly accurate fault behavior as expected in the real-time testing environment. Because the work is done in~\citep{souari2016towards}, showed that if we considered the bits relative sensitivity difference, i.e., the bits at "1" are more sensitive than the bits at "0", meaning, bits set to "1" are more likely to generate faults than the bits set at "0". We get more realistic results, closer to the radiation based experiments based on this theory. 
 
-In this work, the signature is calculated that presents the faulty behavior of the computation. The new fault emulation technique is used --- the method is based on the bits relative sensitivity, and it's feature.  We observed that the signature computed by our sensitivity-based method are $98.47$\% closer for adder circuit and $99.49$ \% closer for the multiplier circuit to the radiation based signature.
+In this work, the new fault emulation technique is introduced which based on the bits relative sensitivity, and it's feature, i.e., bits set to "1" and "0" plus the bit either belongs to LUT or non LUT bits.  We observed that the signature computed by this relative sensitivity-based method are $97.8$\% closer for adder circuit and $99.4$ \% closer for the multiplier circuit to the radiation based signature giving more accurate results.
 
 This work is the extension of the previous work and make the following contributions. 
 
@@ -28,7 +28,7 @@ of FPGAs based system}.
 \end{itemize}
 
 
-In order, to find the faulty behavior of the circuits for their early validation, we extracted the information from the arithmetic signatures in terms of zero-signatures. To emulate faults in the FPGA based design, we  developed a suitable fault injection method. The fault injection method is based on the relative sensitivity of the bits and bits features as well, i.e., the bits belong to look-up-table or non look-up-table bits. We observed that by considering the bits feature; we produced more realistic results closer to the real-time experiments. In this paper, we also provide the results if the sensitivity of the bits is not taking into consideration lead towards the deviated results for the real-time radiation experiment.
+%In order, to find the faulty behavior of the circuits for their early validation, we extracted the information from the arithmetic signatures in terms of zero-signatures. To emulate faults in the FPGA based design, we  developed a suitable fault injection method. The fault injection method is based on the relative sensitivity of the bits and bits features as well, i.e., the bits belong to look-up-table or non look-up-table bits. We observed that by considering the bits feature; we produced more realistic results closer to the real-time experiments. In this paper, we also provide the results if the sensitivity of the bits is not taking into consideration lead towards the deviated results for the real-time radiation experiment.
 
 
 
@@ -41,21 +41,21 @@ The emulation of SEUs in an FPGA is done by flipping the bit in the configuratio
 %The work adopted the emulation work also proposed in the~\cite{hobeika2013flight}.  The work described a completed automated methodology to emulate SEUs on an FPGA efficiently. The work presented in~\cite{hobeika2014multi} used the Artix-7 board for the emulation puposes. 
 
 
-This work comprises of four-step:
-\begin{itemize}
-\item{Fault emulation platform: configuration and validation}
-\item{Fault emulation: flip-at-1, flip-at-0, random fault injection, sensitivity aware, and sensitivity aware based on the bits feature}.
- %\item {High-level fault modelling}
-\item{Result analysis and bit flip validation}.
-\end{itemize}
+%This work comprises of four-step:
+%\begin{itemize}
+%\item{Fault emulation platform: configuration and validation}
+%\item{Fault emulation: flip-at-1, flip-at-0, random fault injection, sensitivity aware, and sensitivity aware based on the bits feature}.
+% %\item {High-level fault modelling}
+%\item{Result analysis and bit flip validation}.
+%\end{itemize}
 
 
 \subsection{Identification of the Sensitivity bits}
 \label{SE-bits}
 
-I start working on this project from the identification of the bits (the bit address and the bit location). The identification of the bits is important in our work because we want to emulate such a fault injection experiment that produce the same result as expected in the real experiment.
+The first step is the identification of the bits (the bit address and the bit location). The identification of the bits is important in our work because we want to emulate such a fault injection experiment that produce the same result as expected in the real experiment.
 
-I develop some tools that extract the bit address and the bit location from the .rbd file of the design. The \textit{.rbd} an ASCII file that contains only expected readback data, including pad words and frames.
+I develop some tools that extract the bit address and the bit location from the .rbd file of the design. The \textit{.rbd} an ASCII file that contains readback data, including pad words and frames.
 
 The proposed procedure is showed in the Figure~\ref{fig:original-rbd}, and Figure~\ref{fig:inverted-rbd}.  I used two tools for this purpose: 
 
@@ -80,7 +80,7 @@ The classification of the bits comprises consists of following steps:
 
 \item Python script has been developed that inverts all the logic of LUTs in the .xdl file, and generates the modified \textit{.ncd} file, and modified \textit{.bit} file as shown in Figure~\ref{fig:inverted-rbd}.
 
-\item Once we get both two files, we further investigate to find the bits features that which bits belong to the LUTs and which are non-LUTs bits.
+\item Once we get both two files, we further investigated to find the bits features that which bits belong to the LUTs and which are non-LUTs bits.
 
 \item Algorithm~\ref{BCA} describe the feature extraction procedure. For example, if the bit is at state "one" in the original .rbd file and it's being detected "zero" in the inverted .rbd file means bit belongs to the LUT bits at "one" represented as (L1)." Similarly, for non-lut-at-0 (NL0), non-lut-at-1 (NL1), and lut-at-0 (L0). 
 
@@ -108,7 +108,7 @@ The classification of the bits comprises consists of following steps:
 
 
 \begin{algorithm}
-\caption{Bits classification algorithm}
+\caption{Bits classification algorithm.}
 \begin{algorithmic}
 \label{BCA}
 \REQUIRE $.rbd$ $original$ $and$ $.rbd$ $inverted$ \\
@@ -160,16 +160,24 @@ The classification of the bits comprises consists of following steps:
 \section{Experimental Results}
 \label{Experimental Results}
 
-In this section, we will discuss the result of emulation performed by flipping the bits at "1" and at "0." We experimented with the fifty different runs. Each run provides $6,144$ signatures further sub-divided into three separate groups.  The fault generation list is generated from the \textit{.rbd} file, extract the number of zeros and ones from the \textit{.rbd} file.
+In this section, we will discuss the result of an emulation performed by flipping the bits at "1" and at "0." We experimented with the fifty different runs. Each run provides $6,144$ signatures further sub-divided into three different groups. 
 
 Table~\ref{AE}, and Table~\ref{ME} show the percentage of the zero signature, e.g., $00000000$ for adder and multiplier. The maximum number of zero signature observed for flip-at-0. The number of bits flipped observed; $65,750$ among them $150$ bits are critical bits with the statistical ratio of $0.22\%$ critical bits at $0$. The minimum number of zero signature observed for bits flip-at-1, with the total flipped bits are $1,356$ among $3,110,418$ non-BRAM bits. In this case, the critical bits at $1$ are $11.06\%$. 
 
 Similarly, for the multiplier,  The number of bits flipped observed are $29,752$ with total non-BRAM(bits-at-0) are $56,771,430$ giving the statistical ratio of $0.50\%$ critical bits at $0$. The minimum number of zero signature observed for bits flip-at-1, with the total flipped bits are $1,664$ among $3,750,970$ non-BRAM bits. In this case, the critical bits at $1$ are $9.01\%$.
 
 
-Then the emulation performed with the random fault injection, in which we randomly combined the bits-at-1, and the bits-at-0 and calculated the zero signature. As expected, the random injection zero-signature value should lower than the flip-at-0 and higher than the flip-at-1. The purpose of performing the random injection is to compare the result with the relative sensitivity results and experimentally prove that relative sensitivity of the bits produced results closer than the radiation experiment. The bit flip ratio observed in the random injection (flip-at-0 to flip-at-1) is $18.10$ for the adder as shown in Table~\ref{RI} and $15.15$ for the multiplier as shown in Table\ref{RIM}. This bit-flip information indicates that the bit flip in random mode is valid. Next, we performed the relative sensitivity experiment named SA-01, and SA-02.
+Then the emulation performed with the random fault injection, in which we randomly combined the bits-at-1, and the bits-at-0 and calculated the zero signature. As expected, the random injection zero-signature value should lower than the flip-at-0 and higher than the flip-at-1 because the number of bits at "0" are $18.45$ times higher than the bits at "1" for adder and  $15.13$ for multiplier. The purpose of performing the random injection is to compare the result with the relative sensitivity results and experimentally prove that by considering the relative sensitivity of the bits more realistic results are produced. The bit flip ratio observed in the random injection (flip-at-0 to flip-at-1) is $18.10$ for the adder as shown in Table~\ref{RI} and $15.15$ for the multiplier as shown in Table\ref{RIM}. This bit-flip information indicates that the bit flip in random mode is valid. Next, we performed the relative sensitivity experiment named SA-01, and SA-02.
 
-In SA-01, we used the relative sensitivity concept that the  bits-at-1 are $2.11$ times more sensitive than the bit-at-0. In this emulation, we get the $1.87\%$ difference with the irradiation experiment for the adder and $1.58\%$ for the multiplier. The total bit flips we observed for adder are: $9,807$ among them $8,797$ flipped-at-0 and $1,010$ for flipped-at-1. Similarly, for the multiplier, the total bits flipped are $7,227$ among them $6,345$ flipped-at-0 and $882$ flipped-at-1. Both emulations give us the bit flipped ratio of $2.11$ proved that emulation setup is valid.
+In SA-01, we used the relative sensitivity concept that the  bits-at-1 are $2.11$ times more sensitive than the bit-at-0. In this emulation, we get the $7.95\%$ difference with the irradiation experiment for the adder and $1.58\%$ for the multiplier. The total bit flips we observed for adder are: $9,807$ among them $8,797$ flipped-at-0 and $1,010$ for flipped-at-1. Similarly, for the multiplier, the total bits flipped are $7,227$ among them $6,345$ flipped-at-0 and $882$ flipped-at-1. Both emulations give us the bit flipped ratio of $2.11$ proved that emulation setup is valid. we used the following formula reported in~\cite{bocquillon2009evaluation} to find the relative sensitivity.
+
+
+RSi = (Nb bitflips category i /  Nb bits category i) / (Nb bitflips reference/  Nb bits reference)
+
+
+
+
+
 
 \begin{table}[tb!]
 \center
@@ -184,18 +192,18 @@ Test & Zero Signature (\%) & Difference with Radiation (\%)   \\
 
  
  
- Flip@1& 49.048 &22.53   \\
+ Flip@1& 49.0 &22.53   \\
  \hline
- Flip@0 & 62.801 & 2.095 \\ 
+ Flip@0 & 62.8 & 2.25 \\ 
  \hline
  
- Random & 59.378 & 3.51  \\
+ Random & 58.1 & 5.52  \\
  \hline
- SA-01 & 60.36 & 1.87 \\
+ SA-01 & 56.7 & 7.95 \\
  \hline
- SA-02 & 60.559 &1.47  \\
+ SA-02 & 60.16 & 2.13  \\
  \hline
- Radiation & 61.499 & 0  \\
+ Radiation & 61.4 & 0  \\
  \hline
  
  
@@ -216,18 +224,18 @@ Test & Zero Signature (\%) & Difference with Radiation (\%)   \\
 
  
  
- Flip@1& 62.069 &18.35   \\
+ Flip@1& 62.0 &18.35   \\
  \hline
- Flip@0 & 76.066 & 1.93 \\ 
+ Flip@0 & 76.0 & 1.93 \\ 
  \hline
  
- Random & 72.179 & 3.31  \\
+ Random & 72.1 & 3.31  \\
  \hline
- SA-01 & 73.443 & 1.58 \\
+ SA-01 & 73.4 & 1.58 \\
  \hline
- SA-02 & 74.988 &  0.50\\
+ SA-02 & 74.9 &  0.50\\
  \hline
- Radiation & 74.610 & 0  \\
+ Radiation & 74.6 & 0  \\
  \hline
  
  
@@ -245,7 +253,7 @@ Test & Zero Signature (\%) & Difference with Radiation (\%)   \\
 
 \begin{table}[tb!]
 \center
-\caption{Adder Random Injection Bits Information}
+\caption{Adder Random Injection Bits Information.}
 
 \label{RI}
 
@@ -276,7 +284,7 @@ Test & Zero Signature (\%) & Difference with Radiation (\%)   \\
 
 \begin{table}[tb!]
 \center
-\caption{Multiplier Random Injection Bits Information}
+\caption{Multiplier Random Injection Bits Information.}
 
 \label{RIM}
 
@@ -308,7 +316,7 @@ Test & Zero Signature (\%) & Difference with Radiation (\%)   \\
 
 
 
-Then, we further investigated the bits feature, i.e., bits belong to LUT and non-LUT bits. We used the bits relative sensitivity values shown in Table~\ref{RS}. The result we obtained by using this approach indicates only $1.47\%$ difference for adder and $0.50\%$ for multiplier suggest that by considering bits sensitivity with bits feature more realistic results can be achieved, and better fault emulation can be performed. 
+Then, we further investigated the bits feature, i.e., bits belong to LUT and non-LUT bits. We used the bits relative sensitivity values shown in Table~\ref{RS}. The result we obtained by using this approach indicates only $2.13\%$ difference for adder and $0.50\%$ for multiplier suggest that by considering bits sensitivity with bits feature more realistic results can be achieved, and better fault emulation can be performed. 
 
 
 
@@ -352,7 +360,7 @@ We also measure the relative sensitivity (observed) and the bit flip information
 
 \begin{table}[tb!]
 \center
-\caption{Relative Sensitivity}
+\caption{Relative Sensitivity from an experimentation performed at TRIUMF.}
 
 \label{RS}
 \begin{tabular}{|c | c| c | c | } 
@@ -398,7 +406,7 @@ Bits feature & \makecell*{Relative Sensitivity}  & \makecell*{Adder \\(Observed)
 
 \begin{table}[tb!]
 \center
-\caption{Bit Flip Ratio Relative Sensitivity (Adder)}
+\caption{Bit Flip Ratio Relative Sensitivity (Adder).}
 
 \label{RSflipA}
 \begin{tabular}{|c | c| c | c | } 
@@ -429,7 +437,7 @@ Bits feature & \makecell*{Bit Flip)}  & \makecell*{Bit Flip Ratio\\(Total)} \\
 
 \begin{table}[tb!]
 \center
-\caption{Bit Flip Ratio Relative Sensitivity (Mull)}
+\caption{Bit Flip Ratio Relative Sensitivity (Mull).}
 
 \label{RSflipM}
 \begin{tabular}{|c | c| c | c | } 
