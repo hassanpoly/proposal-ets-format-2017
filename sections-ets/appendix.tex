@@ -1,6 +1,6 @@
 
 %\section{High-level Fault Models Pseudo Codes}
-
+\label{appendix}
 \begin{itemize}
 
 \item \textbf{Lost signal or event fault:} This kind of fault model we might observe when a certain process of a system stop working. For example, a 3-bit counter, the result of first two bits are accurate but the third flip-flop didn't respond.
@@ -30,14 +30,14 @@ end process;
 
  
 
-\item \textbf{Variable change fault:} This fault behavior shows the situation in which either input, output, or intermediate calculation value changes to some other value. Now, consider a case as shown in Table~\ref{FMFIR}, the expected faulty output of the FIR filter: $\{1, 6, 5, 16, 15\}$ due to variable change fault the faulty output observed: $\{1, 80, 5, 16, 15\}$. The signature observed from the variable change fault is only one position different from the expected signature (stuck-at-fault).  It means we cannot use the stuck-at-fault model to imitate this kind of faulty behavior. This is  the limitation of the stuck-at-fault (applies to other models as well). In this thesis, will make different fault-model to represent that signature.
+\item \textbf{Variable change fault:} This fault behavior shows the situation in which either input, output, or intermediate calculation value changes to some other value. Now, consider a case as shown in Table~\ref{FMFIRA}, the expected faulty output of the FIR filter: $\{1, 6, 5, 16, 15\}$ due to variable change fault the faulty output observed: $\{1, 80, 5, 16, 15\}$. The signature observed from the variable change fault is only one position different from the expected signature (stuck-at-fault).  It means we cannot use the stuck-at-fault model to imitate this kind of faulty behavior. This is  the limitation of the stuck-at-fault (applies to other models as well). In this thesis, will make different fault-model to represent that signature.
 
 
 \begin{table}[tb!]
 \center
 \caption{Variable Change Fault Models FIR}
 
-\label{FMFIR}
+\label{FMFIRA}
 \scalebox{0.75}{
 \begin{tabular}{|c|c|c|c|} 
  \hline

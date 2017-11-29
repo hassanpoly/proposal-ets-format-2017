@@ -3,7 +3,7 @@ Signatures High-Level Modeling}
 In this experiment, we analyzed the signatures observed at the Triumf experiment, and the signatures observed during the fault emulation experiment as discussed in the previous section.
 In this work, we developed high-level mathematical models that represent the adder and multiplier signatures. To describe the faulty behavior of circuits for their early validation, we extracted the information from the arithmetic signatures and presented them with a simple high-level mathematical model.
 \section{Fault Modeling}
-In this section, we described how just by looking into the signatures values, we could represent them as a mathematical expression.
+In this section, we describe how just by looking into the signatures values, we could represent them as a mathematical expression.
 
 \subsection{Adder Signature Fault Model}
 The adder signature is the 16-bit hexadecimal number with sign extension. The hexadecimal value comprises signature value with sign extension. The signature values are shown in Table~\ref{adder signature format}. We defined two rules for adder signatures to consider them as a valid signature.
@@ -35,8 +35,8 @@ Decimal Format & Hexadecimal   \\
 \end{tabular}
 \end{table}
 
-\textbf{Rule \# 01}: The Equation \ref{eq:2} can represent the adder high-level fault model. By using this equation, we can capture 99.99 \% of the signature. Table~\ref{adder signature format} shows two kinds of signatures; positive signature and negative signature. 
-The positive signature values can be modeled as \textbf{single stuck-at-one} fault model affecting an adder output bit $i$,  it adds $0$ when the target bit is at $1$ (flipped to $0$ in the faulty output). The signature computed can be expressed as $+2^{i}$. Consider the following example:
+\textbf{Rule \# 01}: The Equation \ref{eq:2} can represent the adder high-level model. By using this equation, we can capture 99.99 \% of the signature. Table~\ref{adder signature format} shows two kinds of signatures; positive signature and negative signature. 
+The positive signature values can be modeled as a \textbf{single stuck-at-one} fault model affecting an adder output bit $i$,  it adds $0$ when the target bit is at $1$ (flipped to $0$ in the faulty output). The signature computed can be expressed as $+2^{i}$. Consider the following example: \\
 \vspace{ 0.1 cm}
 \hspace{-0.3 cm}\textbf{Example:}
 \hrule height 2pt width \hsize \kern 1pt \hrule width \hsize height 1pt
@@ -64,11 +64,11 @@ $4^{th}$ $ bit $ $flipped$; $i$  $=$ $4$, $2^{4}$ $=$ $16$
 
 
 
-The negative signature values can be modeled as single stuck-at zero fault model affecting an adder output bit $i$, it adds $0$ when the target bit is at $0$ (flipped to $1$ in the faulty output), it adds $-2^i$ to the adder output. 
+The negative signature values can be modeled as a single stuck-at zero fault model affecting an adder output bit $i$, it adds $0$ when the target bit is at $0$ (flipped to $1$ in the faulty output), it adds $-2^i$ to the adder output. 
 We also observed that few signatures that didn't follow the rule number one could be considered under rule \# 02: 
 
 
-Rule 2: If the signature cannot be modeled with the Equation~\ref{eq:2}, but if the arithmetic signature values expressed in binary format and contained exactly two bits-at-1, including one at the MSB considered them as a valid signature. The algorithm~\ref{algo-adder} shows the high-level model of a Adder in Simulink.
+\textbf{Rule 2:} If the signature cannot be modeled with the Equation~\ref{eq:2}, but if the arithmetic signature values expressed in binary format and contained exactly two bits-at-1, including one at the MSB considered them as a valid signature. The algorithm~\ref{algo-adder} shows the high-level model of a Adder in Simulink.
 
 \hspace{-0.3 cm}\textbf{Example valid signatures (Adder) for rule \# 02:}
 \hrule height 2pt width \hsize \kern 1pt \hrule width \hsize height 1pt
@@ -120,8 +120,8 @@ $1000 0000 0000 0001$ \\
 
 
 \subsection{Multiplier Signature Fault Model}
-For the 8-bit multiplier two modeling rules have been formulated:
-\textbf{Rule \# 01:} This rule defines the signature can be expressed by the Equation \ref{eq:1} that represents the stuck-at-1 and stuck-at-0 fault model, and the multiplier behaves as the bit flipped occurred at the output of the multiplier. 
+For the 8-bit multiplier two modeling rules have been formulated: \\
+\textbf{Rule \# 01:} This rule defines the signature can be expressed by the Equation \ref{eq:2} that represents the stuck-at-1 and stuck-at-0 fault model, and the multiplier behaves as the bit flipped occurred at the output of the multiplier.  \\
 \textbf{Rule \# 02:} The rule number two defines the format of the signature obtained when a bit flipped cause the multiplier to behave as if when an input bit is either stuck-at-0 or stuck-at-1 can be represented \{$-$$A$ $\times$ $2^{i}$ $or$  $-$$B$ $\times$ $2^{i}$ \}, \{$+$$A$ $\times$ $2^{i}$ $or$  $+$$B$ $\times$ $2^{i}$ \} respectively. Algorithm~\ref{algo-mull} shows a high-level model a multiplier in Simulink.
 
 
@@ -154,6 +154,7 @@ For the 8-bit multiplier two modeling rules have been formulated:
 \ENDIF
 \vspace{0.20 cm }
 \vspace{0.20 cm }
+\\
 \textbf{Stuck-at-0:}
 \vspace{0.20 cm }
 \IF{$Original$  $ - $  $Faulty$ $==$ -$2^{i}$}
@@ -177,9 +178,10 @@ For the 8-bit multiplier two modeling rules have been formulated:
 \hspace{-0.3 cm}\textbf{Example:}
 \hrule height 2pt width \hsize \kern 1pt \hrule width \hsize height 1pt
 
-$B$ $=$ $3$;  $A$ $=$ $8$ $(1000)$. 
-$Original$ $Output$ $=$ $24$ 
-$Third$ $bit$ $of$ $A$ $is$ $stuck$ $at$ $0$;  $faulty$ $output$ $=$ $0$ 
+$B$ $=$ $3$;  $A$ $=$ $8$ $(1000)$ \\
+$Original$ $Output$ $=$ $24$ \\
+$Third$ $bit$ $of$ $A$ $is$ $stuck$ $at$ $0$\\\; 
+$faulty$ $output$ $=$ $0$ \\ 
 $signature$ $=$ $ 0 - 24 $$=$ $-24$ $=$ $-3\times 8$ $=$ $-B \times 23$.
 
 
