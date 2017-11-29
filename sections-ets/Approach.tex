@@ -232,7 +232,7 @@ that is optimal, i.e., best explains the data.
  \end{itemize}
 \end{itemize}
 \begin{itemize}
-\item Application 3 : How do we adjust the parameters of the model $\Pi = \{\pi, A, B\}$ to maximize the likelihood $P(O|\pi)$ 
+\item Application 3 : How do we adjust the parameters of the model $\Pi = \{\pi, A, B\}$ to maximize the likelihood $P(O|\Pi)$ 
  \begin{itemize}
  \item Given observation sequence $O = {O_1, O_2,....,} O_n$ adjusting the hidden HMM parameters $ \Pi = \{\pi,A, B\}$ to maximize the probability $P(O|\Pi)$ 
   \begin{itemize}
@@ -369,13 +369,13 @@ The Baum-Welch works in the following way:
 \item $\beta_{i}(T) = 1$
 \item $\beta_{i}(t) = \sum\limits^{N}_{j=1} a[x_i, x_j] b[x_j,o_{t + 1}\beta_{j}(t + 1)]$
 \end{itemize}
-\item Find the probability of state $i$ at time $t$
+\item Find the probability of state $i$ at time $t$.
 \begin{itemize}
 \item $P (x_t = i, O | \Pi) = P (o_1, o_2,...,o_t, x_t = i | \Pi) P (o_{t + 1}, o_{t + 2},...,o_{T} | x_{t} = i, \Pi) == \alpha_{i}(t) \beta_{i}(t) $
 \item use the Bayes Theorem:
 $P(x_t = i | O, \Pi) = \frac{P(x_t = i, O | \Pi)}{P(O | \Pi)} = \Upsilon_{i}(t)$
 \end{itemize}
-\item Find the probability of a transition from state $i$ to state $j$ at time $t$
+\item Find the probability of a transition from state $i$ to state $j$ at time $t$.
 \begin{itemize}
 \item $\xi_{t}(i,j) = P (x_t = i,x_{t + 1} = j | O, \Pi)$
 \item These probabilities can be computed bu using the forward and backward variables:
@@ -393,15 +393,17 @@ $\overline{b}[x_i, o_k] = \frac{\sum\limits_{t = 1}^{T - 1}\Upsilon_{j} (t) 1 (o
 
 
 
-\section{Faulty components Library Utilization}
-Once we have all the information about the HMM parameters, probabilities of the signatures, fault models, sequence of the hidden states. This information help us to find the library of the faulty components. These fault models will be based on the signatures, HMM parameters. These components can be used by the designer to observe the faulty behavior of each sub-circuit on the system as shown in Figure~\ref{fig:lib1}.  If we want to find the faulty behavior of a MAC affected by the faulty behavior of an adder and/or an accumulator, we can observe this behavior by replacing the fault-free model with the faulty model.
+\section{Faulty Components Library Utilization}
+Once we have all the information about the HMM parameters, probabilities, fault models, a sequence of the hidden states. This information helps us to find the library of the faulty components. These components can be used by the designer to observe the faulty behavior of each sub-circuit on the system as shown in Figure~\ref{fig:lib1}.  If we want to find the faulty behavior of a MAC affected by the faulty behavior of an adder and/or an accumulator, we can observe this behavior by replacing the fault-free model with the faulty model.
+ 
 \begin{figure}[tb!]
  \centering
   \captionsetup{justification=centering}    
    \includegraphics[scale=0.6]{Figures/MAC.pdf}
-   \caption{Example of the faulty Component}
+   \caption{Example of the faulty Component.}
 \label{fig:lib1}
 \end{figure}
+
 We also have a plan to create a faulty finite state machines / faulty circuit models in Simulink. Then use the available functionality in the Simulink ( VHDL code generator) to find the respective VHDL entity, to get the individual VHDL entity as shown in Figure~\ref{fig:library1}. The VHDL entity helps to find the resources utilization of FPGA, and it is independent of the tool and technology easily portable to any FPGA as discussed in the Chapter~\ref{faultmodels} due to change in the tools some of the work became ineffective or out-of-date. If we have the faulty VHDL components, they are highly useful for understanding the system's behavior.
 %\textbf{Example:} A simulink designer needs to estimate the resource utilization of any digital circuit (operates in the radiation environment) that contain adder, multiplier, and flip-flops. He also interested to find the faulty behavior of this circuit. 
 %
@@ -411,7 +413,7 @@ We also have a plan to create a faulty finite state machines / faulty circuit mo
  \centering
   \captionsetup{justification=centering}    
    \includegraphics[scale=0.8]{Figures/library.pdf}
-   \caption{VHDL entity creation and usage}
+   \caption{VHDL entity creation and usage.}
 \label{fig:library1}
 \end{figure}
 
