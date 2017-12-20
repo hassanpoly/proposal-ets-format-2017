@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: poly_presentation_hassan.aux
+The style file: agsm.bst
+Database file #1: polymtl_presentation.bib.bib
+You've used 21 entries,
+            2909 wiz_defined-function locations,
+            767 strings with 9683 characters,
+and the built_in function-call counts, 137241 in all, are:
+= -- 22626
+> -- 1965
+< -- 1
++ -- 11160
+- -- 616
+* -- 12192
+:= -- 26708
+add.period$ -- 22
+call.type$ -- 21
+change.case$ -- 292
+chr.to.int$ -- 21
+cite$ -- 21
+duplicate$ -- 398
+empty$ -- 777
+format.name$ -- 689
+if$ -- 24799
+int.to.chr$ -- 5
+int.to.str$ -- 0
+missing$ -- 17
+newline$ -- 68
+num.names$ -- 221
+pop$ -- 112
+preamble$ -- 1
+purify$ -- 315
+quote$ -- 0
+skip$ -- 363
+stack$ -- 0
+substring$ -- 32564
+swap$ -- 105
+text.length$ -- 295
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 82
+warning$ -- 0
+while$ -- 482
+width$ -- 0
+write$ -- 303

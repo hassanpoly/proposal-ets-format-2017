@@ -1,0 +1,143 @@
+\begin{thebibliography}{xx}
+
+\harvarditem{Chen \harvardand\ Jiao}{2017}{chen2017fault}
+Chen, X. \harvardand\ Jiao, J.  \harvardyearleft 2017\harvardyearright , A
+  fault propagation modeling method based on a finite state machine, {\em in}
+  `Reliability and Maintainability Symposium (RAMS), 2017 Annual', IEEE,
+  pp.~1--7.
+
+\harvarditem[DiCarlo et~al.]{DiCarlo, Prinetto, Rolfo \harvardand\
+  Trotta}{2014}{di2014fault}
+DiCarlo, S., Prinetto, P., Rolfo, D. \harvardand\ Trotta, P.  \harvardyearleft
+  2014\harvardyearright , A fault injection methodology and infrastructure for
+  fast single event upsets emulation on xilinx sram-based fpgas, {\em in}
+  `Defect and Fault Tolerance in VLSI and Nanotechnology Systems (DFT), 2014
+  IEEE International Symposium on', IEEE, pp.~159--164.
+
+\harvarditem[Dsilva et~al.]{Dsilva, Wang, Rezzak \harvardand\
+  Jat}{2015}{dsilva2015neutron}
+Dsilva, D., Wang, J.-J., Rezzak, N. \harvardand\ Jat, N.  \harvardyearleft
+  2015\harvardyearright , Neutron see testing of the 65nm smartfusion2
+  flash-based fpga, {\em in} `Radiation Effects Data Workshop (REDW), 2015
+  IEEE', IEEE, pp.~1--5.
+
+\harvarditem{Georg}{accessed 2017}{MOGENTES}
+Georg  \harvardyearleft accessed 2017\harvardyearright ,
+  `Available:https://www.mogentes.eu/public/deliverables/'.
+
+\harvarditem{Hayne \harvardand\ Johnson}{1999}{hayne1999behavioral}
+Hayne, R.~J. \harvardand\ Johnson, B.~W.  \harvardyearleft
+  1999\harvardyearright , Behavioral fault modeling in a vhdl synthesis
+  environment, {\em in} `VLSI Test Symposium, 1999. Proceedings. 17th IEEE',
+  IEEE, pp.~333--340.
+
+\harvarditem[Hobeika et~al.]{Hobeika, Pichette, Ghodbane, Thibeault, Audet,
+  Boland \harvardand\ Saad}{2013}{hobeika2013flight}
+Hobeika, C., Pichette, S., Ghodbane, A., Thibeault, C., Audet, Y., Boland,
+  J.-F. \harvardand\ Saad, M.  \harvardyearleft 2013\harvardyearright , `Flight
+  control fault models based on seu emulation', {\em SAE International Journal
+  of Aerospace} {\bf 6}(2013-01-2246),~643--649.
+
+\harvarditem[Hobeika et~al.]{Hobeika, Pichette, Leonard, Thibeault, Boland
+  \harvardand\ Audet}{2014}{hobeika2014multi}
+Hobeika, C., Pichette, S., Leonard, M., Thibeault, C., Boland, J.-F.
+  \harvardand\ Audet, Y.  \harvardyearleft 2014\harvardyearright ,
+  Multi-abstraction level signature generation and comparison based on
+  radiation single event upset, {\em in} `On-Line Testing Symposium (IOLTS),
+  2014 IEEE 20th International', IEEE, pp.~212--215.
+
+\harvarditem{Janschek}{2017}{janschek2017errorsim}
+Janschek, K.  \harvardyearleft 2017\harvardyearright , Errorsim: A tool for
+  error propagation analysis of simulink models, {\em in} `Computer Safety,
+  Reliability, and Security: 36th International Conference, SAFECOMP 2017,
+  Trento, Italy, September 13-15, 2017, Proceedings', Vol. 10488, Springer,
+  p.~245.
+
+\harvarditem{Mirzadeh}{2014}{mirzadeh2014modeling}
+Mirzadeh, Z.  \harvardyearleft 2014\harvardyearright , Modeling the faulty
+  behaviour of digital designs using a feed forward neural network based
+  approach, PhD thesis, {\'E}cole de technologie sup{\'e}rieure.
+
+\harvarditem{Miskov-Zivanov \harvardand\ Marculescu}{2006}{miskov2006mars}
+Miskov-Zivanov, N. \harvardand\ Marculescu, D.  \harvardyearleft
+  2006\harvardyearright , Mars-c: modeling and reduction of soft errors in
+  combinational circuits, {\em in} `Proceedings of the 43rd annual Design
+  Automation Conference', ACM, pp.~767--772.
+
+\harvarditem{Miskov-Zivanov \harvardand\ Marculescu}{2007}{miskov2007soft}
+Miskov-Zivanov, N. \harvardand\ Marculescu, D.  \harvardyearleft
+  2007\harvardyearright , Soft error rate analysis for sequential circuits,
+  {\em in} `Proceedings of the conference on Design, automation and test in
+  Europe', EDA Consortium, pp.~1436--1441.
+
+\harvarditem[Robache et~al.]{Robache, Boland, Thibeault \harvardand\
+  Savaria}{2013}{robache2013methodology}
+Robache, R., Boland, J.-F., Thibeault, C. \harvardand\ Savaria, Y.
+  \harvardyearleft 2013\harvardyearright , A methodology for system-level fault
+  injection based on gate-level faulty behavior, {\em in} `New Circuits and
+  Systems Conference (NEWCAS), 2013 IEEE 11th International', IEEE, pp.~1--4.
+
+\harvarditem{Shazli}{2011}{shazli2011high}
+Shazli, S.~Z.  \harvardyearleft 2011\harvardyearright , High level modeling and
+  mitigation of transient errors in nano-scale systems, PhD thesis,
+  Northeastern University.
+
+\harvarditem[Souari et~al.]{Souari, Thibeault, Blaqui{\`e}re \harvardand\
+  Velazco}{2016}{souari2016towards}
+Souari, A., Thibeault, C., Blaqui{\`e}re, Y. \harvardand\ Velazco, R.
+  \harvardyearleft 2016\harvardyearright , `Towards an efficient seu effects
+  emulation on sram-based fpgas', {\em Microelectronics Reliability} {\bf
+  66},~173--182.
+
+\harvarditem[Svenningsson et~al.]{Svenningsson, Vinter, Eriksson \harvardand\
+  T{\"o}rngren}{2010}{Svenningsson2010}
+Svenningsson, R., Vinter, J., Eriksson, H. \harvardand\ T{\"o}rngren, M.
+  \harvardyearleft 2010\harvardyearright , {\em MODIFI: A MODel-Implemented
+  Fault Injection Tool}, Springer Berlin Heidelberg, Berlin, Heidelberg,
+  pp.~210--222.
+
+\harvarditem{Taber \harvardand\ Normand}{1995}{taber1995investigation}
+Taber, A.~H. \harvardand\ Normand, E.  \harvardyearleft 1995\harvardyearright ,
+  Investigation and characterization of seu effects and hardening strategies in
+  avionics., Technical report, BOEING DEFENSE AND SPACE GROUP SEATTLE WA.
+
+\harvarditem[Thibeault et~al.]{Thibeault, Hariri, Hasan, Hobeika, Savaria,
+  Audet \harvardand\ Tazi}{2013}{thibeault2013library}
+Thibeault, C., Hariri, Y., Hasan, S.~R., Hobeika, C., Savaria, Y., Audet, Y.
+  \harvardand\ Tazi, F.~Z.  \harvardyearleft 2013\harvardyearright , `A
+  library-based early soft error sensitivity analysis technique for sram-based
+  fpga design', {\em Journal of Electronic Testing} {\bf 29}(4),~457--471.
+
+\harvarditem[Tobiska et~al.]{Tobiska, Atwell, Beck, Benton, Copeland, Dyer,
+  Gersey, Getley, Hands, Holland, Hong, Hwang, Jones, Malone, Meier, Mertens,
+  Phillips, Ryden, Schwadron, Wender, Wilkins \harvardand\
+  Xapsos}{2015}{SWE2016}
+Tobiska, W.~K., Atwell, W., Beck, P., Benton, E., Copeland, K., Dyer, C.,
+  Gersey, B., Getley, I., Hands, A., Holland, M., Hong, S., Hwang, J., Jones,
+  B., Malone, K., Meier, M.~M., Mertens, C., Phillips, T., Ryden, K.,
+  Schwadron, N., Wender, S.~A., Wilkins, R. \harvardand\ Xapsos, M.~A.
+  \harvardyearleft 2015\harvardyearright , `Advances in atmospheric radiation
+  measurements and modeling needed to improve air safety', {\em Space Weather}
+  {\bf 13}(4),~202--210.
+\newblock 2015SW001169.
+\newline\harvardurl{http://dx.doi.org/10.1002/2015SW001169}
+
+\harvarditem[Ubar et~al.]{Ubar, Marenkov, Mironov \harvardand\
+  Viies}{2014}{ubar2014modeling}
+Ubar, R., Marenkov, M., Mironov, D. \harvardand\ Viies, V.  \harvardyearleft
+  2014\harvardyearright , Modeling sequential circuits with shared structurally
+  synthesized bdds, {\em in} `Design \& Test Symposium (IDT), 2014 9th
+  International', IEEE, pp.~130--135.
+
+\harvarditem[Violante et~al.]{Violante, Sterpone, Ceschia, Bortolato, Bernardi,
+  Reorda \harvardand\ Paccagnella}{2004}{violante2004simulation}
+Violante, M., Sterpone, L., Ceschia, M., Bortolato, D., Bernardi, P., Reorda,
+  M.~S. \harvardand\ Paccagnella, A.  \harvardyearleft 2004\harvardyearright ,
+  `Simulation-based analysis of seu effects in sram-based fpgas', {\em IEEE
+  Transactions on Nuclear science} {\bf 51}(6),~3354--3359.
+
+\harvarditem{Xilinx}{accessed 2017}{xilinnseu}
+Xilinx  \harvardyearleft accessed 2017\harvardyearright , `Available:
+  https://www.xilinx.com/xapp1073/'.
+
+\end{thebibliography}

@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Introduction}{7}{0}{1}
+\beamer@sectionintoc {2}{Background and Related Work}{13}{0}{2}
+\beamer@sectionintoc {3}{Proposed Approach}{24}{0}{3}
+\beamer@sectionintoc {4}{Preliminary Results}{37}{0}{4}
+\beamer@sectionintoc {5}{Time Table}{52}{0}{5}

@@ -1,0 +1,218 @@
+
+
+\begin{frame}{Self-configuration}
+\hspace{1.5cm} \alt<6>{\framebox{\color{red}   1 \hspace{0.5cm} 2 \hspace{0.5cm} 3\hspace{0.8cm} 4 \hspace{0.8cm} 5 \hspace{0.7cm} 6 \hspace{0.7cm} 7 \hspace{0.7cm} 8 \hspace{0.7cm} 9 \hspace{0.7cm} 10 }}{  1 \hspace{0.5cm} 2 \hspace{0.5cm} 3\hspace{0.8cm} 4 \hspace{0.8cm} 5 \hspace{0.7cm} 6 \hspace{0.7cm} 7 \hspace{0.7cm} 8 \hspace{0.7cm} 9 \hspace{0.7cm} 10  }
+
+\vspace{-0.1in}
+\begin{figure}[!tbp]
+  \centering
+  \begin{tikzpicture}
+    \begin{groupplot}[
+        group style={
+          group size=1 by 2,
+          xlabels at=edge bottom, xticklabels at=edge bottom,
+          vertical sep=0.1in,
+        },
+        xmin=0, xmax=1041, xtick={0, 50, ..., 1000}, xlabel=\alt<5>{\framebox{\color{red}{\scriptsize time(s)}}}{{\scriptsize time(s)}},
+        ymin=0, ylabel absolute, every axis y label/.append style={yshift=-0.15in},
+        footnotesize,
+        width=\textwidth, height=1.6in,
+       /pgf/number format/1000 sep={}
+      ]
+      \nextgroupplot[ymin=0, ymax=25, ytick={0, 5, ..., 25}, ylabel=\alt<7>{\framebox{\color{red}{\scriptsize  perf. (M options/s)}}}{{\scriptsize  perf. (M options/s)}}]
+      \draw[gray, densely dotted] (axis cs:70,0)--(axis cs:70,25);
+      \draw[gray, densely dotted, thick] (axis cs:144,0)--(axis cs:144,25);
+      \draw[gray, densely dotted] (axis cs:239,0)--(axis cs:239,25);
+      \draw[gray, densely dotted] (axis cs:334,0)--(axis cs:334,25);
+      \draw[gray, densely dotted] (axis cs:431,0)--(axis cs:431,25);
+      \draw[gray, densely dotted] (axis cs:526,0)--(axis cs:526,25);
+      \draw[gray, densely dotted] (axis cs:621,0)--(axis cs:621,25);
+      \draw[gray, densely dotted] (axis cs:718,0)--(axis cs:718,25);
+      \draw[gray, densely dotted] (axis cs:813,0)--(axis cs:813,25);
+      \draw[gray, densely dashed, thick] (axis cs:0,8)--(axis cs:1100,8);
+      \draw[gray, densely dashed, thick] (axis cs:0,11)--(axis cs:1100,11);
+      \addplot+[black, mark=none, solid, smooth] table[x=iteration, y expr=\thisrow{throughput}/1000000] {data/blackscholes_adp_cores.txt};
+\draw<9>[red,ultra thick,rounded corners] (0.2,2.0) rectangle (14.0,248.0);
+\draw<10>[red,ultra thick,rounded corners] (0.2,70.0) rectangle (93.0,120.0);
+
+\nextgroupplot[ymin=1, ymax=4, ytick={1, 2, 3, 4}, ylabel=\alt<8>{\framebox{\color{red}{\scriptsize cores}}}{{\scriptsize cores}}, height=1.2in]
+      \draw[gray, densely dotted] (axis cs:70,0)--(axis cs:70,5);
+      \draw[gray, densely dotted, thick] (axis cs:144,0)--(axis cs:144,25);
+      \draw[gray, densely dotted] (axis cs:239,0)--(axis cs:239,5);
+      \draw[gray, densely dotted] (axis cs:334,0)--(axis cs:334,5);
+      \draw[gray, densely dotted] (axis cs:431,0)--(axis cs:431,5);
+      \draw[gray, densely dotted] (axis cs:526,0)--(axis cs:526,5);
+      \draw[gray, densely dotted] (axis cs:621,0)--(axis cs:621,5);
+      \draw[gray, densely dotted] (axis cs:718,0)--(axis cs:718,5);
+      \draw[gray, densely dotted] (axis cs:813,0)--(axis cs:813,5);
+      \addplot+[black, only marks, mark=o, mark size=1.5pt] table[x=iteration, y=cores] {data/blackscholes_adp_cores.txt};
+\draw<9>[red,ultra thick,rounded corners] (0.2,2.0) rectangle (14.0,298.0);
+\draw<11>[red,ultra thick,rounded corners] (13.0,70.0) rectangle (93.0,130.0);
+
+    \end{groupplot}
+
+  \end{tikzpicture}
+  \vskip -0.1in
+  \caption{\alt<2>{\framebox{\color{red} \emph{blackscholes}}}{\emph{blackscholes}} managed exploiting \alt<3>{\framebox{\color{red} \emph{ADP}}}{\emph{ADP}} and \alt<4>{\framebox{\color{red} \emph{core allocation}}}{\emph{core allocation}}.}
+  \vskip -0.1in
+  \label{figures:blackscholes_adp_cores}
+\end{figure}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Self-optimization}
+\hspace{1.8cm} 1 \hspace{0.7cm} 2 \hspace{0.7cm} 3\hspace{0.7cm} 4 \hspace{0.8cm} 5 \hspace{0.8cm} 6 \hspace{0.8cm} 7 \hspace{0.8cm} 8 \hspace{0.8cm} 9 \hspace{0.8cm} 10
+\vspace{-0.1in}
+\begin{figure}[!tbp]
+    \centering
+  \begin{tikzpicture}
+    \begin{groupplot}[
+        group style={
+          group size=1 by 2,
+          xlabels at=edge bottom, xticklabels at=edge bottom,
+          vertical sep=0.1in,
+        },
+        xmin=0, xmax=825, xtick={0, 50, ..., 1000}, xlabel={\scriptsize time (s)},
+        ylabel absolute, every axis y label/.append style={yshift=-0.15in},
+        footnotesize,
+        width=\textwidth, height=1.6in,
+      ]
+      \nextgroupplot[ymin=0, ymax=2.5, ytick={0, 0.5, ..., 2.5}, ylabel= {\scriptsize perf. (M exchanges/s)}]
+      \draw[gray, densely dotted] (axis cs:73,0)--(axis cs:73,2.5);
+      \draw[gray, densely dotted, thick] (axis cs:150,0)--(axis cs:150,2.5);
+      \draw[gray, densely dotted] (axis cs:230,0)--(axis cs:230,2.5);
+      \draw[gray, densely dotted] (axis cs:309,0)--(axis cs:309,2.5);
+      \draw[gray, densely dotted] (axis cs:390,0)--(axis cs:390,2.5);
+      \draw[gray, densely dotted] (axis cs:470,0)--(axis cs:470,2.5);
+      \draw[gray, densely dotted] (axis cs:550,0)--(axis cs:550,2.5);
+      \draw[gray, densely dotted] (axis cs:631,0)--(axis cs:631,2.5);
+      \draw[gray, densely dotted] (axis cs:710,0)--(axis cs:710,2.5);
+      \draw[gray, densely dashed, thick] (axis cs:0,0.8)--(axis cs:1000,0.8);
+      \draw[gray, densely dashed, thick] (axis cs:0,1.2)--(axis cs:1000,1.2);
+      \addplot+[black, mark=none, solid, smooth] table[x=iteration, y expr=\thisrow{throughput}/1000000] {data/canneal_adp_cores.txt};
+\draw<2>[red,ultra thick,rounded corners] (145,70.0) rectangle (800.0,140.0);
+
+      \nextgroupplot[ymin=1, ymax=4, ytick={1, 2, 3, 4}, ylabel= {\scriptsize cores}, height=1.2in]
+      \draw[gray, densely dotted] (axis cs:73,0)--(axis cs:73,4);
+      \draw[gray, densely dotted, thick] (axis cs:150,0)--(axis cs:150,4);
+      \draw[gray, densely dotted] (axis cs:230,0)--(axis cs:230,4);
+      \draw[gray, densely dotted] (axis cs:309,0)--(axis cs:309,4);
+      \draw[gray, densely dotted] (axis cs:390,0)--(axis cs:390,4);
+      \draw[gray, densely dotted] (axis cs:470,0)--(axis cs:470,4);
+      \draw[gray, densely dotted] (axis cs:550,0)--(axis cs:550,4);
+      \draw[gray, densely dotted] (axis cs:631,0)--(axis cs:631,4);
+      \draw[gray, densely dotted] (axis cs:710,0)--(axis cs:710,4);
+      \addplot+[black, only marks, mark=o, mark size=1.5pt] table[x=iteration, y=cores] {data/canneal_adp_cores.txt};
+    \end{groupplot}
+  \end{tikzpicture}
+  \vskip -0.1in
+  \caption{\emph{canneal} managed exploiting ADP and core allocation.}
+  \label{figures:canneal_adp_cores}
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}{Self-healing}
+\hspace{1.7cm} 1 \hspace{0.9cm} 2 \hspace{1.0cm} 3\hspace{0.8cm} 4 \hspace{0.8cm} 5 \hspace{0.8cm} 6 \hspace{0.8cm} 7 \hspace{0.8cm} 8 \hspace{0.8cm} 9 \hspace{0.6cm} 10
+\vspace{-0.1in}
+\begin{figure}[!tbp]
+ \centering
+  \begin{tikzpicture}
+    \begin{groupplot}[
+        group style={
+          group size=1 by 3,
+          xlabels at=edge bottom, xticklabels at=edge bottom,
+          vertical sep=0.1in,
+        },
+        legend style={
+          at={(0.95,0.2)},
+          anchor=south east,
+        },
+        xmin=0, xmax=825, xtick={0, 50, ..., 1000}, xlabel={\scriptsize time (s)},
+        ylabel absolute, every axis y label/.append style={yshift=-0.15in},
+        footnotesize,
+        width=\textwidth, height=1.6in,
+      ]
+      \nextgroupplot[ymin=0, ymax=2.5, ytick={0, 0.5, ..., 2.5}, ylabel= {\scriptsize perf. (M exchanges/s)}]
+      \draw[gray, densely dotted] (axis cs:79,0)--(axis cs:79,2.5);
+      \draw[gray, densely dotted, thick] (axis cs:184,0)--(axis cs:184,2.5);
+      \draw[gray, densely dotted] (axis cs:265,0)--(axis cs:265,2.5);
+      \draw[gray, densely dotted] (axis cs:344,0)--(axis cs:344,2.5);
+      \draw[gray, densely dotted] (axis cs:424,0)--(axis cs:424,2.5);
+      \draw[gray, densely dotted] (axis cs:504,0)--(axis cs:504,2.5);
+      \draw[gray, densely dotted] (axis cs:585,0)--(axis cs:585,2.5);
+      \draw[gray, densely dotted] (axis cs:665,0)--(axis cs:665,2.5);
+      \draw[gray, densely dotted] (axis cs:745,0)--(axis cs:745,2.5);
+      \draw[gray, densely dashed, thick] (axis cs:0,0.8)--(axis cs:1000,0.8);
+      \draw[gray, densely dashed, thick] (axis cs:0,1.2)--(axis cs:1000,1.2);
+      \addplot+[black, mark=none, solid, smooth] table[x=iteration, y expr=\thisrow{throughput}/1000000] {data/canneal_adp_cores_freq.txt};
+\draw<3>[red,ultra thick,rounded corners] (180,60.0) rectangle (240.0,160.0);
+\draw<4>[red,ultra thick,rounded corners] (250,70.0) rectangle (820.0,140.0);
+
+      \nextgroupplot[ymin=1, ymax=4, ytick={1, 2, 3, 4}, ylabel= {\scriptsize cores}, height=1.2in]
+      \draw[gray, densely dotted] (axis cs:79,0)--(axis cs:79,4);
+      \draw[gray, densely dotted, thick] (axis cs:184,0)--(axis cs:184,4);
+      \draw[gray, densely dotted] (axis cs:265,0)--(axis cs:265,4);
+      \draw[gray, densely dotted] (axis cs:344,0)--(axis cs:344,4);
+      \draw[gray, densely dotted] (axis cs:424,0)--(axis cs:424,4);
+      \draw[gray, densely dotted] (axis cs:504,0)--(axis cs:504,4);
+      \draw[gray, densely dotted] (axis cs:585,0)--(axis cs:585,4);
+      \draw[gray, densely dotted] (axis cs:665,0)--(axis cs:665,4);
+      \draw[gray, densely dotted] (axis cs:745,0)--(axis cs:745,4);
+      \addplot+[black, only marks, mark=o, mark size=1.5pt] table[x=iteration, y=cores] {data/canneal_adp_cores_freq.txt};
+\draw<3>[red,ultra thick,rounded corners] (180,170.0) rectangle (240.0,300.0);
+\draw<4>[red,ultra thick,rounded corners] (250,80.0) rectangle (820.0,220.0);
+
+      \nextgroupplot[ymin=1, ymax=15, ytick={1, 14}, ylabel= \alt<2>{\framebox{\color{red}{\scriptsize frequency}}}{{\scriptsize frequency}}, height=1.2in]
+      \draw[gray, densely dotted] (axis cs:79,0)--(axis cs:79,14);
+      \draw[gray, densely dotted, thick] (axis cs:184,0)--(axis cs:184,14);
+      \draw[gray, densely dotted] (axis cs:265,0)--(axis cs:265,14);
+      \draw[gray, densely dotted] (axis cs:344,0)--(axis cs:344,14);
+      \draw[gray, densely dotted] (axis cs:424,0)--(axis cs:424,14);
+      \draw[gray, densely dotted] (axis cs:504,0)--(axis cs:504,14);
+      \draw[gray, densely dotted] (axis cs:585,0)--(axis cs:585,14);
+      \draw[gray, densely dotted] (axis cs:665,0)--(axis cs:665,14);
+      \draw[gray, densely dotted] (axis cs:745,0)--(axis cs:745,14);
+      \addplot+[black, only marks, mark=o, mark size=1.5pt] table[x=iteration, y=frequency] {data/canneal_adp_cores_freq.txt};
+\draw<3>[red,ultra thick,rounded corners] (180,2.0) rectangle (240.0,30.0);
+\draw<4>[red,ultra thick,rounded corners] (250,110.0) rectangle (820.0,140.0);
+
+    \end{groupplot}
+  \end{tikzpicture}
+  \vskip -0.15in
+  \caption{\emph{canneal} managed exploiting ADP, core allocation, and \alt<2>{\framebox{\color{red}{\scriptsize frequency scaling}}}{{\scriptsize frequency scaling}}.}
+  \label{figures:canneal_adp_cores_freq}
+\end{figure}
+\end{frame}
+
+\begin{comment}
+
+\begin{frame}{More Results}
+\begin{block}{Mean squared errors (MSE) w.r.t. desired heart rate}
+for different combinations of RL algorithms, tuning parameters and PARSEC applications.
+\end{block}
+\begin{center}
+\begin{tabular}{r c c c c}
+\toprule
+\multirow{2}{*}{\hspace{0.06in} application} & \multicolumn{2}{c}{ADP (model-based)} & \multicolumn{2}{c}{QL (model-free)} \\
+& \hspace{0.02in} cores \hspace{0.02in} & cores \& freq. & \hspace{0.02in} cores \hspace{0.02in} & cores \& freq. \\
+\cmidrule(lr){1-1} \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+\emph{blackscholes} & $0.16$ & \textbf{0.11} & $0.12$ & $0.12$ \\
+\emph{bodytrack} & \textbf{0.18} & $0.22$ & $0.19$ & $0.20$ \\
+\emph{canneal} & $0.11$ & $0.11$ & $0.12$ & \textbf{0.10} \\
+\emph{dedup} & $0.57$ & \textbf{0.34} & $1.02$ & $0.47$ \\
+\emph{fluidanimate} & $0.16$ & $0.15$ & \textbf{0.15} & $0.16$ \\
+\emph{raytrace} & $0.17$ & $0.17$ & \textbf{0.14} & $0.19$ \\
+\emph{swaptions} & \textbf{0.10} & $0.10$ & $0.11$ & $0.11$ \\
+\emph{x264} & \textbf{0.27} & $0.28$ & $0.47$ & $0.39$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+\end{comment}

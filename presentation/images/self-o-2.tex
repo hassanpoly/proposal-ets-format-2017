@@ -1,0 +1,49 @@
+\begin{tikzpicture}
+    \begin{groupplot}[
+        group style={
+          group size=1 by 3,
+          xlabels at=edge bottom, xticklabels at=edge bottom,
+          vertical sep=0.1in,
+        },
+        xmin=0, xmax=1041, xtick={0, 50, ..., 1000}, xlabel=time (s),
+        ylabel absolute, every axis y label/.append style={yshift=-0.15in},
+        footnotesize,
+        width=\textwidth, height=1.6in,
+      ]
+      \nextgroupplot[ymin=0, ymax=25, ytick={0, 5, ..., 25}, ylabel=performance]
+      \draw[gray, densely dotted] (axis cs:120,0)--(axis cs:120,25);
+      \draw[gray, densely dotted, thick] (axis cs:272,0)--(axis cs:272,25);
+      \draw[gray, densely dotted] (axis cs:368,0)--(axis cs:368,25);
+      \draw[gray, densely dotted] (axis cs:465,0)--(axis cs:465,25);
+      \draw[gray, densely dotted] (axis cs:561,0)--(axis cs:561,25);
+      \draw[gray, densely dotted] (axis cs:657,0)--(axis cs:657,25);
+      \draw[gray, densely dotted] (axis cs:753,0)--(axis cs:753,25);
+      \draw[gray, densely dotted] (axis cs:850,0)--(axis cs:850,25);
+      \draw[gray, densely dotted] (axis cs:946,0)--(axis cs:946,25);
+      \draw[gray, densely dashed, thick] (axis cs:0,8)--(axis cs:1100,8);
+      \draw[gray, densely dashed, thick] (axis cs:0,11)--(axis cs:1100,11);
+      \addplot+[black, mark=none, solid, smooth] table[x=iteration, y expr=\thisrow{throughput}/1000000] {data/blackscholes_ql_cores_freq.txt};
+      \nextgroupplot[ymin=1, ymax=4, ytick={1, 2, 3, 4}, ylabel=cores, height=1.2in]
+      \draw[gray, densely dotted] (axis cs:120,0)--(axis cs:120,25);
+      \draw[gray, densely dotted, thick] (axis cs:272,0)--(axis cs:272,25);
+      \draw[gray, densely dotted] (axis cs:368,0)--(axis cs:368,25);
+      \draw[gray, densely dotted] (axis cs:465,0)--(axis cs:465,25);
+      \draw[gray, densely dotted] (axis cs:561,0)--(axis cs:561,25);
+      \draw[gray, densely dotted] (axis cs:657,0)--(axis cs:657,25);
+      \draw[gray, densely dotted] (axis cs:753,0)--(axis cs:753,25);
+      \draw[gray, densely dotted] (axis cs:850,0)--(axis cs:850,25);
+      \draw[gray, densely dotted] (axis cs:946,0)--(axis cs:946,25);
+      \addplot+[black, only marks, mark=o, mark size=1.5pt] table[x=iteration, y=cores] {data/blackscholes_ql_cores_freq.txt};
+      \nextgroupplot[ymin=1, ymax=14, ytick={1, 14}, ylabel=frequency, height=1.2in]
+      \draw[gray, densely dotted] (axis cs:120,0)--(axis cs:120,25);
+      \draw[gray, densely dotted, thick] (axis cs:272,0)--(axis cs:272,25);
+      \draw[gray, densely dotted] (axis cs:368,0)--(axis cs:368,25);
+      \draw[gray, densely dotted] (axis cs:465,0)--(axis cs:465,25);
+      \draw[gray, densely dotted] (axis cs:561,0)--(axis cs:561,25);
+      \draw[gray, densely dotted] (axis cs:657,0)--(axis cs:657,25);
+      \draw[gray, densely dotted] (axis cs:753,0)--(axis cs:753,25);
+      \draw[gray, densely dotted] (axis cs:850,0)--(axis cs:850,25);
+      \draw[gray, densely dotted] (axis cs:946,0)--(axis cs:946,25);
+      \addplot+[black, only marks, mark=o, mark size=1.5pt] table[x=iteration, y=frequency] {data/blackscholes_ql_cores_freq.txt};
+    \end{groupplot}
+  \end{tikzpicture}

@@ -1,0 +1,39 @@
+
+  \begin{tikzpicture}
+    \begin{groupplot}[
+        group style={
+          group size=1 by 2,
+          xlabels at=edge bottom, xticklabels at=edge bottom,
+          vertical sep=0.1in,
+        },
+        xmin=0, xmax=1041, xtick={0, 50, ..., 1000}, xlabel=time (s),
+        ymin=0, ylabel absolute, every axis y label/.append style={yshift=-0.15in},
+        footnotesize,
+        width=\textwidth, height=1.6in,
+      ]
+      \nextgroupplot[ymin=0, ymax=25, ytick={0, 5, ..., 25}, ylabel=performance]
+      \draw[gray, densely dotted] (axis cs:70,0)--(axis cs:70,25);
+      \draw[gray, densely dotted, thick] (axis cs:144,0)--(axis cs:144,25);
+      \draw[gray, densely dotted] (axis cs:239,0)--(axis cs:239,25);
+      \draw[gray, densely dotted] (axis cs:334,0)--(axis cs:334,25);
+      \draw[gray, densely dotted] (axis cs:431,0)--(axis cs:431,25);
+      \draw[gray, densely dotted] (axis cs:526,0)--(axis cs:526,25);
+      \draw[gray, densely dotted] (axis cs:621,0)--(axis cs:621,25);
+      \draw[gray, densely dotted] (axis cs:718,0)--(axis cs:718,25);
+      \draw[gray, densely dotted] (axis cs:813,0)--(axis cs:813,25);
+      \draw[gray, densely dashed, thick] (axis cs:0,8)--(axis cs:1100,8);
+      \draw[gray, densely dashed, thick] (axis cs:0,11)--(axis cs:1100,11);
+      \addplot+[black, mark=none, solid, smooth] table[x=iteration, y expr=\thisrow{throughput}/1000000] {data/blackscholes_adp_cores.txt};
+      \nextgroupplot[ymin=1, ymax=4, ytick={1, 2, 3, 4}, ylabel=cores, height=1.2in]
+      \draw[gray, densely dotted] (axis cs:70,0)--(axis cs:70,5);
+      \draw[gray, densely dotted, thick] (axis cs:144,0)--(axis cs:144,25);
+      \draw[gray, densely dotted] (axis cs:239,0)--(axis cs:239,5);
+      \draw[gray, densely dotted] (axis cs:334,0)--(axis cs:334,5);
+      \draw[gray, densely dotted] (axis cs:431,0)--(axis cs:431,5);
+      \draw[gray, densely dotted] (axis cs:526,0)--(axis cs:526,5);
+      \draw[gray, densely dotted] (axis cs:621,0)--(axis cs:621,5);
+      \draw[gray, densely dotted] (axis cs:718,0)--(axis cs:718,5);
+      \draw[gray, densely dotted] (axis cs:813,0)--(axis cs:813,5);
+      \addplot+[black, only marks, mark=o, mark size=1.5pt] table[x=iteration, y=cores] {data/blackscholes_adp_cores.txt};
+    \end{groupplot}
+  \end{tikzpicture}

@@ -1,0 +1,118 @@
+
+@article{schoeberl2009time,
+  title={Time-predictable computer architecture},
+  author={Schoeberl, Martin},
+  journal={EURASIP Journal on Embedded Systems},
+  volume={2009},
+  pages={2},
+  year={2009},
+  publisher={Hindawi Publishing Corp.}
+}
+
+
+@inproceedings{berg2004requirements,
+  title={Requirements for and design of a processor with predictable timing},
+  author={Berg, Christoph and Engblom, Jakob and Wilhelm, Reinhard},
+  booktitle={Design of Systems with Predictable Behaviour},
+  year={2004}
+}
+
+@inproceedings{heiner2009fpga,
+  title={FPGA partial reconfiguration via configuration scrubbing},
+  author={Heiner, Jonathan and Sellers, Benjamin and Wirthlin, Michael and Kalb, Jeff},
+  booktitle={Field Programmable Logic and Applications, 2009. FPL 2009. International Conference on},
+  pages={99--104},
+  year={2009},
+  organization={IEEE}
+}
+@inproceedings{anantaraman2003virtual,
+  title={Virtual simple architecture (VISA): exceeding the complexity limit in safe real-time systems},
+  author={Anantaraman, Aravindh and Seth, Kiran and Patil, Kaustubh and Rotenberg, Eric and Mueller, Frank},
+  booktitle={ACM SIGARCH Computer Architecture News},
+  volume={31},
+  number={2},
+  pages={350--361},
+  year={2003},
+  organization={ACM}
+}
+
+@inproceedings{delvai2003processor,
+  title={Processor support for temporal predictability-the SPEAR design example},
+  author={Delvai, Martin and Huber, Wolfgang and Puschner, Peter and Steininger, Andreas},
+  booktitle={Real-Time Systems, 2003. Proceedings. 15th Euromicro Conference on},
+  pages={169--176},
+  year={2003},
+  organization={IEEE}
+}
+
+
+
+@article{Cazorla:2013:PPA:2465787.2465796,
+ author = {F. J. Cazorla and others},
+ title = {PROARTIS: Probabilistically Analyzable Real-Time Systems},
+ journal = {ACM Trans. Embed. Comput. Syst.},
+ issue_date = {May 2013},
+ volume = {12},
+ number = {2s},
+ month = may,
+ year = {2013},
+ issn = {1539-9087},
+ pages = {94:1--94:26},
+ articleno = {94},
+ numpages = {26},
+} 
+
+
+@inproceedings{Jalle:2014:BDT:2616606.2616668,
+ author = {Jalle, Javier and Kosmidis, Leonidas and Abella, Jaume and Qui\~{n}ones, Eduardo and Cazorla, Francisco J.},
+ title = {Bus Designs for Time-probabilistic Multicore Processors},
+ booktitle = {Proceedings of the Conference on Design, Automation \& Test in Europe},
+ series = {DATE '14},
+ year = {2014},
+ isbn = {978-3-9815370-2-4},
+ location = {Dresden, Germany},
+ pages = {50:1--50:6},
+ articleno = {50},
+ numpages = {6},
+ url = {http://dl.acm.org/citation.cfm?id=2616606.2616668},
+ acmid = {2616668},
+ publisher = {European Design and Automation Association},
+ address = {3001 Leuven, Belgium, Belgium},
+}
+
+@article{Jacobs:2012:RFT:2392616.2392619,
+  Title                    = {Reconfigurable Fault Tolerance: A Comprehensive Framework for Reliable and Adaptive FPGA-Based Space Computing},
+  Author                   = {Jacobs, Adam and Cieslewski, Grzegorz and George, Alan D. and Gordon-Ross, Ann and Lam, Herman},
+  Journal                  = {ACM Trans. Reconfigurable Technol. Syst.},
+  Year                     = {2012},
+
+  Month                    = dec,
+  Number                   = {4},
+  Pages                    = {21:1--21:30},
+  Volume                   = {5},
+
+  Acmid                    = {2392619},
+  Address                  = {New York, NY, USA},
+  Articleno                = {21},
+  Doi                      = {10.1145/2392616.2392619},
+  File                     = {Jacobs\:2012\:RFT\:2392616.2392619.pdf:Jacobs\:2012\:RFT\:2392616.2392619.pdf:PDF},
+  ISSN                     = {1936-7406},
+  Issue_date               = {December 2012},
+  Keywords                 = {FPGA, Reconfigurable fault tolerance, single-event upsets},
+  Numpages                 = {30},
+  Owner                    = {jacopo},
+  Publisher                = {ACM},
+  Timestamp                = {2013.03.24},
+}
+
+
+@article{heckmann2003influence,
+  title={The influence of processor architecture on the design and the results of WCET tools},
+  author={Heckmann, Reinhold and Langenbach, Marc and Thesing, Stephan and Wilhelm, Reinhard},
+  journal={Proceedings of the IEEE},
+  volume={91},
+  number={7},
+  pages={1038--1054},
+  year={2003},
+  publisher={IEEE}
+}
