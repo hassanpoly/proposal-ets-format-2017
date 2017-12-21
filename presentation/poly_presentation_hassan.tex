@@ -83,7 +83,7 @@ What we propose to research:
 \end{block}
 
 \begin{block}{\onslide<4->{\textbf{Reliability of an FPGA based systems} \hspace{4.8cm} \textcolor{red}{WHY}}}
-\onslide<4->{more exposure to radiation, mitigation strategy, phenomena causing faults}
+\onslide<4->{more exposure to radiation, phenomena causing faults, mitigation strategy}
 \end{block}
 
 \end{frame}
@@ -198,11 +198,13 @@ What we propose to research:
 \begin{itemize}
 \item \textbf{Construct} a high-level model from the faulty response observed at a low-level circuit fault emulation.
 \vspace{0.25cm}
-\item \textbf{Analyze} the fault origination and propagation for faulty sequential circuits.
+\item \textbf{Develop} new models that can accurately used to estimate the severity of the faulty behavior from the signature. 
+
+
 
  \vspace{0.25cm}
- 
-\item \textbf{Develop} new models that can accurately used to estimate the severity of the faulty behavior from the signature. 
+ \item \textbf{Analyze} the fault origination and propagation for faulty sequential circuits.
+
 \end{itemize}
 
 \end{itemize}
@@ -502,7 +504,7 @@ In order to achieve the above mentioned objectives. The main challenges we fores
 
 \end{itemize}
 
-\item In \citep{hayne1999behavioral} Behavioral Fault Mapper. Fault free design and N-faults.  Introduced different fault models, e,g., Dead process.
+\item In \citep{hayne1999behavioral} Behavioral Fault Mapper. Fault free design and N-faults.  Introduced different fault models, e.g., Dead process.
 
 \begin{itemize}
 \item VHDL simulator, no hardware real-time fault emulation, code modification.
@@ -557,7 +559,7 @@ In order to achieve the above mentioned objectives. The main challenges we fores
 
 \item Simulation based high-level fault model.
 \item Error Propagation Analysis.
-\item Poisson distribution.
+
 
 \item In \textbf{MY THESIS}: The fault emulation system we describe in this thesis based on the \textbf{real-time bit flip information}. 
 \end{itemize} 
@@ -659,7 +661,7 @@ In order to achieve the above mentioned objectives. The main challenges we fores
 
 \item Bottleneck to work in this domain fault assumption, glitch size, assign the probabilities for fault propagation.
 
-\item The work presented in this thesis will have the real output error probabilities.
+\item \textbf{MY THESIS}: will have the real output error probabilities.
 \end{itemize}
 
 \end{itemize}
@@ -681,18 +683,17 @@ In order to achieve the above mentioned objectives. The main challenges we fores
 \begin{block}{Relation to State-of-the-Art}
 \end{block}
 \begin{itemize}
-\item The existing fault behavior model of the sequential circuits are not accurate as mostly based on simulations and fault occurrence assumption.
+\item \textbf{In literature:} studied fault behavior at high-level/low-level abstraction under the assumption of fault occurrence.
+\item \textbf{\cite{robache2013methodology} \cite{hobeika2014multi}}.
+\item Fault models for sequential circuit.
+\item Fault models in the literature didn't provide any experimental data that these models exist under the radiation or fault emulation.
+\item Relationship between these fault models with the underlying hardware architecture regarding bit-flips.
 
-\item Prediction of the error, estimating the transistor model,  tolerate radiations.
-
-\item They didn't take the overall erroneous behavior.
-\item Complexities of the circuit, difficult to do the low-level circuit analysis. 
-\item \textbf{\cite{robache2013methodology} \cite{hobeika2014multi}}
-\item Find the faulty response of the circuit at low-level and model it high-level of abstraction.
+\item Solve with HMM.
 
 
 \end{itemize}
-
+\vspace{-0.5cm}
 \begin{figure}[tb!]
  \centering
   \captionsetup{justification=centering}    
@@ -703,37 +704,6 @@ In order to achieve the above mentioned objectives. The main challenges we fores
 
 
 \end{frame}
-\begin{frame}{Proposed Approach}
-
-\vspace{-0.2cm}
-\begin{block}{Hidden Markov Model}
-\end{block}
-\begin{itemize}
-\item The low-level faulty response to the high-level behavioral model.
-\item HMM, which uses the concept of hidden states (stuck-at-fault, delay fault) and observed states (signatures) to find not only the hidden states of the faulty system but also accurately model the observed states.
-
-
-\end{itemize}
-
-\begin{block}{Why HMM ?}
-\end{block}
-\begin{itemize}
-\item Boolean decision diagram and Algebraic decision diagram.
-
-\item Boolean Satisfiability Problem (SAT).
-
-\item Monte-Carlo Sampling, approximate approach.
-
-\item Need to transform the circuit into their respective tool.
-
-\item HMM can directly model the system just looking into the signature values.
-
-\item HMM suitable for the systems to model which consists of different observable state (signatures) on different hidden conditions, i.e., fault behavior, e.g., stuck-at-fault, or delay fault.
-\end{itemize}
-
-
-\end{frame}
-
 
 
 
@@ -770,9 +740,54 @@ In order to achieve the above mentioned objectives. The main challenges we fores
 
 
 
+
+\begin{frame}{Proposed Approach}
+
+\vspace{-0.2cm}
+\begin{block}{Hidden Markov Model}
+\end{block}
+\begin{itemize}
+\item The low-level faulty response to the high-level behavioral model.
+\item HMM, which uses the concept of hidden states (stuck-at-fault, delay fault) and observed states (signatures) to find not only the hidden states of the faulty system but also accurately model the observed states.
+
+
+\end{itemize}
+
+\begin{block}{Why HMM ?}
+\end{block}
+\begin{itemize}
+\item Boolean decision diagram and Algebraic decision diagram.
+
+\item Boolean Satisfiability Problem (SAT).
+
+\item Monte-Carlo Sampling, approximate approach, symbolic method, simulation.
+
+\item \textbf{Need to transform the circuit into their respective tool.}
+
+\item HMM can directly model the system just looking into the signature values.
+
+\item HMM suitable for the systems to model which consists of different observable state (signatures) on different hidden conditions, i.e., fault behavior, e.g., stuck-at-fault, or delay fault.
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{frame}{Modelling Hidden Markov Model}
 
-\begin{block}{HMM}
+\begin{block}{HMM-Example}
 
 \end{block}
 
@@ -802,7 +817,7 @@ In order to achieve the above mentioned objectives. The main challenges we fores
 
 \begin{frame}{Modelling Hidden Markov Model}
 
-\begin{block}{HMM}
+\begin{block}{HMM-Example}
 
 \end{block}
 
@@ -811,6 +826,8 @@ In order to achieve the above mentioned objectives. The main challenges we fores
 \item Four different signature \textit{sign-1, sign-2, sign-3, and sign-3}
 
 \item The observed signatures are probabilistically related to the hidden process. 
+
+\item Signatures: Observable; hidden : faults occur due to bit flip.
 
 
 \end{itemize}
@@ -843,7 +860,8 @@ In order to achieve the above mentioned objectives. The main challenges we fores
 
 \item Outputs are emitted by the system.
 \item Observable --- signatures.
-\item Underlying state of the system.
+\item Bits associated with the fault behavior of the system.
+\item HMM seeks to recover the the states from the observed data.
 
 
 
@@ -855,7 +873,7 @@ In order to achieve the above mentioned objectives. The main challenges we fores
 \begin{figure}[tb!]
  \centering
   \captionsetup{justification=centering}    
-   \includegraphics[scale=0.37]{Figures/HMM-air.pdf}
+   \includegraphics[scale=0.33]{Figures/HMM-air.pdf}
    \caption{Hidden Markov Model to the FPGA based fault emulation system.}
 \label{fig:HMM-air}
 \end{figure}
@@ -919,10 +937,12 @@ Generate an optimized HMM given a sequence of signatures (observations).
 \begin{itemize}
 
 
-\item For probability evaluation, we need to compute the likelihood of an observed signature sequence $O = {O_1, O_2,...,O_t}$ given a particular HMM model $ \Pi = {\pi, A, B}$. The computation of this probability involves all the possible hidden state sequence and evaluate the corresponding probability. 
+\item For probability evaluation, we need to compute the likelihood of an observed signature sequence $O = {O_1, O_2,...,O_t}$ given a particular HMM $ \Pi = {\pi, A, B}$. The computation of this probability involves all the possible hidden state sequence and evaluate the corresponding probability. 
 
 
 \item This problem can be solved by using the Forward Algorithm.
+
+\item  This algorithm helps to find the probability of an observe sequence.
 \end{itemize}
 
 \end{frame}
@@ -955,19 +975,25 @@ Generate an optimized HMM given a sequence of signatures (observations).
 
 
 \begin{frame}{HMM Application for Signature}
-\vspace{-1.6cm}
+%\vspace{-1.6cm}
 \begin{block}{Learning Application}
 \end{block}
 \begin{itemize}
 
 \item Optimizing the parameters of the model.
 
-\item Supervised learning: mapping function.
-\item Unsupervised learning: 
+\item Supervised learning: mapping function,  Unsupervised learning: 
 
 \item Model parameters and the observations to find the model that fits the data. 
 
 \item There are three different techniques to do: a) Maximum Likelihood Estimation, b) Viterbi Training, and c) Baum  Welch = Forward-Backward Algorithm.
+
+\item The Viterbi algorithm only finds the single most likely path, and its corresponding probability. Viterbi algorithm only computes an approximation.
+\item The Baum-Welch algorithm computes more than this: it does not consider just one path but all possible paths; compute the most likely hidden transition probabilities as well as most likely set of emission probabilities.
+
+\item  Baum-Welch is more accurate and it would therefore lead to better estimates of the model's parameters
+
+ 
 
 
 \end{itemize}
@@ -1005,6 +1031,8 @@ Generate an optimized HMM given a sequence of signatures (observations).
 \end{block}
 
 \begin{itemize}
+
+\item Create a faulty finite state machine.
 \item N-faulty behavioral models.
 \item Faulty VHDL entities.
 
@@ -1012,7 +1040,7 @@ Generate an optimized HMM given a sequence of signatures (observations).
 \item Study hardware faults  \\ at high-level of abstraction.
 %\item Relationship between the bit-flip information to the fault model.
 
-\vspace{-3.0cm}
+\vspace{-3.2cm}
 \end{itemize}
 \begin{figure}[tb!]
  \centering
@@ -1035,7 +1063,7 @@ Generate an optimized HMM given a sequence of signatures (observations).
 
 \begin{block}{Phase: 01}
 \end{block}
-The emulation platform will be the starting point of the research. We will use the sensitivity aware bit-flip technique for the configuration memory upsets. Selection of a suitable benchmark, which is probably ITC'99 used for the testing purpose and signature generation.
+The emulation platform will be the starting point of the research. We will use the \textbf{sensitivity aware bit-flip} technique for the configuration memory upsets. Selection of a suitable benchmark, which is probably ITC'99 used for the testing purpose and signature generation.
 
 
 
@@ -1044,12 +1072,12 @@ The emulation platform will be the starting point of the research. We will use t
 \begin{block}{Phase: 02}
 
 \end{block}
-Evaluate the radiation-based experimental results for signature under the neutron radiation at Triumf.
+Evaluate the emulation and radiation-based experimental results for signature.
 
 
 \begin{block}{Phase: 03}
 \end{block}
-Implement the above-mentioned methodology and high-level model for soft-error of the sequential circuits.
+Implement the above-mentioned methodology and high-level model for soft-error of the sequential circuits, i.e., HMM, Faulty FSM, VHDL entities.
 
 
 
